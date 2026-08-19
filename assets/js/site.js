@@ -3,16 +3,60 @@
    so pages that don't have a given feature simply skip that part. */
 
 // ---- demo tool data (single source of truth until there's a real backend) ----
+const CATEGORIES = [
+  {key:'writing', label:'Writing', icon:'✍️'},
+  {key:'image', label:'Image', icon:'🎨'},
+  {key:'video', label:'Video', icon:'🎬'},
+  {key:'coding', label:'Coding', icon:'💻'},
+  {key:'seo', label:'SEO', icon:'📈'},
+  {key:'audio', label:'Audio', icon:'🎧'},
+  {key:'design', label:'Design', icon:'🖌️'},
+  {key:'productivity', label:'Productivity', icon:'📋'},
+  {key:'automation', label:'Automation', icon:'⚙️'},
+];
+
 const tools = [
   {name:'Scriptly', cat:'writing', icon:'S', desc:'Draft, rewrite and outline long-form content with tone controls.', free:true, isNew:false, price:'Free plan', bestFor:'Long-form blog drafts', ease:'Easy'},
+  {name:'Copysmith Lite', cat:'writing', icon:'C', desc:'Short-form ad and product copy generator with brand voice presets.', free:true, isNew:true, price:'Free plan', bestFor:'Ad copy at scale', ease:'Easy'},
   {name:'PixelForge', cat:'image', icon:'P', desc:'Generate and edit product images from text prompts.', free:false, isNew:true, price:'From $19/mo', bestFor:'Product photography', ease:'Moderate'},
+  {name:'Framewise', cat:'image', icon:'F', desc:'Upscale and restore old or low-res photos in one click.', free:true, isNew:false, price:'Free plan', bestFor:'Photo restoration', ease:'Easy'},
+  {name:'Clipreel', cat:'video', icon:'C', desc:'Turn long recordings into short clips with auto captions.', free:false, isNew:true, price:'From $24/mo', bestFor:'Social video clips', ease:'Moderate'},
+  {name:'ScenePilot', cat:'video', icon:'S', desc:'Storyboard and generate short AI video scenes from a script.', free:false, isNew:true, price:'From $35/mo', bestFor:'Short-form video ideas', ease:'Advanced'},
   {name:'CodeLoop', cat:'coding', icon:'C', desc:'In-editor AI pair programmer with test generation.', free:true, isNew:false, price:'Free plan', bestFor:'Day-to-day coding', ease:'Moderate'},
+  {name:'Bugcatch', cat:'coding', icon:'B', desc:'Scans pull requests and flags likely bugs before merge.', free:false, isNew:true, price:'From $12/mo', bestFor:'Code review', ease:'Moderate'},
   {name:'Ranklyst', cat:'seo', icon:'R', desc:'Keyword clustering and on-page audits, explained simply.', free:false, isNew:true, price:'From $29/mo', bestFor:'SEO audits', ease:'Easy'},
   {name:'Voxel', cat:'audio', icon:'V', desc:'Text-to-speech with cloned voice profiles.', free:true, isNew:false, price:'Free plan', bestFor:'Voiceovers', ease:'Easy'},
+  {name:'Podtrim', cat:'audio', icon:'P', desc:'Removes filler words and silence from podcast audio automatically.', free:true, isNew:false, price:'Free plan', bestFor:'Podcast editing', ease:'Easy'},
+  {name:'Palette AI', cat:'design', icon:'P', desc:'Generates matching color palettes and UI themes from one image.', free:true, isNew:false, price:'Free plan', bestFor:'Design systems', ease:'Easy'},
+  {name:'Mockflow AI', cat:'design', icon:'M', desc:'Turns rough sketches into clickable UI mockups.', free:false, isNew:true, price:'From $18/mo', bestFor:'Rapid prototyping', ease:'Moderate'},
+  {name:'Inboxly', cat:'productivity', icon:'I', desc:'Drafts email replies in your tone and summarizes long threads.', free:true, isNew:false, price:'Free plan', bestFor:'Email triage', ease:'Easy'},
+  {name:'Plannix', cat:'productivity', icon:'P', desc:'Turns a messy to-do list into a scheduled weekly plan.', free:false, isNew:true, price:'From $9/mo', bestFor:'Weekly planning', ease:'Easy'},
   {name:'Autoflow', cat:'automation', icon:'A', desc:'No-code automations that connect your everyday apps and AI steps.', free:false, isNew:true, price:'From $15/mo', bestFor:'Connecting apps', ease:'Moderate'},
 ];
 
-// ---- 3D tilt on cards ----
+// ---- category icon tiles (replaces plain chip rows where present) ----
+(function(){
+  const box = document.getElementById('catTiles');
+  if(!box) return;
+  const counts = {};
+  tools.forEach(t => { counts[t.cat] = (counts[t.cat] || 0) + 1; });
+  box.innerHTML = CATEGORIES.map(c => `
+    <a class="cat-tile" href="${box.dataset.linkPrefix || ''}tools.html?cat=${c.key}">
+      <span class="cat-tile-icon">${c.icon}</span>
+      <span class="cat-tile-label">${c.label}</span>
+      <span class="cat-tile-count">${counts[c.key] || 0}</span>
+    </a>
+  `).join('');
+})();
+
+// ---- toolbar-style category chips used on tools.html (data-driven, keeps 'All') ----
+(function(){
+  const row = document.getElementById('catRow');
+  if(!row) return;
+  row.innerHTML = '<span class="cat-chip active" data-cat="all">All</span>' +
+    CATEGORIES.map(c => `<span class="cat-chip" data-cat="${c.key}">${c.icon} ${c.label}</span>`).join('');
+})();
+
 function addTilt(card){
   card.addEventListener('mousemove', (e) => {
     const r = card.getBoundingClientRect();
@@ -150,29 +194,7 @@ document.getElementById('newsletterBtn')?.addEventListener('click', () => {
   showToast(val ? 'Thanks — this will subscribe you on the live site.' : 'Enter an email first.');
 });
 
-// ---- submit tool form (demo only, no backend yet) ----
-(function(){
-  const submitForm = document.getElementById('submitForm');
-  if(!submitForm) return;
-  submitForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    submitForm.style.display = 'none';
-    document.getElementById('mfSuccess')?.classList.add('show');
-    showToast('Submission received — this demo does not save it anywhere yet.');
-  });
-})();
-
-// ---- contact form (services page, demo only) ----
-(function(){
-  const contactForm = document.getElementById('contactForm');
-  if(!contactForm) return;
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    contactForm.style.display = 'none';
-    document.getElementById('contactSuccess')?.classList.add('show');
-    showToast('Message received — this demo does not send it anywhere yet.');
-  });
-})();
+// submitForm and contactForm now use real Formspree submission — see wireFormspree() calls near the end of this file.
 
 // ---- hero glow follows mouse slightly ----
 (function(){
@@ -204,9 +226,9 @@ document.getElementById('newsletterBtn')?.addEventListener('click', () => {
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if(entry.isIntersecting){
-        animateCount(statTools, 20);
-        animateCount(document.getElementById('statCats'), 21);
-        animateCount(document.getElementById('statFree'), 5);
+        animateCount(statTools, tools.length);
+        animateCount(document.getElementById('statCats'), CATEGORIES.length);
+        animateCount(document.getElementById('statFree'), 1);
         obs.disconnect();
       }
     });
@@ -408,3 +430,110 @@ document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
   wc.addEventListener('input', update);
   update();
 })();
+
+// ---- live preview panel (homepage) — typewriter demo of the Finder matching ----
+(function(){
+  const body = document.getElementById('lpBody');
+  if(!body) return;
+  const demoRuns = [
+    {q:'"I need to write product descriptions"', cat:'writing', match:'Scriptly'},
+    {q:'"Something to clean up my code"', cat:'coding', match:'CodeLoop'},
+    {q:'"Help me audit my SEO"', cat:'seo', match:'Ranklyst'},
+    {q:'"I want to generate voiceovers"', cat:'audio', match:'Voxel'},
+  ];
+  let i = 0;
+  function typeLine(text, cls, cb){
+    const el = document.createElement('div');
+    el.className = 'lp-line ' + cls;
+    body.appendChild(el);
+    let idx = 0;
+    const speed = 18;
+    (function tick(){
+      el.textContent = text.slice(0, idx);
+      idx++;
+      if(idx <= text.length){ setTimeout(tick, speed); }
+      else if(cb){ setTimeout(cb, 350); }
+    })();
+  }
+  function runDemo(){
+    body.innerHTML = '';
+    const run = demoRuns[i % demoRuns.length];
+    i++;
+    typeLine('> ' + run.q, 'q', () => {
+      typeLine('Matching category: ' + run.cat, '', () => {
+        typeLine('Best match found: ' + run.match, '', () => {
+          const done = document.createElement('div');
+          done.className = 'lp-line';
+          done.style.opacity = 1;
+          done.innerHTML = '<span class="lp-cursor"></span>';
+          body.appendChild(done);
+          setTimeout(runDemo, 2200);
+        });
+      });
+    });
+  }
+  runDemo();
+})();
+
+// ---- trending ranked list (homepage) ----
+(function(){
+  const box = document.getElementById('trendList');
+  if(!box) return;
+  const ranked = tools.slice().sort((a,b) => (b.isNew - a.isNew) || (b.free - a.free)).slice(0,5);
+  box.innerHTML = ranked.map((t,idx) => `
+    <div class="trend-row">
+      <span class="trend-rank">0${idx+1}</span>
+      <div class="trend-info"><div class="tn">${t.name}</div><div class="tc">${t.cat.charAt(0).toUpperCase()+t.cat.slice(1)} · ${t.free ? 'Free plan' : 'Paid'}</div></div>
+      <span class="trend-arrow">→</span>
+    </div>
+  `).join('');
+})();
+
+// ---- floating popup modals (Contact / Submit tool) ----
+(function(){
+  function wireModal(fabId, modalId, closeId){
+    const fab = document.getElementById(fabId);
+    const modal = document.getElementById(modalId);
+    const close = document.getElementById(closeId);
+    if(!fab || !modal) return;
+    fab.addEventListener('click', () => modal.classList.add('open'));
+    close?.addEventListener('click', () => modal.classList.remove('open'));
+    modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('open'); });
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape') modal.classList.remove('open'); });
+  }
+  wireModal('fabContact', 'contactModal', 'contactModalClose');
+  wireModal('fabSubmit', 'submitModal', 'submitModalClose');
+})();
+
+// ---- real Formspree submission (works for any form with a data-formspree action) ----
+function wireFormspree(formId, successId){
+  const form = document.getElementById(formId);
+  if(!form) return;
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = form.querySelector('button[type="submit"]');
+    if(submitBtn){ submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+    try{
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: {'Accept': 'application/json'}
+      });
+      if(res.ok){
+        form.style.display = 'none';
+        document.getElementById(successId)?.classList.add('show');
+        showToast('Sent — thank you!');
+      } else {
+        showToast('Something went wrong — please try again.');
+        if(submitBtn){ submitBtn.disabled = false; submitBtn.textContent = submitBtn.dataset.label || 'Send'; }
+      }
+    } catch(err){
+      showToast('Network error — please try again.');
+      if(submitBtn){ submitBtn.disabled = false; submitBtn.textContent = submitBtn.dataset.label || 'Send'; }
+    }
+  });
+}
+wireFormspree('popupContactForm', 'popupContactSuccess');
+wireFormspree('popupSubmitForm', 'popupSubmitSuccess');
+wireFormspree('contactForm', 'contactSuccess');
+wireFormspree('submitForm', 'mfSuccess');
