@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://flexora-ai.github.io/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
+  <url><loc>https://flexora-ai.github.io/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://flexora-ai.github.io/tools.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://flexora-ai.github.io/compare.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://flexora-ai.github.io/finder.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://flexora-ai.github.io/workflows.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://flexora-ai.github.io/free-tools.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://flexora-ai.github.io/blog.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://flexora-ai.github.io/blog/beginners-guide-ai-coding-assistant.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://flexora-ai.github.io/blog/free-vs-paid-ai-tools.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://flexora-ai.github.io/services.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://flexora-ai.github.io/submit.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://flexora-ai.github.io/about.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://flexora-ai.github.io/privacy.html</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://flexora-ai.github.io/terms.html</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
 </urlset>
