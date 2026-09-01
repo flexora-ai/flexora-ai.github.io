@@ -16,6 +16,9 @@
    - readMins:  integer, minutes to read
    - date:      "YYYY-MM-DD", used for sorting and display
    - published: true = links to /blog/<slug>.html, false = shows as "Coming soon" (no link)
+   - image:     optional. Path to a cover image (e.g. assets/images/blog/your-post.webp).
+                If omitted, the card falls back to the emoji "icon" on a gradient background.
+   - imageAlt:  optional but recommended whenever "image" is set — descriptive alt text.
 */
 const BLOG_POSTS = [
   {
@@ -23,6 +26,8 @@ const BLOG_POSTS = [
     title: "A beginner's guide to picking your first AI coding assistant",
     category: 'Guide',
     icon: '💻',
+    image: 'assets/images/blog/blog-beginners-guide-ai-coding-assistant.webp',
+    imageAlt: 'Developer working alongside an AI coding assistant suggesting code in an editor',
     excerpt: "What actually matters when you're choosing between AI coding tools — and the four questions that narrow the field fast.",
     readMins: 8,
     date: '2026-08-20',
@@ -33,6 +38,8 @@ const BLOG_POSTS = [
     title: 'Free vs. paid AI tools: when is it actually worth upgrading?',
     category: 'Guide',
     icon: '💳',
+    image: 'assets/images/blog/blog-free-vs-paid-ai-tools.webp',
+    imageAlt: 'Comparison of a free and a paid AI tool subscription plan side by side',
     excerpt: 'A practical framework for deciding when a free plan is genuinely limiting you, versus when upgrading just adds cost.',
     readMins: 7,
     date: '2026-08-25',
