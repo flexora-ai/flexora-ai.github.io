@@ -87,7 +87,9 @@
   .see-all{font-size:14px; color:var(--teal); font-weight:600; cursor:pointer; background:none; border:none;}
 
   .cat-row{display:flex; flex-wrap:wrap; gap:10px;}
-  .cat-chip{font-size:13.5px; padding:9px 16px; border-radius:8px; background:var(--surface); border:1px solid var(--line); color:var(--ink-soft); cursor:pointer; transition:all .15s;}
+  .cat-chip{font-size:13.5px; padding:9px 16px; border-radius:8px; background:var(--surface); border:1px solid var(--line); color:var(--ink-soft); cursor:pointer; transition:all .15s; display:inline-flex; align-items:center; gap:7px;}
+  .cat-chip-icon{display:inline-flex; width:15px; height:15px; color:var(--teal);}
+  .cat-chip-icon svg{width:100%; height:100%;}
   .cat-chip:hover, .cat-chip.active{border-color:var(--teal); color:var(--teal); transform:translateY(-2px);}
 
   /* tabs for trending/new/popular */
@@ -554,7 +556,8 @@
 .cat-tiles{display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:12px; width:100%;}
 .cat-tile{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:18px 14px; text-align:center; transition:all .2s; cursor:pointer; position:relative;}
 .cat-tile:hover{border-color:var(--teal); transform:translateY(-4px);}
-.cat-tile-icon{font-size:26px; display:block; margin-bottom:8px;}
+.cat-tile-icon{display:flex; align-items:center; justify-content:center; width:30px; height:30px; margin:0 auto 10px; color:var(--teal);}
+.cat-tile-icon svg{width:100%; height:100%;}
 .cat-tile-label{font-size:13px; font-weight:600; color:var(--ink); display:block;}
 .cat-tile-count{position:absolute; top:10px; right:10px; font-family:'IBM Plex Mono'; font-size:10px; color:var(--ink-soft); background:var(--surface-2); border-radius:8px; padding:2px 6px;}
 
