@@ -523,8 +523,11 @@ document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
   }
 
   function blogCardHTML(p){
+    const thumb = p.image
+      ? `<div class="blog-thumb"><img src="${prefix}${p.image}" alt="${p.imageAlt || p.title}" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerHTML+='<span class=&quot;blog-thumb-icon&quot;>${p.icon}</span>';"></div>`
+      : `<div class="blog-thumb"><span class="blog-thumb-icon">${p.icon}</span></div>`;
     const inner = `
-      <div class="blog-thumb"><span class="blog-thumb-icon">${p.icon}</span></div>
+      ${thumb}
       <div class="blog-body">
         <span class="blog-cat">${p.category.toUpperCase()}</span>
         <h4>${p.title}</h4>
