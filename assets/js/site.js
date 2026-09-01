@@ -2,17 +2,30 @@
    every block below checks that its elements exist before running,
    so pages that don't have a given feature simply skip that part. */
 
+// ---- category icons (inline SVG — crisp at any size, no emoji font issues) ----
+const ICONS = {
+  writing: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>',
+  image: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>',
+  video: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>',
+  coding: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>',
+  seo: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>',
+  audio: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3Z"/></svg>',
+  design: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 19.5A2.5 2.5 0 0 1 4.5 17H8v2.5a2.5 2.5 0 0 1-5 0Z"/><path d="M8 17v-3.5A3.5 3.5 0 0 1 11.5 10H15V6a4 4 0 0 1 4-4 4 4 0 0 1-4 4v3.5A3.5 3.5 0 0 1 11.5 17H8Z"/></svg>',
+  productivity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="m9 12 2 2 4-4"/><path d="M9 7h6"/></svg>',
+  automation: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m4.9 4.9 2.8 2.8"/><path d="M2 12h4"/><path d="m4.9 19.1 2.8-2.8"/><path d="M12 18v4"/><path d="m16.3 16.3 2.8 2.8"/><path d="M18 12h4"/><path d="m16.3 7.7 2.8-2.8"/><circle cx="12" cy="12" r="4"/></svg>'
+};
+
 // ---- demo tool data (single source of truth until there's a real backend) ----
 const CATEGORIES = [
-  {key:'writing', label:'Writing', icon:'✍️'},
-  {key:'image', label:'Image', icon:'🎨'},
-  {key:'video', label:'Video', icon:'🎬'},
-  {key:'coding', label:'Coding', icon:'💻'},
-  {key:'seo', label:'SEO', icon:'📈'},
-  {key:'audio', label:'Audio', icon:'🎧'},
-  {key:'design', label:'Design', icon:'🖌️'},
-  {key:'productivity', label:'Productivity', icon:'📋'},
-  {key:'automation', label:'Automation', icon:'⚙️'},
+  {key:'writing', label:'Writing', icon:ICONS.writing},
+  {key:'image', label:'Image', icon:ICONS.image},
+  {key:'video', label:'Video', icon:ICONS.video},
+  {key:'coding', label:'Coding', icon:ICONS.coding},
+  {key:'seo', label:'SEO', icon:ICONS.seo},
+  {key:'audio', label:'Audio', icon:ICONS.audio},
+  {key:'design', label:'Design', icon:ICONS.design},
+  {key:'productivity', label:'Productivity', icon:ICONS.productivity},
+  {key:'automation', label:'Automation', icon:ICONS.automation},
 ];
 
 const tools = [
@@ -54,7 +67,7 @@ const tools = [
   const row = document.getElementById('catRow');
   if(!row) return;
   row.innerHTML = '<span class="cat-chip active" data-cat="all">All</span>' +
-    CATEGORIES.map(c => `<span class="cat-chip" data-cat="${c.key}">${c.icon} ${c.label}</span>`).join('');
+    CATEGORIES.map(c => `<span class="cat-chip" data-cat="${c.key}"><span class="cat-chip-icon">${c.icon}</span>${c.label}</span>`).join('');
 })();
 
 function addTilt(card){
@@ -489,6 +502,56 @@ document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
   `).join('');
 })();
 
+// ---- Blog grid (data-driven — reads assets/js/blog-data.js) ----
+// Used by both index.html's "Latest guides" preview and blog.html's full grid.
+// The container element sets data-limit and data-prefix:
+//   data-limit  = max cards to show (omit for "all")
+//   data-prefix = path prefix to reach /blog/ from this page (e.g. "" on root pages)
+(function(){
+  const grid = document.getElementById('blogGrid');
+  if(!grid || typeof BLOG_POSTS === 'undefined') return;
+  const prefix = grid.dataset.prefix || '';
+  const limit = grid.dataset.limit ? parseInt(grid.dataset.limit, 10) : BLOG_POSTS.length;
+  // published posts first (newest first), "coming soon" placeholders after
+  const posts = BLOG_POSTS.slice().sort((a,b) => {
+    if(a.published !== b.published) return a.published ? -1 : 1;
+    return new Date(b.date) - new Date(a.date);
+  }).slice(0, limit);
+
+  function formatDate(d){
+    return new Date(d + 'T00:00:00').toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
+  }
+
+  function blogCardHTML(p){
+    const inner = `
+      <div class="blog-thumb"><span class="blog-thumb-icon">${p.icon}</span></div>
+      <div class="blog-body">
+        <span class="blog-cat">${p.category.toUpperCase()}</span>
+        <h4>${p.title}</h4>
+        <div class="blog-meta">${p.readMins} min read · ${p.published ? formatDate(p.date) : 'Coming soon'}</div>
+      </div>`;
+    return p.published
+      ? `<a class="blog-card" href="${prefix}blog/${p.slug}.html">${inner}</a>`
+      : `<div class="blog-card blog-card-disabled" aria-disabled="true">${inner}</div>`;
+  }
+
+  grid.innerHTML = posts.map(blogCardHTML).join('');
+})();
+
+// ---- recurring popup (Contact modal) — reopens every 3 minutes on any page ----
+// Skips the reopen if another modal is already open, or if the visitor already
+// sent a message this session (no point nagging someone who just contacted us).
+(function(){
+  const modal = document.getElementById('contactModal');
+  if(!modal) return;
+  const INTERVAL_MS = 3 * 60 * 1000;
+  setInterval(() => {
+    if(sessionStorage.getItem('flexoraContactSent') === '1') return;
+    if(document.querySelector('.modal-overlay.open')) return;
+    modal.classList.add('open');
+  }, INTERVAL_MS);
+})();
+
 // ---- floating popup modals (Contact / Submit tool) ----
 (function(){
   function wireModal(fabId, modalId, closeId){
@@ -523,6 +586,9 @@ function wireFormspree(formId, successId){
         form.style.display = 'none';
         document.getElementById(successId)?.classList.add('show');
         showToast('Sent — thank you!');
+        if(formId === 'popupContactForm' || formId === 'contactForm'){
+          sessionStorage.setItem('flexoraContactSent', '1');
+        }
       } else {
         showToast('Something went wrong — please try again.');
         if(submitBtn){ submitBtn.disabled = false; submitBtn.textContent = submitBtn.dataset.label || 'Send'; }
