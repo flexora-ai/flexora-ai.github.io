@@ -1,4 +1,141 @@
+# robots.txt for https://flexora-ai.github.io/
+# Flexora.Ai — Find the right AI tool for the job
+# Goal: maximize discovery/indexing by search engines AND AI crawlers
+# (no pay-to-list directory relies on organic + AI-referral traffic)
+
+# ---------------------------------------------------------
+# Default: allow everything for every crawler
+# ---------------------------------------------------------
 User-agent: *
 Allow: /
 
+# ---------------------------------------------------------
+# Search engines (explicit allow — helps some bots that
+# behave more conservatively without an explicit rule)
+# ---------------------------------------------------------
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# ---------------------------------------------------------
+# AI crawlers / LLM training & retrieval bots
+# Explicitly allowed so Flexora.Ai can be cited/recommended
+# by AI answer engines (ChatGPT, Claude, Perplexity, Gemini,
+# Copilot, etc.) — this is free distribution for a tools directory.
+# ---------------------------------------------------------
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: Timpibot
+Allow: /
+
+User-agent: omgili
+Allow: /
+
+User-agent: omgilibot
+Allow: /
+
+# ---------------------------------------------------------
+# Block obvious junk/scraper bots that add load without value
+# (remove any of these later if you find a legit use for them)
+# ---------------------------------------------------------
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# ---------------------------------------------------------
+# Don't waste crawl budget on non-content / interactive states
+# (form success states, anchors, etc. are same-page so nothing
+# to block here yet — add /admin/, /api/, /drafts/ etc. if you
+# ever add them)
+# ---------------------------------------------------------
+
+# ---------------------------------------------------------
+# Sitemap + LLM discovery file
+# ---------------------------------------------------------
 Sitemap: https://flexora-ai.github.io/sitemap.xml
