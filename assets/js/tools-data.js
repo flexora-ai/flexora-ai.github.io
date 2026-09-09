@@ -1,104 +1,121 @@
-/* Flexora.Ai — REAL tools data, built from the tiered spreadsheet.
-   =========================================================================
-   PUBLIC FILE — this ships to every visitor's browser as plain readable
-   JS. Never add: submitter emails, internal notes, affiliate URLs,
-   commission rates, overall scores, or verification status here. Keep
-   those in your private sheet / Formspree only.
+/* ============================================================
+   Flexora.Ai — assets/js/tools-data.js
+   SINGLE SOURCE OF TRUTH for tool + category data.
+   Loaded by BOTH index.html and tools.html (and any future page)
+   so the directory, homepage stats, homepage demos, and footer
+   never drift out of sync with each other.
 
-   HOW TO USE:
-   1. Save this file as: assets/js/tools-data.js (upload to your repo)
-   2. In index.html and tools.html, add this line right BEFORE the
-      <script> tag that currently defines "const tools = [...]":
-        <script src="assets/js/tools-data.js"></script>
-   3. Delete the old inline "const tools = [...]" block in both files —
-      leave ICONS and CATEGORIES alone, they don't change.
-   4. tools.html also needs its rendering section updated to group cards
-      by tier (Featured / Recommended / More) instead of one flat grid —
-      see the accompanying instructions for that markup/script patch.
+   Data sourced from the "tools data" tracking sheet (Tier 1-3,
+   status = ADD). Rows marked REMOVE are excluded. Rows marked
+   RESOURCE (e.g. AI Weekly) are listed separately as a resource
+   link, not as a tool card — see RESOURCES below.
 
-   FIELDS:
-   tier    — 1 (Featured), 2 (Recommended), 3 (More)
-   cat     — one of: writing, image, video, coding, seo, audio, design,
-             productivity, automation
-   free    — true if there's any free tier/plan, false if paid only
-   price   — display label shown on the card
-   ========================================================================= */
+   HOW TO ADD A NEW TOOL
+   ----------------------
+   Copy one object in the `tools` array and fill in:
+     name      - Tool name shown on the card
+     website   - Full https:// URL — the card links straight here
+     cat       - one of the CATEGORIES keys below
+     tier      - 1 (Featured), 2 (Recommended), or 3 (More tools)
+     price     - short pricing label shown on the card
+     free      - true/false — controls the green "Free plan" badge
+     isNew     - true/false — controls the "New" badge
+     desc      - one-line description
+     bestFor   - short "best for" tag
+     icon      - one capital letter (fallback avatar)
+     ease      - "Easy" | "Moderate" | "Advanced"
+   No other file needs to change — every page reads from here.
+   ============================================================ */
 
+// ---- category icon set (inline SVG, crisp at any size) ----
+const ICONS = {
+  writing: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>',
+  image: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>',
+  video: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>',
+  coding: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>',
+  seo: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>',
+  audio: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3Z"/></svg>',
+  design: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 19.5A2.5 2.5 0 0 1 4.5 17H8v2.5a2.5 2.5 0 0 1-5 0Z"/><path d="M8 17v-3.5A3.5 3.5 0 0 1 11.5 10H15V6a4 4 0 0 1 4-4 4 4 0 0 1-4 4v3.5A3.5 3.5 0 0 1 11.5 17H8Z"/></svg>',
+  productivity: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="m9 12 2 2 4-4"/><path d="M9 7h6"/></svg>',
+  automation: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m4.9 4.9 2.8 2.8"/><path d="M2 12h4"/><path d="m4.9 19.1 2.8-2.8"/><path d="M12 18v4"/><path d="m16.3 16.3 2.8 2.8"/><path d="M18 12h4"/><path d="m16.3 7.7 2.8-2.8"/><circle cx="12" cy="12" r="4"/></svg>'
+};
+
+const CATEGORIES = [
+  {key:'writing', label:'Writing', icon:ICONS.writing},
+  {key:'image', label:'Image', icon:ICONS.image},
+  {key:'video', label:'Video', icon:ICONS.video},
+  {key:'coding', label:'Coding', icon:ICONS.coding},
+  {key:'seo', label:'SEO', icon:ICONS.seo},
+  {key:'design', label:'Design', icon:ICONS.design},
+  {key:'productivity', label:'Productivity', icon:ICONS.productivity},
+  {key:'automation', label:'Automation', icon:ICONS.automation},
+];
+
+// ---- 22 live tools (Tier 1-3, status = ADD) ----
 const tools = [
-  { tier:1, name:'FrameThrower', website:'https://framethrower.ai', cat:'video', icon:'F',
-    desc:'Generates and edits professional video content, with API and SDK support for developers.',
-    bestFor:'Teams building video into their own product', price:'Freemium', free:true, isNew:true, ease:'Moderate' },
-  { tier:1, name:'RevenueFromChat', website:'https://revenuefromchat.com', cat:'automation', icon:'R',
-    desc:'Turns chat conversations into revenue by automating sales follow-ups and workflows.',
-    bestFor:'Businesses automating chat-driven sales', price:'Paid/Freemium', free:true, isNew:true, ease:'Moderate' },
-  { tier:1, name:'SalesTouch', website:'https://www.salestouch.io', cat:'automation', icon:'S',
-    desc:'A B2B sales automation platform that helps teams manage outreach and close deals faster.',
-    bestFor:'B2B sales teams', price:'Paid', free:false, isNew:true, ease:'Moderate' },
-  { tier:1, name:'ModelRush', website:'https://modelrush.ai', cat:'coding', icon:'M',
-    desc:'Gives developers fast access to AI models and the infrastructure to run them in production.',
-    bestFor:'Developers building AI-powered apps', price:'Paid', free:false, isNew:true, ease:'Advanced' },
-  { tier:1, name:'Make Floor Plan', website:'https://makefloorplan.com/floor-plan-generator', cat:'design', icon:'M',
-    desc:'Generates floor plans automatically, speeding up early-stage design and architecture work.',
-    bestFor:'Architects, real estate, interior designers', price:'Freemium', free:true, isNew:true, ease:'Easy' },
-  { tier:1, name:'HtmlSlides', website:'https://www.htmlslides.ai', cat:'productivity', icon:'H',
-    desc:'Creates clean, code-based presentations and slide decks without design software.',
-    bestFor:'Professionals building presentations quickly', price:'Freemium', free:true, isNew:true, ease:'Easy' },
-  { tier:1, name:'SEOKRU', website:'https://he.seokru.com', cat:'seo', icon:'S',
-    desc:'An SEO and marketing toolkit for tracking rankings, keywords, and site performance.',
-    bestFor:'Marketers and SEO teams', price:'Paid', free:false, isNew:true, ease:'Moderate' },
-  { tier:1, name:'AllVideoAI', website:'https://allvideoai.com', cat:'video', icon:'A',
-    desc:'An all-in-one AI video generation and editing tool for creating content at scale.',
-    bestFor:'Content creators and video teams', price:'Paid', free:false, isNew:true, ease:'Moderate' },
-  { tier:1, name:'Photoshoot.app', website:'https://photoshoot.app', cat:'image', icon:'P',
-    desc:'Generates professional product photos from simple images — no physical photoshoot needed.',
-    bestFor:'E-commerce sellers', price:'Freemium', free:true, isNew:true, ease:'Easy' },
-  { tier:1, name:'SocialEcho', website:'https://socialecho.net', cat:'automation', icon:'S',
-    desc:'Automates social media content creation and posting across multiple platforms.',
-    bestFor:'Social media managers and small marketing teams', price:'Freemium', free:true, isNew:true, ease:'Easy' },
+  // ===== TIER 1 — Featured =====
+  {name:'FrameThrower', website:'https://framethrower.ai', cat:'video', tier:1, price:'Freemium', free:true, isNew:true, desc:'AI creative video tool with API, MCP and SDK support for professional workflows.', bestFor:'Video creators building at scale', icon:'F', ease:'Moderate'},
+  {name:'RevenueFromChat', website:'https://revenuefromchat.com', cat:'automation', tier:1, price:'Paid/Freemium', free:true, isNew:true, desc:'Turns everyday chat conversations into automated revenue workflows for businesses.', bestFor:'Business automation & sales', icon:'R', ease:'Moderate'},
+  {name:'SalesTouch', website:'https://www.salestouch.io', cat:'automation', tier:1, price:'Paid', free:false, isNew:true, desc:'B2B sales automation platform built to speed up outbound and follow-up.', bestFor:'B2B sales teams', icon:'S', ease:'Moderate'},
+  {name:'ModelRush', website:'https://modelrush.ai', cat:'coding', tier:1, price:'Paid', free:false, isNew:true, desc:'AI model infrastructure and tooling for developers shipping AI-powered features.', bestFor:'AI infrastructure & developers', icon:'M', ease:'Advanced'},
+  {name:'Make Floor Plan', website:'https://makefloorplan.com/floor-plan-generator', cat:'design', tier:1, price:'Freemium', free:true, isNew:true, desc:'Generates architectural floor plans from simple inputs in minutes.', bestFor:'Architects & home planners', icon:'M', ease:'Easy'},
+  {name:'HtmlSlides', website:'https://www.htmlslides.ai', cat:'productivity', tier:1, price:'Freemium', free:true, isNew:true, desc:'Builds clean, HTML-based presentation slides from your content automatically.', bestFor:'Business presentations', icon:'H', ease:'Easy'},
+  {name:'SEOKRU', website:'https://he.seokru.com', cat:'seo', tier:1, price:'Paid', free:false, isNew:true, desc:'SEO and marketing toolkit for keyword research and campaign tracking.', bestFor:'SEO & marketing teams', icon:'S', ease:'Moderate'},
+  {name:'AllVideoAI', website:'https://allvideoai.com', cat:'video', tier:1, price:'Paid', free:false, isNew:true, desc:'All-in-one AI video generation suite for quick, polished output.', bestFor:'AI video generation', icon:'A', ease:'Moderate'},
+  {name:'Photoshoot.app', website:'https://photoshoot.app', cat:'image', tier:1, price:'Freemium', free:true, isNew:true, desc:'Generates studio-quality product photos without a physical photoshoot.', bestFor:'E-commerce product photography', icon:'P', ease:'Easy'},
+  {name:'SocialEcho', website:'https://socialecho.net', cat:'automation', tier:1, price:'Freemium', free:true, isNew:true, desc:'Automates social media posting and engagement across platforms.', bestFor:'Social media automation', icon:'S', ease:'Easy'},
 
-  { tier:2, name:'Free AI Image', website:'https://freeaiimage.io', cat:'image', icon:'F',
-    desc:'A free AI image generator for quickly creating visuals from text prompts.',
-    bestFor:'Anyone needing quick, free AI images', price:'Freemium', free:true, isNew:true, ease:'Easy' },
-  { tier:2, name:'ProfileLoom', website:'https://aiportraitgen.app', cat:'image', icon:'P',
-    desc:'Generates professional AI headshots and portraits from your own photos.',
-    bestFor:'Professionals needing headshots without a photographer', price:'Freemium', free:true, isNew:true, ease:'Easy' },
-  { tier:2, name:'AI Fruit Video', website:'https://aifruitvideo.com', cat:'video', icon:'A',
-    desc:'A niche AI video generator focused on fruit and food-related visual content.',
-    bestFor:'Food and creative content creators', price:'Freemium', free:true, isNew:true, ease:'Easy' },
-  { tier:2, name:'Visemix', website:'https://lipsync.vip', cat:'video', icon:'V',
-    desc:'Syncs lip movement to audio for realistic AI-generated video dubbing.',
-    bestFor:'Video creators localizing or dubbing content', price:'Freemium', free:true, isNew:true, ease:'Moderate' },
-  { tier:2, name:'Image to Calendar', website:'https://imagetocalendar.app', cat:'productivity', icon:'I',
-    desc:'Turns photos of schedules or events into calendar entries automatically.',
-    bestFor:'People digitizing handwritten schedules', price:'Paid only', free:false, isNew:true, ease:'Easy' },
-  { tier:2, name:'Pragor', website:'https://pragor.net', cat:'automation', icon:'P',
-    desc:'An AI agent platform for automating operational and business tasks.',
-    bestFor:'Teams automating repetitive operations', price:'Free', free:true, isNew:true, ease:'Moderate' },
-  { tier:2, name:'Orkas', website:'https://orkas.ai', cat:'coding', icon:'O',
-    desc:'A developer-focused AI agent framework with local and open-source deployment options.',
-    bestFor:'Developers building custom AI agents', price:'Freemium', free:true, isNew:true, ease:'Advanced' },
-  { tier:2, name:'Chatcument', website:'https://chatcument.com', cat:'productivity', icon:'C',
-    desc:'A set of browser-based AI utilities for working with documents and chat.',
-    bestFor:'Everyday productivity and document tasks', price:'Freemium', free:true, isNew:true, ease:'Easy' },
+  // ===== TIER 2 — Recommended =====
+  {name:'Free AI Image', website:'https://freeaiimage.io', cat:'image', tier:2, price:'Freemium', free:true, isNew:true, desc:'Free browser-based AI image generator for quick visuals.', bestFor:'Fast, free image generation', icon:'F', ease:'Easy'},
+  {name:'ProfileLoom', website:'https://aiportraitgen.app', cat:'image', tier:2, price:'Freemium', free:true, isNew:true, desc:'Turns everyday selfies into polished, professional AI portraits.', bestFor:'Professional headshots', icon:'P', ease:'Easy'},
+  {name:'AI Fruit Video', website:'https://aifruitvideo.com', cat:'video', tier:2, price:'Freemium', free:true, isNew:true, desc:'Niche AI video generator built for food and produce content creators.', bestFor:'Food & produce video content', icon:'A', ease:'Easy'},
+  {name:'Visemix', website:'https://lipsync.vip', cat:'video', tier:2, price:'Freemium', free:true, isNew:true, desc:'AI lip-sync tool that matches video to any audio track accurately.', bestFor:'Lip-sync & dubbing', icon:'V', ease:'Moderate'},
+  {name:'Image to Calendar', website:'https://imagetocalendar.app', cat:'productivity', tier:2, price:'Paid only', free:false, isNew:true, desc:'Turns a photo of a schedule or itinerary into real calendar events.', bestFor:'Quick calendar creation', icon:'I', ease:'Easy'},
+  {name:'Pragor', website:'https://pragor.net', cat:'automation', tier:2, price:'Free', free:true, isNew:true, desc:'AI agent platform for automating day-to-day operational tasks.', bestFor:'AI agents & operations', icon:'P', ease:'Moderate'},
+  {name:'Orkas', website:'https://orkas.ai', cat:'coding', tier:2, price:'Freemium', free:true, isNew:true, desc:'Open-source-friendly AI agent framework for developers.', bestFor:'Developers building AI agents', icon:'O', ease:'Advanced'},
+  {name:'Chatcument', website:'https://chatcument.com', cat:'productivity', tier:2, price:'Freemium', free:true, isNew:true, desc:'Browser-based AI utilities for chatting with and summarizing documents.', bestFor:'Document Q&A & summaries', icon:'C', ease:'Easy'},
 
-  { tier:3, name:'Flux Art', website:'https://flux-art.cc', cat:'image', icon:'F',
-    desc:'An AI art and image generation tool built on open AI models.',
-    bestFor:'Casual AI art generation', price:'Freemium', free:true, isNew:true, ease:'Easy' },
-  { tier:3, name:'NextlerAI Publisher', website:'https://nextlerai.com/product/nextlerai-publisher/', cat:'writing', icon:'N',
-    desc:'Helps publish SEO-optimized written content at scale.',
-    bestFor:'Content teams publishing SEO content', price:'Paid', free:false, isNew:true, ease:'Moderate' },
-  { tier:3, name:'Reeload', website:'https://reelo.ad', cat:'video', icon:'R',
-    desc:'Generates UGC-style video content for marketing and ads.',
-    bestFor:'Brands needing UGC-style ad content', price:'Freemium', free:true, isNew:true, ease:'Moderate' },
-  { tier:3, name:'Avenyora', website:'https://avenyora.com', cat:'productivity', icon:'A',
-    desc:'An AI-powered astrology and personal insights app.',
-    bestFor:'People interested in AI astrology', price:'Paid/Freemium', free:true, isNew:true, ease:'Easy' },
+  // ===== TIER 3 — More tools =====
+  {name:'Flux Art', website:'https://flux-art.cc', cat:'image', tier:3, price:'Freemium', free:true, isNew:true, desc:'AI art generator built on the Flux model family.', bestFor:'AI art generation', icon:'F', ease:'Easy'},
+  {name:'NextlerAI Publisher', website:'https://nextlerai.com/product/nextlerai-publisher/', cat:'writing', tier:3, price:'Paid', free:false, isNew:true, desc:'AI writing and publishing tool built for SEO-driven content.', bestFor:'SEO content publishing', icon:'N', ease:'Moderate'},
+  {name:'Reeload', website:'https://reelo.ad', cat:'video', tier:3, price:'Freemium', free:true, isNew:true, desc:'Generates UGC-style video ads for social and performance marketing.', bestFor:'UGC video ads', icon:'R', ease:'Moderate'},
+  {name:'Avenyora', website:'https://avenyora.com', cat:'productivity', tier:3, price:'Paid/Freemium', free:true, isNew:true, desc:'AI-powered astrology and personal-insight readings.', bestFor:'Astrology & personal insights', icon:'A', ease:'Easy'},
 ];
 
-/* Resources — informational, not tools. Shown in a separate section,
-   never mixed into the tools grid or counted in "X tools listed". */
-const resources = [
-  { name:'AI Weekly', website:'https://aiweekly.co',
-    desc:'A newsletter covering the latest AI news, launches, and updates.',
-    price:'Free' },
+// ---- non-tool resource links (status = RESOURCE in the tracking sheet) ----
+const RESOURCES = [
+  {name:'AI Weekly', website:'https://aiweekly.co', desc:'A weekly roundup of AI news — useful reading, not a listed tool.'},
 ];
+
+// ================= shared render/interaction helpers =================
+// Both index.html and tools.html call these so card markup and behavior
+// never drift apart between pages.
+
+function toolCardInnerHTML(t){
+  return `
+    <div class="card-top">
+      <div class="card-icon">${t.icon}</div>
+      <div><div class="card-name">${t.name}</div><div class="card-cat">${t.cat.charAt(0).toUpperCase()+t.cat.slice(1)}</div></div>
+    </div>
+    <p>${t.desc}</p>
+    <div class="card-foot"><span class="pill ${t.free ? 'free' : ''}">${t.free ? 'Free plan' : 'Paid'}</span>${t.isNew ? '<span class="pill new">New</span>' : ''}</div>
+  `;
+}
+
+// Renders a full clickable card (an <a> tag pointed straight at the tool's
+// real website) — used by both the homepage trending list preview and the
+// full tools.html directory grid.
+function toolCardHTML(t){
+  return `<a class="card" href="${t.website}" target="_blank" rel="noopener noreferrer" data-tool="${t.name}">${toolCardInnerHTML(t)}</a>`;
+}
+
+function addTilt(card){
+  card.addEventListener('mousemove', (e) => {
+    const r = card.getBoundingClientRect();
+    const x = e.clientX - r.left, y = e.clientY - r.top;
+    const rx = ((y / r.height) - 0.5) * -10;
+    const ry = ((x / r.width) - 0.5) * 10;
+    card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateZ(6px)`;
+  });
+  card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+}
