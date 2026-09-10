@@ -3,28 +3,27 @@
    Flexora.Ai — scripts/generate-sitemap.js
 
    Regenerates BOTH sitemap.xml (for search engines) and
-   sitemap.html (a human-readable page on the site) from two
-   sources of truth:
-     - scripts/pages.json        -> every static page
-     - assets/js/blog-data.js    -> every blog post (published: true only)
+   sitemap.html (a human-readable page on the site) by scanning
+   the repo itself — no manual page list to maintain:
 
-   Nothing else needs to change by hand. Add a page to pages.json,
-   or add/remove a post in blog-data.js, then run:
+     - every *.html file in the repo root  -> "Pages"
+     - every *.html file in blog/          -> "Blog posts"
 
-       node scripts/generate-sitemap.js
+   Add a new page or blog post file -> it appears next run.
+   Delete one -> it disappears next run. That's the whole system.
 
-   and both sitemap files are rewritten to match exactly. Run it
-   again after deleting a post and that post's URL disappears from
-   both files — that's the "auto remove" behaviour.
+   assets/js/blog-data.js is OPTIONAL and only used to enrich blog
+   post titles/dates/priority when present and parseable — the
+   script never fails or skips a post just because that file is
+   missing, out of date, or a post isn't listed in it.
 
-   FULLY AUTOMATIC ON GITHUB PAGES
-   ----------------------
-   Static GitHub Pages has no server to run Node for you, so
-   "automatic" here means: a GitHub Action runs this script on
-   every push to main and commits the regenerated sitemap files
-   back to the repo. See .github/workflows/update-sitemap.yml —
-   once that's merged in, you never have to run this by hand again;
-   just edit blog-data.js / pages.json and push like normal.
+   scripts/pages.json is also OPTIONAL, used only to override the
+   auto-detected priority/changefreq/label for specific root pages
+   (keyed by filename, e.g. {"path":"index.html","priority":"1.0"}).
+
+   Run manually:  node scripts/generate-sitemap.js
+   Run automatically: see .github/workflows/update-sitemap.yml,
+   which runs this on every push to main and commits the result.
    ============================================================ */
 
 const fs = require('fs');
@@ -34,18 +33,62 @@ const vm = require('vm');
 const ROOT = path.resolve(__dirname, '..');
 const PAGES_JSON = path.join(ROOT, 'scripts', 'pages.json');
 const BLOG_DATA_JS = path.join(ROOT, 'assets', 'js', 'blog-data.js');
+const BLOG_DIR = path.join(ROOT, 'blog');
 const SITEMAP_XML = path.join(ROOT, 'sitemap.xml');
 const SITEMAP_HTML = path.join(ROOT, 'sitemap.html');
 
-// ---------- 1. load static pages config ----------
-if (!fs.existsSync(PAGES_JSON)) {
-  console.error(`Missing ${PAGES_JSON}. Create it (see scripts/pages.json in this delivery) before running.`);
+let BASE_URL = 'https://flexora-ai.github.io';
+
+// ---------- 0. optional overrides from scripts/pages.json ----------
+// Never required. If missing or broken, we just fall back to sane defaults
+// for every page instead of crashing the whole sitemap build.
+let overrides = {};
+if (fs.existsSync(PAGES_JSON)) {
+  try {
+    const cfg = JSON.parse(fs.readFileSync(PAGES_JSON, 'utf8'));
+    if (cfg.baseUrl) BASE_URL = cfg.baseUrl.replace(/\/$/, '');
+    if (Array.isArray(cfg.pages)) cfg.pages.forEach(p => { overrides[p.path] = p; });
+  } catch (err) {
+    console.warn(`Warning: scripts/pages.json exists but couldn't be parsed (${err.message}). Ignoring it and using defaults.`);
+  }
+} else {
+  console.log('No scripts/pages.json found — using auto-detected defaults for every root page. (This is fine; it is optional.)');
+}
+
+const SKIP_ROOT_FILES = new Set(['404.html', 'sitemap.html']);
+
+function isoDate(d) { return new Date(d).toISOString().slice(0, 10); }
+
+function extractTitle(html, fallback) {
+  const m = html.match(/<title>([^<]*)<\/title>/i);
+  if (!m) return fallback;
+  return m[1].split('—')[0].split('|')[0].trim() || fallback;
+}
+
+// ---------- 1. auto-discover every root-level page ----------
+if (!fs.existsSync(ROOT)) {
+  console.error(`Repo root not found at ${ROOT} — something is wrong with how this script was invoked.`);
   process.exit(1);
 }
-const pagesConfig = JSON.parse(fs.readFileSync(PAGES_JSON, 'utf8'));
-const BASE_URL = pagesConfig.baseUrl.replace(/\/$/, '');
 
-// ---------- 2. load blog-data.js safely (it's a browser <script>, not a Node module) ----------
+const rootHtmlFiles = fs.readdirSync(ROOT)
+  .filter(f => f.endsWith('.html') && !SKIP_ROOT_FILES.has(f) && !f.startsWith('_'));
+
+const staticEntries = rootHtmlFiles.map(file => {
+  const abs = path.join(ROOT, file);
+  const html = fs.readFileSync(abs, 'utf8');
+  const override = overrides[file] || {};
+  return {
+    loc: `${BASE_URL}/${file}`,
+    lastmod: isoDate(fs.statSync(abs).mtime),
+    changefreq: override.changefreq || (file === 'index.html' ? 'weekly' : 'monthly'),
+    priority: override.priority || (file === 'index.html' ? '1.0' : '0.6'),
+    label: override.label || extractTitle(html, file),
+    group: 'Pages',
+  };
+}).sort((a, b) => a.loc.localeCompare(b.loc));
+
+// ---------- 2. load blog-data.js ONLY to enrich metadata (never required) ----------
 let BLOG_POSTS = [];
 if (fs.existsSync(BLOG_DATA_JS)) {
   const code = fs.readFileSync(BLOG_DATA_JS, 'utf8');
@@ -53,55 +96,54 @@ if (fs.existsSync(BLOG_DATA_JS)) {
   vm.createContext(sandbox);
   try {
     // blog-data.js declares `const BLOG_POSTS = [...]`. Top-level const/let
-    // bindings run via vm.runInContext do NOT get attached to the sandbox
-    // object (only `var` does) — so we append a `var` mirror to fish it out.
+    // bindings from vm.runInContext do NOT attach to the sandbox object
+    // (only `var` does) — so append a `var` mirror to fish it out.
     vm.runInContext(code + '\nvar __BLOG_POSTS__ = BLOG_POSTS;', sandbox, { filename: 'blog-data.js' });
     BLOG_POSTS = Array.isArray(sandbox.__BLOG_POSTS__) ? sandbox.__BLOG_POSTS__ : [];
   } catch (err) {
-    console.error('Could not parse assets/js/blog-data.js — check it for syntax errors:', err.message);
-    process.exit(1);
+    console.warn(`Warning: assets/js/blog-data.js has a syntax error (${err.message}). Blog titles/dates will be read from each post's own <title> tag and file date instead.`);
   }
 } else {
-  console.warn(`Warning: ${BLOG_DATA_JS} not found — sitemap will only include static pages.`);
+  console.log('No assets/js/blog-data.js found — blog post titles/dates will be read directly from each file.');
 }
+const blogMeta = new Map(BLOG_POSTS.filter(p => p && p.slug).map(p => [p.slug, p]));
 
-function isoDate(d) {
-  return new Date(d).toISOString().slice(0, 10);
+// ---------- 3. auto-discover every blog post that actually exists in blog/ ----------
+let blogEntries = [];
+if (fs.existsSync(BLOG_DIR)) {
+  const blogFiles = fs.readdirSync(BLOG_DIR).filter(f => f.endsWith('.html') && !f.startsWith('_'));
+  blogEntries = blogFiles.map(file => {
+    const slug = file.replace(/\.html$/, '');
+    const abs = path.join(BLOG_DIR, file);
+    const html = fs.readFileSync(abs, 'utf8');
+    const meta = blogMeta.get(slug);
+    // Only skip a post if blog-data.js explicitly marks it unpublished.
+    // A post file with NO entry in blog-data.js still gets included —
+    // the file existing on disk is the source of truth, not the registry.
+    if (meta && meta.published === false) return null;
+    return {
+      loc: `${BASE_URL}/blog/${slug}.html`,
+      lastmod: meta && meta.date ? isoDate(meta.date) : isoDate(fs.statSync(abs).mtime),
+      changefreq: 'monthly',
+      priority: meta && meta.featured ? '0.7' : '0.6',
+      label: (meta && meta.title) || extractTitle(html, slug),
+      group: 'Blog posts',
+    };
+  }).filter(Boolean).sort((a, b) => a.loc.localeCompare(b.loc));
+} else {
+  console.log('No blog/ folder found — skipping blog post discovery.');
 }
-
-function mtimeOrToday(relPath) {
-  const abs = path.join(ROOT, relPath);
-  if (fs.existsSync(abs)) return isoDate(fs.statSync(abs).mtime);
-  return isoDate(new Date());
-}
-
-// ---------- 3. build the unified URL list ----------
-const staticEntries = pagesConfig.pages.map(p => ({
-  loc: `${BASE_URL}/${p.path}`,
-  lastmod: mtimeOrToday(p.path),
-  changefreq: p.changefreq || 'monthly',
-  priority: p.priority || '0.5',
-  label: p.label || p.path,
-  group: 'Pages',
-}));
-
-const blogEntries = BLOG_POSTS
-  .filter(p => p.published)
-  .map(p => ({
-    loc: `${BASE_URL}/blog/${p.slug}.html`,
-    lastmod: isoDate(p.date),
-    changefreq: 'monthly',
-    priority: p.featured ? '0.7' : '0.6',
-    label: p.title,
-    group: 'Blog posts',
-  }));
 
 const allEntries = [...staticEntries, ...blogEntries];
 
+if (allEntries.length === 0) {
+  console.error('No pages discovered at all. Refusing to write an empty sitemap — check this script is actually running from the repo root (it expects to live at scripts/generate-sitemap.js).');
+  process.exit(1);
+}
+
 // ---------- 4. diff against the previous sitemap.xml, if one exists ----------
 function extractLocsFromXml(xml) {
-  const matches = [...xml.matchAll(/<loc>(.*?)<\/loc>/g)];
-  return new Set(matches.map(m => m[1]));
+  return new Set([...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]));
 }
 let added = [];
 let removed = [];
@@ -126,7 +168,11 @@ ${allEntries.map(e => `  <url>
 fs.writeFileSync(SITEMAP_XML, xml, 'utf8');
 
 // ---------- 6. write sitemap.html (styled to match the site) ----------
-const groups = ['Pages', 'Blog posts'];
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+const groups = [...new Set(allEntries.map(e => e.group))];
 const groupedHtml = groups.map(g => {
   const items = allEntries.filter(e => e.group === g);
   if (!items.length) return '';
@@ -138,10 +184,6 @@ const groupedHtml = groups.map(g => {
       </ul>
     </div>`;
 }).join('\n');
-
-function escapeHtml(s) {
-  return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-}
 
 const html = `<!DOCTYPE html>
 <html lang="en">
@@ -182,7 +224,7 @@ const html = `<!DOCTYPE html>
 <div class="wrap">
 <span class="eyebrow"><span class="dot"></span>Auto-generated</span>
 <h1>Sitemap</h1>
-<p class="lede">Every page and published blog post on Flexora.Ai — this page and sitemap.xml are regenerated together by scripts/generate-sitemap.js.</p>
+<p class="lede">Every page and blog post currently in the repo — this page and sitemap.xml are regenerated together by scripts/generate-sitemap.js on every push, by scanning the repo directly.</p>
 <span class="generated">Last generated: ${new Date().toISOString()}</span>
 ${groupedHtml}
 <a class="back" href="index.html">← Back to home</a>
@@ -195,8 +237,8 @@ fs.writeFileSync(SITEMAP_HTML, html, 'utf8');
 // ---------- 7. report ----------
 console.log(`\nsitemap.xml + sitemap.html regenerated — ${allEntries.length} URLs total (${staticEntries.length} pages, ${blogEntries.length} blog posts).`);
 if (added.length || removed.length) {
-  if (added.length) console.log(`  + added:   \n    ${added.join('\n    ')}`);
-  if (removed.length) console.log(`  - removed: \n    ${removed.join('\n    ')}`);
+  if (added.length) console.log(`  + added:\n    ${added.join('\n    ')}`);
+  if (removed.length) console.log(`  - removed:\n    ${removed.join('\n    ')}`);
 } else if (fs.existsSync(SITEMAP_XML)) {
   console.log('  No URL changes since the last run.');
 }
