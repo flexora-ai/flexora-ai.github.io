@@ -1,0 +1,18 @@
+{
+  "_comment": "Every static (non-blog) page on Flexora.Ai. The sitemap generator reads this list plus assets/js/blog-data.js. Add a line when you create a new page; delete a line (and the .html file) when you remove one — then re-run the generator (or just push, if the GitHub Action is set up) and it's gone from both sitemaps automatically.",
+  "baseUrl": "https://flexora-ai.github.io",
+  "pages": [
+    { "path": "index.html",       "label": "Home",             "priority": "1.0", "changefreq": "weekly"  },
+    { "path": "tools.html",       "label": "Tools Directory",  "priority": "0.9", "changefreq": "daily"   },
+    { "path": "compare.html",     "label": "Compare",          "priority": "0.7", "changefreq": "weekly"  },
+    { "path": "finder.html",      "label": "Tool Finder",      "priority": "0.8", "changefreq": "weekly"  },
+    { "path": "workflows.html",   "label": "Workflows",        "priority": "0.7", "changefreq": "weekly"  },
+    { "path": "free-tools.html",  "label": "Free Tools",       "priority": "0.7", "changefreq": "weekly"  },
+    { "path": "blog.html",        "label": "Blog",             "priority": "0.8", "changefreq": "daily"   },
+    { "path": "services.html",    "label": "Services / Contact","priority": "0.5", "changefreq": "monthly" },
+    { "path": "submit.html",      "label": "Submit a Tool",    "priority": "0.6", "changefreq": "monthly" },
+    { "path": "about.html",       "label": "About",            "priority": "0.5", "changefreq": "monthly" },
+    { "path": "privacy.html",     "label": "Privacy Policy",   "priority": "0.3", "changefreq": "yearly"  },
+    { "path": "terms.html",       "label": "Terms",            "priority": "0.3", "changefreq": "yearly"  }
+  ]
+}
