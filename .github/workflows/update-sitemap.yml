@@ -1,11 +1,11 @@
 name: Update sitemap
 
-# Runs the sitemap generator whenever a page, the pages config, or the
-# blog data file changes, then commits sitemap.xml + sitemap.html back
-# to the repo. This is what makes "add a blog post -> it's in the
-# sitemap" and "delete a blog post -> it's out of the sitemap" happen
-# automatically on GitHub Pages, which has no server of its own to run
-# scripts/generate-sitemap.js for you.
+# Runs the sitemap generator whenever a page, a blog post, or the
+# generator script itself changes, then commits sitemap.xml +
+# sitemap.html back to the repo. scripts/generate-sitemap.js scans
+# the repo directly (every *.html in the root, every *.html in
+# blog/), so adding or deleting a page/post is enough on its own —
+# nothing else needs to be updated by hand for it to show up here.
 
 on:
   push:
@@ -15,6 +15,7 @@ on:
       - "assets/js/blog-data.js"
       - "scripts/pages.json"
       - "scripts/generate-sitemap.js"
+      - ".github/workflows/update-sitemap.yml"
   workflow_dispatch: {}
 
 permissions:
@@ -29,6 +30,23 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
+
+      # Fails fast with a readable message instead of Node's raw
+      # "Cannot find module" stack trace if the script is missing,
+      # e.g. from a path/casing mismatch when it was committed.
+      - name: Verify generator script is present
+        run: |
+          echo "Running from: $(pwd)"
+          if [ ! -f scripts/generate-sitemap.js ]; then
+            echo "::error::scripts/generate-sitemap.js was not found in the checked-out repo."
+            echo "Contents of scripts/ (if it exists):"
+            ls -la scripts/ 2>/dev/null || echo "  scripts/ directory does not exist at all."
+            echo ""
+            echo "Fix: commit the file to exactly this path from the repo root: scripts/generate-sitemap.js"
+            echo "Note: GitHub's Linux runners are case-sensitive — 'Scripts/Generate-Sitemap.js' will NOT match."
+            exit 1
+          fi
+          echo "Found scripts/generate-sitemap.js — OK."
 
       - name: Generate sitemap.xml + sitemap.html
         run: node scripts/generate-sitemap.js
