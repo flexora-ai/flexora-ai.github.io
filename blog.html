@@ -141,6 +141,31 @@ footer{border-top:1px solid var(--line); padding:56px 0 28px;}
 @keyframes floatUp{0%{transform:translateY(0) translateX(0) scale(0.6); opacity:0;} 8%{opacity:0.5;} 92%{opacity:0.3;} 100%{transform:translateY(-115vh) translateX(var(--drift,40px)) scale(1.15); opacity:0;}}
 .reveal{opacity:0; transform:translateY(24px); transition:opacity .6s cubic-bezier(.2,.7,.2,1), transform .6s cubic-bezier(.2,.7,.2,1);}
 .reveal.in-view{opacity:1; transform:translateY(0);}
+
+/* Hero stat chips (live post count) */
+.blog-stats{display:flex; flex-wrap:wrap; gap:22px; margin-top:22px;}
+.blog-stat{font-family:'IBM Plex Mono'; font-size:12.5px; color:var(--ink-soft); display:flex; align-items:baseline; gap:7px;}
+.blog-stat b{font-family:'Sora'; font-size:20px; font-weight:700; color:var(--teal);}
+
+/* Card entrance animation — staggered per card via --d custom property */
+.blog-card{opacity:0; transform:translateY(18px) scale(.98); animation:cardIn .55s cubic-bezier(.2,.7,.2,1) forwards; animation-delay:var(--d, 0s);}
+@keyframes cardIn{to{opacity:1; transform:translateY(0) scale(1);}}
+.blog-card:hover .blog-thumb img{transform:scale(1.06);}
+.blog-thumb img{transition:transform .5s ease;}
+.blog-card-disabled{animation:cardIn .55s cubic-bezier(.2,.7,.2,1) forwards; animation-delay:var(--d, 0s);}
+
+/* Featured post: slow ambient shimmer on the glow + subtle border pulse */
+.featured-post .fp-thumb::after{animation:fpGlow 6s ease-in-out infinite;}
+@keyframes fpGlow{0%,100%{opacity:.7;} 50%{opacity:1;}}
+.featured-post{animation:cardIn .6s cubic-bezier(.2,.7,.2,1) forwards;}
+
+/* Category chip press feedback */
+.cat-chip{transition:all .15s, transform .15s;}
+.cat-chip:active{transform:scale(.95);}
+
+/* Search button micro-interaction already covered by .btn-primary:hover */
+.blog-byline{font-weight:600; color:var(--ink-soft);}
+@media (prefers-reduced-motion: reduce){.blog-card, .blog-card-disabled, .featured-post{animation:none !important; opacity:1 !important; transform:none !important;}}
 @media (prefers-reduced-motion: reduce){*{animation:none !important; transition:none !important;}}
 </style>
 </head>
@@ -181,6 +206,7 @@ footer{border-top:1px solid var(--line); padding:56px 0 28px;}
 <span class="eyebrow"><span class="dot"></span>Guides & comparisons</span>
 <h1>The Flexora.Ai blog</h1>
 <p class="lede">Practical guides, tool comparisons and roundups — written to help you pick, not to pad word count.</p>
+<div class="blog-stats" id="blogStats"></div>
 <div class="finder">
 <input id="searchInput" placeholder="Search posts…" type="text"/>
 <button class="btn btn-primary" id="searchBtn">Search</button>
@@ -246,20 +272,45 @@ const featured = BLOG_POSTS.filter(p => p.published && p.featured).sort((a,b) =>
 (function(){
   if(!featured || !featuredWrap) return;
   const dateLabel = new Date(featured.date + 'T00:00:00').toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
+  const safeAlt = escapeHtml(featured.imageAlt || featured.title).replace(/"/g, '&quot;');
+  const safeTitle = escapeHtml(featured.title);
+  const safeExcerpt = escapeHtml(featured.excerpt);
+  const safeCategory = escapeHtml(featured.category);
+  const safeAuthor = escapeHtml(featured.author || 'Prashant Lalwani');
   const thumb = featured.image
-    ? `<img src="${featured.image}" alt="${featured.imageAlt || featured.title}" loading="lazy" onerror="this.parentElement.innerHTML='<span>${featured.icon}</span>';"/>`
+    ? `<img src="${featured.image}" alt="${safeAlt}" loading="lazy" onerror="this.parentElement.innerHTML='<span>${featured.icon}</span>';"/>`
     : `<span>${featured.icon}</span>`;
   featuredWrap.innerHTML = `
     <a class="featured-post" href="blog/${featured.slug}.html">
       <div class="fp-thumb">${thumb}</div>
       <div class="fp-body">
-        <span class="fp-badge">★ Featured — ${featured.category}</span>
-        <h3>${featured.title}</h3>
-        <p class="fp-excerpt">${featured.excerpt}</p>
-        <div class="fp-meta"><span>${featured.readMins} min read</span><span>·</span><span>${dateLabel}</span></div>
+        <span class="fp-badge">★ Featured — ${safeCategory}</span>
+        <h3>${safeTitle}</h3>
+        <p class="fp-excerpt">${safeExcerpt}</p>
+        <div class="fp-meta"><span>${featured.readMins} min read</span><span>·</span><span>${dateLabel}</span><span>·</span><span class="blog-byline">${safeAuthor}</span></div>
         <span class="fp-cta">Read the article →</span>
       </div>
     </a>`;
+})();
+
+(function(){
+  const statsBox = document.getElementById('blogStats');
+  if(!statsBox) return;
+  const publishedCount = BLOG_POSTS.filter(p => p.published).length;
+  const upcomingCount = BLOG_POSTS.filter(p => !p.published).length;
+  statsBox.innerHTML = `
+    <span class="blog-stat"><b id="statPublished">0</b>guides published</span>
+    <span class="blog-stat"><b>${upcomingCount}</b>coming soon</span>
+    <span class="blog-stat"><b class="blog-byline" style="color:var(--ink);">Prashant Lalwani</b>writes every one</span>`;
+  // small count-up animation on the published number
+  const el = document.getElementById('statPublished');
+  let n = 0;
+  const step = Math.max(1, Math.ceil(publishedCount / 20));
+  const timer = setInterval(() => {
+    n = Math.min(publishedCount, n + step);
+    el.textContent = n;
+    if(n >= publishedCount) clearInterval(timer);
+  }, 40);
 })();
 
 (function(){
@@ -282,7 +333,14 @@ function render(){
   if(q) list = list.filter(p => p.title.toLowerCase().includes(q) || p.excerpt.toLowerCase().includes(q) || p.category.toLowerCase().includes(q));
   list = list.sort((a,b) => (b.published - a.published) || (new Date(b.date) - new Date(a.date)));
 
-  grid.innerHTML = list.map(p => blogCardHTML(p, '')).join('');
+  // Inject a staggered entrance delay into each card's own opening tag
+  // (--d custom property, read by the .blog-card CSS animation) so cards
+  // fade/slide in one after another instead of all popping in at once.
+  grid.innerHTML = list.map((p, i) => {
+    const html = blogCardHTML(p, '');
+    const delay = `style="--d:${Math.min(i, 8) * 70}ms"`;
+    return html.replace(/^(<a class="blog-card"|<div class="blog-card blog-card-disabled")/, `$1 ${delay}`);
+  }).join('');
   noResults.style.display = list.length ? 'none' : 'block';
 }
 render();
