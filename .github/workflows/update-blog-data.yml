@@ -3,10 +3,10 @@ name: Update blog-data.js
 # Runs automatically whenever you add, edit, or delete a file in /blog/,
 # and commits the regenerated assets/js/blog-data.js back for you.
 # You can also trigger it manually from the Actions tab ("Run workflow").
-#
 # This workflow deliberately does NOT touch blog.html, sitemap.xml, or
 # sitemap.html — only assets/js/blog-data.js.
-"on":
+
+on:
   push:
     branches: [main]
     paths:
