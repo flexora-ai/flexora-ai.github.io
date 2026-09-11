@@ -6,27 +6,34 @@ name: Update blog-data.js
 #
 # This workflow deliberately does NOT touch blog.html, sitemap.xml, or
 # sitemap.html — only assets/js/blog-data.js.
-on:
+"on":
   push:
     branches: [main]
     paths:
-      - "blog/**.html"
-    paths-ignore:
-      - "assets/js/blog-data.js"
+      # Single star matches files directly inside /blog/ only — this MUST
+      # stay in sync with scripts/update_blog_data.py's glob.glob(), which
+      # is also non-recursive. If you ever make the script scan subfolders,
+      # change this to "blog/**.html" (double star) too, or pushes into a
+      # subfolder will trigger a run that silently finds nothing.
+      - "blog/*.html"
   workflow_dispatch: {}
 
 permissions:
   contents: write
+
+concurrency:
+  group: update-blog-data
+  cancel-in-progress: false
 
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.12"
 
@@ -42,5 +49,6 @@ jobs:
             echo "Nothing changed — blog-data.js is already up to date."
           else
             git commit -m "Auto-update blog-data.js [skip ci]"
+            git pull --rebase origin main
             git push
           fi
