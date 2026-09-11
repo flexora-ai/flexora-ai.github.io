@@ -85,7 +85,6 @@ section{padding:50px 0; position:relative;}
 .cat-chip{font-size:13.5px; padding:9px 16px; border-radius:20px; background:var(--surface); border:1px solid var(--line); color:var(--ink-soft); cursor:pointer; transition:all .15s;}
 .cat-chip:hover, .cat-chip.active{border-color:var(--teal); color:var(--teal); transform:translateY(-2px); background:rgba(45,226,200,0.06);}
 
-/* ---- featured post spotlight ---- */
 .featured-post{
   display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--line); border-radius:18px;
   overflow:hidden; background:var(--surface); transition:border-color .2s, transform .2s; margin-bottom:12px;
@@ -103,7 +102,6 @@ section{padding:50px 0; position:relative;}
 .featured-post .fp-meta{font-size:12.5px; color:var(--ink-soft); display:flex; align-items:center; gap:10px;}
 .featured-post .fp-cta{margin-top:20px; font-size:13.5px; font-weight:600; color:var(--teal);}
 
-/* ---- blog grid + cards ---- */
 .blog-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
 @media(max-width:900px){.blog-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:640px){.blog-grid{grid-template-columns:1fr;}}
@@ -147,9 +145,7 @@ footer{border-top:1px solid var(--line); padding:56px 0 28px;}
 </style>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-56W23QBB" style="display:none;visibility:hidden" width="0"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 <div class="bg-particles" id="bgParticles"></div>
 
 <header>
@@ -247,7 +243,6 @@ let currentCat = 'all';
 const publishedSorted = BLOG_POSTS.filter(p => p.published).sort((a,b) => new Date(b.date) - new Date(a.date));
 const featured = BLOG_POSTS.filter(p => p.published && p.featured).sort((a,b) => new Date(b.date) - new Date(a.date))[0] || publishedSorted[0];
 
-// ---- featured spotlight ----
 (function(){
   if(!featured || !featuredWrap) return;
   const dateLabel = new Date(featured.date + 'T00:00:00').toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
@@ -267,7 +262,6 @@ const featured = BLOG_POSTS.filter(p => p.published && p.featured).sort((a,b) =>
     </a>`;
 })();
 
-// ---- category chips (built from whatever categories actually exist) ----
 (function(){
   const cats = [...new Set(BLOG_POSTS.map(p => p.category))].sort();
   catRow.innerHTML = '<span class="cat-chip active" data-cat="all">All</span>' +
@@ -281,7 +275,6 @@ const featured = BLOG_POSTS.filter(p => p.published && p.featured).sort((a,b) =>
   });
 })();
 
-// ---- grid render (excludes the post currently in the featured slot) ----
 function render(){
   const q = searchInput.value.trim().toLowerCase();
   let list = BLOG_POSTS.filter(p => !featured || p.slug !== featured.slug);
@@ -298,7 +291,6 @@ searchInput.addEventListener('input', render);
 document.getElementById('searchBtn').addEventListener('click', render);
 searchInput.addEventListener('keydown', (e) => { if(e.key === 'Enter') render(); });
 
-// ---- shared chrome (menu, back-to-top, particles, active nav) ----
 document.getElementById('menuBtn')?.addEventListener('click', () => document.getElementById('mobileMenu')?.classList.toggle('open'));
 (function(){
   const backBtn = document.getElementById('backToTop');
