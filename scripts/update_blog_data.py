@@ -2,95 +2,92 @@
 """
 scripts/update_blog_data.py
 ============================
-Regenerates the BLOG_POSTS array inside assets/js/blog-data.js by reading
-metadata out of an `<!-- FX:POST ... FX:POST -->` comment block placed
-inside each file in /blog/*.html (non-recursive — this MUST stay in sync
-with the workflow's `paths: blog/*.html` filter and its own glob below).
+Fully automatic. You do NOT need to add anything to your blog post files.
 
-WHAT IT DOES
-------------
-1. Finds every /blog/*.html file (top level only).
-2. Reads its FX:POST metadata block.
-3. Builds a fresh BLOG_POSTS array, sorted by date (newest first).
-4. Splices that array back into assets/js/blog-data.js, leaving everything
-   below it (formatDate, escapeHtml, blogCardHTML) exactly as it is on
-   disk — so hand edits to those functions are never clobbered.
+Every time you add, edit, or delete a file in /blog/*.html and push, this
+script reads that file and pulls out everything it needs by itself:
 
-FX:POST BLOCK FORMAT
----------------------
-Put this as an HTML comment anywhere in a post file, e.g. in <head>:
+  - title    <- the <title> tag (site name suffix like " — Flexora.Ai"
+               stripped off automatically)
+  - excerpt  <- the <meta name="description"> tag
+  - image    <- checked in this order:
+                 1. <meta property="og:image"> if it points at a real
+                    local file
+                 2. an actual file on disk named after the slug in
+                    assets/images/blog/, assets/images/, images/blog/,
+                    images/, or static/images/blog/ (any of
+                    .webp/.jpg/.jpeg/.png/.avif/.gif)
+                 3. if nothing is found, no image is used — the card
+                    just shows a plain icon instead of a broken image
+  - date     <- git history (when the file was first committed), or
+               today's date if that's not available
+  - slug     <- the filename itself (my-post.html -> "my-post")
+  - readMins <- estimated from the word count
+  - category <- "Guide" (you can override this — see below)
+  - published, featured, author -> sensible defaults (see DEFAULTS)
 
-    <!-- FX:POST
-    slug: my-post-slug
-    title: My Post Title
-    category: Guide
-    icon: 📣
-    image: assets/images/blog/my-post-slug.webp
-    imageAlt: Alt text for the thumbnail
-    excerpt: One or two sentence teaser shown on the card.
-    readMins: 8
-    date: 2026-09-01
-    published: true
-    featured: false
-    author: Prashant Lalwani
-    FX:POST -->
+OPTIONAL OVERRIDE
+-----------------
+If you ever want to control any of these fields yourself instead of
+letting the script guess, you can still add an
+<!-- FX:POST ... FX:POST --> comment block to a specific post (same format
+as before) and its values will be used instead of the auto-detected ones.
+This is completely optional — most posts will never need one.
 
-Required fields: title, date.
-Everything else falls back to a sane default — see DEFAULTS below:
-  - slug        -> the filename without ".html" (e.g. my-post.html -> "my-post")
-  - image       -> assets/images/blog/<slug>.webp
-  - imageAlt    -> same as title
-  - category    -> "Guide"
-  - icon        -> "📝"
-  - excerpt     -> ""
-  - readMins    -> 5
-  - published   -> true
-  - featured    -> false
-  - author      -> "Prashant Lalwani"
-
-A file with no FX:POST block at all is skipped with a warning (handy for
-drafts, or non-post pages that happen to live in /blog/). A file whose
-FX:POST block is missing a required field is also skipped, with an error
-logged so it's obvious in the Actions log — but it will NOT fail the whole
-workflow run, so one bad post can't block everyone else's posts from
-publishing.
+WHAT THIS SCRIPT DOES NOT DO
+-----------------------------
+It only rewrites assets/js/blog-data.js. It never touches blog.html,
+sitemap.xml, sitemap.html, or the blog post files themselves.
 """
 
 import glob
 import json
 import os
 import re
+import subprocess
+from datetime import date
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# Single star, non-recursive — must match the workflow's `blog/*.html` path filter.
-BLOG_GLOB = os.path.join(REPO_ROOT, "blog", "*.html")
+BLOG_GLOB = os.path.join(REPO_ROOT, "blog", "*.html")  # non-recursive — must match the workflow's path filter
 OUTPUT_JS = os.path.join(REPO_ROOT, "assets", "js", "blog-data.js")
 
 FX_BLOCK_RE = re.compile(r"<!--\s*FX:POST(.*?)FX:POST\s*-->", re.DOTALL)
+TITLE_TAG_RE = re.compile(r"<title>(.*?)</title>", re.IGNORECASE | re.DOTALL)
+OG_TITLE_RE = re.compile(r'<meta[^>]+property=["\']og:title["\'][^>]+content=(["\'])(.*?)\1', re.IGNORECASE)
+DESC_RE = re.compile(r'<meta[^>]+name=["\']description["\'][^>]+content=(["\'])(.*?)\1', re.IGNORECASE)
+OG_DESC_RE = re.compile(r'<meta[^>]+property=["\']og:description["\'][^>]+content=(["\'])(.*?)\1', re.IGNORECASE)
+OG_IMAGE_RE = re.compile(r'<meta[^>]+property=["\']og:image["\'][^>]+content=(["\'])(.*?)\1', re.IGNORECASE)
+PUBLISHED_TIME_RE = re.compile(
+    r'<meta[^>]+property=["\']article:published_time["\'][^>]+content=(["\'])([\d-]{10})', re.IGNORECASE
+)
+SITE_SUFFIX_RE = re.compile(r"\s*[—\-|]\s*Flexora\.?Ai\s*$", re.IGNORECASE)
 
 BOOL_FIELDS = {"published", "featured"}
-REQUIRED_FIELDS = ("title", "date")
 
 DEFAULTS = {
     "category": "Guide",
     "icon": "📝",
-    "excerpt": "",
-    "readMins": 5,
     "published": True,
     "featured": False,
     "author": "Prashant Lalwani",
 }
 
+IMAGE_EXTENSIONS = (".webp", ".jpg", ".jpeg", ".png", ".avif", ".gif")
+IMAGE_SEARCH_DIRS = (
+    "assets/images/blog",
+    "assets/images",
+    "images/blog",
+    "images",
+    "static/images/blog",
+)
+
 HEADER_COMMENT = """/* Flexora.Ai — auto-generated by scripts/update_blog_data.py
-   DO NOT edit BLOG_POSTS by hand — add/remove files in /blog/ instead,
-   each with an <!-- FX:POST ... --> block, and push. This file rewrites
-   itself automatically. blogCardHTML() and formatDate() below are safe
-   to hand-edit if you want to change how a card looks. */
+   DO NOT edit BLOG_POSTS by hand — this file is regenerated automatically
+   from whatever is in /blog/*.html every time you push. blogCardHTML()
+   and formatDate() below are safe to hand-edit if you want to change how
+   a card looks. */
 """
 
-# Used only if assets/js/blog-data.js doesn't exist yet (first-ever run).
-# On every later run, whatever is already on disk below the BLOG_POSTS
-# array — including any hand edits — is preserved verbatim instead.
 FALLBACK_HELPERS = r'''function formatDate(d){
   return new Date(d + 'T00:00:00').toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
 }
@@ -144,12 +141,23 @@ function blogCardHTML(p, prefix){
 '''
 
 
-def parse_fx_block(text, filename):
-    match = FX_BLOCK_RE.search(text)
-    if not match:
-        print(f"::warning::Skipping {os.path.relpath(filename, REPO_ROOT)} — no <!-- FX:POST ... FX:POST --> block found.")
-        return None
+def unescape_html_entities(text):
+    return (
+        text.replace("&amp;", "&")
+        .replace("&lt;", "<")
+        .replace("&gt;", ">")
+        .replace("&quot;", '"')
+        .replace("&#39;", "'")
+        .strip()
+    )
 
+
+def parse_fx_block(html):
+    """Optional manual override block. Returns a dict of whatever fields
+    were set, or {} if there's no block at all."""
+    match = FX_BLOCK_RE.search(html)
+    if not match:
+        return {}
     fields = {}
     for line in match.group(1).splitlines():
         line = line.strip()
@@ -157,53 +165,153 @@ def parse_fx_block(text, filename):
             continue
         key, _, value = line.partition(":")
         fields[key.strip()] = value.strip()
-
-    missing = [f for f in REQUIRED_FIELDS if not fields.get(f)]
-    if missing:
-        print(f"::error::{os.path.relpath(filename, REPO_ROOT)}: FX:POST block is missing required field(s): "
-              f"{', '.join(missing)}. Skipping this post.")
-        return None
-
     return fields
 
 
-def build_post(fields, filename):
-    slug = fields.get("slug") or os.path.splitext(os.path.basename(filename))[0]
-    title = fields["title"]
+def extract_title(html):
+    m = TITLE_TAG_RE.search(html)
+    if m:
+        title = unescape_html_entities(m.group(1))
+        title = SITE_SUFFIX_RE.sub("", title).strip()
+        if title:
+            return title
+    m = OG_TITLE_RE.search(html)
+    if m:
+        return unescape_html_entities(m.group(2))
+    return None
+
+
+def extract_excerpt(html):
+    m = DESC_RE.search(html)
+    if m:
+        return unescape_html_entities(m.group(2))
+    m = OG_DESC_RE.search(html)
+    if m:
+        return unescape_html_entities(m.group(2))
+    return ""
+
+
+def extract_og_image(html):
+    m = OG_IMAGE_RE.search(html)
+    if not m:
+        return None
+    raw = unescape_html_entities(m.group(2))
+    site_match = re.match(r"https?://(?:www\.)?[\w.-]+\.github\.io/(.+)", raw, re.IGNORECASE)
+    if site_match:
+        raw = site_match.group(1)
+    elif re.match(r"https?://", raw, re.IGNORECASE):
+        return None  # points at another domain — can't confirm it's a local file
+    return raw.lstrip("/")
+
+
+def find_existing_image(slug):
+    for folder in IMAGE_SEARCH_DIRS:
+        for ext in IMAGE_EXTENSIONS:
+            candidate = os.path.join(REPO_ROOT, folder, f"{slug}{ext}")
+            if os.path.isfile(candidate):
+                return f"{folder}/{slug}{ext}"
+    return None
+
+
+def detect_image(html, slug):
+    image_path = extract_og_image(html)
+    if image_path and not os.path.isfile(os.path.join(REPO_ROOT, image_path)):
+        image_path = None
+    if not image_path:
+        image_path = find_existing_image(slug)
+    return image_path  # may be None -> card shows icon fallback
+
+
+def git_first_commit_date(filepath):
+    try:
+        result = subprocess.run(
+            ["git", "log", "--diff-filter=A", "--follow", "--format=%as", "--", filepath],
+            cwd=REPO_ROOT,
+            capture_output=True,
+            text=True,
+            timeout=10,
+        )
+        lines = [l.strip() for l in result.stdout.strip().splitlines() if l.strip()]
+        if lines:
+            return lines[-1]  # earliest entry = first time this file was committed
+    except Exception:
+        pass
+    return None
+
+
+def detect_date(html, filepath):
+    m = PUBLISHED_TIME_RE.search(html)
+    if m:
+        return m.group(2)
+    git_date = git_first_commit_date(filepath)
+    if git_date:
+        return git_date
+    return date.today().isoformat()
+
+
+def estimate_read_mins(html):
+    text = re.sub(r"<[^>]+>", " ", html)
+    words = len(text.split())
+    return max(3, min(15, round(words / 220)))
+
+
+def build_post(filepath):
+    with open(filepath, "r", encoding="utf-8") as f:
+        html = f.read()
+
+    slug = os.path.splitext(os.path.basename(filepath))[0]
+    overrides = parse_fx_block(html)
+
+    title = overrides.get("title") or extract_title(html) or slug.replace("-", " ").title()
+    excerpt = overrides.get("excerpt")
+    if excerpt is None:
+        excerpt = extract_excerpt(html)
+
+    image = overrides.get("image")
+    if image is None:
+        image = detect_image(html, slug)
+
+    date_value = overrides.get("date") or detect_date(html, filepath)
+
+    read_mins = DEFAULTS.get("readMins", None)
+    if "readMins" in overrides:
+        try:
+            read_mins = int(overrides["readMins"])
+        except ValueError:
+            read_mins = estimate_read_mins(html)
+    else:
+        read_mins = estimate_read_mins(html)
 
     post = {
-        "slug": slug,
+        "slug": overrides.get("slug") or slug,
         "title": title,
-        "category": fields.get("category", DEFAULTS["category"]),
-        "icon": fields.get("icon", DEFAULTS["icon"]),
-        "image": fields.get("image") or f"assets/images/blog/{slug}.webp",
-        "imageAlt": fields.get("imageAlt") or title,
-        "excerpt": fields.get("excerpt", DEFAULTS["excerpt"]),
-        "readMins": DEFAULTS["readMins"],
-        "date": fields["date"],
+        "category": overrides.get("category", DEFAULTS["category"]),
+        "icon": overrides.get("icon", DEFAULTS["icon"]),
+        "image": image,
+        "imageAlt": overrides.get("imageAlt") or title,
+        "excerpt": excerpt,
+        "readMins": read_mins,
+        "date": date_value,
         "published": DEFAULTS["published"],
         "featured": DEFAULTS["featured"],
-        "author": fields.get("author", DEFAULTS["author"]),
+        "author": overrides.get("author", DEFAULTS["author"]),
     }
 
-    if "readMins" in fields:
-        try:
-            post["readMins"] = int(fields["readMins"])
-        except ValueError:
-            print(f"::warning::{os.path.relpath(filename, REPO_ROOT)}: readMins "
-                  f"'{fields['readMins']}' isn't a whole number, defaulting to {DEFAULTS['readMins']}.")
-
     for flag in BOOL_FIELDS:
-        if flag in fields:
-            post[flag] = fields[flag].strip().lower() in ("true", "yes", "1")
+        if flag in overrides:
+            post[flag] = overrides[flag].strip().lower() in ("true", "yes", "1")
 
     return post
 
 
+def js_value(value):
+    # image can legitimately be None (no image found) -> emit JS null,
+    # which blogCardHTML()'s `p.image ? ... : fallbackIcon` already handles.
+    return json.dumps(value, ensure_ascii=False)
+
+
 def js_object_literal(post):
-    # json.dumps handles all string quoting/escaping for us (including the
-    # emoji in icon); keys are left unquoted to match the existing style.
-    parts = [f"{key}:{json.dumps(value, ensure_ascii=False)}" for key, value in post.items()]
+    parts = [f"{key}:{js_value(value)}" for key, value in post.items()]
     return "{ " + ", ".join(parts) + " }"
 
 
@@ -217,16 +325,10 @@ def build_array_block(posts):
 
 
 def read_existing_helpers():
-    """Return whatever text currently sits below the BLOG_POSTS array, so
-    hand edits to formatDate/escapeHtml/blogCardHTML survive every run."""
     if not os.path.exists(OUTPUT_JS):
         return FALLBACK_HELPERS
-
     with open(OUTPUT_JS, "r", encoding="utf-8") as f:
         existing = f.read()
-
-    # First "];" that sits alone on its own line closes the BLOG_POSTS
-    # array — everything after that is the hand-editable helper code.
     match = re.search(r"^\];\s*\n(.*)", existing, re.DOTALL | re.MULTILINE)
     if match and match.group(1).strip():
         return match.group(1)
@@ -239,13 +341,12 @@ def main():
         print("No files found under /blog/*.html — nothing to do.")
 
     posts = []
-    for filename in files:
-        with open(filename, "r", encoding="utf-8") as f:
-            content = f.read()
-        fields = parse_fx_block(content, filename)
-        if fields is None:
-            continue
-        posts.append(build_post(fields, filename))
+    for filepath in files:
+        try:
+            posts.append(build_post(filepath))
+            print(f"  processed {os.path.relpath(filepath, REPO_ROOT)}")
+        except Exception as exc:
+            print(f"::error::Failed to process {os.path.relpath(filepath, REPO_ROOT)}: {exc}")
 
     array_block = build_array_block(posts)
     helpers = read_existing_helpers()
@@ -259,6 +360,9 @@ def main():
         f.write(output)
 
     print(f"Wrote {len(posts)} post(s) to {os.path.relpath(OUTPUT_JS, REPO_ROOT)}")
+    missing_images = [p["slug"] for p in posts if not p["image"]]
+    if missing_images:
+        print(f"Note: {len(missing_images)} post(s) have no detected image (will show icon): {', '.join(missing_images)}")
 
 
 if __name__ == "__main__":
