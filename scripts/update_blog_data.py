@@ -10,6 +10,10 @@ script reads that file and pulls out everything it needs by itself:
   - title    <- the <title> tag (site name suffix like " — Flexora.Ai"
                stripped off automatically)
   - excerpt  <- the <meta name="description"> tag
+  - author   <- the <meta name="author"> tag, if present
+  - category <- <meta property="article:section"> or <meta name="category">
+               (first value if the tag lists several, comma-separated),
+               if present
   - image    <- checked in this order:
                  1. <meta property="og:image"> if it points at a real
                     local file
@@ -19,20 +23,32 @@ script reads that file and pulls out everything it needs by itself:
                     .webp/.jpg/.jpeg/.png/.avif/.gif)
                  3. if nothing is found, no image is used — the card
                     just shows a plain icon instead of a broken image
-  - date     <- git history (when the file was first committed), or
-               today's date if that's not available
+  - imageAlt <- <meta property="og:image:alt">, if present, else the title
+  - date     <- <meta property="article:published_time">, or git history
+               (when the file was first committed), or today's date if
+               neither is available
   - slug     <- the filename itself (my-post.html -> "my-post")
   - readMins <- estimated from the word count
-  - category <- "Guide" (you can override this — see below)
-  - published, featured, author -> sensible defaults (see DEFAULTS)
+  - published, featured, icon -> sensible defaults (see DEFAULTS)
 
 OPTIONAL OVERRIDE
 -----------------
-If you ever want to control any of these fields yourself instead of
-letting the script guess, you can still add an
-<!-- FX:POST ... FX:POST --> comment block to a specific post (same format
-as before) and its values will be used instead of the auto-detected ones.
-This is completely optional — most posts will never need one.
+If auto-detection ever gets a field wrong, or a field genuinely isn't in
+your <head> at all (no article:section, no meta author, etc.), you can
+still add an FX:POST comment block to a specific post and its values
+will be used instead. This is completely optional — most posts will
+never need one, and you only need to list the fields you want to
+override, not all of them.
+
+Correct format — note "FX:POST" appears at BOTH the start and the end:
+
+    <!-- FX:POST
+    category: AI Agents
+    featured: true
+    FX:POST -->
+
+Put it anywhere in <head> as plain HTML (never inside a <script> tag,
+since that would break JSON-LD parsing if it's inside one of those).
 
 WHAT THIS SCRIPT DOES NOT DO
 -----------------------------
@@ -57,6 +73,12 @@ OG_TITLE_RE = re.compile(r'<meta[^>]+property=["\']og:title["\'][^>]+content=(["
 DESC_RE = re.compile(r'<meta[^>]+name=["\']description["\'][^>]+content=(["\'])(.*?)\1', re.IGNORECASE)
 OG_DESC_RE = re.compile(r'<meta[^>]+property=["\']og:description["\'][^>]+content=(["\'])(.*?)\1', re.IGNORECASE)
 OG_IMAGE_RE = re.compile(r'<meta[^>]+property=["\']og:image["\'][^>]+content=(["\'])(.*?)\1', re.IGNORECASE)
+OG_IMAGE_ALT_RE = re.compile(r'<meta[^>]+property=["\']og:image:alt["\'][^>]+content=(["\'])(.*?)\1', re.IGNORECASE)
+AUTHOR_RE = re.compile(r'<meta[^>]+name=["\']author["\'][^>]+content=(["\'])(.*?)\1', re.IGNORECASE)
+ARTICLE_SECTION_RE = re.compile(
+    r'<meta[^>]+property=["\']article:section["\'][^>]+content=(["\'])(.*?)\1', re.IGNORECASE
+)
+META_CATEGORY_RE = re.compile(r'<meta[^>]+name=["\']category["\'][^>]+content=(["\'])(.*?)\1', re.IGNORECASE)
 PUBLISHED_TIME_RE = re.compile(
     r'<meta[^>]+property=["\']article:published_time["\'][^>]+content=(["\'])([\d-]{10})', re.IGNORECASE
 )
@@ -191,6 +213,33 @@ def extract_excerpt(html):
     return ""
 
 
+def extract_author(html):
+    m = AUTHOR_RE.search(html)
+    if m:
+        value = unescape_html_entities(m.group(2))
+        return value or None
+    return None
+
+
+def extract_category(html):
+    """Prefers article:section (usually a single clean category), falls
+    back to <meta name="category"> which is sometimes a comma-separated
+    list — in that case only the first item is used, since blog.html
+    filters posts by a single category."""
+    m = ARTICLE_SECTION_RE.search(html)
+    if m:
+        value = unescape_html_entities(m.group(2))
+        if value:
+            return value
+    m = META_CATEGORY_RE.search(html)
+    if m:
+        value = unescape_html_entities(m.group(2))
+        first = value.split(",")[0].strip()
+        if first:
+            return first
+    return None
+
+
 def extract_og_image(html):
     m = OG_IMAGE_RE.search(html)
     if not m:
@@ -202,6 +251,14 @@ def extract_og_image(html):
     elif re.match(r"https?://", raw, re.IGNORECASE):
         return None  # points at another domain — can't confirm it's a local file
     return raw.lstrip("/")
+
+
+def extract_og_image_alt(html):
+    m = OG_IMAGE_ALT_RE.search(html)
+    if m:
+        value = unescape_html_entities(m.group(2))
+        return value or None
+    return None
 
 
 def find_existing_image(slug):
@@ -263,17 +320,23 @@ def build_post(filepath):
     overrides = parse_fx_block(html)
 
     title = overrides.get("title") or extract_title(html) or slug.replace("-", " ").title()
+
     excerpt = overrides.get("excerpt")
     if excerpt is None:
         excerpt = extract_excerpt(html)
+
+    author = overrides.get("author") or extract_author(html) or DEFAULTS["author"]
+
+    category = overrides.get("category") or extract_category(html) or DEFAULTS["category"]
 
     image = overrides.get("image")
     if image is None:
         image = detect_image(html, slug)
 
+    image_alt = overrides.get("imageAlt") or extract_og_image_alt(html) or title
+
     date_value = overrides.get("date") or detect_date(html, filepath)
 
-    read_mins = DEFAULTS.get("readMins", None)
     if "readMins" in overrides:
         try:
             read_mins = int(overrides["readMins"])
@@ -285,16 +348,16 @@ def build_post(filepath):
     post = {
         "slug": overrides.get("slug") or slug,
         "title": title,
-        "category": overrides.get("category", DEFAULTS["category"]),
+        "category": category,
         "icon": overrides.get("icon", DEFAULTS["icon"]),
         "image": image,
-        "imageAlt": overrides.get("imageAlt") or title,
+        "imageAlt": image_alt,
         "excerpt": excerpt,
         "readMins": read_mins,
         "date": date_value,
         "published": DEFAULTS["published"],
         "featured": DEFAULTS["featured"],
-        "author": overrides.get("author", DEFAULTS["author"]),
+        "author": author,
     }
 
     for flag in BOOL_FIELDS:
@@ -325,11 +388,16 @@ def build_array_block(posts):
 
 
 def read_existing_helpers():
+    """Preserves any hand-edited blogCardHTML()/formatDate() code below the
+    generated array, so re-running this script never clobbers customizations
+    made directly to blog-data.js. Anchored strictly to a line that is just
+    "];" with nothing else, to avoid accidentally matching a "];" that might
+    appear inside the helper code itself."""
     if not os.path.exists(OUTPUT_JS):
         return FALLBACK_HELPERS
     with open(OUTPUT_JS, "r", encoding="utf-8") as f:
         existing = f.read()
-    match = re.search(r"^\];\s*\n(.*)", existing, re.DOTALL | re.MULTILINE)
+    match = re.search(r"\nconst BLOG_POSTS = \[.*?\n\];\n(.*)", existing, re.DOTALL)
     if match and match.group(1).strip():
         return match.group(1)
     return FALLBACK_HELPERS
