@@ -1,35 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-56W23QBB');</script>
-<!-- End Google Tag Manager -->
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Blog — Flexora.Ai</title>
-<meta content="Guides, comparisons and roundups to help you pick the right AI tool for the job." name="description"/>
-<meta content="index, follow" name="robots"/>
-<link href="https://flexora-ai.github.io/blog.html" rel="canonical"/>
+<meta content="Guides on choosing, using, and automating with AI tools for small business, solopreneurs, and startup founders." name="description"/>
 <link href="assets/images/logo.png" rel="icon" type="image/png"/>
 <meta content="Blog — Flexora.Ai" property="og:title"/>
-<meta content="Guides, comparisons and roundups to help you pick the right AI tool for the job." property="og:description"/>
 <meta content="website" property="og:type"/>
-<meta content="https://flexora-ai.github.io/assets/images/logo.png" property="og:image"/>
-<meta content="summary_large_image" name="twitter:card"/>
-<meta content="Blog — Flexora.Ai" name="twitter:title"/>
-<meta content="Guides, comparisons and roundups to help you pick the right AI tool for the job." name="twitter:description"/>
-<meta content="https://flexora-ai.github.io/assets/images/logo.png" name="twitter:image"/>
-
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
 :root{
-  --bg:#07090F; --surface:#0F131D; --surface-2:#161B28; --line:#232838;
-  --teal:#2DE2C8; --blue:#4C7BFF; --ink:#F2F4FA; --ink-soft:#8A90A6;
+--bg:#07090F; --surface:#0F131D; --surface-2:#161B28; --line:#232838;
+--teal:#2DE2C8; --blue:#4C7BFF; --ink:#F2F4FA; --ink-soft:#8A90A6;
 }
 *{box-sizing:border-box; margin:0; padding:0;}
 html{scroll-behavior:smooth;}
@@ -37,7 +26,7 @@ body{background:var(--bg); color:var(--ink); font-family:'Sora',sans-serif; -web
 .mono{font-family:'IBM Plex Mono',monospace;}
 a{color:inherit; text-decoration:none;}
 .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
-img,svg{display:block; max-width:100%;}
+img,svg{display:block;}
 button{font-family:inherit; cursor:pointer;}
 :focus-visible{outline:2px solid var(--teal); outline-offset:3px;}
 
@@ -49,141 +38,85 @@ nav.wrap{height:76px; display:flex; align-items:center; justify-content:space-be
 .nav-links{display:flex; gap:26px; font-size:14px; color:var(--ink-soft);}
 .nav-links a{cursor:pointer; transition:color .15s; padding-bottom:4px; border-bottom:2px solid transparent; position:relative;}
 .nav-links a::after{content:""; position:absolute; left:0; right:100%; bottom:-2px; height:2px; background:var(--teal); transition:right .25s ease;}
-.nav-links a:hover{color:var(--teal);}
 .nav-links a:hover::after, .nav-links a.active::after{right:0;}
+.nav-links a:hover{color:var(--teal);}
 .nav-links a.active{color:var(--ink);}
 @media(max-width:960px){.nav-links{display:none;}}
-.btn{font-family:'Sora'; font-weight:600; font-size:14px; padding:11px 20px; border-radius:8px; border:none; cursor:pointer; transition:transform .15s, box-shadow .15s; position:relative; overflow:hidden;}
+.btn{font-family:'Sora'; font-weight:600; font-size:14px; padding:11px 20px; border-radius:8px; border:none; cursor:pointer; transition:transform .15s, box-shadow .15s;}
 .btn-primary{background:var(--teal); color:#07090F;}
 .btn-primary:hover{transform:translateY(-2px); box-shadow:0 10px 24px -6px rgba(45,226,200,0.5);}
 .btn-ghost{color:var(--ink-soft); border:1px solid var(--line); background:transparent;}
-.btn-ghost:hover{color:var(--ink); border-color:var(--ink-soft);}
 .menu-btn{display:none; background:none; border:1px solid var(--line); border-radius:8px; width:40px; height:40px; color:var(--ink);}
 @media(max-width:960px){.menu-btn{display:block;}}
 .mobile-menu{display:none; flex-direction:column; gap:4px; padding:12px 32px 20px; border-bottom:1px solid var(--line);}
 .mobile-menu.open{display:flex;}
 .mobile-menu a{padding:10px 0; color:var(--ink-soft); font-size:14.5px; border-bottom:1px solid var(--line);}
 
-.page-hero{padding:70px 0 20px; text-align:left;}
-.page-hero h1{font-size:38px; margin:14px 0 14px;}
-.page-hero p.lede{margin:0; max-width:600px; color:var(--ink-soft); font-size:15.5px;}
+.page-hero{padding:64px 0 20px;}
 .eyebrow{display:inline-flex; align-items:center; gap:8px; font-size:12.5px; color:var(--teal); border:1px solid rgba(45,226,200,0.3); background:rgba(45,226,200,0.08); padding:6px 14px; border-radius:20px;}
 .dot{width:6px; height:6px; border-radius:50%; background:var(--teal); animation:pulse 1.8s ease-in-out infinite;}
 @keyframes pulse{0%,100%{opacity:1;} 50%{opacity:0.3;}}
+.page-hero h1{font-size:34px; font-weight:800; margin:14px 0 12px;}
+.page-hero p.lede{color:var(--ink-soft); font-size:15px; max-width:600px;}
 
-.finder{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:6px; display:flex; gap:6px; max-width:520px; margin-top:22px; transition:border-color .2s;}
-.finder:focus-within{border-color:var(--teal);}
-.finder input{flex:1; background:transparent; border:none; outline:none; color:var(--ink); font-family:'Sora'; font-size:15px; padding:12px;}
-.finder input::placeholder{color:#565C71;}
+section{padding:40px 0;}
+.section-head{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:24px; flex-wrap:wrap; gap:12px;}
+.section-head h2{font-size:20px; font-weight:700;}
+.section-head p{color:var(--ink-soft); font-size:13.5px;}
 
-section{padding:50px 0; position:relative;}
-.section-head{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:30px; flex-wrap:wrap; gap:16px;}
-.section-head h2{font-size:24px; font-weight:700;}
-.section-head p{color:var(--ink-soft); font-size:14px; max-width:420px;}
+.cat-row{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:8px;}
+.cat-chip{font-size:13px; padding:9px 16px; border-radius:8px; background:var(--surface); border:1px solid var(--line); color:var(--ink-soft); cursor:pointer; transition:all .15s;}
+.cat-chip:hover, .cat-chip.active{border-color:var(--teal); color:var(--teal);}
 
-.cat-row{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:32px;}
-.cat-chip{font-size:13.5px; padding:9px 16px; border-radius:20px; background:var(--surface); border:1px solid var(--line); color:var(--ink-soft); cursor:pointer; transition:all .15s;}
-.cat-chip:hover, .cat-chip.active{border-color:var(--teal); color:var(--teal); transform:translateY(-2px); background:rgba(45,226,200,0.06);}
-
-.featured-post{
-  display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--line); border-radius:18px;
-  overflow:hidden; background:var(--surface); transition:border-color .2s, transform .2s; margin-bottom:12px;
-}
-.featured-post:hover{border-color:var(--teal); transform:translateY(-3px);}
-@media(max-width:760px){.featured-post{grid-template-columns:1fr;}}
-.featured-post .fp-thumb{background:linear-gradient(135deg,var(--surface-2),var(--bg)); min-height:220px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;}
-.featured-post .fp-thumb::after{content:""; position:absolute; inset:0; background:radial-gradient(circle at 30% 30%, rgba(45,226,200,0.2), transparent 60%);}
-.featured-post .fp-thumb img{width:100%; height:100%; object-fit:cover; position:relative; z-index:0;}
-.featured-post .fp-thumb span{font-size:64px; position:relative; z-index:1;}
-.featured-post .fp-body{padding:36px; display:flex; flex-direction:column; justify-content:center;}
-.fp-badge{display:inline-flex; align-self:flex-start; align-items:center; gap:6px; font-family:'IBM Plex Mono'; font-size:10.5px; color:var(--teal); background:rgba(45,226,200,0.1); border:1px solid rgba(45,226,200,0.3); padding:4px 10px; border-radius:20px; margin-bottom:14px;}
-.featured-post h3{font-size:24px; line-height:1.3; margin-bottom:12px;}
-.featured-post .fp-excerpt{color:var(--ink-soft); font-size:14.5px; margin-bottom:18px; line-height:1.6;}
-.featured-post .fp-meta{font-size:12.5px; color:var(--ink-soft); display:flex; align-items:center; gap:10px;}
-.featured-post .fp-cta{margin-top:20px; font-size:13.5px; font-weight:600; color:var(--teal);}
+.featured-card{display:grid; grid-template-columns:1.1fr 1fr; gap:0; background:var(--surface); border:1px solid var(--line); border-radius:18px; overflow:hidden;}
+@media(max-width:800px){.featured-card{grid-template-columns:1fr;}}
+.featured-thumb{height:100%; min-height:260px; position:relative; overflow:hidden; background:linear-gradient(135deg,var(--surface-2),var(--bg));}
+.featured-thumb img{width:100%; height:100%; object-fit:cover; position:absolute; inset:0;}
+.featured-thumb .fallback{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:56px;}
+.featured-body{padding:32px; display:flex; flex-direction:column; justify-content:center;}
+.featured-body .fcat{font-family:'IBM Plex Mono'; font-size:11px; color:var(--teal); margin-bottom:12px; letter-spacing:0.04em;}
+.featured-body h3{font-size:24px; line-height:1.3; margin-bottom:12px;}
+.featured-body p{color:var(--ink-soft); font-size:14px; line-height:1.6; margin-bottom:16px;}
+.featured-meta{font-size:12.5px; color:var(--ink-soft);}
 
 .blog-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
-@media(max-width:900px){.blog-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:900px){.blog-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:640px){.blog-grid{grid-template-columns:1fr;}}
-.blog-card{border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--surface); transition:transform .25s ease, border-color .2s ease; display:block; cursor:pointer;}
-.blog-card:hover{border-color:var(--teal); transform:translateY(-6px);}
-.blog-thumb{height:150px; background:linear-gradient(135deg,var(--surface-2),var(--bg)); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;}
-.blog-thumb::after{content:""; position:absolute; inset:0; background:radial-gradient(circle at 30% 30%, rgba(45,226,200,0.18), transparent 60%); pointer-events:none;}
-.blog-thumb img{width:100%; height:100%; object-fit:cover; position:relative; z-index:0;}
-.blog-thumb-icon{font-size:42px; position:relative; z-index:1; filter:drop-shadow(0 4px 12px rgba(0,0,0,0.35));}
-.blog-body{padding:20px;}
-.blog-cat{font-family:'IBM Plex Mono'; font-size:10.5px; color:var(--teal); margin-bottom:8px; display:block; letter-spacing:.04em;}
-.blog-card h4{font-size:15.5px; margin-bottom:8px; line-height:1.35;}
-.blog-excerpt{font-size:13px; color:var(--ink-soft); line-height:1.55; margin-bottom:14px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
-.blog-meta{font-size:12px; color:var(--ink-soft); border-top:1px solid var(--line); padding-top:12px;}
-.blog-card-disabled{cursor:default; opacity:.55;}
-.blog-card-disabled:hover{transform:none; border-color:var(--line);}
-.no-results{grid-column:1/-1; text-align:center; padding:50px 20px; color:var(--ink-soft); font-size:14px; border:1px dashed var(--line); border-radius:14px; display:none;}
+.blog-card{display:block; border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--surface); transition:border-color .2s, transform .2s;}
+.blog-card:hover{border-color:var(--teal); transform:translateY(-4px);}
+.blog-thumb{height:150px; position:relative; overflow:hidden; background:linear-gradient(135deg,var(--surface-2),var(--bg));}
+.blog-thumb img{width:100%; height:100%; object-fit:cover; position:absolute; inset:0;}
+.blog-thumb .fallback{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:34px;}
+.blog-body{padding:18px 20px;}
+.blog-cat{font-family:'IBM Plex Mono'; font-size:10.5px; color:var(--teal); margin-bottom:8px; display:block;}
+.blog-card h4{font-size:15px; margin-bottom:8px; line-height:1.35;}
+.blog-meta{font-size:12px; color:var(--ink-soft);}
+.no-results{grid-column:1/-1; text-align:center; padding:40px; color:var(--ink-soft); font-size:14px;}
 
-footer{border-top:1px solid var(--line); padding:56px 0 28px;}
+footer{border-top:1px solid var(--line); padding:56px 0 28px; margin-top:20px;}
 .foot-top{display:grid; grid-template-columns:1.3fr repeat(4,1fr); gap:32px; margin-bottom:40px;}
 @media(max-width:860px){.foot-top{grid-template-columns:1fr 1fr;}}
-.foot-brand .logo{margin-bottom:12px;}
-.foot-brand p{font-size:13px; color:var(--ink-soft); max-width:240px; margin-bottom:18px;}
+.foot-brand p{font-size:13px; color:var(--ink-soft); max-width:240px; margin:12px 0 18px;}
 .foot-col h4{font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-soft); margin-bottom:14px; font-weight:600;}
-.foot-col a{display:block; font-size:13.5px; color:var(--ink-soft); margin-bottom:10px; cursor:pointer; transition:color .2s, transform .2s;}
-.foot-col a:hover{color:var(--teal); transform:translateX(3px);}
+.foot-col a{display:block; font-size:13.5px; color:var(--ink-soft); margin-bottom:10px; cursor:pointer;}
+.foot-col a:hover{color:var(--teal);}
 .foot-bottom{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; font-size:12.5px; color:var(--ink-soft); padding-top:22px; border-top:1px solid var(--line);}
-.social-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;}
-.social-row a{width:40px; height:40px; border-radius:10px; background:var(--surface-2); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--ink-soft); transition:all .25s;}
-.social-row a:hover{color:var(--ink); border-color:var(--teal); transform:translateY(-3px) scale(1.08);}
-.social-row svg{width:18px; height:18px;}
-
-.back-to-top{position:fixed; bottom:24px; right:24px; width:44px; height:44px; border-radius:50%; background:var(--surface); border:1px solid var(--line); color:var(--teal); display:flex; align-items:center; justify-content:center; cursor:pointer; opacity:0; pointer-events:none; transition:all .2s; font-weight:700; z-index:50;}
+.social-row{display:flex; gap:10px; margin-top:16px;}
+.social-row a{width:36px; height:36px; border-radius:9px; background:var(--surface-2); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--ink-soft);}
+.social-row a:hover{color:var(--teal); border-color:var(--teal);}
+.social-row svg{width:16px; height:16px;}
+.back-to-top{position:fixed; bottom:24px; right:24px; width:44px; height:44px; border-radius:50%; background:var(--surface); border:1px solid var(--line); color:var(--teal); display:flex; align-items:center; justify-content:center; cursor:pointer; opacity:0; pointer-events:none; transition:all .2s; font-weight:700;}
 .back-to-top.show{opacity:1; pointer-events:auto;}
-.bg-particles{position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden;}
-.particle{position:absolute; bottom:-40px; border-radius:50%; background:radial-gradient(circle, rgba(45,226,200,0.55), rgba(76,123,255,0.05) 70%); opacity:0; animation:floatUp linear infinite;}
-@keyframes floatUp{0%{transform:translateY(0) translateX(0) scale(0.6); opacity:0;} 8%{opacity:0.5;} 92%{opacity:0.3;} 100%{transform:translateY(-115vh) translateX(var(--drift,40px)) scale(1.15); opacity:0;}}
-.reveal{opacity:0; transform:translateY(24px); transition:opacity .6s cubic-bezier(.2,.7,.2,1), transform .6s cubic-bezier(.2,.7,.2,1);}
-.reveal.in-view{opacity:1; transform:translateY(0);}
-
-/* Hero stat chips (live post count) */
-.blog-stats{display:flex; flex-wrap:wrap; gap:22px; margin-top:22px;}
-.blog-stat{font-family:'IBM Plex Mono'; font-size:12.5px; color:var(--ink-soft); display:flex; align-items:baseline; gap:7px;}
-.blog-stat b{font-family:'Sora'; font-size:20px; font-weight:700; color:var(--teal);}
-
-/* Card entrance animation — staggered per card via --d custom property */
-.blog-card{opacity:0; transform:translateY(18px) scale(.98); animation:cardIn .55s cubic-bezier(.2,.7,.2,1) forwards; animation-delay:var(--d, 0s);}
-@keyframes cardIn{to{opacity:1; transform:translateY(0) scale(1);}}
-.blog-card:hover .blog-thumb img{transform:scale(1.06);}
-.blog-thumb img{transition:transform .5s ease;}
-.blog-card-disabled{animation:cardIn .55s cubic-bezier(.2,.7,.2,1) forwards; animation-delay:var(--d, 0s);}
-
-/* Featured post: slow ambient shimmer on the glow + subtle border pulse */
-.featured-post .fp-thumb::after{animation:fpGlow 6s ease-in-out infinite;}
-@keyframes fpGlow{0%,100%{opacity:.7;} 50%{opacity:1;}}
-.featured-post{animation:cardIn .6s cubic-bezier(.2,.7,.2,1) forwards;}
-
-/* Category chip press feedback */
-.cat-chip{transition:all .15s, transform .15s;}
-.cat-chip:active{transform:scale(.95);}
-
-/* Search button micro-interaction already covered by .btn-primary:hover */
-.blog-byline{font-weight:600; color:var(--ink-soft);}
-@media (prefers-reduced-motion: reduce){.blog-card, .blog-card-disabled, .featured-post{animation:none !important; opacity:1 !important; transform:none !important;}}
-@media (prefers-reduced-motion: reduce){*{animation:none !important; transition:none !important;}}
 </style>
 </head>
 <body>
-<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-56W23QBB" style="display:none;visibility:hidden" width="0"></iframe></noscript>
-<div class="bg-particles" id="bgParticles"></div>
 
 <header>
 <nav class="wrap">
-<a class="logo" href="index.html"><img alt="Flexora Logo" src="assets/images/logo.png"/>Flexora<span>.Ai</span></a>
+<a class="logo" href="index.html"><img alt="Flexora logo" src="assets/images/logo.png"/>Flexora<span>.Ai</span></a>
 <div class="nav-links">
-<a href="tools.html">Tools</a>
-<a href="compare.html">Compare</a>
-<a href="finder.html">Finder</a>
-<a href="workflows.html">Workflows</a>
-<a href="free-tools.html">Free Tools</a>
-<a href="blog.html">Blog</a>
-<a href="services.html">Services</a>
+<a href="tools.html">Tools</a><a href="compare.html">Compare</a><a href="finder.html">Finder</a>
+<a href="workflows.html">Workflows</a><a href="free-tools.html">Free Tools</a><a class="active" href="blog.html">Blog</a><a href="services.html">Services</a>
 </div>
 <div style="display:flex; gap:12px; align-items:center;">
 <a class="btn btn-ghost" href="submit.html">Submit tool</a>
@@ -192,37 +125,29 @@ footer{border-top:1px solid var(--line); padding:56px 0 28px;}
 </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-<a href="tools.html">Tools</a>
-<a href="compare.html">Compare</a>
-<a href="finder.html">Finder</a>
-<a href="workflows.html">Workflows</a>
-<a href="free-tools.html">Free Tools</a>
-<a href="blog.html">Blog</a>
-<a href="services.html">Services</a>
+<a href="tools.html">Tools</a><a href="compare.html">Compare</a><a href="finder.html">Finder</a>
+<a href="workflows.html">Workflows</a><a href="free-tools.html">Free Tools</a><a href="blog.html">Blog</a><a href="services.html">Services</a>
 </div>
 </header>
 
 <div class="page-hero"><div class="wrap">
-<span class="eyebrow"><span class="dot"></span>Guides & comparisons</span>
-<h1>The Flexora.Ai blog</h1>
-<p class="lede">Practical guides, tool comparisons and roundups — written to help you pick, not to pad word count.</p>
-<div class="blog-stats" id="blogStats"></div>
-<div class="finder">
-<input id="searchInput" placeholder="Search posts…" type="text"/>
-<button class="btn btn-primary" id="searchBtn">Search</button>
-</div>
+<span class="eyebrow"><span class="dot"></span>Guides</span>
+<h1>The Flexora.Ai Blog</h1>
+<p class="lede">Practical guides on choosing, using, and automating with AI tools — for small business owners, solopreneurs, and startup founders.</p>
 </div></div>
 
-<section>
-<div class="wrap reveal" id="featuredWrap"></div>
+<section id="featuredSection">
+<div class="wrap">
+<div class="section-head"><h2>Latest guide</h2></div>
+<div id="featuredCard"></div>
+</div>
 </section>
 
 <section>
-<div class="wrap reveal">
-<div class="section-head"><div><h2>All posts</h2><p>Filter by category or search above.</p></div></div>
+<div class="wrap">
+<div class="section-head"><h2>All guides</h2></div>
 <div class="cat-row" id="catRow"></div>
-<div class="blog-grid" id="blogGrid"></div>
-<div class="no-results" id="noResults">No posts match that search — try a different term or category.</div>
+<div class="blog-grid" id="blogGrid" style="margin-top:24px;"></div>
 </div>
 </section>
 
@@ -230,7 +155,7 @@ footer{border-top:1px solid var(--line); padding:56px 0 28px;}
 <div class="wrap">
 <div class="foot-top">
 <div class="foot-brand">
-<a class="logo" href="index.html"><img alt="Flexora Logo" src="assets/images/logo.png"/>Flexora<span>.Ai</span></a>
+<a class="logo" href="index.html"><img alt="Flexora logo" src="assets/images/logo.png"/>Flexora<span>.Ai</span></a>
 <p>Helping people find the right AI tool for the job — without the pay-to-list noise.</p>
 <div class="social-row">
 <a aria-label="GitHub" href="https://github.com/flexora-ai" rel="noopener" target="_blank"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.1 3.29 9.4 7.86 10.94.57.1.78-.25.78-.56 0-.28-.01-1.02-.01-2-3.2.7-3.87-1.54-3.87-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.66 1.25 3.31.95.1-.74.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.72 0-1.26.45-2.28 1.17-3.08-.12-.29-.51-1.46.11-3.05 0 0 .95-.31 3.12 1.18a10.79 10.79 0 0 1 2.85-.38c.97 0 1.95.13 2.85.38 2.16-1.5 3.11-1.18 3.11-1.18.62 1.59.24 2.76.12 3.05.73.8 1.17 1.82 1.17 3.08 0 4.45-2.69 5.43-5.25 5.71.41.35.77 1.04.77 2.09 0 1.51-.01 2.73-.01 3.1 0 .31.2.67.79.56A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"></path></svg></a>
@@ -243,144 +168,80 @@ footer{border-top:1px solid var(--line); padding:56px 0 28px;}
 </div>
 </div>
 <div class="foot-col"><h4>Explore</h4><a href="tools.html">All tools</a><a href="compare.html">Compare</a><a href="free-tools.html">Free tools</a></div>
-<div class="foot-col"><h4>Resources</h4><a href="workflows.html">Workflows</a><a href="blog.html">Guides</a><a href="index.html#faq">FAQ</a><a href="https://aiweekly.co" rel="noopener" target="_blank">AI Weekly ↗</a></div>
+<div class="foot-col"><h4>Resources</h4><a href="workflows.html">Workflows</a><a href="blog.html">Guides</a><a href="index.html#faq">FAQ</a></div>
 <div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="submit.html">Submit a tool</a><a href="services.html">Contact</a></div>
-<div class="foot-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="sitemap.html">Sitemap</a></div>
+<div class="foot-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
 </div>
-<div class="foot-bottom">
-<span>© 2026 Flexora.Ai</span>
-<span>Built with GitHub Pages</span>
-</div>
+<div class="foot-bottom"><span>© 2026 Flexora.Ai</span><span>Built with GitHub Pages</span></div>
 </div>
 </footer>
 
 <button aria-label="Back to top" class="back-to-top" id="backToTop">↑</button>
 
-<!-- Shared blog data (single source of truth) -->
 <script src="assets/js/blog-data.js"></script>
 <script>
-const featuredWrap = document.getElementById('featuredWrap');
-const grid = document.getElementById('blogGrid');
-const catRow = document.getElementById('catRow');
-const noResults = document.getElementById('noResults');
-const searchInput = document.getElementById('searchInput');
-let currentCat = 'all';
-
-const publishedSorted = BLOG_POSTS.filter(p => p.published).sort((a,b) => new Date(b.date) - new Date(a.date));
-const featured = BLOG_POSTS.filter(p => p.published && p.featured).sort((a,b) => new Date(b.date) - new Date(a.date))[0] || publishedSorted[0];
-
-(function(){
-  if(!featured || !featuredWrap) return;
-  const dateLabel = new Date(featured.date + 'T00:00:00').toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
-  const safeAlt = escapeHtml(featured.imageAlt || featured.title).replace(/"/g, '&quot;');
-  const safeTitle = escapeHtml(featured.title);
-  const safeExcerpt = escapeHtml(featured.excerpt);
-  const safeCategory = escapeHtml(featured.category);
-  const safeAuthor = escapeHtml(featured.author || 'Prashant Lalwani');
-  const thumb = featured.image
-    ? `<img src="${featured.image}" alt="${safeAlt}" loading="lazy" onerror="this.parentElement.innerHTML='<span>${featured.icon}</span>';"/>`
-    : `<span>${featured.icon}</span>`;
-  featuredWrap.innerHTML = `
-    <a class="featured-post" href="blog/${featured.slug}.html">
-      <div class="fp-thumb">${thumb}</div>
-      <div class="fp-body">
-        <span class="fp-badge">★ Featured — ${safeCategory}</span>
-        <h3>${safeTitle}</h3>
-        <p class="fp-excerpt">${safeExcerpt}</p>
-        <div class="fp-meta"><span>${featured.readMins} min read</span><span>·</span><span>${dateLabel}</span><span>·</span><span class="blog-byline">${safeAuthor}</span></div>
-        <span class="fp-cta">Read the article →</span>
-      </div>
-    </a>`;
-})();
-
-(function(){
-  const statsBox = document.getElementById('blogStats');
-  if(!statsBox) return;
-  const publishedCount = BLOG_POSTS.filter(p => p.published).length;
-  const upcomingCount = BLOG_POSTS.filter(p => !p.published).length;
-  statsBox.innerHTML = `
-    <span class="blog-stat"><b id="statPublished">0</b>guides published</span>
-    <span class="blog-stat"><b>${upcomingCount}</b>coming soon</span>
-    <span class="blog-stat"><b class="blog-byline" style="color:var(--ink);">Prashant Lalwani</b>writes every one</span>`;
-  // small count-up animation on the published number
-  const el = document.getElementById('statPublished');
-  let n = 0;
-  const step = Math.max(1, Math.ceil(publishedCount / 20));
-  const timer = setInterval(() => {
-    n = Math.min(publishedCount, n + step);
-    el.textContent = n;
-    if(n >= publishedCount) clearInterval(timer);
-  }, 40);
-})();
-
-(function(){
-  const cats = [...new Set(BLOG_POSTS.map(p => p.category))].sort();
-  catRow.innerHTML = '<span class="cat-chip active" data-cat="all">All</span>' +
-    cats.map(c => `<span class="cat-chip" data-cat="${c}">${c}</span>`).join('');
-  catRow.addEventListener('click', (e) => {
-    const chip = e.target.closest('.cat-chip');
-    if(!chip) return;
-    currentCat = chip.dataset.cat;
-    catRow.querySelectorAll('.cat-chip').forEach(c => c.classList.toggle('active', c === chip));
-    render();
-  });
-})();
-
-function render(){
-  const q = searchInput.value.trim().toLowerCase();
-  let list = BLOG_POSTS.filter(p => !featured || p.slug !== featured.slug);
-  if(currentCat !== 'all') list = list.filter(p => p.category === currentCat);
-  if(q) list = list.filter(p => p.title.toLowerCase().includes(q) || p.excerpt.toLowerCase().includes(q) || p.category.toLowerCase().includes(q));
-  list = list.sort((a,b) => (b.published - a.published) || (new Date(b.date) - new Date(a.date)));
-
-  // Inject a staggered entrance delay into each card's own opening tag
-  // (--d custom property, read by the .blog-card CSS animation) so cards
-  // fade/slide in one after another instead of all popping in at once.
-  grid.innerHTML = list.map((p, i) => {
-    const html = blogCardHTML(p, '');
-    const delay = `style="--d:${Math.min(i, 8) * 70}ms"`;
-    return html.replace(/^(<a class="blog-card"|<div class="blog-card blog-card-disabled")/, `$1 ${delay}`);
-  }).join('');
-  noResults.style.display = list.length ? 'none' : 'block';
+function formatDate(d){
+return new Date(d + 'T00:00:00').toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
 }
-render();
 
-searchInput.addEventListener('input', render);
-document.getElementById('searchBtn').addEventListener('click', render);
-searchInput.addEventListener('keydown', (e) => { if(e.key === 'Enter') render(); });
+function thumbHTML(p, sizeClass){
+var img = p.image ? '<img src="' + p.image + '" alt="' + p.imageAlt + '" loading="lazy" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'flex\';">' : '';
+return '<div class="' + sizeClass + '">' + img + '<span class="fallback" style="display:' + (p.image ? 'none' : 'flex') + '">' + p.icon + '</span></div>';
+}
 
-document.getElementById('menuBtn')?.addEventListener('click', () => document.getElementById('mobileMenu')?.classList.toggle('open'));
-(function(){
-  const backBtn = document.getElementById('backToTop');
-  window.addEventListener('scroll', () => backBtn.classList.toggle('show', window.scrollY > 600));
-  backBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
-})();
-(function(){
-  const path = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-links a[href], .mobile-menu a[href]').forEach(link => {
-    const href = link.getAttribute('href').split('#')[0].split('?')[0] || 'index.html';
-    if(href === path) link.classList.add('active');
-  });
-})();
-(function(){
-  const wrap = document.getElementById('bgParticles');
-  for(let i=0;i<16;i++){
-    const p = document.createElement('div');
-    p.className = 'particle';
-    const size = 4 + Math.random()*10;
-    p.style.width = size+'px'; p.style.height = size+'px';
-    p.style.left = Math.random()*100+'vw';
-    p.style.setProperty('--drift', (Math.random()*80-40)+'px');
-    p.style.animationDuration = (14 + Math.random()*16)+'s';
-    p.style.animationDelay = (Math.random()*-20)+'s';
-    wrap.appendChild(p);
-  }
-})();
-document.querySelectorAll('section').forEach(sec => sec.classList.add('reveal'));
-const revealObs = new IntersectionObserver((entries) => {
-  entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('in-view'); revealObs.unobserve(entry.target); } });
-}, {threshold:0.1});
-document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+function renderFeatured(){
+var f = BLOG_POSTS.find(function(p){ return p.featured && p.published; }) || BLOG_POSTS.filter(function(p){ return p.published; }).sort(function(a,b){ return new Date(b.date) - new Date(a.date); })[0];
+if(!f){ document.getElementById('featuredSection').style.display = 'none'; return; }
+var box = document.getElementById('featuredCard');
+box.innerHTML = '<a class="featured-card" href="blog/' + f.slug + '.html">' +
+thumbHTML(f, 'featured-thumb') +
+'<div class="featured-body"><span class="fcat">' + f.category.toUpperCase() + '</span><h3>' + f.title + '</h3><p>' + f.excerpt + '</p><div class="featured-meta">' + f.author + ' · ' + formatDate(f.date) + ' · ' + f.readMins + ' min read</div></div>' +
+'</a>';
+}
+
+var activeCat = 'all';
+
+function renderCatRow(){
+var cats = ['all'].concat(Array.from(new Set(BLOG_POSTS.map(function(p){ return p.category; }))));
+var box = document.getElementById('catRow');
+box.innerHTML = cats.map(function(c){
+return '<span class="cat-chip' + (c === 'all' ? ' active' : '') + '" data-cat="' + c + '">' + (c === 'all' ? 'All' : c) + '</span>';
+}).join('');
+box.querySelectorAll('.cat-chip').forEach(function(chip){
+chip.addEventListener('click', function(){
+activeCat = chip.dataset.cat;
+box.querySelectorAll('.cat-chip').forEach(function(c){ c.classList.remove('active'); });
+chip.classList.add('active');
+renderGrid();
+});
+});
+}
+
+function renderGrid(){
+var featuredSlug = (BLOG_POSTS.find(function(p){ return p.featured && p.published; }) || {}).slug;
+var posts = BLOG_POSTS.filter(function(p){
+return p.published && p.slug !== featuredSlug && (activeCat === 'all' || p.category === activeCat);
+}).sort(function(a,b){ return new Date(b.date) - new Date(a.date); });
+var grid = document.getElementById('blogGrid');
+if(!posts.length){ grid.innerHTML = '<div class="no-results">No guides in this category yet.</div>'; return; }
+grid.innerHTML = posts.map(function(p){
+return '<a class="blog-card" href="blog/' + p.slug + '.html">' +
+thumbHTML(p, 'blog-thumb') +
+'<div class="blog-body"><span class="blog-cat">' + p.category.toUpperCase() + '</span><h4>' + p.title + '</h4><div class="blog-meta">' + p.readMins + ' min read · ' + formatDate(p.date) + '</div></div>' +
+'</a>';
+}).join('');
+}
+
+renderFeatured();
+renderCatRow();
+renderGrid();
+
+document.getElementById('menuBtn').addEventListener('click', function(){
+document.getElementById('mobileMenu').classList.toggle('open');
+});
+var backBtn = document.getElementById('backToTop');
+window.addEventListener('scroll', function(){ backBtn.classList.toggle('show', window.scrollY > 600); });
+backBtn.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
 </script>
 </body>
 </html>
