@@ -17,7 +17,11 @@ import json
 import glob
 import os
 
-REPO_ROOT = os.path.dirname(os.path.abspath(__file__))
+# GitHub Actions' checkout step sets the working directory to the repo root,
+# so os.getcwd() is the reliable way to find it (using the script's own file
+# location instead was the original bug -- that pointed at .github/scripts/
+# instead of the repo root).
+REPO_ROOT = os.getcwd()
 BLOG_DIR = os.path.join(REPO_ROOT, "blog")
 OUTPUT_PATH = os.path.join(REPO_ROOT, "assets", "js", "blog-data.js")
 
