@@ -1,0 +1,38 @@
+name: Update blog-data.js
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'blog/**.html'
+  workflow_dispatch: {}   # lets you trigger it manually from the Actions tab too
+
+permissions:
+  contents: write
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Regenerate assets/js/blog-data.js
+        run: python3 .github/scripts/generate_blog_data.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "flexora-blog-bot"
+          git config user.email "actions@github.com"
+          if ! git diff --quiet -- assets/js/blog-data.js; then
+            git add assets/js/blog-data.js
+            git commit -m "chore: auto-update blog-data.js [skip ci]"
+            git push
+          else
+            echo "No changes to blog-data.js — skipping commit."
+          fi
