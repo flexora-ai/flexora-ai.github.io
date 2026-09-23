@@ -232,6 +232,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-font-pairing-tools",
+    title: "AI Font Pairing Tools: Which Ones Are Worth Your Time in 2026",
+    excerpt: "How AI font pairing tools actually work, where they get it wrong, and how to pick a pairing that holds up across a real site instead of just looking good in a screenshot.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 7,
+    image: "assets/images/blog/ai-font-pairing-tools.webp",
+    imageAlt: "AI font pairing tools for web design",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-form-filling-automation-tools",
     title: "AI Form Filling Automation Tools for Small Business (2026)",
     excerpt: "The difference between browser autofill, AI form fillers, and full RPA — and which one actually fits a small business",
