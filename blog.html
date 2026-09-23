@@ -31,6 +31,8 @@ img,svg{display:block;}
 button{font-family:inherit; cursor:pointer;}
 :focus-visible{outline:2px solid var(--teal); outline-offset:3px;}
 
+#neuralCanvas{position:fixed; inset:0; z-index:0; pointer-events:none; opacity:0.28;}
+
 header{position:sticky; top:0; z-index:60; background:rgba(7,9,15,0.75); backdrop-filter:blur(12px); border-bottom:1px solid var(--line);}
 nav.wrap{height:76px; display:flex; align-items:center; justify-content:space-between;}
 .logo{display:flex; align-items:center; gap:10px; font-weight:700; font-size:18px;}
@@ -63,9 +65,10 @@ nav.wrap{height:76px; display:flex; align-items:center; justify-content:space-be
 .dot{width:6px; height:6px; border-radius:50%; background:var(--teal); animation:pulse 1.8s ease-in-out infinite;}
 @keyframes pulse{0%,100%{opacity:1;} 50%{opacity:0.3;}}
 .page-hero h1{font-size:34px; font-weight:800; margin:14px 0 12px;}
+.gradient-text{background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;}
 .page-hero p.lede{color:var(--ink-soft); font-size:15px; max-width:600px;}
 
-section{padding:40px 0;}
+section{padding:40px 0; position:relative; z-index:1;}
 .section-head{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:24px; flex-wrap:wrap; gap:12px;}
 .section-head h2{font-size:20px; font-weight:700;}
 .section-head p{color:var(--ink-soft); font-size:13.5px;}
@@ -73,14 +76,18 @@ section{padding:40px 0;}
 .controls-row{display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-bottom:16px;}
 .search-box{position:relative; flex:1; min-width:220px; max-width:420px;}
 .search-box svg{position:absolute; left:14px; top:50%; transform:translateY(-50%); width:16px; height:16px; color:var(--ink-soft); pointer-events:none;}
-.search-input{width:100%; font-family:'Sora'; font-size:14px; padding:12px 16px 12px 40px; border-radius:10px; background:var(--surface); border:1px solid var(--line); color:var(--ink); transition:border-color .15s, box-shadow .15s;}
+.search-input{width:100%; font-family:'Sora'; font-size:14px; padding:12px 40px 12px 40px; border-radius:10px; background:var(--surface); border:1px solid var(--line); color:var(--ink); transition:border-color .15s, box-shadow .15s;}
 .search-input::placeholder{color:var(--ink-soft);}
 .search-input:focus{outline:none; border-color:var(--teal); box-shadow:0 0 0 3px rgba(45,226,200,0.12);}
+.search-kbd{position:absolute; right:10px; top:50%; transform:translateY(-50%); font-family:'IBM Plex Mono'; font-size:10.5px; color:var(--ink-soft); border:1px solid var(--line); border-radius:5px; padding:2px 6px; pointer-events:none;}
+.search-kbd.hide{display:none;}
 .search-clear{position:absolute; right:10px; top:50%; transform:translateY(-50%); width:22px; height:22px; border-radius:50%; background:var(--surface-2); border:1px solid var(--line); color:var(--ink-soft); font-size:13px; line-height:1; display:none; align-items:center; justify-content:center;}
 .search-clear.show{display:flex;}
 .search-clear:hover{color:var(--teal); border-color:var(--teal);}
 .sort-select{font-family:'Sora'; font-size:13.5px; padding:11px 14px; border-radius:10px; background:var(--surface); border:1px solid var(--line); color:var(--ink); cursor:pointer;}
 .sort-select:focus{outline:none; border-color:var(--teal);}
+.surprise-btn{font-family:'Sora'; font-size:13.5px; font-weight:600; padding:11px 16px; border-radius:10px; background:var(--surface); border:1px solid var(--line); color:var(--ink-soft); display:flex; align-items:center; gap:6px; transition:all .15s;}
+.surprise-btn:hover{border-color:var(--teal); color:var(--teal); transform:translateY(-1px);}
 .results-count{font-size:12.5px; color:var(--ink-soft); margin-left:auto; white-space:nowrap;}
 
 .cat-row{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:8px;}
@@ -88,7 +95,7 @@ section{padding:40px 0;}
 .cat-chip:hover, .cat-chip.active{border-color:var(--teal); color:var(--teal);}
 .cat-chip .count{opacity:0.6; font-family:'IBM Plex Mono'; font-size:11px; margin-left:4px;}
 
-.featured-card{display:grid; grid-template-columns:1.1fr 1fr; gap:0; background:var(--surface); border:1px solid var(--line); border-radius:18px; overflow:hidden;}
+.featured-card{display:grid; grid-template-columns:1.1fr 1fr; gap:0; background:var(--surface); border:1px solid var(--line); border-radius:18px; overflow:hidden; position:relative;}
 @media(max-width:800px){.featured-card{grid-template-columns:1fr;}}
 .featured-thumb{height:100%; min-height:260px; position:relative; overflow:hidden; background:linear-gradient(135deg,var(--surface-2),var(--bg));}
 .featured-thumb img{width:100%; height:100%; object-fit:cover; position:absolute; inset:0; transition:transform .4s ease;}
@@ -103,13 +110,14 @@ section{padding:40px 0;}
 .blog-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
 @media(max-width:900px){.blog-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:640px){.blog-grid{grid-template-columns:1fr;}}
-.blog-card{display:block; border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--surface); transition:border-color .2s, transform .2s, box-shadow .2s; opacity:0; transform:translateY(14px);}
+.blog-card{display:block; border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--surface); transition:border-color .2s, transform .2s, box-shadow .2s; opacity:0; transform:translateY(14px); position:relative;}
 .blog-card.in-view{opacity:1; transform:translateY(0); transition:opacity .45s ease, transform .45s ease, border-color .2s, box-shadow .2s;}
 .blog-card:hover{border-color:var(--teal); transform:translateY(-4px); box-shadow:0 16px 32px -16px rgba(45,226,200,0.25);}
 .blog-thumb{height:150px; position:relative; overflow:hidden; background:linear-gradient(135deg,var(--surface-2),var(--bg));}
 .blog-thumb img{width:100%; height:100%; object-fit:cover; position:absolute; inset:0; transition:transform .4s ease;}
 .blog-card:hover .blog-thumb img{transform:scale(1.06);}
 .blog-thumb .fallback{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:34px;}
+.new-badge{position:absolute; top:10px; right:10px; z-index:2; font-family:'IBM Plex Mono'; font-size:10px; font-weight:700; letter-spacing:0.04em; color:#07090F; background:var(--teal); padding:4px 8px; border-radius:20px; box-shadow:0 4px 12px rgba(45,226,200,0.4);}
 .blog-body{padding:18px 20px;}
 .blog-cat{font-family:'IBM Plex Mono'; font-size:10.5px; color:var(--teal); margin-bottom:8px; display:block;}
 .blog-card h4{font-size:15px; margin-bottom:8px; line-height:1.35;}
@@ -122,7 +130,7 @@ section{padding:40px 0;}
 .newsletter-cta h3{font-size:17px; margin-bottom:6px;}
 .newsletter-cta p{color:var(--ink-soft); font-size:13.5px;}
 
-footer{border-top:1px solid var(--line); padding:56px 0 28px; margin-top:20px;}
+footer{border-top:1px solid var(--line); padding:56px 0 28px; margin-top:20px; position:relative; z-index:1;}
 .foot-top{display:grid; grid-template-columns:1.3fr repeat(4,1fr); gap:32px; margin-bottom:40px;}
 @media(max-width:860px){.foot-top{grid-template-columns:1fr 1fr;}}
 .foot-brand p{font-size:13px; color:var(--ink-soft); max-width:240px; margin:12px 0 18px;}
@@ -134,11 +142,33 @@ footer{border-top:1px solid var(--line); padding:56px 0 28px; margin-top:20px;}
 .social-row a{width:36px; height:36px; border-radius:9px; background:var(--surface-2); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--ink-soft);}
 .social-row a:hover{color:var(--teal); border-color:var(--teal);}
 .social-row svg{width:16px; height:16px;}
-.back-to-top{position:fixed; bottom:24px; right:24px; width:44px; height:44px; border-radius:50%; background:var(--surface); border:1px solid var(--line); color:var(--teal); display:flex; align-items:center; justify-content:center; cursor:pointer; opacity:0; pointer-events:none; transition:all .2s; font-weight:700;}
+
+.back-to-top{position:fixed; bottom:24px; right:24px; width:44px; height:44px; border-radius:50%; background:var(--surface); border:1px solid var(--line); color:var(--teal); display:flex; align-items:center; justify-content:center; cursor:pointer; opacity:0; pointer-events:none; transition:all .2s; font-weight:700; z-index:70;}
 .back-to-top.show{opacity:1; pointer-events:auto;}
+
+.music-player{position:fixed; bottom:24px; right:80px; z-index:70; background:var(--surface); border:1px solid var(--line); border-radius:50px; padding:8px 16px; display:flex; align-items:center; gap:10px; box-shadow:0 10px 30px -10px rgba(0,0,0,0.5); transition:all 0.3s;}
+.music-player:hover{border-color:var(--teal); transform:translateY(-2px);}
+.music-btn{width:36px; height:36px; border-radius:50%; background:var(--gradient); border:none; color:#07090F; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:all 0.2s; font-size:16px; font-weight:700;}
+.music-btn:hover{transform:scale(1.1); box-shadow:0 0 20px rgba(45,226,200,0.5);}
+.music-btn.playing{animation:musicPulse 1.5s ease-in-out infinite;}
+@keyframes musicPulse{0%,100%{box-shadow:0 0 0 0 rgba(45,226,200,0.5);} 50%{box-shadow:0 0 0 10px rgba(45,226,200,0);}}
+.music-info{font-size:12px; color:var(--ink-soft); line-height:1.2;}
+.music-info b{color:var(--teal); display:block; font-size:13px; font-weight:600;}
+.music-visualizer{display:flex; gap:2px; align-items:end; height:20px; margin-left:4px;}
+.music-bar{width:3px; background:var(--teal); border-radius:2px; animation:musicBar 0.8s ease-in-out infinite;}
+.music-bar:nth-child(1){animation-delay:0s; height:60%;}
+.music-bar:nth-child(2){animation-delay:0.1s; height:80%;}
+.music-bar:nth-child(3){animation-delay:0.2s; height:40%;}
+.music-bar:nth-child(4){animation-delay:0.3s; height:90%;}
+@keyframes musicBar{0%,100%{transform:scaleY(0.3);} 50%{transform:scaleY(1);}}
+.music-player.paused .music-bar{animation-play-state:paused;}
+@media(max-width:768px){.music-player{right:24px; bottom:80px;}}
+@media(prefers-reduced-motion: reduce){*{animation:none !important; transition:none !important;}}
 </style>
 </head>
 <body>
+
+<canvas id="neuralCanvas"></canvas>
 
 <header>
 <nav class="wrap">
@@ -164,7 +194,7 @@ footer{border-top:1px solid var(--line); padding:56px 0 28px; margin-top:20px;}
 <div class="glow glow-2"></div>
 <div class="wrap">
 <span class="eyebrow"><span class="dot"></span><span id="guideCountBadge">Guides</span></span>
-<h1>The Flexora.Ai Blog</h1>
+<h1>The <span class="gradient-text">Flexora.Ai</span> Blog</h1>
 <p class="lede">Practical guides on choosing, using, and automating with AI tools — for small business owners, solopreneurs, and startup founders.</p>
 </div>
 </div>
@@ -184,6 +214,7 @@ footer{border-top:1px solid var(--line); padding:56px 0 28px; margin-top:20px;}
 <div class="search-box">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
 <input type="text" id="blogSearch" class="search-input" placeholder="Search guides by title or topic..." autocomplete="off">
+<span class="search-kbd" id="searchKbd">/</span>
 <button class="search-clear" id="searchClear" aria-label="Clear search">✕</button>
 </div>
 <select class="sort-select" id="sortSelect">
@@ -192,6 +223,7 @@ footer{border-top:1px solid var(--line); padding:56px 0 28px; margin-top:20px;}
 <option value="quickest">Quickest read</option>
 <option value="az">Title A–Z</option>
 </select>
+<button class="surprise-btn" id="surpriseBtn">🎲 Surprise me</button>
 <span class="results-count" id="resultsCount"></span>
 </div>
 
@@ -235,15 +267,36 @@ footer{border-top:1px solid var(--line); padding:56px 0 28px; margin-top:20px;}
 
 <button aria-label="Back to top" class="back-to-top" id="backToTop">↑</button>
 
+<div class="music-player paused" id="musicPlayer">
+<button class="music-btn" id="musicBtn" aria-label="Play background music">▶</button>
+<div class="music-info">
+<b>Flexora FM</b>
+<span>Focus Mode</span>
+</div>
+<div class="music-visualizer">
+<div class="music-bar"></div>
+<div class="music-bar"></div>
+<div class="music-bar"></div>
+<div class="music-bar"></div>
+</div>
+</div>
+
 <script src="assets/js/blog-data.js"></script>
 <script>
 function formatDate(d){
 return new Date(d + 'T00:00:00').toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
 }
 
+function isNew(dateStr){
+var posted = new Date(dateStr + 'T00:00:00').getTime();
+var days = (Date.now() - posted) / 86400000;
+return days >= 0 && days <= 7;
+}
+
 function thumbHTML(p, sizeClass){
 var img = p.image ? '<img src="' + p.image + '" alt="' + p.imageAlt + '" loading="lazy" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'flex\';">' : '';
-return '<div class="' + sizeClass + '">' + img + '<span class="fallback" style="display:' + (p.image ? 'none' : 'flex') + '">' + p.icon + '</span></div>';
+var badge = isNew(p.date) ? '<span class="new-badge">NEW</span>' : '';
+return badge + '<div class="' + sizeClass + '">' + img + '<span class="fallback" style="display:' + (p.image ? 'none' : 'flex') + '">' + p.icon + '</span></div>';
 }
 
 function renderFeatured(){
@@ -260,17 +313,15 @@ var activeCat = 'all';
 var searchQuery = '';
 var sortMode = 'newest';
 
-function guideCount(){
-return BLOG_POSTS.filter(function(p){ return p.published; }).length;
-}
+function publishedPosts(){ return BLOG_POSTS.filter(function(p){ return p.published; }); }
 
 function updateGuideCountBadge(){
 var el = document.getElementById('guideCountBadge');
-if(el) el.textContent = guideCount() + ' Guides';
+if(el) el.textContent = publishedPosts().length + ' Guides';
 }
 
 function renderCatRow(){
-var published = BLOG_POSTS.filter(function(p){ return p.published; });
+var published = publishedPosts();
 var counts = {};
 published.forEach(function(p){ counts[p.category] = (counts[p.category] || 0) + 1; });
 var cats = ['all'].concat(Array.from(new Set(published.map(function(p){ return p.category; }))));
@@ -292,15 +343,10 @@ renderGrid();
 
 function sortPosts(posts){
 var sorted = posts.slice();
-if(sortMode === 'newest'){
-sorted.sort(function(a,b){ return new Date(b.date) - new Date(a.date); });
-} else if(sortMode === 'oldest'){
-sorted.sort(function(a,b){ return new Date(a.date) - new Date(b.date); });
-} else if(sortMode === 'quickest'){
-sorted.sort(function(a,b){ return a.readMins - b.readMins; });
-} else if(sortMode === 'az'){
-sorted.sort(function(a,b){ return a.title.localeCompare(b.title); });
-}
+if(sortMode === 'newest'){ sorted.sort(function(a,b){ return new Date(b.date) - new Date(a.date); }); }
+else if(sortMode === 'oldest'){ sorted.sort(function(a,b){ return new Date(a.date) - new Date(b.date); }); }
+else if(sortMode === 'quickest'){ sorted.sort(function(a,b){ return a.readMins - b.readMins; }); }
+else if(sortMode === 'az'){ sorted.sort(function(a,b){ return a.title.localeCompare(b.title); }); }
 return sorted;
 }
 
@@ -317,19 +363,22 @@ obs.unobserve(entry.target);
 cards.forEach(function(el){ obs.observe(el); });
 }
 
-function renderGrid(){
+function visiblePosts(){
 var featuredSlug = (BLOG_POSTS.find(function(p){ return p.featured && p.published; }) || {}).slug;
 var q = searchQuery;
-var posts = BLOG_POSTS.filter(function(p){
+var posts = publishedPosts().filter(function(p){
 var matchesCat = activeCat === 'all' || p.category === activeCat;
 var matchesSearch = !q ||
   p.title.toLowerCase().indexOf(q) !== -1 ||
   p.excerpt.toLowerCase().indexOf(q) !== -1 ||
   p.category.toLowerCase().indexOf(q) !== -1;
-return p.published && p.slug !== featuredSlug && matchesCat && matchesSearch;
+return p.slug !== featuredSlug && matchesCat && matchesSearch;
 });
-posts = sortPosts(posts);
+return sortPosts(posts);
+}
 
+function renderGrid(){
+var posts = visiblePosts();
 var grid = document.getElementById('blogGrid');
 var countEl = document.getElementById('resultsCount');
 if(countEl) countEl.textContent = posts.length + (posts.length === 1 ? ' guide' : ' guides');
@@ -342,6 +391,7 @@ clearBtn.addEventListener('click', function(){
 document.getElementById('blogSearch').value = '';
 searchQuery = '';
 document.getElementById('searchClear').classList.remove('show');
+document.getElementById('searchKbd').classList.remove('hide');
 activeCat = 'all';
 renderCatRow();
 renderGrid();
@@ -366,22 +416,42 @@ renderGrid();
 
 var searchInput = document.getElementById('blogSearch');
 var searchClear = document.getElementById('searchClear');
+var searchKbd = document.getElementById('searchKbd');
 searchInput.addEventListener('input', function(e){
 searchQuery = e.target.value.trim().toLowerCase();
-searchClear.classList.toggle('show', searchQuery.length > 0);
+var has = searchQuery.length > 0;
+searchClear.classList.toggle('show', has);
+searchKbd.classList.toggle('hide', has);
 renderGrid();
 });
+searchInput.addEventListener('focus', function(){ searchKbd.classList.add('hide'); });
+searchInput.addEventListener('blur', function(){ if(!searchQuery) searchKbd.classList.remove('hide'); });
 searchClear.addEventListener('click', function(){
 searchInput.value = '';
 searchQuery = '';
 searchClear.classList.remove('show');
+searchKbd.classList.remove('hide');
 searchInput.focus();
 renderGrid();
+});
+
+document.addEventListener('keydown', function(e){
+if(e.key === '/' && document.activeElement !== searchInput){
+e.preventDefault();
+searchInput.focus();
+}
 });
 
 document.getElementById('sortSelect').addEventListener('change', function(e){
 sortMode = e.target.value;
 renderGrid();
+});
+
+document.getElementById('surpriseBtn').addEventListener('click', function(){
+var pool = publishedPosts();
+if(!pool.length) return;
+var pick = pool[Math.floor(Math.random() * pool.length)];
+window.location.href = 'blog/' + pick.slug + '.html';
 });
 
 document.getElementById('menuBtn').addEventListener('click', function(){
@@ -390,6 +460,63 @@ document.getElementById('mobileMenu').classList.toggle('open');
 var backBtn = document.getElementById('backToTop');
 window.addEventListener('scroll', function(){ backBtn.classList.toggle('show', window.scrollY > 600); });
 backBtn.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+
+// Neural network canvas (matches individual post pages)
+(function(){
+var canvas = document.getElementById('neuralCanvas');
+if(!canvas) return;
+var ctx = canvas.getContext('2d');
+var width, height, nodes = [], mouse = {x:0, y:0};
+function resize(){ width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; }
+resize();
+window.addEventListener('resize', resize);
+var nodeCount = 50;
+for(var i = 0; i < nodeCount; i++){
+nodes.push({ x: Math.random() * width, y: Math.random() * height, vx: (Math.random() - 0.5) * 0.35, vy: (Math.random() - 0.5) * 0.35, radius: 1.6 + Math.random() * 1.8 });
+}
+document.addEventListener('mousemove', function(e){ mouse.x = e.clientX; mouse.y = e.clientY; });
+function animate(){
+ctx.clearRect(0, 0, width, height);
+nodes.forEach(function(node){
+node.x += node.vx; node.y += node.vy;
+if(node.x < 0 || node.x > width) node.vx *= -1;
+if(node.y < 0 || node.y > height) node.vy *= -1;
+var dx = mouse.x - node.x, dy = mouse.y - node.y, dist = Math.sqrt(dx*dx + dy*dy);
+if(dist < 150){ node.x -= dx * 0.008; node.y -= dy * 0.008; }
+ctx.beginPath(); ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+ctx.fillStyle = 'rgba(45, 226, 200, 0.5)'; ctx.fill();
+});
+for(var i = 0; i < nodes.length; i++){
+for(var j = i + 1; j < nodes.length; j++){
+var dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y, dist = Math.sqrt(dx*dx + dy*dy);
+if(dist < 130){
+ctx.beginPath(); ctx.moveTo(nodes[i].x, nodes[i].y); ctx.lineTo(nodes[j].x, nodes[j].y);
+ctx.strokeStyle = 'rgba(45, 226, 200, ' + (0.2 * (1 - dist / 130)) + ')'; ctx.lineWidth = 0.5; ctx.stroke();
+}
+}
+}
+requestAnimationFrame(animate);
+}
+animate();
+})();
+
+// Background music player (same track + localStorage key as individual post pages,
+// so play/pause state persists as visitors move between blog.html and posts)
+(function(){
+var player = document.getElementById('musicPlayer'), btn = document.getElementById('musicBtn');
+if(!player || !btn) return;
+var STORAGE_KEY = 'flexora_music_on', audio = document.createElement('audio');
+audio.src = 'https://flexora-ai.github.io/assets/audio/pulse-vector.mp3'; audio.loop = true; audio.preload = 'none';
+document.body.appendChild(audio);
+function setUI(playing){
+if(playing){ player.classList.remove('paused'); btn.classList.add('playing'); btn.innerHTML = '⏸'; btn.setAttribute('aria-label', 'Pause background music'); }
+else { player.classList.add('paused'); btn.classList.remove('playing'); btn.innerHTML = '▶'; btn.setAttribute('aria-label', 'Play background music'); }
+}
+function play(){ audio.play().then(function(){ localStorage.setItem(STORAGE_KEY,'1'); setUI(true); }).catch(function(){}); }
+function pause(){ audio.pause(); localStorage.setItem(STORAGE_KEY,'0'); setUI(false); }
+btn.addEventListener('click', function(){ audio.paused ? play() : pause(); });
+if(localStorage.getItem(STORAGE_KEY) === '1'){ play(); } else { setUI(false); }
+})();
 </script>
 </body>
 </html>
