@@ -19,6 +19,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 :root{
 --bg:#07090F; --surface:#0F131D; --surface-2:#161B28; --line:#232838;
 --teal:#2DE2C8; --blue:#4C7BFF; --ink:#F2F4FA; --ink-soft:#8A90A6;
+--gradient:linear-gradient(135deg,#2DE2C8 0%,#4C7BFF 100%);
 }
 *{box-sizing:border-box; margin:0; padding:0;}
 html{scroll-behavior:smooth;}
@@ -52,7 +53,12 @@ nav.wrap{height:76px; display:flex; align-items:center; justify-content:space-be
 .mobile-menu.open{display:flex;}
 .mobile-menu a{padding:10px 0; color:var(--ink-soft); font-size:14.5px; border-bottom:1px solid var(--line);}
 
-.page-hero{padding:64px 0 20px;}
+.page-hero{position:relative; overflow:hidden; padding:64px 0 20px;}
+.glow{position:absolute; width:480px; height:480px; border-radius:50%; filter:blur(130px); opacity:0.22; z-index:0; animation:glowBreathe 9s ease-in-out infinite; pointer-events:none;}
+.glow-1{background:var(--teal); top:-220px; left:-160px;}
+.glow-2{background:var(--blue); top:-160px; right:-180px; animation-delay:-4.5s;}
+@keyframes glowBreathe{0%,100%{opacity:0.18; transform:scale(1);} 50%{opacity:0.32; transform:scale(1.08);}}
+.page-hero .wrap{position:relative; z-index:1;}
 .eyebrow{display:inline-flex; align-items:center; gap:8px; font-size:12.5px; color:var(--teal); border:1px solid rgba(45,226,200,0.3); background:rgba(45,226,200,0.08); padding:6px 14px; border-radius:20px;}
 .dot{width:6px; height:6px; border-radius:50%; background:var(--teal); animation:pulse 1.8s ease-in-out infinite;}
 @keyframes pulse{0%,100%{opacity:1;} 50%{opacity:0.3;}}
@@ -64,14 +70,29 @@ section{padding:40px 0;}
 .section-head h2{font-size:20px; font-weight:700;}
 .section-head p{color:var(--ink-soft); font-size:13.5px;}
 
+.controls-row{display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-bottom:16px;}
+.search-box{position:relative; flex:1; min-width:220px; max-width:420px;}
+.search-box svg{position:absolute; left:14px; top:50%; transform:translateY(-50%); width:16px; height:16px; color:var(--ink-soft); pointer-events:none;}
+.search-input{width:100%; font-family:'Sora'; font-size:14px; padding:12px 16px 12px 40px; border-radius:10px; background:var(--surface); border:1px solid var(--line); color:var(--ink); transition:border-color .15s, box-shadow .15s;}
+.search-input::placeholder{color:var(--ink-soft);}
+.search-input:focus{outline:none; border-color:var(--teal); box-shadow:0 0 0 3px rgba(45,226,200,0.12);}
+.search-clear{position:absolute; right:10px; top:50%; transform:translateY(-50%); width:22px; height:22px; border-radius:50%; background:var(--surface-2); border:1px solid var(--line); color:var(--ink-soft); font-size:13px; line-height:1; display:none; align-items:center; justify-content:center;}
+.search-clear.show{display:flex;}
+.search-clear:hover{color:var(--teal); border-color:var(--teal);}
+.sort-select{font-family:'Sora'; font-size:13.5px; padding:11px 14px; border-radius:10px; background:var(--surface); border:1px solid var(--line); color:var(--ink); cursor:pointer;}
+.sort-select:focus{outline:none; border-color:var(--teal);}
+.results-count{font-size:12.5px; color:var(--ink-soft); margin-left:auto; white-space:nowrap;}
+
 .cat-row{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:8px;}
 .cat-chip{font-size:13px; padding:9px 16px; border-radius:8px; background:var(--surface); border:1px solid var(--line); color:var(--ink-soft); cursor:pointer; transition:all .15s;}
 .cat-chip:hover, .cat-chip.active{border-color:var(--teal); color:var(--teal);}
+.cat-chip .count{opacity:0.6; font-family:'IBM Plex Mono'; font-size:11px; margin-left:4px;}
 
 .featured-card{display:grid; grid-template-columns:1.1fr 1fr; gap:0; background:var(--surface); border:1px solid var(--line); border-radius:18px; overflow:hidden;}
 @media(max-width:800px){.featured-card{grid-template-columns:1fr;}}
 .featured-thumb{height:100%; min-height:260px; position:relative; overflow:hidden; background:linear-gradient(135deg,var(--surface-2),var(--bg));}
-.featured-thumb img{width:100%; height:100%; object-fit:cover; position:absolute; inset:0;}
+.featured-thumb img{width:100%; height:100%; object-fit:cover; position:absolute; inset:0; transition:transform .4s ease;}
+.featured-card:hover .featured-thumb img{transform:scale(1.04);}
 .featured-thumb .fallback{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:56px;}
 .featured-body{padding:32px; display:flex; flex-direction:column; justify-content:center;}
 .featured-body .fcat{font-family:'IBM Plex Mono'; font-size:11px; color:var(--teal); margin-bottom:12px; letter-spacing:0.04em;}
@@ -82,16 +103,24 @@ section{padding:40px 0;}
 .blog-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
 @media(max-width:900px){.blog-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:640px){.blog-grid{grid-template-columns:1fr;}}
-.blog-card{display:block; border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--surface); transition:border-color .2s, transform .2s;}
-.blog-card:hover{border-color:var(--teal); transform:translateY(-4px);}
+.blog-card{display:block; border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--surface); transition:border-color .2s, transform .2s, box-shadow .2s; opacity:0; transform:translateY(14px);}
+.blog-card.in-view{opacity:1; transform:translateY(0); transition:opacity .45s ease, transform .45s ease, border-color .2s, box-shadow .2s;}
+.blog-card:hover{border-color:var(--teal); transform:translateY(-4px); box-shadow:0 16px 32px -16px rgba(45,226,200,0.25);}
 .blog-thumb{height:150px; position:relative; overflow:hidden; background:linear-gradient(135deg,var(--surface-2),var(--bg));}
-.blog-thumb img{width:100%; height:100%; object-fit:cover; position:absolute; inset:0;}
+.blog-thumb img{width:100%; height:100%; object-fit:cover; position:absolute; inset:0; transition:transform .4s ease;}
+.blog-card:hover .blog-thumb img{transform:scale(1.06);}
 .blog-thumb .fallback{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:34px;}
 .blog-body{padding:18px 20px;}
 .blog-cat{font-family:'IBM Plex Mono'; font-size:10.5px; color:var(--teal); margin-bottom:8px; display:block;}
 .blog-card h4{font-size:15px; margin-bottom:8px; line-height:1.35;}
 .blog-meta{font-size:12px; color:var(--ink-soft);}
-.no-results{grid-column:1/-1; text-align:center; padding:40px; color:var(--ink-soft); font-size:14px;}
+.no-results{grid-column:1/-1; text-align:center; padding:48px 20px; color:var(--ink-soft); font-size:14px;}
+.no-results button{margin-top:14px; font-size:13px; color:var(--teal); background:none; border:1px solid var(--teal); padding:8px 16px; border-radius:8px;}
+.no-results button:hover{background:rgba(45,226,200,0.08);}
+
+.newsletter-cta{margin-top:48px; background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:32px; display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap;}
+.newsletter-cta h3{font-size:17px; margin-bottom:6px;}
+.newsletter-cta p{color:var(--ink-soft); font-size:13.5px;}
 
 footer{border-top:1px solid var(--line); padding:56px 0 28px; margin-top:20px;}
 .foot-top{display:grid; grid-template-columns:1.3fr repeat(4,1fr); gap:32px; margin-bottom:40px;}
@@ -130,11 +159,15 @@ footer{border-top:1px solid var(--line); padding:56px 0 28px; margin-top:20px;}
 </div>
 </header>
 
-<div class="page-hero"><div class="wrap">
-<span class="eyebrow"><span class="dot"></span>Guides</span>
+<div class="page-hero">
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+<div class="wrap">
+<span class="eyebrow"><span class="dot"></span><span id="guideCountBadge">Guides</span></span>
 <h1>The Flexora.Ai Blog</h1>
 <p class="lede">Practical guides on choosing, using, and automating with AI tools — for small business owners, solopreneurs, and startup founders.</p>
-</div></div>
+</div>
+</div>
 
 <section id="featuredSection">
 <div class="wrap">
@@ -146,8 +179,32 @@ footer{border-top:1px solid var(--line); padding:56px 0 28px; margin-top:20px;}
 <section>
 <div class="wrap">
 <div class="section-head"><h2>All guides</h2></div>
+
+<div class="controls-row">
+<div class="search-box">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+<input type="text" id="blogSearch" class="search-input" placeholder="Search guides by title or topic..." autocomplete="off">
+<button class="search-clear" id="searchClear" aria-label="Clear search">✕</button>
+</div>
+<select class="sort-select" id="sortSelect">
+<option value="newest">Newest first</option>
+<option value="oldest">Oldest first</option>
+<option value="quickest">Quickest read</option>
+<option value="az">Title A–Z</option>
+</select>
+<span class="results-count" id="resultsCount"></span>
+</div>
+
 <div class="cat-row" id="catRow"></div>
 <div class="blog-grid" id="blogGrid" style="margin-top:24px;"></div>
+
+<div class="newsletter-cta">
+<div>
+<h3>Get new guides in your inbox</h3>
+<p>One email whenever we publish a new AI tool breakdown. No spam, unsubscribe anytime.</p>
+</div>
+<a class="btn btn-primary" href="submit.html">Notify me</a>
+</div>
 </div>
 </section>
 
@@ -200,12 +257,28 @@ thumbHTML(f, 'featured-thumb') +
 }
 
 var activeCat = 'all';
+var searchQuery = '';
+var sortMode = 'newest';
+
+function guideCount(){
+return BLOG_POSTS.filter(function(p){ return p.published; }).length;
+}
+
+function updateGuideCountBadge(){
+var el = document.getElementById('guideCountBadge');
+if(el) el.textContent = guideCount() + ' Guides';
+}
 
 function renderCatRow(){
-var cats = ['all'].concat(Array.from(new Set(BLOG_POSTS.map(function(p){ return p.category; }))));
+var published = BLOG_POSTS.filter(function(p){ return p.published; });
+var counts = {};
+published.forEach(function(p){ counts[p.category] = (counts[p.category] || 0) + 1; });
+var cats = ['all'].concat(Array.from(new Set(published.map(function(p){ return p.category; }))));
 var box = document.getElementById('catRow');
 box.innerHTML = cats.map(function(c){
-return '<span class="cat-chip' + (c === 'all' ? ' active' : '') + '" data-cat="' + c + '">' + (c === 'all' ? 'All' : c) + '</span>';
+var label = c === 'all' ? 'All' : c;
+var count = c === 'all' ? published.length : counts[c];
+return '<span class="cat-chip' + (c === activeCat ? ' active' : '') + '" data-cat="' + c + '">' + label + '<span class="count">' + count + '</span></span>';
 }).join('');
 box.querySelectorAll('.cat-chip').forEach(function(chip){
 chip.addEventListener('click', function(){
@@ -217,24 +290,99 @@ renderGrid();
 });
 }
 
+function sortPosts(posts){
+var sorted = posts.slice();
+if(sortMode === 'newest'){
+sorted.sort(function(a,b){ return new Date(b.date) - new Date(a.date); });
+} else if(sortMode === 'oldest'){
+sorted.sort(function(a,b){ return new Date(a.date) - new Date(b.date); });
+} else if(sortMode === 'quickest'){
+sorted.sort(function(a,b){ return a.readMins - b.readMins; });
+} else if(sortMode === 'az'){
+sorted.sort(function(a,b){ return a.title.localeCompare(b.title); });
+}
+return sorted;
+}
+
+function revealCards(){
+var cards = document.querySelectorAll('.blog-card:not(.in-view)');
+var obs = new IntersectionObserver(function(entries){
+entries.forEach(function(entry, idx){
+if(entry.isIntersecting){
+setTimeout(function(){ entry.target.classList.add('in-view'); }, (idx % 6) * 50);
+obs.unobserve(entry.target);
+}
+});
+}, {threshold: 0.1});
+cards.forEach(function(el){ obs.observe(el); });
+}
+
 function renderGrid(){
 var featuredSlug = (BLOG_POSTS.find(function(p){ return p.featured && p.published; }) || {}).slug;
+var q = searchQuery;
 var posts = BLOG_POSTS.filter(function(p){
-return p.published && p.slug !== featuredSlug && (activeCat === 'all' || p.category === activeCat);
-}).sort(function(a,b){ return new Date(b.date) - new Date(a.date); });
+var matchesCat = activeCat === 'all' || p.category === activeCat;
+var matchesSearch = !q ||
+  p.title.toLowerCase().indexOf(q) !== -1 ||
+  p.excerpt.toLowerCase().indexOf(q) !== -1 ||
+  p.category.toLowerCase().indexOf(q) !== -1;
+return p.published && p.slug !== featuredSlug && matchesCat && matchesSearch;
+});
+posts = sortPosts(posts);
+
 var grid = document.getElementById('blogGrid');
-if(!posts.length){ grid.innerHTML = '<div class="no-results">No guides in this category yet.</div>'; return; }
+var countEl = document.getElementById('resultsCount');
+if(countEl) countEl.textContent = posts.length + (posts.length === 1 ? ' guide' : ' guides');
+
+if(!posts.length){
+grid.innerHTML = '<div class="no-results">No guides match your search.<br><button id="clearFromEmpty">Clear filters</button></div>';
+var clearBtn = document.getElementById('clearFromEmpty');
+if(clearBtn){
+clearBtn.addEventListener('click', function(){
+document.getElementById('blogSearch').value = '';
+searchQuery = '';
+document.getElementById('searchClear').classList.remove('show');
+activeCat = 'all';
+renderCatRow();
+renderGrid();
+});
+}
+return;
+}
+
 grid.innerHTML = posts.map(function(p){
 return '<a class="blog-card" href="blog/' + p.slug + '.html">' +
 thumbHTML(p, 'blog-thumb') +
 '<div class="blog-body"><span class="blog-cat">' + p.category.toUpperCase() + '</span><h4>' + p.title + '</h4><div class="blog-meta">' + p.readMins + ' min read · ' + formatDate(p.date) + '</div></div>' +
 '</a>';
 }).join('');
+revealCards();
 }
 
 renderFeatured();
+updateGuideCountBadge();
 renderCatRow();
 renderGrid();
+
+var searchInput = document.getElementById('blogSearch');
+var searchClear = document.getElementById('searchClear');
+searchInput.addEventListener('input', function(e){
+searchQuery = e.target.value.trim().toLowerCase();
+searchClear.classList.toggle('show', searchQuery.length > 0);
+renderGrid();
+});
+searchClear.addEventListener('click', function(){
+searchInput.value = '';
+searchQuery = '';
+searchClear.classList.remove('show');
+searchInput.focus();
+renderGrid();
+});
+
+document.getElementById('sortSelect').addEventListener('change', function(e){
+sortMode = e.target.value;
+renderGrid();
+});
 
 document.getElementById('menuBtn').addEventListener('click', function(){
 document.getElementById('mobileMenu').classList.toggle('open');
