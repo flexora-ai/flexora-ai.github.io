@@ -414,6 +414,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-slogan-tagline-generator-tools",
+    title: "AI Slogan & Tagline Generator Tools: 2026 Comparison Guide",
+    excerpt: "Compare AI slogan and tagline generator tools for 2026: how they work, where they go generic, and how to pick a line that actually sounds like your brand.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 7,
+    image: "assets/images/blog/ai-slogan-tagline-generator-tools.webp",
+    imageAlt: "AI slogan and tagline generator tools comparison",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-social-media-tools-for-small-business",
     title: "AI Social Media Tools for Small Business (What",
     excerpt: "Which AI social media tools actually help a small business post consistently and perform better, and which features are just noise.",
