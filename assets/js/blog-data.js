@@ -540,6 +540,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tools-for-newsletter-design",
+    title: "AI Tools for Newsletter Design: 2026 Comparison Guide",
+    excerpt: "Compare AI tools for newsletter design in 2026: how they work, where they hurt deliverability, and how to pick a layout readers actually open.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 7,
+    image: "assets/images/blog/ai-tools-for-newsletter-design.webp",
+    imageAlt: "AI tools for newsletter design comparison",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tools-for-photo-to-art",
     title: "AI Tools for Photo-to-Art Conversion: 2026 Comparison Guide",
     excerpt: "Compare AI photo-to-art tools for 2026: how they work, where they lose likeness, and how to pick a style that still looks like the original photo.",
