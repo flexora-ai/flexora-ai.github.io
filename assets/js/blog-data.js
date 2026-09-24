@@ -148,6 +148,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-color-palette-generator-tools",
+    title: "AI Color Palette Generator Tools: 2026 Comparison Guide",
+    excerpt: "Compare AI color palette generator tools for 2026: how they work, where contrast and accessibility break, and how to pick a palette that holds up.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 7,
+    image: "assets/images/blog/ai-color-palette-generator-tools.webp",
+    imageAlt: "AI color palette generator tools comparison",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-content-repurposing-tools-for-small-business",
     title: "AI Content Repurposing Tools for Small Business (2026)",
     excerpt: "Turn one blog post or video into a week of content — the AI repurposing workflow that doesn",
