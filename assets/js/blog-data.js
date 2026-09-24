@@ -582,6 +582,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tools-for-portfolio-website-generation",
+    title: "AI Tools for Portfolio Website Generation: 2026 Guide",
+    excerpt: "Compare AI portfolio website generators for 2026: how they work, where they look templated, and how to build a site that stands out.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 7,
+    image: "assets/images/blog/ai-tools-for-portfolio-website-generation.webp",
+    imageAlt: "AI tools for portfolio website generation comparison",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tools-for-saas-startups",
     title: "AI Tools for Early-Stage and Bootstrapped Startups",
     excerpt: "AI tools that actually fit a small, early-stage or bootstrapped team — not enterprise-scale platforms built for funded teams with a dedicated ops person.",
