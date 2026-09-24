@@ -484,6 +484,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tools-for-background-removal",
+    title: "AI Tools for Background Removal: 2026 Comparison Guide",
+    excerpt: "Compare AI background removal tools for 2026: how they work, where edges go wrong, and how to pick a cutout clean enough to actually use.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 7,
+    image: "assets/images/blog/ai-tools-for-background-removal.webp",
+    imageAlt: "AI tools for background removal comparison",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tools-for-blog-seo-images",
     title: "AI Tools for Blog SEO Images: 2026 Comparison Guide",
     excerpt: "Compare AI tools for blog SEO images in 2026: how they work, where they hurt page speed, and how to pick images that actually help you rank.",
