@@ -1,127 +1,654 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-56W23QBB');</script>
+<!-- End Google Tag Manager -->
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Compare AI Tools Side by Side — Flexora.Ai</title>
-<meta name="description" content="Compare any two AI tools side by side: pricing, free plans, ease of use, features, pros and cons, plus a quick verdict. New tools are added automatically."/>
-<link rel="icon" type="image/png" href="assets/img/logo.png"/>
-<meta property="og:title" content="Compare AI Tools — Flexora.Ai"/>
-<meta property="og:description" content="Side-by-side AI tool comparison with pricing, features and a quick verdict."/>
+<meta name="description" content="Pick up to three AI tools and compare pricing, free plans, ease of use and best-fit tasks side by side. Every tool in the Flexora.Ai directory is included automatically."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://flexora-ai.github.io/compare.html"/>
+<meta property="og:title" content="Compare AI Tools Side by Side — Flexora.Ai"/>
+<meta property="og:description" content="Pick up to three AI tools and compare pricing, free plans, ease of use and best-fit tasks."/>
 <meta property="og:type" content="website"/>
+<meta property="og:url" content="https://flexora-ai.github.io/compare.html"/>
+<meta property="og:image" content="https://flexora-ai.github.io/assets/images/og-cover.jpg"/>
 <meta name="twitter:card" content="summary_large_image"/>
+<link rel="icon" type="image/png" href="assets/images/logo.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="assets/css/style.css"/>
-<link rel="stylesheet" href="assets/css/compare.css"/>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-56W23QBB');</script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#07090F;--surface:#0F131D;--surface-2:#161B28;--line:#232838;--teal:#2DE2C8;--blue:#4C7BFF;--amber:#f59e0b;--ink:#F2F4FA;--ink-soft:#8A90A6;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;scroll-padding-top:90px;}
+body{background:var(--bg);color:var(--ink);font-family:'Sora',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;}
+img,svg{display:block;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px;}
+.mono{font-family:'IBM Plex Mono',monospace;}
+
+/* progress + background */
+.scroll-progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--teal),var(--blue));z-index:90;}
+.bg-particles{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.particle{position:absolute;bottom:-40px;border-radius:50%;background:radial-gradient(circle,rgba(45,226,200,.55),rgba(76,123,255,.05) 70%);opacity:0;animation:floatUp linear infinite;}
+@keyframes floatUp{0%{transform:translateY(0) translateX(0) scale(.6);opacity:0;}8%{opacity:.5;}92%{opacity:.3;}100%{transform:translateY(-115vh) translateX(var(--drift,40px)) scale(1.15);opacity:0;}}
+main,header,footer{position:relative;z-index:2;}
+
+/* nav */
+header{position:sticky;top:0;z-index:60;background:rgba(7,9,15,.78);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+nav.wrap{height:76px;display:flex;align-items:center;justify-content:space-between;}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;}
+.logo img{width:26px;height:26px;object-fit:contain;}
+.logo span{color:var(--teal);}
+.nav-links{display:flex;gap:26px;font-size:14px;color:var(--ink-soft);}
+.nav-links a{position:relative;padding-bottom:4px;transition:color .15s;}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:2px;background:var(--teal);transition:right .25s;}
+.nav-links a:hover,.nav-links a.active{color:var(--ink);}
+.nav-links a:hover::after,.nav-links a.active::after{right:0;}
+@media(max-width:960px){.nav-links{display:none;}}
+.btn{font-weight:600;font-size:14px;padding:11px 20px;border-radius:8px;border:none;cursor:pointer;transition:transform .15s,box-shadow .15s;}
+.btn-primary{background:var(--teal);color:#07090F;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px -6px rgba(45,226,200,.5);}
+.btn-ghost{color:var(--ink-soft);border:1px solid var(--line);background:transparent;}
+.btn-ghost:hover{color:var(--ink);border-color:var(--ink-soft);}
+.nav-cta{display:flex;gap:12px;align-items:center;}
+.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:8px;width:40px;height:40px;color:var(--ink);}
+@media(max-width:960px){.menu-btn{display:block;}.nav-cta .btn-ghost{display:none;}}
+.mobile-menu{display:none;flex-direction:column;padding:12px 32px 20px;border-bottom:1px solid var(--line);}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{padding:10px 0;color:var(--ink-soft);font-size:14.5px;border-bottom:1px solid var(--line);}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:70px 0 30px;perspective:1200px;}
+.glow{position:absolute;width:560px;height:560px;border-radius:50%;filter:blur(120px);opacity:.3;z-index:0;animation:breathe 8s ease-in-out infinite;transition:transform .3s ease-out;}
+.glow-1{background:var(--teal);top:-260px;left:-140px;}
+.glow-2{background:var(--blue);top:-200px;right:-160px;animation-delay:-4s;}
+@keyframes breathe{0%,100%{opacity:.26;scale:1;}50%{opacity:.42;scale:1.1;}}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:center;}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;}.hero-3d{display:none;}}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--teal);border:1px solid rgba(45,226,200,.3);background:rgba(45,226,200,.08);padding:6px 14px;border-radius:20px;}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pulse 1.8s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+.hero h1{font-size:clamp(30px,4.6vw,52px);font-weight:800;line-height:1.08;letter-spacing:-.02em;margin:16px 0 14px;animation:rise .6s cubic-bezier(.2,.8,.2,1) both;}
+.hero h1 .grad{background:linear-gradient(90deg,var(--teal),var(--blue),var(--teal));background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shift 6s ease-in-out infinite;}
+@keyframes shift{0%,100%{background-position:0 center;}50%{background-position:100% center;}}
+@keyframes rise{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
+.hero p.lede{color:var(--ink-soft);font-size:16px;max-width:520px;}
+.hero-stats{display:flex;gap:34px;margin-top:26px;flex-wrap:wrap;}
+.hstat b{display:block;font-size:24px;font-family:'IBM Plex Mono',monospace;}
+.hstat span{font-size:12px;color:var(--ink-soft);}
+
+/* 3D hero object */
+.hero-3d{position:relative;height:250px;transform-style:preserve-3d;}
+.h-card{position:absolute;top:30px;width:190px;padding:20px;border-radius:16px;background:linear-gradient(145deg,var(--surface-2),var(--surface));border:1px solid var(--line);box-shadow:0 30px 50px -25px rgba(45,226,200,.35);transform-style:preserve-3d;}
+.h-card .hi{width:40px;height:40px;border-radius:10px;background:var(--surface);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--teal);font-weight:800;font-family:'IBM Plex Mono',monospace;margin-bottom:12px;}
+.h-card i{display:block;height:7px;border-radius:4px;background:var(--line);margin-bottom:8px;}
+.h-card i:nth-child(3){width:80%;}.h-card i:nth-child(4){width:55%;}
+.h-a{left:0;animation:swingA 6s ease-in-out infinite;}
+.h-b{right:0;animation:swingB 6s ease-in-out infinite;border-color:rgba(45,226,200,.4);}
+@keyframes swingA{0%,100%{transform:rotateY(24deg) rotateX(6deg) translateZ(0);}50%{transform:rotateY(8deg) rotateX(2deg) translateZ(26px);}}
+@keyframes swingB{0%,100%{transform:rotateY(-24deg) rotateX(6deg) translateZ(26px);}50%{transform:rotateY(-8deg) rotateX(2deg) translateZ(0);}}
+.h-vs{position:absolute;left:50%;top:50%;translate:-50% -50%;z-index:3;width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--blue));color:#07090F;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px rgba(45,226,200,.45);animation:vsPulse 2.4s ease-in-out infinite;}
+@keyframes vsPulse{0%,100%{scale:1;}50%{scale:1.12;}}
+
+/* slots */
+section{padding:34px 0;}
+.slots{display:grid;grid-template-columns:repeat(3,1fr) auto;gap:16px;align-items:stretch;perspective:1000px;}
+@media(max-width:820px){.slots{grid-template-columns:1fr;}}
+.slot{min-height:104px;border-radius:14px;border:1.5px dashed var(--line);background:rgba(15,19,29,.6);display:flex;align-items:center;gap:14px;padding:16px 18px;cursor:pointer;transition:border-color .2s,transform .2s;text-align:left;color:var(--ink);}
+.slot:hover{border-color:var(--teal);transform:translateY(-3px);}
+.slot .sl{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);}
+.slot .plus{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--teal);font-size:20px;flex:none;}
+.slot .empty-t{font-size:14px;color:var(--ink-soft);}
+.slot.filled{border-style:solid;border-color:rgba(45,226,200,.4);background:linear-gradient(145deg,var(--surface-2),var(--surface));animation:flipIn .55s cubic-bezier(.2,.8,.2,1) backwards;}
+.slot .ti{width:44px;height:44px;border-radius:11px;background:var(--surface);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--teal);font-family:'IBM Plex Mono',monospace;flex:none;}
+.slot .tn{font-weight:700;font-size:15px;}
+.slot .tc{font-size:12px;color:var(--ink-soft);}
+.slot .x{margin-left:auto;background:none;border:1px solid var(--line);color:var(--ink-soft);width:28px;height:28px;border-radius:50%;cursor:pointer;flex:none;}
+.slot .x:hover{color:var(--teal);border-color:var(--teal);}
+.slot-actions{display:flex;flex-direction:column;gap:10px;justify-content:center;}
+@keyframes flipIn{from{opacity:0;transform:perspective(800px) rotateY(-80deg) translateY(12px);}to{opacity:1;transform:none;}}
+
+/* picker */
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:20px;}
+.sec-head h2{font-size:24px;font-weight:700;}
+.sec-head p{color:var(--ink-soft);font-size:13.5px;margin-top:4px;}
+.search{background:var(--surface);border:1px solid var(--line);border-radius:12px;display:flex;align-items:center;padding:0 14px;min-width:260px;transition:border-color .2s,box-shadow .2s;}
+.search:focus-within{border-color:var(--teal);box-shadow:0 0 0 4px rgba(45,226,200,.08);}
+.search svg{width:16px;height:16px;color:var(--ink-soft);flex:none;}
+.search input{flex:1;background:none;border:none;outline:none;color:var(--ink);font-family:inherit;font-size:14px;padding:13px 10px;}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
+.chip{font-size:13px;font-weight:600;padding:9px 15px;border-radius:9px;background:var(--surface);border:1px solid var(--line);color:var(--ink-soft);cursor:pointer;transition:all .15s;display:inline-flex;gap:6px;align-items:center;}
+.chip .n{font-family:'IBM Plex Mono',monospace;font-size:10.5px;background:var(--surface-2);border-radius:6px;padding:1px 6px;}
+.chip:hover{border-color:var(--teal);color:var(--teal);}
+.chip.active{background:var(--teal);color:#07090F;border-color:var(--teal);}
+.chip.active .n{background:rgba(7,9,15,.18);color:#07090F;}
+.pick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;perspective:1000px;}
+@media(max-width:1000px){.pick-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:760px){.pick-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.pick-grid{grid-template-columns:1fr;}}
+.pick{text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;color:var(--ink);cursor:pointer;position:relative;transition:border-color .2s,box-shadow .2s,opacity .2s;transform-style:preserve-3d;will-change:transform;}
+.pick:hover{border-color:var(--teal);box-shadow:0 18px 34px -18px rgba(45,226,200,.3);}
+.pick .row1{display:flex;gap:11px;align-items:center;margin-bottom:10px;}
+.pick .ti{width:36px;height:36px;border-radius:9px;background:var(--surface-2);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--teal);font-family:'IBM Plex Mono',monospace;font-size:14px;flex:none;}
+.pick .tn{font-weight:700;font-size:14px;}
+.pick .tc{font-size:11.5px;color:var(--ink-soft);}
+.pick p{font-size:12.5px;color:var(--ink-soft);line-height:1.5;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.pick .foot{display:flex;justify-content:space-between;align-items:center;}
+.pill{font-family:'IBM Plex Mono',monospace;font-size:10.5px;padding:4px 9px;border-radius:6px;background:rgba(76,123,255,.12);color:var(--blue);}
+.pill.free{background:rgba(45,226,200,.12);color:var(--teal);}
+.pill.new{background:rgba(255,255,255,.08);color:var(--ink-soft);}
+.pick .add{font-size:12px;font-weight:700;color:var(--teal);}
+.pick[aria-pressed="true"]{border-color:var(--teal);background:linear-gradient(145deg,rgba(45,226,200,.08),var(--surface));}
+.pick[aria-pressed="true"]::after{content:"✓";position:absolute;top:10px;right:10px;width:22px;height:22px;border-radius:50%;background:var(--teal);color:#07090F;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+.pick.dim{opacity:.4;}
+.no-match{grid-column:1/-1;text-align:center;color:var(--ink-soft);padding:40px;border:1px dashed var(--line);border-radius:14px;font-size:14px;}
+
+/* results */
+.results{perspective:1400px;}
+.empty{border:1px dashed var(--line);border-radius:18px;padding:46px 24px;text-align:center;background:rgba(15,19,29,.5);}
+.empty h3{font-size:20px;margin-bottom:8px;}
+.empty p{color:var(--ink-soft);font-size:14px;margin-bottom:20px;}
+.presets{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+.preset{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 16px;font-size:13px;font-weight:600;color:var(--ink);cursor:pointer;transition:all .2s;}
+.preset:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-3px);}
+.preset span{color:var(--teal);font-family:'IBM Plex Mono',monospace;margin:0 6px;font-size:11px;}
+.verdict{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:22px;}
+.v-box{border-radius:14px;border:1px solid var(--line);background:linear-gradient(145deg,var(--surface-2),var(--surface));padding:16px 18px;animation:rise .5s cubic-bezier(.2,.8,.2,1) backwards;}
+.v-box .vl{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin-bottom:6px;}
+.v-box .vv{font-weight:700;font-size:15px;}
+.v-box .vs{font-size:12px;color:var(--ink-soft);margin-top:2px;}
+.table-scroll{overflow-x:auto;padding:14px 4px 24px;margin:0 -4px;}
+.grid-table{min-width:calc(150px + var(--n)*200px);}
+.trow{display:grid;grid-template-columns:150px repeat(var(--n),minmax(190px,1fr));gap:12px;margin-bottom:10px;}
+.th-card{border-radius:16px;padding:20px 18px;background:linear-gradient(150deg,var(--surface-2),var(--surface));border:1px solid rgba(45,226,200,.28);position:relative;text-align:left;box-shadow:0 26px 40px -28px rgba(45,226,200,.45);animation:flipIn .65s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:calc(var(--i)*.1s);transform-style:preserve-3d;will-change:transform;}
+.th-card .ti{width:46px;height:46px;border-radius:12px;background:var(--surface);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--teal);font-family:'IBM Plex Mono',monospace;font-size:18px;margin-bottom:12px;}
+.th-card .tn{font-weight:800;font-size:17px;}
+.th-card .tc{font-size:12px;color:var(--ink-soft);margin-bottom:10px;}
+.th-card .tp{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--teal);margin-bottom:12px;}
+.th-card .go{font-size:12.5px;font-weight:700;color:var(--teal);}
+.th-card .go:hover{text-decoration:underline;}
+.th-card .desc{font-size:12.5px;color:var(--ink-soft);line-height:1.5;margin-bottom:12px;}
+.th-card .rm{position:absolute;top:12px;right:12px;background:none;border:1px solid var(--line);color:var(--ink-soft);width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:12px;}
+.th-card .rm:hover{color:var(--teal);border-color:var(--teal);}
+.corner{display:flex;align-items:flex-end;padding-bottom:6px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);}
+.lab{display:flex;align-items:center;font-size:13px;color:var(--ink-soft);font-weight:600;padding:0 4px;}
+.cell{border-radius:12px;background:var(--surface);border:1px solid var(--line);padding:14px 16px;font-size:13.5px;line-height:1.5;position:relative;transition:transform .2s,border-color .2s;animation:rise .5s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:calc(var(--r)*.05s + .25s);}
+.cell:hover{transform:translateY(-3px) translateZ(8px);border-color:rgba(45,226,200,.45);}
+.cell.best{border-color:var(--teal);background:linear-gradient(145deg,rgba(45,226,200,.1),var(--surface));box-shadow:0 0 0 1px rgba(45,226,200,.15),0 14px 28px -18px rgba(45,226,200,.5);}
+.cell.best::after{content:"★ BEST";position:absolute;top:-8px;right:12px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.08em;background:var(--teal);color:#07090F;padding:2px 8px;border-radius:10px;}
+.yes{color:var(--teal);font-weight:700;}
+.no{color:var(--ink-soft);}
+.bar{height:6px;border-radius:4px;background:var(--line);margin-top:8px;overflow:hidden;}
+.bar b{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,var(--teal),var(--blue));transform-origin:left;animation:grow .8s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:.5s;}
+@keyframes grow{from{transform:scaleX(0);}}
+.tags{display:flex;flex-wrap:wrap;gap:6px;}
+.tags span{font-size:11.5px;padding:3px 9px;border-radius:6px;background:var(--surface-2);color:var(--ink-soft);}
+.res-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;}
+.note{font-size:12px;color:var(--ink-soft);margin-top:14px;}
+
+.faq{max-width:760px;margin:0 auto;border-top:1px solid var(--line);}
+.faq-item{border-bottom:1px solid var(--line);}
+.faq-q{width:100%;text-align:left;background:none;border:none;color:var(--ink);font-size:15px;font-weight:600;padding:19px 4px;display:flex;justify-content:space-between;cursor:pointer;}
+.faq-q:hover{color:var(--teal);}
+.faq-q .p{color:var(--teal);font-family:'IBM Plex Mono',monospace;transition:transform .2s;}
+.faq-item.open .p{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .25s;}
+.faq-a p{padding:0 4px 19px;font-size:13.5px;color:var(--ink-soft);}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:56px 0 28px;margin-top:40px;}
+.foot-top{display:grid;grid-template-columns:1.3fr repeat(4,1fr);gap:32px;margin-bottom:40px;}
+@media(max-width:860px){.foot-top{grid-template-columns:1fr 1fr;}}
+.foot-brand p{font-size:13px;color:var(--ink-soft);max-width:240px;margin:12px 0 18px;}
+.social-row{display:flex;gap:10px;flex-wrap:wrap;}
+.social-row a{width:36px;height:36px;border-radius:9px;background:var(--surface-2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--ink-soft);transition:all .18s;}
+.social-row a:hover{color:var(--teal);border-color:var(--teal);transform:translateY(-3px) scale(1.05);}
+.social-row svg{width:16px;height:16px;}
+.foot-col h4{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);margin-bottom:14px;font-weight:600;}
+.foot-col a{display:block;font-size:13.5px;color:var(--ink-soft);margin-bottom:10px;}
+.foot-col a:hover{color:var(--teal);}
+.foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12.5px;color:var(--ink-soft);padding-top:22px;border-top:1px solid var(--line);}
+
+/* floating controls */
+.music-toggle,.back-to-top{position:fixed;right:24px;width:44px;height:44px;border-radius:50%;background:var(--surface);border:1px solid var(--line);color:var(--ink-soft);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:70;transition:all .2s;}
+.back-to-top{bottom:24px;color:var(--teal);font-weight:700;opacity:0;pointer-events:none;}
+.back-to-top.show{opacity:1;pointer-events:auto;}
+.music-toggle{bottom:80px;}
+.music-toggle:hover,.back-to-top:hover{transform:translateY(-3px);border-color:var(--teal);}
+.music-toggle.playing{color:var(--teal);border-color:var(--teal);box-shadow:0 0 0 4px rgba(45,226,200,.1);}
+.bars{display:flex;align-items:flex-end;gap:2px;height:14px;}
+.bars i{width:3px;background:currentColor;border-radius:1px;height:4px;display:block;}
+.music-toggle.playing .bars i{animation:mb .8s ease-in-out infinite;}
+.bars i:nth-child(2){animation-delay:.2s;}.bars i:nth-child(3){animation-delay:.4s;}
+@keyframes mb{0%,100%{height:4px;}50%{height:14px;}}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--surface);border:1px solid var(--teal);padding:12px 20px;border-radius:8px;font-size:13px;opacity:0;pointer-events:none;transition:all .3s;z-index:95;}
+.toast.show{opacity:1;transform:translateX(-50%);}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+</style>
 </head>
 <body>
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-56W23QBB" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<div class="bg-particles" id="bgParticles"></div>
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-56W23QBB" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<div class="scroll-progress" id="prog"></div>
+<div class="bg-particles" id="particles" aria-hidden="true"></div>
 
 <header>
-  <nav class="wrap">
-    <a class="logo" href="index.html"><img alt="" src="assets/img/logo.png"/>Flexora<span>.Ai</span></a>
-    <div class="nav-links">
-      <a href="tools.html">Tools</a><a href="compare.html">Compare</a><a href="finder.html">Finder</a>
-      <a href="workflows.html">Workflows</a><a href="free-tools.html">Free Tools</a><a href="blog.html">Blog</a><a href="services.html">Services</a>
-    </div>
-    <div class="u-flex-gap12">
-      <a class="btn btn-ghost" href="submit.html">Submit tool</a>
-      <a class="btn btn-primary" href="finder.html">Find a tool</a>
-      <button aria-label="Open menu" class="menu-btn" id="menuBtn">☰</button>
-    </div>
-  </nav>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="tools.html">Tools</a><a href="compare.html">Compare</a><a href="finder.html">Finder</a>
-    <a href="workflows.html">Workflows</a><a href="free-tools.html">Free Tools</a><a href="blog.html">Blog</a><a href="services.html">Services</a>
-  </div>
+<nav class="wrap">
+<a class="logo" href="index.html"><img src="assets/images/logo.png" alt=""/>Flexora<span>.Ai</span></a>
+<div class="nav-links">
+<a href="tools.html">Tools</a><a class="active" href="compare.html">Compare</a><a href="finder.html">Finder</a><a href="workflows.html">Workflows</a><a href="free-tools.html">Free Tools</a><a href="blog.html">Blog</a><a href="services.html">Services</a>
+</div>
+<div class="nav-cta">
+<a class="btn btn-ghost" href="submit.html">Submit tool</a>
+<a class="btn btn-primary" href="finder.html">Find a tool</a>
+<button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+</div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+<a href="tools.html">Tools</a><a href="compare.html">Compare</a><a href="finder.html">Finder</a><a href="workflows.html">Workflows</a><a href="free-tools.html">Free Tools</a><a href="blog.html">Blog</a><a href="services.html">Services</a>
+</div>
 </header>
 
-<div class="page-hero"><div class="wrap">
-  <span class="eyebrow"><span class="dot"></span>Compare</span>
-  <h1>Compare two tools side by side</h1>
-  <p class="lede">Pick any two tools. New tools appear here automatically, with pricing, ease of use, features and a quick verdict.</p>
-</div></div>
+<main>
+<div class="hero">
+<div class="glow glow-1" id="glow1"></div><div class="glow glow-2" id="glow2"></div>
+<div class="wrap hero-grid">
+<div>
+<span class="eyebrow"><span class="dot"></span>Side-by-side comparison</span>
+<h1>Compare AI tools, <span class="grad">see the winner</span> at a glance</h1>
+<p class="lede">Pick up to three tools. We line up pricing, free plans, ease of use and best-fit tasks, and highlight the best value in every row.</p>
+<div class="hero-stats">
+<div class="hstat"><b id="sTools">0</b><span>tools you can compare</span></div>
+<div class="hstat"><b id="sCats">0</b><span>categories</span></div>
+<div class="hstat"><b id="sFree">0</b><span>with a free plan</span></div>
+</div>
+</div>
+<div class="hero-3d" aria-hidden="true">
+<div class="h-card h-a"><div class="hi">A</div><i></i><i></i><i></i></div>
+<div class="h-vs">VS</div>
+<div class="h-card h-b"><div class="hi">B</div><i></i><i></i><i></i></div>
+</div>
+</div>
+</div>
 
 <section>
-  <div class="wrap">
-    <div class="compare-box">
-      <div class="cmp-controls">
-        <label class="cmp-pick"><span class="mono">TOOL A</span><select id="cmpA" aria-label="Tool A"></select></label>
-        <button class="cmp-swap" id="cmpSwap" type="button" aria-label="Swap tools">⇄</button>
-        <label class="cmp-pick"><span class="mono">TOOL B</span><select id="cmpB" aria-label="Tool B"></select></label>
-        <button class="btn btn-ghost" id="cmpShare" type="button">Copy link</button>
-      </div>
-      <div class="cmp-stage" id="cmpStage"></div>
-      <div class="cmp-table-wrap"><table class="compare-table" id="cmpTable"></table></div>
-      <div id="cmpVerdict"></div>
-      <div id="cmpSimilar"></div>
-      <div id="cmpPopular"></div>
-    </div>
-  </div>
+<div class="wrap">
+<div class="slots" id="slots"></div>
+</div>
 </section>
 
+<section id="results-sec">
+<div class="wrap results" id="results"></div>
+</section>
+
+<section id="picker">
+<div class="wrap">
+<div class="sec-head">
+<div><h2>Choose tools to compare</h2><p>Every tool in the directory appears here automatically. Click to add or remove.</p></div>
+<label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg><input id="q" type="search" placeholder="Search tools…" aria-label="Search tools"/></label>
+</div>
+<div class="chips" id="chips"></div>
+<div class="pick-grid" id="pickGrid"></div>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<div class="sec-head"><div><h2>Comparison FAQ</h2></div></div>
+<div class="faq">
+<div class="faq-item"><button class="faq-q">How are the "best" badges decided? <span class="p">+</span></button><div class="faq-a"><p>Lowest starting price, easiest to use, and having a free plan each earn a badge. A badge only appears when the tools you picked actually differ on that row.</p></div></div>
+<div class="faq-item"><button class="faq-q">Can I share a comparison? <span class="p">+</span></button><div class="faq-a"><p>Yes. Use "Copy link" once you have picked your tools. The link reopens the same comparison.</p></div></div>
+<div class="faq-item"><button class="faq-q">Why isn't my tool listed? <span class="p">+</span></button><div class="faq-a"><p>New tools are added after a manual review. You can send yours through the Submit tool page and it will appear here once approved.</p></div></div>
+</div>
+</div>
+</section>
+</main>
+
 <footer>
-  <div class="wrap">
-    <div class="foot-top">
-      <div class="foot-brand">
-        <a class="logo" href="index.html"><img alt="" src="assets/img/logo.png"/>Flexora<span>.Ai</span></a>
-        <p>Helping people find the right AI tool for the job — without the pay-to-list noise.</p>
-        <div class="social-row">
-          <a aria-label="GitHub" href="https://github.com/flexora-ai" rel="noopener" target="_blank"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.1 3.29 9.4 7.86 10.94.57.1.78-.25.78-.55v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.29-1.69-1.29-1.69-1.06-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.77 2.72 1.26 3.38.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.05 11.05 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.19 1.83 1.19 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.07.78 2.17v3.21c0 .3.21.66.79.55A10.51 10.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/></svg></a>
-          <a aria-label="Email" href="mailto:ownerflexora.ai@gmail.com"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect height="16" rx="2" width="20" x="2" y="4"/><path d="m2 7 10 6 10-6"/></svg></a>
-        </div>
-      </div>
-      <div class="foot-col"><h4>Explore</h4><a href="tools.html">All tools</a><a href="tools.html#categories">Categories</a><a href="compare.html">Compare</a><a href="free-tools.html">Free tools</a></div>
-      <div class="foot-col"><h4>Resources</h4><a href="workflows.html">Workflows</a><a href="blog.html">Guides</a><a href="index.html#faq">FAQ</a></div>
-      <div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="blog.html">Blog</a><a href="submit.html">Submit a tool</a><a href="services.html">Contact</a></div>
-      <div class="foot-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
-    </div>
-    <div class="foot-bottom"><span>© 2026 Flexora.Ai</span><span>Built with GitHub Pages</span></div>
-  </div>
+<div class="wrap">
+<div class="foot-top">
+<div class="foot-brand">
+<a class="logo" href="index.html"><img src="assets/images/logo.png" alt=""/>Flexora<span>.Ai</span></a>
+<p>Helping people find the right AI tool for the job, without the pay-to-list noise.</p>
+<div class="social-row">
+<a href="https://www.linkedin.com/company/flexora-ai" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg></a>
+<a href="https://www.facebook.com/flexoraai/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21.5v-8.2h2.75l.41-3.19h-3.16V8.06c0-.92.26-1.55 1.58-1.55h1.68V3.66c-.29-.04-1.29-.13-2.45-.13-2.42 0-4.08 1.48-4.08 4.19v2.39H7.48v3.19h2.75v8.2h3.27Z"/></svg></a>
+<a href="https://www.instagram.com/flexora.ai.tools/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+<a href="https://www.pinterest.com/flexora_ai/" target="_blank" rel="noopener" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.24 2 11.47c0 3.99 2.48 7.4 6 8.79-.08-.75-.16-1.9.03-2.72.17-.74 1.11-4.7 1.11-4.7s-.28-.57-.28-1.4c0-1.32.77-2.3 1.72-2.3.81 0 1.2.61 1.2 1.34 0 .82-.52 2.04-.79 3.17-.22.95.48 1.72 1.42 1.72 1.71 0 2.86-2.2 2.86-4.8 0-1.98-1.34-3.46-3.77-3.46-2.75 0-4.46 2.05-4.46 4.34 0 .79.23 1.35.6 1.78.17.2.19.28.13.51-.05.18-.15.61-.2.79-.07.25-.27.34-.5.25-1.4-.57-2.05-2.1-2.05-3.82 0-2.84 2.4-6.25 7.15-6.25 3.82 0 6.34 2.77 6.34 5.74 0 3.94-2.19 6.87-5.41 6.87-1.08 0-2.1-.58-2.45-1.24l-.68 2.65c-.2.79-.6 1.78-.9 2.39.85.26 1.75.4 2.68.4 5.52 0 10-4.24 10-9.47C22 6.24 17.52 2 12 2Z"/></svg></a>
+<a href="https://x.com/Flexora_Ai" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 3H21l-6.55 7.49L22.2 21h-6.02l-4.72-6.17L5.03 21H2.25l7.01-8.01L1.8 3h6.17l4.27 5.65L18.24 3Zm-1.06 16.17h1.67L7.9 4.74H6.1l11.08 14.43Z"/></svg></a>
+<a href="mailto:ownerflexora.ai@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></a>
+</div>
+</div>
+<div class="foot-col"><h4>Explore</h4><a href="tools.html">All tools</a><a href="compare.html">Compare</a><a href="finder.html">Finder</a><a href="free-tools.html">Free tools</a></div>
+<div class="foot-col"><h4>Resources</h4><a href="workflows.html">Workflows</a><a href="blog.html">Guides</a><a href="index.html#faq">FAQ</a><a href="sitemap.html">Sitemap</a></div>
+<div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="submit.html">Submit a tool</a><a href="services.html">Contact</a></div>
+<div class="foot-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="privacy.html#affiliate">Affiliate disclosure</a></div>
+</div>
+<div class="foot-bottom"><span>© 2026 Flexora.Ai</span><span>Built with GitHub Pages</span></div>
+</div>
 </footer>
 
-<button aria-label="Back to top" class="back-to-top" id="backToTop">↑</button>
-<div class="toast" id="toast"></div>
-<button aria-label="Contact us" class="fab fab-contact" id="fabContact"><i class="fab-icon">✉</i><span>Contact</span></button>
-<button aria-label="Submit a tool" class="fab fab-submit" id="fabSubmit"><i class="fab-icon">+</i><span>Submit tool</span></button>
+<button class="music-toggle" id="music" aria-label="Toggle background music" title="Music: off"><span class="bars"><i></i><i></i><i></i></span></button>
+<button class="back-to-top" id="top" aria-label="Back to top">↑</button>
+<div class="toast" id="toast" role="status"></div>
 
-<div class="modal-overlay" id="contactModal"><div class="modal-box">
-  <button aria-label="Close" class="modal-close" id="contactModalClose">✕</button>
-  <span class="eyebrow"><span class="dot"></span>Get in touch</span>
-  <h3>Contact us</h3><p class="modal-sub">We usually reply within a day or two.</p>
-  <form action="https://formspree.io/f/xyegnwpy" class="mini-form" id="popupContactForm" method="POST">
-    <div class="mf-row"><input name="name" placeholder="Your name" required type="text"/><input name="email" placeholder="Your email" required type="email"/></div>
-    <textarea name="message" placeholder="What's on your mind?" required rows="4"></textarea>
-    <button class="btn btn-primary u-w-full" type="submit">Send message</button>
-  </form>
-  <div class="mf-success" id="popupContactSuccess"><span class="u-fs-28">✅</span><h3>Thanks — message sent!</h3><p>We'll get back to you soon.</p></div>
-</div></div>
-
-<div class="modal-overlay" id="submitModal"><div class="modal-box">
-  <button aria-label="Close" class="modal-close" id="submitModalClose">✕</button>
-  <span class="eyebrow"><span class="dot"></span>Building an AI tool?</span>
-  <h3>Submit your tool</h3><p class="modal-sub">Free to submit — every tool reviewed by hand.</p>
-  <form action="https://formspree.io/f/xzepjrvz" class="mini-form" id="popupSubmitForm" method="POST">
-    <div class="mf-row"><input name="tool_name" placeholder="Tool name" required type="text"/><input name="website" placeholder="Website URL" required type="url"/></div>
-    <div class="mf-row">
-      <select name="category" required><option disabled selected value="">Category</option><option>Writing</option><option>Image</option><option>Video</option><option>Coding</option><option>SEO</option><option>Audio</option><option>Design</option><option>Productivity</option><option>Automation</option><option>Other</option></select>
-      <select name="pricing" required><option disabled selected value="">Pricing</option><option>Free</option><option>Freemium</option><option>Paid only</option></select>
-    </div>
-    <textarea name="description" placeholder="Short description of what it does" required rows="3"></textarea>
-    <input name="contact_email" placeholder="Contact email" required type="email"/>
-    <button class="btn btn-primary u-w-full" type="submit">Submit for review</button>
-  </form>
-  <div class="mf-success" id="popupSubmitSuccess"><span class="u-fs-28">✅</span><h3>Got it — thanks!</h3><p>We review every submission by hand before it goes live.</p></div>
-</div></div>
-
-<!-- ORDER MATTERS: data -> shared site code -> compare logic -->
 <script src="assets/js/tools-data.js"></script>
-<script src="assets/js/site.js"></script>
-<script src="assets/js/compare.js"></script>
-<script src="assets/js/music-player.js" data-track="assets/audio/pulse-vector.mp3"></script>
+<script>
+(function(){
+  'use strict';
+  var MAX = 3;
+  var EASE_RANK = {Easy:1, Moderate:2, Advanced:3};
+
+  /* ---------- normalise data (so new tools only need the required fields) ---------- */
+  function slugify(s){ return String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
+  function readPrice(t){
+    if(typeof t.startPrice === 'number') return t.startPrice;
+    if(t.free) return 0;
+    var m = /\$\s*(\d+(?:\.\d+)?)/.exec(t.price || '');
+    return m ? parseFloat(m[1]) : null;
+  }
+  var catLabel = {};
+  TOOL_CATEGORIES.forEach(function(c){ catLabel[c.key] = c.label; });
+  TOOLS.forEach(function(t){
+    t.slug = t.slug || slugify(t.name);
+    t.startPrice = readPrice(t);
+    t.catLabel = catLabel[t.cat] || (t.cat.charAt(0).toUpperCase() + t.cat.slice(1));
+  });
+  var bySlug = {};
+  TOOLS.forEach(function(t){ bySlug[t.slug] = t; });
+
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  var $ = function(id){ return document.getElementById(id); };
+
+  /* ---------- state ---------- */
+  var selected = [];
+  var activeCat = 'all';
+  var query = '';
+
+  function readURL(){
+    var p = new URLSearchParams(location.search);
+    var raw = (p.get('t') || [p.get('a'), p.get('b')].filter(Boolean).join(',')).split(',');
+    raw.forEach(function(x){
+      var k = slugify(x.trim());
+      if(k && bySlug[k] && selected.indexOf(k) < 0 && selected.length < MAX) selected.push(k);
+    });
+  }
+  function writeURL(){
+    var url = location.pathname + (selected.length ? '?t=' + selected.join(',') : '');
+    history.replaceState(null, '', url);
+  }
+
+  /* ---------- toast ---------- */
+  var toastEl = $('toast'), toastT;
+  function toast(msg){ toastEl.textContent = msg; toastEl.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(function(){ toastEl.classList.remove('show'); }, 2400); }
+
+  /* ---------- hero stats ---------- */
+  function countTo(el, target){
+    var cur = 0, step = Math.max(1, Math.ceil(target/24));
+    var t = setInterval(function(){ cur += step; if(cur >= target){ cur = target; clearInterval(t); } el.textContent = cur; }, 30);
+  }
+  countTo($('sTools'), TOOLS.length);
+  countTo($('sCats'), new Set(TOOLS.map(function(t){ return t.cat; })).size);
+  countTo($('sFree'), TOOLS.filter(function(t){ return t.free; }).length);
+
+  /* ---------- 3D tilt ---------- */
+  function tilt(el, max){
+    max = max || 8;
+    el.addEventListener('mousemove', function(e){
+      var r = el.getBoundingClientRect();
+      var x = (e.clientX - r.left)/r.width - .5, y = (e.clientY - r.top)/r.height - .5;
+      el.style.transform = 'perspective(800px) rotateX(' + (-y*max).toFixed(2) + 'deg) rotateY(' + (x*max).toFixed(2) + 'deg) translateZ(6px)';
+    });
+    el.addEventListener('mouseleave', function(){ el.style.transform = ''; });
+  }
+
+  /* ---------- picker ---------- */
+  function renderChips(){
+    var counts = {};
+    TOOLS.forEach(function(t){ counts[t.cat] = (counts[t.cat] || 0) + 1; });
+    var html = '<button class="chip' + (activeCat === 'all' ? ' active' : '') + '" data-cat="all">All <span class="n">' + TOOLS.length + '</span></button>';
+    TOOL_CATEGORIES.forEach(function(c){
+      if(!counts[c.key]) return;
+      html += '<button class="chip' + (activeCat === c.key ? ' active' : '') + '" data-cat="' + c.key + '">' + esc(c.label) + ' <span class="n">' + counts[c.key] + '</span></button>';
+    });
+    $('chips').innerHTML = html;
+  }
+  $('chips').addEventListener('click', function(e){
+    var b = e.target.closest('.chip'); if(!b) return;
+    activeCat = b.dataset.cat; renderChips(); renderPicker();
+  });
+  $('q').addEventListener('input', function(){ query = this.value.trim().toLowerCase(); renderPicker(); });
+
+  function renderPicker(){
+    var full = selected.length >= MAX;
+    var list = TOOLS.filter(function(t){
+      if(activeCat !== 'all' && t.cat !== activeCat) return false;
+      if(!query) return true;
+      return (t.name + ' ' + t.desc + ' ' + t.catLabel + ' ' + (t.bestFor || '')).toLowerCase().indexOf(query) > -1;
+    });
+    // when a tool is already picked, show same-category tools first (most useful matchups)
+    if(selected.length && activeCat === 'all' && !query){
+      var firstCat = bySlug[selected[0]].cat;
+      list.sort(function(a,b){ return (b.cat === firstCat) - (a.cat === firstCat); });
+    }
+    var html = list.map(function(t){
+      var on = selected.indexOf(t.slug) > -1;
+      return '<button class="pick' + (full && !on ? ' dim' : '') + '" data-slug="' + t.slug + '" aria-pressed="' + on + '">' +
+        '<div class="row1"><div class="ti">' + esc(t.icon) + '</div><div><div class="tn">' + esc(t.name) + '</div><div class="tc">' + esc(t.catLabel) + '</div></div></div>' +
+        '<p>' + esc(t.desc) + '</p>' +
+        '<div class="foot"><span class="pill' + (t.free ? ' free' : '') + '">' + (t.free ? 'Free plan' : 'Paid') + '</span>' + (t.isNew ? '<span class="pill new">New</span>' : '') + '<span class="add">' + (on ? 'Remove' : '+ Compare') + '</span></div></button>';
+    }).join('');
+    $('pickGrid').innerHTML = html || '<div class="no-match">No tools match that search. Try another word or clear the filter.</div>';
+    $('pickGrid').querySelectorAll('.pick').forEach(function(el){ tilt(el, 10); });
+  }
+  $('pickGrid').addEventListener('click', function(e){
+    var b = e.target.closest('.pick'); if(!b) return;
+    toggle(b.dataset.slug);
+  });
+
+  function toggle(slug){
+    var i = selected.indexOf(slug);
+    if(i > -1){ selected.splice(i,1); }
+    else if(selected.length >= MAX){ toast('You can compare up to ' + MAX + ' tools. Remove one first.'); return; }
+    else { selected.push(slug); }
+    update();
+  }
+
+  /* ---------- slots ---------- */
+  function renderSlots(){
+    var html = '';
+    for(var i = 0; i < MAX; i++){
+      var t = bySlug[selected[i]];
+      if(t){
+        html += '<div class="slot filled"><div class="ti">' + esc(t.icon) + '</div><div><div class="sl">TOOL ' + 'ABC'[i] + '</div><div class="tn">' + esc(t.name) + '</div><div class="tc">' + esc(t.catLabel) + '</div></div><button class="x" data-rm="' + t.slug + '" aria-label="Remove ' + esc(t.name) + '">✕</button></div>';
+      } else {
+        html += '<button class="slot" data-add="1"><span class="plus">+</span><span><span class="sl">TOOL ' + 'ABC'[i] + '</span><br/><span class="empty-t">' + (i < 2 ? 'Add a tool' : 'Add a third (optional)') + '</span></span></button>';
+      }
+    }
+    html += '<div class="slot-actions"><button class="btn btn-ghost" id="copyBtn"' + (selected.length ? '' : ' disabled style="opacity:.4;cursor:not-allowed"') + '>Copy link</button><button class="btn btn-ghost" id="resetBtn"' + (selected.length ? '' : ' disabled style="opacity:.4;cursor:not-allowed"') + '>Clear all</button></div>';
+    $('slots').innerHTML = html;
+  }
+  $('slots').addEventListener('click', function(e){
+    var rm = e.target.closest('[data-rm]');
+    if(rm){ toggle(rm.dataset.rm); return; }
+    if(e.target.closest('[data-add]')){ $('picker').scrollIntoView({behavior:'smooth'}); return; }
+    if(e.target.closest('#resetBtn') && selected.length){ selected = []; update(); return; }
+    if(e.target.closest('#copyBtn') && selected.length){
+      var link = location.origin + location.pathname + '?t=' + selected.join(',');
+      if(navigator.clipboard){ navigator.clipboard.writeText(link).then(function(){ toast('Comparison link copied'); }, function(){ toast(link); }); }
+      else { toast(link); }
+    }
+  });
+
+  /* ---------- comparison rows (a row shows only if at least one selected tool has data) ---------- */
+  var FIELDS = [
+    {label:'Category',    get:function(t){ return t.catLabel; }},
+    {label:'Pricing',     get:function(t){ return t.price; }, best:'price'},
+    {label:'Free plan',   get:function(t){ return t.free ? 'yes' : 'no'; }, best:'free', type:'bool'},
+    {label:'Best for',    get:function(t){ return t.bestFor; }},
+    {label:'Ease of use', get:function(t){ return t.ease; }, best:'ease', type:'ease'},
+    {label:'Listing',     get:function(t){ return t.isNew ? 'New' : 'Established'; }},
+    {label:'Key features',get:function(t){ return t.features; }, type:'list'},
+    {label:'Platforms',   get:function(t){ return t.platforms; }, type:'list'},
+    {label:'Integrations',get:function(t){ return t.integrations; }, type:'list'}
+  ];
+  function hasVal(v){ return Array.isArray(v) ? v.length > 0 : (v !== undefined && v !== null && v !== ''); }
+
+  function bestIdx(f, cols){
+    var vals, target, out = [];
+    if(f.best === 'price'){
+      vals = cols.map(function(t){ return t.startPrice; });
+      if(vals.some(function(v){ return v === null; })) return out;
+      target = Math.min.apply(null, vals);
+      if(vals.every(function(v){ return v === target; })) return out;
+      vals.forEach(function(v,i){ if(v === target) out.push(i); });
+    } else if(f.best === 'ease'){
+      vals = cols.map(function(t){ return EASE_RANK[t.ease] || 99; });
+      target = Math.min.apply(null, vals);
+      if(target === 99 || vals.every(function(v){ return v === target; })) return out;
+      vals.forEach(function(v,i){ if(v === target) out.push(i); });
+    } else if(f.best === 'free'){
+      vals = cols.map(function(t){ return !!t.free; });
+      if(vals.every(function(v){ return v; }) || vals.every(function(v){ return !v; })) return out;
+      vals.forEach(function(v,i){ if(v) out.push(i); });
+    }
+    return out;
+  }
+
+  function cellHTML(f, v, cols, i){
+    if(!hasVal(v)) return '<span class="no">—</span>';
+    if(f.type === 'bool') return v === 'yes' ? '<span class="yes">✓ Yes</span>' : '<span class="no">✕ No</span>';
+    if(f.type === 'list') return '<div class="tags">' + v.map(function(x){ return '<span>' + esc(x) + '</span>'; }).join('') + '</div>';
+    if(f.type === 'ease'){
+      var r = EASE_RANK[v] || 2, w = [0,34,67,100][4 - r] || 60; // Easy = fullest bar
+      return esc(v) + '<div class="bar"><b style="width:' + w + '%"></b></div>';
+    }
+    return esc(v);
+  }
+
+  function renderResults(){
+    var box = $('results');
+    if(selected.length < 2){
+      var presets = [], byCat = {};
+      TOOLS.forEach(function(t){ (byCat[t.cat] = byCat[t.cat] || []).push(t); });
+      TOOL_CATEGORIES.forEach(function(c){
+        var g = byCat[c.key];
+        if(g && g.length >= 2) presets.push('<button class="preset" data-a="' + g[0].slug + '" data-b="' + g[1].slug + '">' + esc(g[0].name) + '<span>vs</span>' + esc(g[1].name) + '</button>');
+      });
+      box.innerHTML = '<div class="empty"><h3>' + (selected.length ? 'Add one more tool to compare' : 'Pick two tools to start') + '</h3><p>' + (selected.length ? 'Choose another tool below, ideally from the same category.' : 'Choose tools below, or jump into a popular matchup:') + '</p><div class="presets">' + (selected.length ? '' : presets.slice(0,6).join('')) + '</div></div>';
+      return;
+    }
+    var cols = selected.map(function(s){ return bySlug[s]; });
+    var n = cols.length;
+
+    // verdict boxes
+    var v = [];
+    var priced = cols.filter(function(t){ return t.startPrice !== null; });
+    if(priced.length === n){
+      var min = Math.min.apply(null, priced.map(function(t){ return t.startPrice; }));
+      var cheap = cols.filter(function(t){ return t.startPrice === min; });
+      if(cheap.length < n) v.push(['Lowest starting price', cheap.map(function(t){ return t.name; }).join(' & '), min === 0 ? 'Has a free plan' : 'From $' + min + '/mo']);
+    }
+    var easyMin = Math.min.apply(null, cols.map(function(t){ return EASE_RANK[t.ease] || 99; }));
+    var easy = cols.filter(function(t){ return (EASE_RANK[t.ease] || 99) === easyMin; });
+    if(easyMin !== 99 && easy.length < n) v.push(['Easiest to use', easy.map(function(t){ return t.name; }).join(' & '), easy[0].ease]);
+    var freeOnes = cols.filter(function(t){ return t.free; });
+    if(freeOnes.length && freeOnes.length < n) v.push(['Free plan available', freeOnes.map(function(t){ return t.name; }).join(' & '), 'Try before you pay']);
+    var sameCat = cols.every(function(t){ return t.cat === cols[0].cat; });
+    v.push(['Comparison type', sameCat ? 'Same category' : 'Across categories', sameCat ? cols[0].catLabel + ' tools' : 'Compare with care: they solve different jobs']);
+
+    var html = '<div class="verdict">' + v.map(function(b,i){ return '<div class="v-box" style="animation-delay:' + (i*.07) + 's"><div class="vl">' + b[0] + '</div><div class="vv">' + esc(b[1]) + '</div><div class="vs">' + esc(b[2]) + '</div></div>'; }).join('') + '</div>';
+
+    html += '<div class="table-scroll"><div class="grid-table" style="--n:' + n + '">';
+    html += '<div class="trow"><div class="corner">Comparing</div>' + cols.map(function(t,i){
+      return '<div class="th-card tilt" style="--i:' + i + '"><button class="rm" data-rm="' + t.slug + '" aria-label="Remove ' + esc(t.name) + '">✕</button><div class="ti">' + esc(t.icon) + '</div><div class="tn">' + esc(t.name) + '</div><div class="tc">' + esc(t.catLabel) + '</div><div class="tp">' + esc(t.price || '') + '</div><div class="desc">' + esc(t.desc) + '</div>' + (t.url ? '<a class="go" href="' + esc(t.url) + '" target="_blank" rel="noopener">Visit ' + esc(t.name) + ' →</a>' : '') + '</div>';
+    }).join('') + '</div>';
+
+    var r = 0;
+    FIELDS.forEach(function(f){
+      var vals = cols.map(f.get);
+      if(!vals.some(hasVal)) return;
+      var best = bestIdx(f, cols);
+      html += '<div class="trow"><div class="lab">' + f.label + '</div>' + vals.map(function(val,i){
+        return '<div class="cell' + (best.indexOf(i) > -1 ? ' best' : '') + '" style="--r:' + r + '">' + cellHTML(f, val, cols, i) + '</div>';
+      }).join('') + '</div>';
+      r++;
+    });
+    html += '</div></div>';
+    html += '<div class="res-actions"><a class="btn btn-primary" href="finder.html">Not sure? Use the Tool Finder</a><a class="btn btn-ghost" href="tools.html">Browse all tools</a></div>';
+    html += '<p class="note">Prices are starting tiers taken from the directory and can change. Check each tool\'s own site before buying.</p>';
+    box.innerHTML = html;
+    box.querySelectorAll('.tilt').forEach(function(el){ tilt(el, 7); });
+  }
+  $('results').addEventListener('click', function(e){
+    var rm = e.target.closest('[data-rm]');
+    if(rm){ toggle(rm.dataset.rm); return; }
+    var p = e.target.closest('.preset');
+    if(p){ selected = [p.dataset.a, p.dataset.b]; update(); }
+  });
+
+  function update(){ writeURL(); renderSlots(); renderPicker(); renderResults(); }
+
+  /* ---------- shared page behaviours ---------- */
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    item.querySelector('.faq-q').addEventListener('click', function(){
+      var open = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i){ i.classList.remove('open'); i.querySelector('.faq-a').style.maxHeight = null; });
+      if(!open){ item.classList.add('open'); var a = item.querySelector('.faq-a'); a.style.maxHeight = a.scrollHeight + 'px'; }
+    });
+  });
+  $('menuBtn').addEventListener('click', function(){ $('mobileMenu').classList.toggle('open'); });
+  window.addEventListener('scroll', function(){
+    var h = document.documentElement;
+    $('prog').style.width = (h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight) * 100) + '%';
+    $('top').classList.toggle('show', window.scrollY > 600);
+  }, {passive:true});
+  $('top').addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+
+  var wrap = $('particles');
+  for(var i = 0; i < 20; i++){
+    var p = document.createElement('div'); p.className = 'particle';
+    var sz = 4 + Math.random()*9; p.style.width = p.style.height = sz + 'px';
+    p.style.left = Math.random()*100 + 'vw';
+    p.style.setProperty('--drift', (Math.random()*80 - 40) + 'px');
+    p.style.animationDuration = (14 + Math.random()*16) + 's';
+    p.style.animationDelay = (Math.random()*-20) + 's';
+    wrap.appendChild(p);
+  }
+  document.addEventListener('mousemove', function(e){
+    var x = (e.clientX/innerWidth - .5)*26, y = (e.clientY/innerHeight - .5)*26;
+    $('glow1').style.transform = 'translate(' + x + 'px,' + y + 'px)';
+    $('glow2').style.transform = 'translate(' + (-x) + 'px,' + (-y) + 'px)';
+  });
+
+  /* music toggle: same key and track as the rest of the site */
+  (function(){
+    var btn = $('music'), KEY = 'flexora_music_on';
+    var audio = document.createElement('audio');
+    audio.src = 'assets/audio/pulse-vector.mp3'; audio.loop = true; audio.preload = 'none';
+    document.body.appendChild(audio);
+    function ui(on){ btn.classList.toggle('playing', on); btn.title = on ? 'Music: on (click to pause)' : 'Music: off (click to play)'; }
+    function play(){ audio.play().then(function(){ try{ localStorage.setItem(KEY,'1'); }catch(e){} ui(true); }).catch(function(){}); }
+    function pause(){ audio.pause(); try{ localStorage.setItem(KEY,'0'); }catch(e){} ui(false); }
+    btn.addEventListener('click', function(){ audio.paused ? play() : pause(); });
+    var on = false; try{ on = localStorage.getItem(KEY) === '1'; }catch(e){}
+    if(on) play(); else ui(false);
+  })();
+
+  /* ---------- go ---------- */
+  readURL();
+  renderChips();
+  update();
+})();
+</script>
 </body>
 </html>
