@@ -1,208 +1,53 @@
-/* Flexora.Ai - compare page logic.
-   Reads TOOLS_DATA (assets/js/tools-data.js, auto-generated from /data/tools/*.json).
-   Load order on the page:  tools-data.js  ->  site.js  ->  compare.js            */
-(function () {
-  'use strict';
+/* Flexora.Ai — tools registry (single source of truth).
+   compare.html reads this file. To add a tool: append ONE object to TOOLS below,
+   save, push — it shows up in the compare picker automatically. No other edit needed.
 
-  var A = document.getElementById('cmpA');
-  var B = document.getElementById('cmpB');
-  if (!A || !B) return;
+   Required fields
+   - name      display name
+   - cat       must match a key in TOOL_CATEGORIES (writing, image, video, coding, seo, audio, design, productivity, automation)
+   - icon      one or two characters shown on the tile (usually the first letter)
+   - desc      one-line description
+   - free      true if a usable free plan exists
+   - price     text shown in the table, e.g. 'Free plan' or 'From $19/mo'
+   - bestFor   short phrase
+   - ease      'Easy' | 'Moderate' | 'Advanced'
 
-  var stage = document.getElementById('cmpStage');
-  var table = document.getElementById('cmpTable');
-  var verdict = document.getElementById('cmpVerdict');
-  var similar = document.getElementById('cmpSimilar');
-  var popular = document.getElementById('cmpPopular');
+   Optional fields (a compare row appears only when at least one selected tool has it)
+   - slug          url-safe id (auto-generated from name if omitted)
+   - startPrice    number, lowest paid price per month (auto-read from `price` if omitted)
+   - isNew         true to show the "New" badge
+   - url           tool's own website
+   - features      array of short strings
+   - platforms     array, e.g. ['Web', 'iOS']
+   - integrations  array, e.g. ['Slack', 'Notion']
+*/
+const TOOL_CATEGORIES = [
+  { key: 'writing',      label: 'Writing' },
+  { key: 'image',        label: 'Image' },
+  { key: 'video',        label: 'Video' },
+  { key: 'coding',       label: 'Coding' },
+  { key: 'seo',          label: 'SEO' },
+  { key: 'audio',        label: 'Audio' },
+  { key: 'design',       label: 'Design' },
+  { key: 'productivity', label: 'Productivity' },
+  { key: 'automation',   label: 'Automation' }
+];
 
-  /* ---------- helpers ---------- */
-  function esc(v) {
-    return String(v == null ? '' : v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-  }
-  function slugify(s) { return String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''); }
-  function cap(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : ''; }
-  function safeUrl(u) { return /^https?:\/\//i.test(u || '') ? u : ''; }
-  function toast(msg) { if (typeof showToast === 'function') showToast(msg); }
-
-  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---------- data ---------- */
-  var raw = (typeof TOOLS_DATA !== 'undefined' && Array.isArray(TOOLS_DATA)) ? TOOLS_DATA : [];
-  var tools = raw.map(function (t) {
-    var o = Object.assign({}, t);
-    o.slug = t.slug || slugify(t.name);
-    return o;
-  });
-  var bySlug = {};
-  tools.forEach(function (t) { bySlug[t.slug] = t; });
-
-  if (tools.length < 2) {
-    stage.innerHTML = '<div class="empty-note">Add at least two tools in <b>/data/tools</b> and run the build to use the comparison.</div>';
-    A.disabled = B.disabled = true;
-    return;
-  }
-
-  /* ---------- dropdowns (grouped by category) ---------- */
-  var cats = [];
-  tools.forEach(function (t) { if (cats.indexOf(t.cat) === -1) cats.push(t.cat); });
-  var optionsHTML = cats.map(function (c) {
-    return '<optgroup label="' + esc(cap(c)) + '">' +
-      tools.filter(function (t) { return t.cat === c; })
-        .map(function (t) { return '<option value="' + esc(t.slug) + '">' + esc(t.name) + '</option>'; }).join('') +
-      '</optgroup>';
-  }).join('');
-  A.innerHTML = optionsHTML;
-  B.innerHTML = optionsHTML;
-
-  /* ---------- "who wins this row" ---------- */
-  var EASE_RANK = { easy: 1, moderate: 2, advanced: 3 };
-  function priceNum(t) {
-    if (t.free) return 0;
-    var m = String(t.price || '').match(/(\d+(\.\d+)?)/);
-    return m ? parseFloat(m[1]) : null;
-  }
-  function lower(x, y) { return (x == null || y == null || x === y) ? null : (x < y ? 'a' : 'b'); }
-  function has(arr) { return Array.isArray(arr) && arr.length > 0; }
-
-  var ROWS = [
-    { label: 'Category', get: function (t) { return cap(t.cat); } },
-    { label: 'Pricing', get: function (t) { return t.price || (t.free ? 'Free plan' : 'Paid'); }, win: function (a, b) { return lower(priceNum(a), priceNum(b)); } },
-    { label: 'Free plan', get: function (t) { return t.free ? 'Yes' : 'No'; }, win: function (a, b) { return a.free === b.free ? null : (a.free ? 'a' : 'b'); } },
-    { label: 'Best for', get: function (t) { return t.bestFor || null; } },
-    { label: 'Ease of use', get: function (t) { return t.ease || null; }, win: function (a, b) { return lower(EASE_RANK[String(a.ease).toLowerCase()], EASE_RANK[String(b.ease).toLowerCase()]); } },
-    { label: 'Rating', get: function (t) { return t.rating ? t.rating + ' / 5' : null; }, win: function (a, b) { return (a.rating && b.rating && a.rating !== b.rating) ? (a.rating > b.rating ? 'a' : 'b') : null; } },
-    { label: 'Key features', get: function (t) { return has(t.features) ? t.features.join(' · ') : null; } },
-    { label: 'Pros', get: function (t) { return has(t.pros) ? t.pros.join(' · ') : null; } },
-    { label: 'Cons', get: function (t) { return has(t.cons) ? t.cons.join(' · ') : null; } },
-    { label: 'Website', html: true, get: function (t) { var u = safeUrl(t.url); return u ? '<a class="u-teal-bold" href="' + esc(u) + '" target="_blank" rel="noopener nofollow">Visit →</a>' : null; } }
-  ];
-
-  /* ---------- 3D cards ---------- */
-  function cardHTML(t, side) {
-    return '<div class="cmp-card enter-' + side + '">' +
-      '<div class="cmp-card-shine"></div>' +
-      '<div class="cmp-icon">' + esc(t.icon || t.name.charAt(0)) + '</div>' +
-      '<h3>' + esc(t.name) + '</h3>' +
-      '<span class="cmp-cat mono">' + esc(cap(t.cat)) + '</span>' +
-      '<p>' + esc(t.desc) + '</p>' +
-      '<div class="cmp-pills">' +
-        '<span class="pill ' + (t.free ? 'free' : '') + '">' + (t.free ? 'Free plan' : 'Paid') + '</span>' +
-        (t.isNew ? '<span class="pill new">New</span>' : '') +
-      '</div></div>';
-  }
-  function tilt(card) {
-    if (reduceMotion) return;
-    card.addEventListener('mousemove', function (e) {
-      var r = card.getBoundingClientRect();
-      var x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-      card.style.transform = 'rotateX(' + ((y - 0.5) * -12) + 'deg) rotateY(' + ((x - 0.5) * 12) + 'deg) translateZ(14px)';
-      card.style.setProperty('--mx', (x * 100) + '%');
-      card.style.setProperty('--my', (y * 100) + '%');
-    });
-    card.addEventListener('mouseleave', function () { card.style.transform = ''; });
-  }
-
-  /* ---------- render ---------- */
-  function render() {
-    var a = bySlug[A.value], b = bySlug[B.value];
-    if (!a || !b) return;
-
-    stage.innerHTML = cardHTML(a, 'a') + '<div class="cmp-vs"><span>VS</span></div>' + cardHTML(b, 'b');
-    Array.prototype.forEach.call(stage.querySelectorAll('.cmp-card'), tilt);
-
-    var scoreA = 0, scoreB = 0, measured = 0;
-    var body = ROWS.map(function (r) {
-      var va = r.get(a), vb = r.get(b);
-      if (va == null && vb == null) return '';
-      var w = r.win ? r.win(a, b) : null;
-      if (w) { measured++; if (w === 'a') scoreA++; else scoreB++; }
-      function cell(v, side) {
-        var content = v == null ? '<span class="cmp-na">—</span>' : (r.html ? v : esc(v));
-        return '<td class="' + (w === side ? 'win' : '') + '">' + content + (w === side ? ' <span class="cmp-badge">Better</span>' : '') + '</td>';
-      }
-      return '<tr><td class="feat">' + r.label + '</td>' + cell(va, 'a') + cell(vb, 'b') + '</tr>';
-    }).join('');
-    table.innerHTML = '<tr><th></th><th>' + esc(a.name) + '</th><th>' + esc(b.name) + '</th></tr>' + body;
-
-    /* verdict */
-    var msg;
-    if (!measured || scoreA === scoreB) {
-      msg = '<b>' + esc(a.name) + '</b> and <b>' + esc(b.name) + '</b> are evenly matched on the measures we track. Choose based on the <b>best-for</b> use case.';
-    } else {
-      var win = scoreA > scoreB ? a : b, lose = scoreA > scoreB ? b : a;
-      msg = '<b>' + esc(win.name) + '</b> comes out ahead of ' + esc(lose.name) + ' on <b>' + Math.max(scoreA, scoreB) + '</b> of ' + measured + ' measures.' +
-        (lose.bestFor ? ' Still, ' + esc(lose.name) + ' is the better fit for <i>' + esc(lose.bestFor) + '</i>.' : '');
-    }
-    verdict.innerHTML = '<div class="cmp-verdict"><span class="mono">QUICK VERDICT</span><p>' + msg + '</p></div>';
-
-    /* similar tools (auto-computed by the build script) */
-    var slugs = (a.similar && a.similar.length) ? a.similar : tools.filter(function (t) { return t.cat === a.cat; }).map(function (t) { return t.slug; });
-    var sims = slugs.map(function (s) { return bySlug[s]; })
-      .filter(function (t) { return t && t.slug !== a.slug && t.slug !== b.slug; }).slice(0, 6);
-    similar.innerHTML = sims.length
-      ? '<div class="cmp-similar"><span class="mono">COMPARE ' + esc(a.name.toUpperCase()) + ' WITH</span><div class="cat-row">' +
-        sims.map(function (s) { return '<button type="button" class="cat-chip" data-slug="' + esc(s.slug) + '">' + esc(s.name) + '</button>'; }).join('') +
-        '</div></div>'
-      : '';
-    Array.prototype.forEach.call(similar.querySelectorAll('[data-slug]'), function (btn) {
-      btn.addEventListener('click', function () { B.value = btn.getAttribute('data-slug'); render(); window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' }); });
-    });
-
-    /* shareable URL + title */
-    try { history.replaceState(null, '', '?a=' + encodeURIComponent(a.slug) + '&b=' + encodeURIComponent(b.slug)); } catch (e) {}
-    document.title = a.name + ' vs ' + b.name + ' — Flexora.Ai';
-  }
-
-  /* ---------- popular comparisons (auto: first two tools of every category) ---------- */
-  if (popular) {
-    var pairs = [];
-    cats.forEach(function (c) {
-      var inCat = tools.filter(function (t) { return t.cat === c; });
-      if (inCat.length >= 2) pairs.push([inCat[0], inCat[1]]);
-    });
-    popular.innerHTML = pairs.length
-      ? '<div class="cmp-popular"><span class="mono">POPULAR COMPARISONS</span><div class="cat-row">' +
-        pairs.slice(0, 8).map(function (p) {
-          return '<a class="cat-chip" href="?a=' + encodeURIComponent(p[0].slug) + '&b=' + encodeURIComponent(p[1].slug) + '">' + esc(p[0].name) + ' vs ' + esc(p[1].name) + '</a>';
-        }).join('') + '</div></div>'
-      : '';
-    Array.prototype.forEach.call(popular.querySelectorAll('a'), function (link) {
-      link.addEventListener('click', function (e) {
-        e.preventDefault();
-        var q = new URLSearchParams(link.getAttribute('href').slice(1));
-        A.value = q.get('a'); B.value = q.get('b'); render();
-        window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
-      });
-    });
-  }
-
-  /* ---------- events ---------- */
-  function onChange(changed, other) {
-    if (A.value === B.value) {
-      var i = tools.findIndex(function (t) { return t.slug === changed.value; });
-      other.value = tools[(i + 1) % tools.length].slug;
-    }
-    render();
-  }
-  A.addEventListener('change', function () { onChange(A, B); });
-  B.addEventListener('change', function () { onChange(B, A); });
-
-  var swap = document.getElementById('cmpSwap');
-  if (swap) swap.addEventListener('click', function () { var t = A.value; A.value = B.value; B.value = t; render(); });
-
-  var share = document.getElementById('cmpShare');
-  if (share) share.addEventListener('click', function () {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(location.href).then(function () { toast('Comparison link copied'); }, function () { toast(location.href); });
-    } else { toast(location.href); }
-  });
-
-  /* ---------- initial selection: ?a=&b= or sensible defaults ---------- */
-  var p = new URLSearchParams(location.search);
-  var a0 = bySlug[p.get('a')] || tools[0];
-  var b0 = (bySlug[p.get('b')] && p.get('b') !== a0.slug)
-    ? bySlug[p.get('b')]
-    : (tools.find(function (t) { return t.cat === a0.cat && t.slug !== a0.slug; }) || tools.find(function (t) { return t.slug !== a0.slug; }));
-  A.value = a0.slug;
-  B.value = b0.slug;
-  render();
-})();
+const TOOLS = [
+  { name: 'Scriptly',       cat: 'writing',      icon: 'S', desc: 'Draft, rewrite and outline long-form content with tone controls.',            free: true,  isNew: false, price: 'Free plan',    bestFor: 'Long-form blog drafts',   ease: 'Easy' },
+  { name: 'Copysmith Lite', cat: 'writing',      icon: 'C', desc: 'Short-form ad and product copy generator with brand voice presets.',           free: true,  isNew: true,  price: 'Free plan',    bestFor: 'Ad copy at scale',        ease: 'Easy' },
+  { name: 'PixelForge',     cat: 'image',        icon: 'P', desc: 'Generate and edit product images from text prompts.',                          free: false, isNew: true,  price: 'From $19/mo',  bestFor: 'Product photography',     ease: 'Moderate' },
+  { name: 'Framewise',      cat: 'image',        icon: 'F', desc: 'Upscale and restore old or low-res photos in one click.',                      free: true,  isNew: false, price: 'Free plan',    bestFor: 'Photo restoration',       ease: 'Easy' },
+  { name: 'Clipreel',       cat: 'video',        icon: 'C', desc: 'Turn long recordings into short clips with auto captions.',                    free: false, isNew: true,  price: 'From $24/mo',  bestFor: 'Social video clips',      ease: 'Moderate' },
+  { name: 'ScenePilot',     cat: 'video',        icon: 'S', desc: 'Storyboard and generate short AI video scenes from a script.',                 free: false, isNew: true,  price: 'From $35/mo',  bestFor: 'Short-form video ideas',  ease: 'Advanced' },
+  { name: 'CodeLoop',       cat: 'coding',       icon: 'C', desc: 'In-editor AI pair programmer with test generation.',                           free: true,  isNew: false, price: 'Free plan',    bestFor: 'Day-to-day coding',       ease: 'Moderate' },
+  { name: 'Bugcatch',       cat: 'coding',       icon: 'B', desc: 'Scans pull requests and flags likely bugs before merge.',                      free: false, isNew: true,  price: 'From $12/mo',  bestFor: 'Code review',             ease: 'Moderate' },
+  { name: 'Ranklyst',       cat: 'seo',          icon: 'R', desc: 'Keyword clustering and on-page audits, explained simply.',                     free: false, isNew: true,  price: 'From $29/mo',  bestFor: 'SEO audits',              ease: 'Easy' },
+  { name: 'Voxel',          cat: 'audio',        icon: 'V', desc: 'Text-to-speech with cloned voice profiles.',                                   free: true,  isNew: false, price: 'Free plan',    bestFor: 'Voiceovers',              ease: 'Easy' },
+  { name: 'Podtrim',        cat: 'audio',        icon: 'P', desc: 'Removes filler words and silence from podcast audio automatically.',           free: true,  isNew: false, price: 'Free plan',    bestFor: 'Podcast editing',         ease: 'Easy' },
+  { name: 'Palette AI',     cat: 'design',       icon: 'P', desc: 'Generates matching color palettes and UI themes from one image.',              free: true,  isNew: false, price: 'Free plan',    bestFor: 'Design systems',          ease: 'Easy' },
+  { name: 'Mockflow AI',    cat: 'design',       icon: 'M', desc: 'Turns rough sketches into clickable UI mockups.',                              free: false, isNew: true,  price: 'From $18/mo',  bestFor: 'Rapid prototyping',       ease: 'Moderate' },
+  { name: 'Inboxly',        cat: 'productivity', icon: 'I', desc: 'Drafts email replies in your tone and summarizes long threads.',               free: true,  isNew: false, price: 'Free plan',    bestFor: 'Email triage',            ease: 'Easy' },
+  { name: 'Plannix',        cat: 'productivity', icon: 'P', desc: 'Turns a messy to-do list into a scheduled weekly plan.',                       free: false, isNew: true,  price: 'From $9/mo',   bestFor: 'Weekly planning',         ease: 'Easy' },
+  { name: 'Autoflow',       cat: 'automation',   icon: 'A', desc: 'No-code automations that connect your everyday apps and AI steps.',            free: false, isNew: true,  price: 'From $15/mo',  bestFor: 'Connecting apps',         ease: 'Moderate' }
+];
