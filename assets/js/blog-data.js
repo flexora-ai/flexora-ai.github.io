@@ -764,6 +764,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "best-ai-logo-generator-tools",
+    title: "Best AI Logo Generator Tools (And When to Skip Them)",
+    excerpt: "Which AI logo generators are actually worth using, and the situations where hiring a real designer is still the better call.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 7,
+    image: "assets/images/blog/best-ai-logo-generator-tools.webp",
+    imageAlt: "Best AI logo generator tools compared",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "best-ai-name-generator-tools",
     title: "Best AI Name Generator Tools, Compared Honestly (2026)",
     excerpt: "A straight comparison of the AI name generator tools worth trying, without the usual",
