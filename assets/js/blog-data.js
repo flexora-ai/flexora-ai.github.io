@@ -498,6 +498,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tools-for-blog-images",
+    title: "AI Tools for Blog Images (Without the Obvious AI Look)",
+    excerpt: "How to actually get usable blog images from AI tools, and how to avoid the overly polished, slightly-off look readers have started to recognize.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 7,
+    image: "assets/images/blog/ai-tools-for-blog-images.webp",
+    imageAlt: "AI tools for blog images without the obvious AI look",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tools-for-blog-seo-images",
     title: "AI Tools for Blog SEO Images: 2026 Comparison Guide",
     excerpt: "Compare AI tools for blog SEO images in 2026: how they work, where they hurt page speed, and how to pick images that actually help you rank.",
