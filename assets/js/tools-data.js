@@ -1,9 +1,9 @@
 /* ============================================================
    Flexora.Ai — assets/js/tools-data.js
    SINGLE SOURCE OF TRUTH for tool + category data.
-   Loaded by BOTH index.html and tools.html (and any future page)
-   so the directory, homepage stats, homepage demos, and footer
-   never drift out of sync with each other.
+
+   Loaded by index.html, tools.html, and compare.html — so the
+   directory, homepage, and comparison tool never drift apart.
 
    Data sourced from the "tools data" tracking sheet (Tier 1-3,
    status = ADD). Rows marked REMOVE are excluded. Rows marked
@@ -24,7 +24,18 @@
      bestFor   - short "best for" tag
      icon      - one capital letter (fallback avatar)
      ease      - "Easy" | "Moderate" | "Advanced"
-   No other file needs to change — every page reads from here.
+
+   Optional, for a richer /compare.html row (leave off if unknown):
+     startPrice   - number, lowest paid tier in USD/mo (omit if price
+                    is just a label like "Freemium" with no fixed number)
+     features     - array of short strings, e.g. ['API access','Team seats']
+     platforms    - array, e.g. ['Web','iOS']
+     integrations - array, e.g. ['Slack','Zapier']
+
+   No other file needs to change — every page reads from here. The
+   TOOLS / TOOL_CATEGORIES block near the bottom is generated
+   automatically from `tools` / `CATEGORIES` — edit the tool, not
+   that block.
    ============================================================ */
 
 // ---- category icon set (inline SVG, crisp at any size) ----
@@ -119,3 +130,38 @@ function addTilt(card){
   });
   card.addEventListener('mouseleave', () => { card.style.transform = ''; });
 }
+
+/* ================= compare.html compatibility layer =================
+   Generated automatically from `tools` / `CATEGORIES` above — do not
+   list tools here by hand, or this page will drift from the others.
+   compare.html reads TOOLS and TOOL_CATEGORIES; index.html/tools.html
+   are untouched and keep using `tools` / `CATEGORIES` as before. */
+(function(){
+  function slugify(s){
+    return String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  }
+  const seen = {};
+  window.TOOLS = tools.map(function(t){
+    let slug = slugify(t.name);
+    if(seen[slug]){ seen[slug]++; slug = slug + '-' + seen[slug]; } else { seen[slug] = 1; }
+    // startPrice: only set when we actually know a number (free = 0).
+    // Labels like "Freemium" or "Paid" carry no dollar figure, so compare.html
+    // leaves that tool out of price-based "cheapest" comparisons rather than guess.
+    const startPrice = t.free ? 0 : null;
+    return {
+      name: t.name,
+      slug: slug,
+      cat: t.cat,
+      icon: t.icon,
+      desc: t.desc,
+      free: t.free,
+      isNew: !!t.isNew,
+      price: t.price,
+      startPrice: startPrice,
+      bestFor: t.bestFor,
+      ease: t.ease,
+      url: t.website
+    };
+  });
+  window.TOOL_CATEGORIES = CATEGORIES.map(function(c){ return {key:c.key, label:c.label}; });
+})();
