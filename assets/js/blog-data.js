@@ -554,6 +554,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tools-for-brand-identity-design",
+    title: "AI Tools for Brand Identity Design (Beyond Just a Logo)",
+    excerpt: "How AI tools can help build a full, consistent brand identity for a small business — not just one logo, but the whole visual and verbal system around it.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 7,
+    image: "assets/images/blog/ai-tools-for-brand-identity-design.webp",
+    imageAlt: "AI tools for brand identity design",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tools-for-cold-email-personalization",
     title: "AI Tools for Cold Email Personalization (What Actually Works)",
     excerpt: "A no-nonsense guide to AI tools for cold email personalization. What actually boosts reply rates, the hidden spam risks, and what",
