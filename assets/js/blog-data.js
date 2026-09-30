@@ -106,6 +106,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-business-name-generator",
+    title: "AI Business Name Generator: Does It Actually Work? (2026)",
+    excerpt: "What an AI business name generator can and can",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 6,
+    image: "assets/images/blog/ai-business-name-generator.webp",
+    imageAlt: "AI business name generator comparison and guide",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-chatbots-for-small-business",
     title: "AI Chatbots for Small Business: What They",
     excerpt: "Where an AI chatbot genuinely helps a small business, where it frustrates customers instead, and how to set one up without the bot loop problem.",
