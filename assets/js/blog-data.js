@@ -694,6 +694,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tools-for-social-media-graphics",
+    title: "AI Tools for Social Media Graphics (Consistent, Not Generic)",
+    excerpt: "How small businesses can use AI to produce social media graphics fast without ending up with a feed that looks like everyone else",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 6,
+    image: "assets/images/blog/ai-tools-for-social-media-graphics.webp",
+    imageAlt: "AI tools for social media graphics",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tools-for-startup-founders",
     title: "AI Tools for Startup Founders: The 2026 Playbook",
     excerpt: "The AI tools startup founders actually keep past month two. Stack by stage, real cost math, and the tools we cancelled. Based on 10 founder interviews.",
