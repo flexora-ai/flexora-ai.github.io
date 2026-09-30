@@ -680,6 +680,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tools-for-thumbnail-design",
+    title: "AI Tools for Thumbnail Design That Actually Get Clicks (2026)",
+    excerpt: "How small businesses can use AI to design thumbnails that stand out in a crowded feed, without hiring a designer for every video or post.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 6,
+    image: "assets/images/blog/ai-tools-for-thumbnail-design.webp",
+    imageAlt: "AI tools for thumbnail design that get clicks",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tools-for-writing-business-proposals",
     title: "AI Tools for Writing Business Proposals (What Actually Wins Deals)",
     excerpt: "A no-nonsense guide to AI tools for writing business proposals. What actually wins deals, the hidden formatting risks, and what",
