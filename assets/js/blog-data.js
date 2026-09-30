@@ -582,6 +582,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tools-for-infographic-creation",
+    title: "AI Tools for Infographic Creation (Turning Data Into Something People Read)",
+    excerpt: "How AI tools help small businesses turn raw data or a wall of text into an infographic people actually stop to read.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 7,
+    image: "assets/images/blog/ai-tools-for-infographic-creation.webp",
+    imageAlt: "AI tools for infographic creation",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tools-for-mockup-generation",
     title: "AI Tools for Mockup Generation: 2026 Comparison Guide",
     excerpt: "Compare AI tools for mockup generation in 2026: how they work, where they look fake, and how to pick a mockup that actually reads as a real product.",
