@@ -49,10 +49,10 @@
     productivity: ['plan', 'planning', 'schedule', 'task', 'tasks', 'email', 'inbox', 'notes', 'organize', 'week'],
     automation: ['automate', 'automation', 'workflow', 'workflows', 'integrate', 'integration', 'connect', 'zapier']
   };
-  function guessCategory(tokensSet) {
+  function guessCategory(queryTokens) {
     var best = null, bestScore = 0;
     Object.keys(CAT_HINTS).forEach(function (cat) {
-      var score = CAT_HINTS[cat].reduce(function (n, w) { return n + (tokensSet.indexOf(w) > -1 ? 1 : 0); }, 0);
+      var score = CAT_HINTS[cat].reduce(function (n, w) { return n + (queryTokens.indexOf(w) > -1 ? 1 : 0); }, 0);
       if (score > bestScore) { best = cat; bestScore = score; }
     });
     return best;
@@ -90,7 +90,10 @@
     var cmp = '<a class="card-compare" href="compare.html?a=' + encodeURIComponent(t.slug) + '">Compare →</a>';
     var visit = t.url ? '<a class="fcard-visit" href="' + esc(t.url) + '" target="_blank" rel="noopener nofollow">Visit ↗</a>' : '';
     return (
-      '<div class="fcard" style="' + (reduceMotion ? '' : 'animation-delay:' + (idx * 70) + 'ms') + '">' +
+      // "card" is included alongside "fcard" so any generic .card rules already
+      // defined in style.css (used by tools.html, etc.) apply here too — the
+      // finder-specific 3D tilt/shine styles stay scoped to .fcard in finder.css.
+      '<div class="fcard card" style="' + (reduceMotion ? '' : 'animation-delay:' + (idx * 70) + 'ms') + '">' +
       '<div class="fcard-shine"></div>' +
       '<div class="card-top">' +
       '<div class="card-icon">' + esc(t.icon || t.name.charAt(0)) + '</div>' +
@@ -161,16 +164,25 @@
       .sort(function (a, b) { return b.score - a.score || (b.tool.rating || 0) - (a.tool.rating || 0) || a.tool.name.localeCompare(b.tool.name); });
 
     var wantFree = freeOnly && freeOnly.checked;
+    var freeOnlyFellBack = false;
     if (wantFree) {
       var freeFiltered = scored.filter(function (r) { return r.tool.free; });
-      if (freeFiltered.length) scored = freeFiltered;
+      if (freeFiltered.length) {
+        scored = freeFiltered;
+      } else if (scored.length) {
+        // No free-plan tool matched this query — say so instead of silently
+        // showing paid tools despite "Free tools only" being checked.
+        freeOnlyFellBack = true;
+      }
     }
 
     var matchedByslug = {};
     scored.forEach(function (r) { matchedByslug[r.tool.slug] = r.matched; });
 
     if (scored.length) {
-      note.innerHTML = 'Found <b>' + scored.length + '</b> tool' + (scored.length === 1 ? '' : 's') + ' that fit what you described.';
+      var msg = 'Found <b>' + scored.length + '</b> tool' + (scored.length === 1 ? '' : 's') + ' that fit what you described.';
+      if (freeOnlyFellBack) msg += ' None have a free plan, so paid options are shown instead.';
+      note.innerHTML = msg;
       runScan(function () { renderCards(scored.slice(0, 6).map(function (r) { return r.tool; }), matchedByslug); });
       return;
     }
@@ -179,8 +191,14 @@
     var guessed = guessCategory(qTokens);
     if (guessed) {
       var inCat = tools.filter(function (t) { return t.cat === guessed && (!wantFree || t.free); });
-      if (!inCat.length) inCat = tools.filter(function (t) { return t.cat === guessed; });
-      note.innerHTML = 'No exact match, but this sounds like <b>' + esc(cap(guessed)) + '</b> — here are the best tools in that category.';
+      var categoryFreeOnlyFellBack = false;
+      if (!inCat.length) {
+        inCat = tools.filter(function (t) { return t.cat === guessed; });
+        categoryFreeOnlyFellBack = wantFree && inCat.length > 0;
+      }
+      var catMsg = 'No exact match, but this sounds like <b>' + esc(cap(guessed)) + '</b> — here are the best tools in that category.';
+      if (categoryFreeOnlyFellBack) catMsg += ' None have a free plan, so paid options are shown instead.';
+      note.innerHTML = catMsg;
       runScan(function () { renderCards(inCat.slice(0, 6), {}); });
       return;
     }
@@ -201,6 +219,14 @@
         search(input.value);
         input.focus();
       });
+    });
+  }
+
+  // Re-run the active query if "Free tools only" is toggled after results are showing,
+  // so the grid stays in sync with the checkbox instead of requiring a re-submit.
+  if (freeOnly) {
+    freeOnly.addEventListener('change', function () {
+      if (input.value.trim()) search(input.value.trim());
     });
   }
 
