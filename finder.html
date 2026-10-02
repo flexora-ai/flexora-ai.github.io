@@ -44,13 +44,14 @@ body{margin:0; background:var(--bg); color:var(--ink); font-family:'Sora',sans-s
 .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
 a{color:inherit;}
 
-.bg-particles{position:fixed; inset:0; z-index:-1; pointer-events:none;
+.bg-glow{position:fixed; inset:0; z-index:-2; pointer-events:none;
   background:
     radial-gradient(circle at 12% 18%, rgba(45,226,200,.10), transparent 40%),
     radial-gradient(circle at 88% 12%, rgba(76,123,255,.09), transparent 42%),
     radial-gradient(circle at 75% 85%, rgba(45,226,200,.07), transparent 38%),
     radial-gradient(circle at 20% 80%, rgba(76,123,255,.06), transparent 36%);
 }
+#bgParticles{position:fixed; inset:0; z-index:-1; pointer-events:none; display:block;}
 
 /* header */
 header{position:sticky; top:0; z-index:50; background:rgba(7,9,15,.82); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
@@ -79,17 +80,28 @@ header nav.wrap{display:flex; align-items:center; justify-content:space-between;
 }
 
 /* hero */
-.page-hero{padding:56px 0 40px; text-align:center;}
-.eyebrow{display:inline-flex; align-items:center; gap:8px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.04em; color:var(--teal); background:rgba(45,226,200,.08); border:1px solid rgba(45,226,200,.25); border-radius:20px; padding:6px 14px; margin-bottom:18px;}
-.eyebrow .dot{width:6px; height:6px; border-radius:50%; background:var(--teal); display:inline-block;}
+.page-hero{padding:56px 0 40px; text-align:center; perspective:1200px;}
+.eyebrow{display:inline-flex; align-items:center; gap:8px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.04em; color:var(--teal); background:rgba(45,226,200,.08); border:1px solid rgba(45,226,200,.25); border-radius:20px; padding:6px 14px; margin-bottom:18px; transition:transform .25s, box-shadow .25s; transform-style:preserve-3d;}
+.eyebrow:hover{transform:rotateX(8deg) rotateY(-6deg) translateZ(4px); box-shadow:0 12px 24px -14px rgba(45,226,200,.5);}
+.eyebrow .dot{width:6px; height:6px; border-radius:50%; background:var(--teal); display:inline-block; box-shadow:0 0 8px 1px rgba(45,226,200,.6);}
 .page-hero h1{font-size:clamp(28px,4vw,42px); margin:0 0 16px; line-height:1.15;}
 .page-hero .lede{color:var(--ink-soft); font-size:16px; max-width:640px; margin:0 auto;}
+.reveal-up{opacity:0; transform:translateY(22px) rotateX(8deg); animation:revealUp .7s cubic-bezier(.2,.8,.2,1) forwards;}
+@keyframes revealUp{to{opacity:1; transform:translateY(0) rotateX(0);}}
+@media (prefers-reduced-motion: reduce){ .reveal-up{animation:none; opacity:1; transform:none;} }
 .u-pt-0{padding-top:0;}
 section{padding:40px 0;}
 
 /* finder box */
-.ft-box{background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:34px; position:relative; overflow:hidden;}
-.ft-box::before{content:""; position:absolute; inset:-40% -10% auto -10%; height:60%; background:radial-gradient(circle at 30% 0%, rgba(45,226,200,.14), transparent 60%); pointer-events:none;}
+.ft-box{
+  background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:34px; position:relative; overflow:hidden;
+  transform-style:preserve-3d; perspective:1400px;
+  transform:rotateX(var(--btx,0deg)) rotateY(var(--bty,0deg));
+  transition:transform .25s ease-out, box-shadow .25s;
+  will-change:transform;
+}
+.ft-box:hover{box-shadow:0 30px 60px -30px rgba(45,226,200,.22);}
+.ft-box::before{content:""; position:absolute; inset:0; background:radial-gradient(circle at var(--bmx,30%) var(--bmy,0%), rgba(45,226,200,.16), transparent 55%); pointer-events:none; transition:background .1s;}
 .ft-form{position:relative; z-index:1;}
 .ft-input-row{display:flex; gap:10px; background:var(--surface-2); border:1px solid var(--line); border-radius:14px; padding:8px; transition:border-color .2s;}
 .ft-input-row:focus-within{border-color:var(--teal); box-shadow:0 0 0 3px rgba(45,226,200,.12);}
@@ -158,7 +170,15 @@ section{padding:40px 0;}
 }
 
 /* quiz */
-.finder-quiz{background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:34px; max-width:640px; margin:0 auto;}
+.finder-quiz{
+  background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:34px; max-width:640px; margin:0 auto;
+  position:relative; overflow:hidden; transform-style:preserve-3d; perspective:1400px;
+  transform:rotateX(var(--btx,0deg)) rotateY(var(--bty,0deg));
+  transition:transform .25s ease-out, box-shadow .25s; will-change:transform;
+}
+.finder-quiz:hover{box-shadow:0 30px 60px -30px rgba(45,226,200,.18);}
+.finder-quiz::before{content:""; position:absolute; inset:0; background:radial-gradient(circle at var(--bmx,50%) var(--bmy,0%), rgba(76,123,255,.12), transparent 55%); pointer-events:none;}
+.finder-quiz > *{position:relative; z-index:1;}
 .fq-progress{display:flex; gap:8px; margin-bottom:28px; justify-content:center;}
 .fq-dot{width:8px; height:8px; border-radius:50%; background:var(--line); transition:background .2s;}
 .fq-dot.active{background:var(--teal);}
@@ -183,7 +203,7 @@ section{padding:40px 0;}
 footer{border-top:1px solid var(--line); padding:50px 0 24px; margin-top:40px;}
 .foot-top{display:grid; grid-template-columns:1.6fr repeat(4,1fr); gap:30px;}
 .foot-brand p{color:var(--ink-soft); font-size:13.5px; margin:14px 0;}
-.social-row{display:flex; gap:12px;}
+.social-row{display:flex; gap:10px; flex-wrap:wrap;}
 .social-row a{width:34px; height:34px; display:flex; align-items:center; justify-content:center; border:1px solid var(--line); border-radius:50%; color:var(--ink-soft); text-decoration:none; transition:border-color .15s, color .15s;}
 .social-row a:hover{border-color:var(--teal); color:var(--teal);}
 .social-row svg{width:16px; height:16px;}
@@ -227,7 +247,8 @@ footer{border-top:1px solid var(--line); padding:50px 0 24px; margin-top:40px;}
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-56W23QBB" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<div class="bg-particles"></div>
+<div class="bg-glow"></div>
+<canvas id="bgParticles"></canvas>
 
 <header>
   <nav class="wrap">
@@ -249,15 +270,15 @@ footer{border-top:1px solid var(--line); padding:50px 0 24px; margin-top:40px;}
 </header>
 
 <div class="page-hero"><div class="wrap">
-  <span class="eyebrow"><span class="dot"></span>Core feature</span>
-  <h1>Tell us what you need. We'll find the tool.</h1>
-  <p class="lede">Describe your task in your own words — "turn my podcast into short clips", "write product descriptions", "clean up messy code" — and get matched instantly.</p>
+  <span class="eyebrow reveal-up" style="animation-delay:0ms"><span class="dot"></span>Core feature</span>
+  <h1 class="reveal-up" style="animation-delay:90ms">Tell us what you need. We'll find the tool.</h1>
+  <p class="lede reveal-up" style="animation-delay:180ms">Describe your task in your own words — "turn my podcast into short clips", "write product descriptions", "clean up messy code" — and get matched instantly.</p>
 </div></div>
 
 <section class="u-pt-0">
   <div class="wrap">
 
-    <div class="ft-box">
+    <div class="ft-box reveal-up" id="ftBox" style="animation-delay:270ms">
       <form class="ft-form" id="ftForm">
         <div class="ft-input-row">
           <textarea id="ftInput" rows="2" placeholder="e.g. I need to turn my podcast recording into short social clips with captions" aria-label="Describe what you need"></textarea>
@@ -271,7 +292,6 @@ footer{border-top:1px solid var(--line); padding:50px 0 24px; margin-top:40px;}
             <span class="cat-chip" data-q="turn a long recording into short video clips">🎬 Edit video</span>
             <span class="cat-chip" data-q="review my code and catch bugs">💻 Write code</span>
             <span class="cat-chip" data-q="audit my website for seo keywords">📈 Improve SEO</span>
-            <span class="cat-chip" data-q="generate a voiceover from text">🎧 Make audio</span>
             <span class="cat-chip" data-q="turn a sketch into a ui mockup">🖌️ Design UI</span>
             <span class="cat-chip" data-q="plan my messy to-do list into a weekly schedule">📋 Get organized</span>
             <span class="cat-chip" data-q="automate a workflow between my apps">⚙️ Automate tasks</span>
@@ -301,7 +321,6 @@ footer{border-top:1px solid var(--line); padding:50px 0 24px; margin-top:40px;}
           <button class="fq-opt" data-value="video">🎬 Edit video</button>
           <button class="fq-opt" data-value="coding">💻 Write code</button>
           <button class="fq-opt" data-value="seo">📈 Improve SEO</button>
-          <button class="fq-opt" data-value="audio">🎧 Make audio</button>
           <button class="fq-opt" data-value="design">🖌️ Design UI</button>
           <button class="fq-opt" data-value="productivity">📋 Get organized</button>
           <button class="fq-opt" data-value="automation">⚙️ Automate tasks</button>
@@ -344,6 +363,12 @@ footer{border-top:1px solid var(--line); padding:50px 0 24px; margin-top:40px;}
         <a class="logo" href="index.html"><img alt="" src="assets/images/logo.png"/>Flexora<span>.Ai</span></a>
         <p>Helping people find the right AI tool for the job — without the pay-to-list noise.</p>
         <div class="social-row">
+          <!-- TODO: replace the href="#" placeholders below with your real profile URLs -->
+          <a aria-label="LinkedIn" href="#" rel="noopener" target="_blank"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2C18.5 11.33 17.37 10.33 15.8 10.33C15.05 10.33 14.33 10.69 13.86 11.24V10.57H11.3V18.5H13.86V13.57C13.86 12.8 14.29 12.3 15 12.3C15.68 12.3 15.98 12.8 15.98 13.57V18.5H18.5M8.5 9.14C9.32 9.14 10 8.47 10 7.64C10 6.81 9.32 6.14 8.5 6.14C7.67 6.14 7 6.81 7 7.64C7 8.47 7.67 9.14 8.5 9.14M9.78 18.5V10.57H7.22V18.5H9.78Z"/></svg></a>
+          <a aria-label="X (Twitter)" href="#" rel="noopener" target="_blank"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.9 3H21.8L15.4 10.3L23 21H17.1L12.5 14.9L7.2 21H4.3L11.2 13.1L3.9 3H9.9L14.1 8.6L18.9 3M17.9 19.3H19.5L9.1 4.6H7.4L17.9 19.3Z"/></svg></a>
+          <a aria-label="Instagram" href="#" rel="noopener" target="_blank"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a aria-label="Facebook" href="#" rel="noopener" target="_blank"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M22 12A10 10 0 1 0 10.3 22V15H7.6V12H10.3V9.6C10.3 7 11.9 5.5 14.2 5.5C15.3 5.5 16.5 5.7 16.5 5.7V8.3H15.2C13.9 8.3 13.5 9.1 13.5 9.9V12H16.4L15.9 15H13.5V22A10 10 0 0 0 22 12Z"/></svg></a>
+          <a aria-label="Pinterest" href="#" rel="noopener" target="_blank"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 8.4 21.4C8.3 20.6 8.3 19.3 8.5 18.4L9.7 13.3C9.7 13.3 9.4 12.6 9.4 11.7C9.4 10.2 10.3 9.1 11.3 9.1C12.2 9.1 12.6 9.8 12.6 10.6C12.6 11.5 12 12.8 11.7 14.1C11.5 15.1 12.2 16 13.3 16C15.2 16 16.6 14 16.6 11.1C16.6 8.5 14.7 6.7 12.1 6.7C9.1 6.7 7.3 9 7.3 11.3C7.3 12.2 7.6 13.1 8.1 13.7C8.2 13.8 8.2 13.9 8.1 14.1L7.8 15.3C7.8 15.5 7.6 15.5 7.5 15.4C6.1 14.8 5.3 12.8 5.3 11.2C5.3 7.9 7.7 4.8 12.4 4.8C16.1 4.8 19 7.5 19 11C19 14.7 16.7 17.6 13.4 17.6C12.3 17.6 11.3 17 10.9 16.4L10.2 19C10 20 9.3 21.2 8.8 22C9.8 22.3 10.9 22.5 12 22.5A10 10 0 0 0 12 2Z"/></svg></a>
           <a aria-label="GitHub" href="https://github.com/flexora-ai" rel="noopener" target="_blank"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.1 3.29 9.4 7.86 10.94.57.1.78-.25.78-.55v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.29-1.69-1.29-1.69-1.06-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.77 2.72 1.26 3.38.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.05 11.05 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.19 1.83 1.19 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.07.78 2.17v3.21c0 .3.21.66.79.55A10.51 10.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/></svg></a>
           <a aria-label="Email" href="mailto:ownerflexora.ai@gmail.com"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect height="16" rx="2" width="20" x="2" y="4"/><path d="m2 7 10 6 10-6"/></svg></a>
         </div>
@@ -391,29 +416,15 @@ footer{border-top:1px solid var(--line); padding:50px 0 24px; margin-top:40px;}
   <div class="mf-success" id="popupSubmitSuccess"><span class="u-fs-28">✅</span><h3>Got it — thanks!</h3><p>We review every submission by hand before it goes live.</p></div>
 </div></div>
 
+<!--
+  Real tool data now loads from your actual site-wide file instead of being
+  duplicated here. This is the correct long-term setup for 22 tools today
+  growing to 100+: one source of truth, shared by Tools, Compare, and Finder.
+  If this file is missing or fails to load, the Finder below shows a clear
+  "no data" message instead of breaking (see the `if (!tools.length)` check).
+-->
+<script src="assets/js/tools-data.js"></script>
 <script>
-/* =========================================================================
-   Tool data. This is the ONE place to edit to add/remove tools shown by
-   the Finder on this page. If you later want this list to come from your
-   shared tools-data.js instead (so Tools/Compare/Finder always match),
-   replace TOOLS_DATA below with a <script src="assets/js/tools-data.js">
-   tag placed before this block, once that file is confirmed loading.
-   ========================================================================= */
-var TOOLS_DATA = [
-  { name:"Scriptly", slug:"scriptly", cat:"writing", icon:"S", desc:"Long-form drafting, rewriting and outlining with adjustable tone controls.", tags:["blog","copy","content","writing"], bestFor:"Blog posts and product descriptions", features:["tone control","outlines","rewriting"], free:true, isNew:false, url:"#" },
-  { name:"Copysmith Lite", slug:"copysmith-lite", cat:"writing", icon:"C", desc:"Short-form ad and product copy with brand-voice presets.", tags:["ads","copy","marketing"], bestFor:"Ad copy at scale", features:["brand voice","variations"], free:true, isNew:false, url:"#" },
-  { name:"PixelForge", slug:"pixelforge", cat:"image", icon:"P", desc:"Generate and edit product photography from text prompts.", tags:["image","product photos","graphics"], bestFor:"Product photography", features:["background removal","upscale"], free:false, isNew:true, url:"#" },
-  { name:"Avatarly", slug:"avatarly", cat:"image", icon:"A", desc:"Turns a selfie or brand brief into a consistent set of avatars and logos.", tags:["avatar","logo","image"], bestFor:"Avatars and simple logos", features:["style presets"], free:true, isNew:false, url:"#" },
-  { name:"Clipreel", slug:"clipreel", cat:"video", icon:"C", desc:"Turns long recordings into short social clips with auto captions.", tags:["video","clips","captions","reels"], bestFor:"Podcast to social clips", features:["auto captions","reel export"], free:false, isNew:false, url:"#" },
-  { name:"CodeReview AI", slug:"codereview-ai", cat:"coding", icon:"C", desc:"Reviews pull requests and catches bugs before merge.", tags:["code","review","bugs","github"], bestFor:"Reviewing code and catching bugs", features:["PR review","bug detection"], free:true, isNew:false, url:"#" },
-  { name:"Ranklyst", slug:"ranklyst", cat:"seo", icon:"R", desc:"Keyword clustering and on-page SEO audits explained in plain language.", tags:["seo","keywords","audit","rank"], bestFor:"Auditing a site for SEO keywords", features:["keyword clustering","audits"], free:false, isNew:false, url:"#" },
-  { name:"Voicecast", slug:"voicecast", cat:"audio", icon:"V", desc:"Generates natural-sounding voiceovers from text in multiple voices.", tags:["audio","voiceover","speech","podcast"], bestFor:"Text to voiceover", features:["multi-voice","emotion control"], free:true, isNew:false, url:"#" },
-  { name:"Sketch2UI", slug:"sketch2ui", cat:"design", icon:"S", desc:"Turns a rough sketch or wireframe into a clean UI mockup.", tags:["design","ui","ux","mockup","prototype"], bestFor:"Sketch to UI mockup", features:["component detection"], free:false, isNew:true, url:"#" },
-  { name:"Inboxly", slug:"inboxly", cat:"productivity", icon:"I", desc:"Drafts email replies in your tone and summarizes long threads.", tags:["email","organize","tasks","inbox"], bestFor:"Email triage and planning tasks", features:["thread summaries"], free:true, isNew:false, url:"#" },
-  { name:"Weeklyst", slug:"weeklyst", cat:"productivity", icon:"W", desc:"Turns a messy to-do list into a realistic weekly schedule.", tags:["schedule","plan","tasks","organize"], bestFor:"Planning a weekly schedule", features:["auto-scheduling"], free:true, isNew:false, url:"#" },
-  { name:"Autoflow", slug:"autoflow", cat:"automation", icon:"A", desc:"No-code way to connect your everyday apps and AI steps.", tags:["automation","workflow","integrate","connect"], bestFor:"Automating a workflow between apps", features:["no-code","triggers"], free:false, isNew:false, url:"#" }
-];
-
 (function(){
   'use strict';
 
@@ -421,6 +432,82 @@ var TOOLS_DATA = [
   var esc = function(v){ return String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); };
   var cap = function(s){ return s ? s.charAt(0).toUpperCase()+s.slice(1) : ''; };
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- animated background particles ---------- */
+  (function(){
+    var canvas = document.getElementById('bgParticles');
+    if (!canvas || reduceMotion) return;
+    var ctx = canvas.getContext('2d');
+    var W, H, dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var particles = [];
+    var COUNT = window.innerWidth < 700 ? 34 : 60;
+    var LINK_DIST = 130;
+    var COLORS = ['45,226,200', '76,123,255'];
+
+    function resize(){
+      W = window.innerWidth; H = window.innerHeight;
+      canvas.width = W * dpr; canvas.height = H * dpr;
+      canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    function makeParticle(){
+      return {
+        x: Math.random() * W, y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.25, vy: (Math.random() - 0.5) * 0.25,
+        r: Math.random() * 1.4 + 0.6,
+        c: COLORS[Math.floor(Math.random() * COLORS.length)]
+      };
+    }
+    function init(){
+      resize();
+      particles = [];
+      for (var i = 0; i < COUNT; i++) particles.push(makeParticle());
+    }
+
+    var raf;
+    function tick(){
+      ctx.clearRect(0, 0, W, H);
+      for (var i = 0; i < particles.length; i++) {
+        var p = particles[i];
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+        if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(' + p.c + ',0.55)';
+        ctx.fill();
+      }
+      // faint connecting lines between nearby particles, brand-colored
+      for (var a = 0; a < particles.length; a++) {
+        for (var b = a + 1; b < particles.length; b++) {
+          var dx = particles[a].x - particles[b].x, dy = particles[a].y - particles[b].y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < LINK_DIST) {
+            ctx.beginPath();
+            ctx.moveTo(particles[a].x, particles[a].y);
+            ctx.lineTo(particles[b].x, particles[b].y);
+            ctx.strokeStyle = 'rgba(45,226,200,' + (0.12 * (1 - dist / LINK_DIST)) + ')';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      }
+      raf = requestAnimationFrame(tick);
+    }
+
+    init();
+    tick();
+    var resizeTimer;
+    window.addEventListener('resize', function(){
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(init, 200);
+    });
+    // pause the animation loop when the tab isn't visible, to save battery/CPU
+    document.addEventListener('visibilitychange', function(){
+      if (document.hidden) { cancelAnimationFrame(raf); }
+      else { raf = requestAnimationFrame(tick); }
+    });
+  })();
 
   /* ---------- header / footer chrome ---------- */
   var menuBtn = document.getElementById('menuBtn');
@@ -461,7 +548,14 @@ var TOOLS_DATA = [
   var freeOnly = document.getElementById('ftFreeOnly');
   var chips = document.getElementById('ftChips');
 
-  var tools = TOOLS_DATA;
+  // window.TOOLS is the normalized global your tools-data.js already builds
+  // (same data compare.html reads) — slug, url, free, isNew, cat, icon, desc,
+  // bestFor all pre-filled, so no guessing or re-mapping needed here.
+  var tools = (typeof window.TOOLS !== 'undefined' && Array.isArray(window.TOOLS)) ? window.TOOLS : [];
+
+  if (!tools.length) {
+    grid.innerHTML = '<div class="empty-note">Couldn\'t load the tools directory (assets/js/tools-data.js). Check that file is deployed correctly — once it loads, every tool there appears here automatically.</div>';
+  }
 
   // Generic connector words excluded so they can't cause false-positive
   // matches on their own (e.g. "turn" / "into" matching unrelated tools).
@@ -482,7 +576,6 @@ var TOOLS_DATA = [
     video: ['video','clip','clips','footage','caption','captions','edit','editing','reel','reels','podcast','recording'],
     coding: ['code','coding','developer','programming','bug','bugs','debug','review','github','script'],
     seo: ['seo','keyword','keywords','rank','ranking','backlink','search','serp'],
-    audio: ['audio','voice','voiceover','podcast','speech','music','sound','transcribe','transcript'],
     design: ['design','ui','ux','mockup','prototype','palette','theme','sketch'],
     productivity: ['plan','planning','schedule','task','tasks','email','inbox','notes','organize','organized','week'],
     automation: ['automate','automation','workflow','workflows','integrate','integration','connect','zapier']
@@ -541,8 +634,8 @@ var TOOLS_DATA = [
     card.addEventListener('mousemove', function(e){
       var r = card.getBoundingClientRect();
       var x = (e.clientX-r.left)/r.width, y = (e.clientY-r.top)/r.height;
-      card.style.setProperty('--rx', ((y-0.5)*-8)+'deg');
-      card.style.setProperty('--ry', ((x-0.5)*8)+'deg');
+      card.style.setProperty('--rx', ((y-0.5)*-11)+'deg');
+      card.style.setProperty('--ry', ((x-0.5)*11)+'deg');
       card.style.setProperty('--mx', (x*100)+'%');
       card.style.setProperty('--my', (y*100)+'%');
     });
@@ -551,6 +644,26 @@ var TOOLS_DATA = [
       card.style.setProperty('--ry','0deg');
     });
   }
+
+  // gentle whole-box 3D tilt + spotlight, used on both the search box and
+  // the quiz box so the page feels alive even before interacting with it
+  function gentleTilt(el, maxDeg){
+    if (!el || reduceMotion) return;
+    el.addEventListener('mousemove', function(e){
+      var r = el.getBoundingClientRect();
+      var x = (e.clientX-r.left)/r.width, y = (e.clientY-r.top)/r.height;
+      el.style.setProperty('--btx', ((y-0.5)*-maxDeg)+'deg');
+      el.style.setProperty('--bty', ((x-0.5)*maxDeg)+'deg');
+      el.style.setProperty('--bmx', (x*100)+'%');
+      el.style.setProperty('--bmy', (y*100)+'%');
+    });
+    el.addEventListener('mouseleave', function(){
+      el.style.setProperty('--btx','0deg');
+      el.style.setProperty('--bty','0deg');
+    });
+  }
+  gentleTilt(document.getElementById('ftBox'), 2.2);
+  gentleTilt(document.getElementById('finderQuiz'), 2);
 
   function renderCards(list, matchedByslug){
     grid.innerHTML = list.map(function(t,i){ return cardHTML(t, matchedByslug[t.slug], i); }).join('');
@@ -637,7 +750,11 @@ var TOOLS_DATA = [
   }
 
   var qParam = new URLSearchParams(location.search).get('q');
-  if (qParam) { input.value = qParam; search(qParam); }
+  if (qParam) {
+    input.value = qParam; search(qParam);
+  } else if (tools.length) {
+    note.innerHTML = 'Type a few words about what you need — searching <b>' + tools.length + '</b> tools in the directory.';
+  }
 
   /* ---------- guided 3-step quiz ---------- */
   var quizEl = document.getElementById('finderQuiz');
