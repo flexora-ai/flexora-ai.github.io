@@ -806,6 +806,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tools-for-ui-ux-design",
+    title: "AI Tools for UI/UX Design (For Small Teams Without a Designer)",
+    excerpt: "How a small business or early-stage team can use AI for UI/UX design work without a dedicated designer, and where it",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 6,
+    image: "assets/images/blog/ai-tools-for-ui-ux-design.webp",
+    imageAlt: "AI tools for UI/UX design comparison",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tools-for-writing-business-proposals",
     title: "AI Tools for Writing Business Proposals (What Actually Wins Deals)",
     excerpt: "A no-nonsense guide to AI tools for writing business proposals. What actually wins deals, the hidden formatting risks, and what",
