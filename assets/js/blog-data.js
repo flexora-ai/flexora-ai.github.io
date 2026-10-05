@@ -946,6 +946,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "best-ai-tools-for-blogging",
+    title: "Best AI Tools for Blogging (The Full Toolkit, Not Just a Writer)",
+    excerpt: "The complete set of AI tools small business bloggers actually need — ideas, writing, images, and ranking — not just a single drafting tool.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 6,
+    image: "assets/images/blog/best-ai-tools-for-blogging.webp",
+    imageAlt: "Best AI tools for blogging pipeline",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "best-ai-tools-for-small-business-owners",
     title: "Best AI Tools for Small Business Owners (2026 Honest Picks)",
     excerpt: "A no-fluff roundup of AI tools small business owners actually rely on, organized by the job they do, not by hype.",
