@@ -960,6 +960,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "best-ai-translation-tools",
+    title: "Best AI Translation Tools for Small Business (Compared)",
+    excerpt: "A practical comparison of the AI translation tools worth using, organized by whether you need documents, websites, or live conversation handled.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 6,
+    image: "assets/images/blog/best-ai-translation-tools.webp",
+    imageAlt: "Best AI translation tools comparison",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "free-ai-marketing-tools-for-small-business",
     title: "Free AI Marketing Tools for Small Business (2026)",
     excerpt: "Genuinely free AI marketing tools for small business — no trial traps, what each one actually covers, and where free runs out.",
