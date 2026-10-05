@@ -596,6 +596,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tools-for-image-generation",
+    title: "AI Tools for Image Generation: A Small Business Starting Point",
+    excerpt: "How AI image generation actually fits into small business work, where it genuinely saves money, and where stock photography or a real photo still wins.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 6,
+    image: "assets/images/blog/ai-tools-for-image-generation.webp",
+    imageAlt: "AI tools for image generation comparison",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tools-for-infographic-creation",
     title: "AI Tools for Infographic Creation (Turning Data Into Something People Read)",
     excerpt: "How AI tools help small businesses turn raw data or a wall of text into an infographic people actually stop to read.",
