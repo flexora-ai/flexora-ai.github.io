@@ -764,6 +764,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tools-for-translating-videos",
+    title: "AI Tools for Translating Videos (Captions, Dubbing, and Where They Differ)",
+    excerpt: "How AI video translation tools actually work, the difference between subtitle translation and AI dubbing, and where each one is reliable enough to use.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 6,
+    image: "assets/images/blog/ai-tools-for-translating-videos.webp",
+    imageAlt: "AI tools for translating videos comparison",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tools-for-writing-business-proposals",
     title: "AI Tools for Writing Business Proposals (What Actually Wins Deals)",
     excerpt: "A no-nonsense guide to AI tools for writing business proposals. What actually wins deals, the hidden formatting risks, and what",
