@@ -736,6 +736,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tools-for-translating-documents",
+    title: "AI Tools for Translating Documents: How Reliable Are They Really?",
+    excerpt: "Where AI document translation is reliable enough to trust for a small business, and where a professional human translator is still worth the cost.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 6,
+    image: "assets/images/blog/ai-tools-for-translating-documents.webp",
+    imageAlt: "AI tools for translating documents reliability guide",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tools-for-writing-business-proposals",
     title: "AI Tools for Writing Business Proposals (What Actually Wins Deals)",
     excerpt: "A no-nonsense guide to AI tools for writing business proposals. What actually wins deals, the hidden formatting risks, and what",
