@@ -666,6 +666,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tools-for-real-time-translation",
+    title: "AI Tools for Real-Time Translation (Live Calls and In-Person Conversations)",
+    excerpt: "How reliable AI real-time translation actually is for business calls and in-person customer conversations, and where the lag or errors still matter.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 6,
+    image: "assets/images/blog/ai-tools-for-real-time-translation.webp",
+    imageAlt: "AI tools for real-time translation reliability guide",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tools-for-saas-startups",
     title: "AI Tools for Early-Stage and Bootstrapped Startups",
     excerpt: "AI tools that actually fit a small, early-stage or bootstrapped team — not enterprise-scale platforms built for funded teams with a dedicated ops person.",
