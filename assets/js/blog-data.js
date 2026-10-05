@@ -694,6 +694,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tools-for-presentation-design",
+    title: "AI Tools for Presentation Design (Decks That Don",
+    excerpt: "How to use AI presentation tools to build a deck fast without it looking like every other AI-generated slide deck.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 6,
+    image: "assets/images/blog/ai-tools-for-presentation-design.webp",
+    imageAlt: "AI tools for presentation design comparison",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tools-for-real-time-translation",
     title: "AI Tools for Real-Time Translation (Live Calls and In-Person Conversations)",
     excerpt: "How reliable AI real-time translation actually is for business calls and in-person customer conversations, and where the lag or errors still matter.",
