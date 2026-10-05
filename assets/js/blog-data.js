@@ -946,6 +946,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "best-ai-tools-for-website-design",
+    title: "Best AI Tools for Website Design (What Each One Is Actually Good At)",
+    excerpt: "A practical comparison of AI website design tools for small business, organized by what you",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 6,
+    image: "assets/images/blog/best-ai-tools-for-website-design.webp",
+    imageAlt: "Best AI tools for website design comparison",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "free-ai-marketing-tools-for-small-business",
     title: "Free AI Marketing Tools for Small Business (2026)",
     excerpt: "Genuinely free AI marketing tools for small business — no trial traps, what each one actually covers, and where free runs out.",
