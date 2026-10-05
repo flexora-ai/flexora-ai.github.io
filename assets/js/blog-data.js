@@ -610,6 +610,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tools-for-landing-page-design",
+    title: "AI Tools for Landing Page Design (Built to Convert, Not Just Look Nice)",
+    excerpt: "How AI landing page tools actually help small businesses build pages that convert, and where a nice-looking AI template still underperforms.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 6,
+    image: "assets/images/blog/ai-tools-for-landing-page-design.webp",
+    imageAlt: "AI tools for landing page design comparison",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tools-for-mockup-generation",
     title: "AI Tools for Mockup Generation: 2026 Comparison Guide",
     excerpt: "Compare AI tools for mockup generation in 2026: how they work, where they look fake, and how to pick a mockup that actually reads as a real product.",
