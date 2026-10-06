@@ -141,7 +141,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "AI Automation Tools Guide"
+      "name": "AI Automation Tools Guide",
+      "item": "https://flexora-ai.github.io/blog/ai-automation-tools-for-small-business.html"
     }
   ]
 }
@@ -431,7 +432,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="share-float">
   <a href="https://twitter.com/intent/tweet?text=AI%20Automation%20Tools%20for%20Small%20Business&url=https://flexora-ai.github.io/blog/ai-automation-tools-for-small-business.html" target="_blank" rel="noopener" aria-label="Share on Twitter">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 3H21l-6.55 7.49L22.2 21h-6.02l-4.72-6.17L5.03 21H2.25l7.01-8.01L1.8 3h6.17l4.27 5.65L18.24 3Zm-1.06 16.17h1.67L7.9 4.74H6.1l11.08 14.43Z"/></svg>
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 3H21l-6.55 7.49L22.2 21h-6.02l-4.72-6.17L5.03 21H2.25l7.01-8.01L1.8 3h6.17l4.71 6.23L18.24 3Zm-1.06 16.17h1.67L7.9 4.74H6.1l11.08 14.43Z"/></svg>
   </a>
   <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://flexora-ai.github.io/blog/ai-automation-tools-for-small-business.html" target="_blank" rel="noopener" aria-label="Share on LinkedIn">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
@@ -596,7 +597,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="reveal">Focus on high-priority tasks first. For example, automating customer email responses might save you 5 hours/week and directly impact customer satisfaction—making it a top priority.</p>
 
     <h3 class="reveal">Step 3: Choose the Right Tool</h3>
-    <p class="reveal">Match your needs to the right tool. If you're looking for <a href="blog/how-to-automate-small-business-tasks-with-ai.html">how to automate small business tasks with AI</a>, start with no-code platforms like Zapier or Make. They're beginner-friendly and don't require technical expertise.</p>
+    <p class="reveal">Match your needs to the right tool. If you're looking for <a href="https://flexora-ai.github.io/blog/how-to-automate-small-business-tasks-with-ai.html">how to automate small business tasks with AI</a>, start with no-code platforms like Zapier or Make. They're beginner-friendly and don't require technical expertise.</p>
 
     <h3 class="reveal">Step 4: Start Small and Test</h3>
     <p class="reveal">Don't automate your entire business overnight. Pick one workflow, set it up, and test it thoroughly. Monitor the results for at least two weeks before scaling to other areas.</p>
@@ -605,7 +606,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="reveal">Even the best AI tools are useless if your team doesn't know how to use them. Invest time in training and create simple documentation for your automated workflows.</p>
 
     <h2 class="reveal" id="budget">Budget-Friendly Options</h2>
-    <p class="reveal">Worried about costs? You don't need to break the bank to get started with AI automation. Many tools offer free tiers or affordable plans for small businesses. If you're just starting out, check out our guide on <a href="blog/free-ai-tools-for-small-business.html">free AI tools for small business</a> to get started without any investment.</p>
+    <p class="reveal">Worried about costs? You don't need to break the bank to get started with AI automation. Many tools offer free tiers or affordable plans for small businesses. If you're just starting out, check out our guide on <a href="https://flexora-ai.github.io/blog/free-ai-tools-for-small-business.html">free AI tools for small business</a> to get started without any investment.</p>
     
     <p class="reveal">Here's a realistic budget breakdown:</p>
     <ul class="reveal">
@@ -690,7 +691,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <!-- External Link at the end -->
-    <p class="reveal">Ready to take your business to the next level? Once you've automated your workflows, you might also want to enhance your visual content. Check out this comprehensive guide on <a href="https://neuraplus-ai.github.io/blog/best-prompts-for-image-generation.html" target="_blank" rel="noopener">best prompts for image generation</a> to create stunning visuals for your marketing campaigns.</p>
+    <p class="reveal">Ready to take your business to the next level? Once you've automated your workflows, you might also want to enhance your visual content. Check out this comprehensive guide on <a href="https://flexora-ai.github.io/blog/best-prompts-for-image-generation.html" target="_blank" rel="noopener">best prompts for image generation</a> to create stunning visuals for your marketing campaigns.</p>
   </div>
 
   <aside class="sidebar">
@@ -845,7 +846,7 @@ document.getElementById('menuBtn')?.addEventListener('click', () => { document.g
     entries.forEach(entry => {
       if(entry.isIntersecting){
         const el = entry.target, target = parseInt(el.dataset.target); let current = 0; const increment = target / 40;
-        const timer = setInterval(() => { current += increment; if(current >= target){ el.textContent = target; clearInterval(timer); } else { el.textContent = Math.floor(current); } }, 30);
+        const timer = setInterval(() => { current += increment; if(current >= target){ el.textContent = target + (target === 78 || target === 40 ? '%' : ''); clearInterval(timer); } else { el.textContent = Math.floor(current) + (target === 78 || target === 40 ? '%' : ''); } }, 30);
         obs.unobserve(el);
       }
     });
