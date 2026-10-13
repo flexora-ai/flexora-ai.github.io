@@ -484,6 +484,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-reply-to-google-reviews-automatically",
+    title: "AI Tool to Reply to Google Reviews Automatically (Safe Way)",
+    excerpt: "How to use AI to draft replies to Google reviews in minutes, without sounding like a robot. Copy-paste prompts for good and bad reviews, plus what to avoid.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-tool-to-reply-to-google-reviews-automatically.webp",
+    imageAlt: "AI tool to reply to Google reviews automatically",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tools-for-app-icon-design",
     title: "AI Tools for App Icon Design: 2026 Comparison Guide",
     excerpt: "Compare AI tools for app icon design in 2026: how they work, where they fail at small sizes, and how to pick an icon that holds up on a real home screen.",
