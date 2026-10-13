@@ -484,6 +484,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-clean-messy-excel-data",
+    title: "AI Tool to Clean Messy Excel Data (Duplicates, Dates, Names)",
+    excerpt: "Use a free AI chatbot to clean messy Excel and Google Sheets data: duplicates, extra spaces, wrong dates, mixed names. Copy-paste prompts and safety steps.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-tool-to-clean-messy-excel-data.webp",
+    imageAlt: "AI tool to clean messy Excel data",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-reply-to-google-reviews-automatically",
     title: "AI Tool to Reply to Google Reviews Automatically (Safe Way)",
     excerpt: "How to use AI to draft replies to Google reviews in minutes, without sounding like a robot. Copy-paste prompts for good and bad reviews, plus what to avoid.",
