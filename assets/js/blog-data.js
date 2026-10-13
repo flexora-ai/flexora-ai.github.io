@@ -512,6 +512,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-write-whatsapp-business-messages",
+    title: "AI Tool to Write WhatsApp Business Messages (Free Prompts)",
+    excerpt: "Write WhatsApp Business greetings, replies, follow-ups and offers with a free AI chatbot. Copy-paste prompts for small shops, plus what AI should not send.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-tool-to-write-whatsapp-business-messages.webp",
+    imageAlt: "AI tool to write WhatsApp Business messages",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tools-for-app-icon-design",
     title: "AI Tools for App Icon Design: 2026 Comparison Guide",
     excerpt: "Compare AI tools for app icon design in 2026: how they work, where they fail at small sizes, and how to pick an icon that holds up on a real home screen.",
