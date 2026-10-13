@@ -512,6 +512,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-write-product-descriptions-for-etsy-listings",
+    title: "AI Tool to Write Product Descriptions for Etsy Listings (Prompts)",
+    excerpt: "How to write Etsy listing titles, descriptions and tags with a free AI chatbot without sounding generic. Copy-paste prompts and a checklist before you publish.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-tool-to-write-product-descriptions-for-etsy-listings.webp",
+    imageAlt: "AI tool to write product descriptions for Etsy listings",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-write-whatsapp-business-messages",
     title: "AI Tool to Write WhatsApp Business Messages (Free Prompts)",
     excerpt: "Write WhatsApp Business greetings, replies, follow-ups and offers with a free AI chatbot. Copy-paste prompts for small shops, plus what AI should not send.",
