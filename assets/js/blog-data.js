@@ -498,6 +498,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-write-freelance-proposals-that-win-clients",
+    title: "AI Tool to Write Freelance Proposals That Win Clients (Free Prompts)",
+    excerpt: "Use AI to write freelance proposals faster, without the generic copy clients ignore. A simple proposal structure, copy-paste prompts and a pre-send checklist.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-tool-to-write-freelance-proposals-that-win-clients.webp",
+    imageAlt: "AI tool to write freelance proposals that win clients",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-write-google-business-profile-posts",
     title: "AI Tool to Write Google Business Profile Posts (With Prompts)",
     excerpt: "Use a free AI chatbot to write Google Business Profile posts for offers, updates and events in 5 minutes. Copy-paste prompts and a simple weekly plan.",
@@ -535,6 +549,20 @@ const BLOG_POSTS = [
     readMins: 4,
     image: "assets/images/blog/ai-tool-to-write-product-descriptions-for-etsy-listings.webp",
     imageAlt: "AI tool to write product descriptions for Etsy listings",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
+    slug: "ai-tool-to-write-sop-for-small-business",
+    title: "AI Tool to Write an SOP for a Small Business (Step-by-Step Prompts)",
+    excerpt: "Turn how you already do a job into a clear SOP using a free AI chatbot. Copy-paste prompts, a simple SOP template, and how to test it with a new person.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-tool-to-write-sop-for-small-business.webp",
+    imageAlt: "AI tool to write an SOP for small business",
     icon: "⚙️",
     published: true,
     featured: false
