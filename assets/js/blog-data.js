@@ -554,6 +554,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-write-hindi-content-for-small-business",
+    title: "AI Tool to Write Hindi Content for Small Business (Posts, Messages, Ads)",
+    excerpt: "How to write Hindi content for your small business with AI: social posts, WhatsApp messages and product text. Copy-paste prompts, translation tools and a Hindi quality check.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-tool-to-write-hindi-content-for-small-business.webp",
+    imageAlt: "AI tool to write Hindi content for small business",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-write-privacy-policy-for-small-website",
     title: "AI Tool to Write a Privacy Policy for a Small Website (Read First)",
     excerpt: "Can AI write a privacy policy for your small website? Yes for a first draft, no for a final one. A simple checklist, a safe prompt, and when to ask a lawyer.",
