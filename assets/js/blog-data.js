@@ -512,6 +512,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-write-privacy-policy-for-small-website",
+    title: "AI Tool to Write a Privacy Policy for a Small Website (Read First)",
+    excerpt: "Can AI write a privacy policy for your small website? Yes for a first draft, no for a final one. A simple checklist, a safe prompt, and when to ask a lawyer.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/ai-tool-to-write-privacy-policy-for-small-website.webp",
+    imageAlt: "AI tool to write privacy policy for small website",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-write-product-descriptions-for-etsy-listings",
     title: "AI Tool to Write Product Descriptions for Etsy Listings (Prompts)",
     excerpt: "How to write Etsy listing titles, descriptions and tags with a free AI chatbot without sounding generic. Copy-paste prompts and a checklist before you publish.",
