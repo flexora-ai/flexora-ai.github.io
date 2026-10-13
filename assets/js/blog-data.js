@@ -512,6 +512,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-turn-meeting-recording-into-notes-free",
+    title: "AI Tool to Turn a Meeting Recording Into Notes (Free Options)",
+    excerpt: "How to turn a meeting recording into clear notes and action items with free AI tools. Compare Otter and Fireflies, plus a copy-paste prompt for a chatbot.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-tool-to-turn-meeting-recording-into-notes-free.webp",
+    imageAlt: "AI tool to turn meeting recording into notes free",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-write-freelance-proposals-that-win-clients",
     title: "AI Tool to Write Freelance Proposals That Win Clients (Free Prompts)",
     excerpt: "Use AI to write freelance proposals faster, without the generic copy clients ignore. A simple proposal structure, copy-paste prompts and a pre-send checklist.",
