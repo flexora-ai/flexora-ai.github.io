@@ -540,6 +540,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-write-faq-page-for-small-business-website",
+    title: "AI Tool to Write a FAQ Page for a Small Business Website",
+    excerpt: "Build a FAQ page from real customer questions instead of guesses. Where to find the questions, how AI turns them into clear answers, and how to lay out the page.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-tool-to-write-faq-page-for-small-business-website.webp",
+    imageAlt: "AI tool to write FAQ page for small business website",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-write-freelance-proposals-that-win-clients",
     title: "AI Tool to Write Freelance Proposals That Win Clients (Free Prompts)",
     excerpt: "Use AI to write freelance proposals faster, without the generic copy clients ignore. A simple proposal structure, copy-paste prompts and a pre-send checklist.",
