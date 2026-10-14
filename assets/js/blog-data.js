@@ -526,6 +526,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-write-about-us-page-for-small-business",
+    title: "AI Tool to Write an About Us Page (5 Questions)",
+    excerpt: "An About Us page that people read starts with five honest answers, not a slogan. Use AI to turn your answers into a clear page with a before-and-after example.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-tool-to-write-about-us-page-for-small-business.webp",
+    imageAlt: "AI tool to write about us page for small business",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-write-cold-emails-for-small-business",
     title: "AI Tool to Write Cold Emails for Small Business (Bad vs Good Example)",
     excerpt: "See a bad cold email and the fixed version, then use a copy-paste AI prompt to write yours. Includes the legal basics for sending business email.",
