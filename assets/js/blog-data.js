@@ -736,6 +736,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-write-youtube-video-script-for-beginners",
+    title: "AI Tool to Write a YouTube Video Script (Minute by Minute)",
+    excerpt: "Write an 8-minute YouTube script with AI using a minute-by-minute plan. Hook, body, call to action, plus how to make it sound like you talking.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-tool-to-write-youtube-video-script-for-beginners.webp",
+    imageAlt: "AI tool to write YouTube video script for beginners",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tools-for-app-icon-design",
     title: "AI Tools for App Icon Design: 2026 Comparison Guide",
     excerpt: "Compare AI tools for app icon design in 2026: how they work, where they fail at small sizes, and how to pick an icon that holds up on a real home screen.",
