@@ -526,6 +526,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-write-cold-emails-for-small-business",
+    title: "AI Tool to Write Cold Emails for Small Business (Bad vs Good Example)",
+    excerpt: "See a bad cold email and the fixed version, then use a copy-paste AI prompt to write yours. Includes the legal basics for sending business email.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-tool-to-write-cold-emails-for-small-business.webp",
+    imageAlt: "AI tool to write cold emails for small business",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-write-freelance-proposals-that-win-clients",
     title: "AI Tool to Write Freelance Proposals That Win Clients (Free Prompts)",
     excerpt: "Use AI to write freelance proposals faster, without the generic copy clients ignore. A simple proposal structure, copy-paste prompts and a pre-send checklist.",
