@@ -610,6 +610,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-write-instagram-captions-for-small-business",
+    title: "AI Tool to Write Instagram Captions (6 Types)",
+    excerpt: "Stop staring at a blank caption box. Six caption types for small businesses, a prompt for each, and a way to write a week of captions in one sitting.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-tool-to-write-instagram-captions-for-small-business.webp",
+    imageAlt: "AI tool to write Instagram captions for small business",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-write-privacy-policy-for-small-website",
     title: "AI Tool to Write a Privacy Policy for a Small Website (Read First)",
     excerpt: "Can AI write a privacy policy for your small website? Yes for a first draft, no for a final one. A simple checklist, a safe prompt, and when to ask a lawyer.",
