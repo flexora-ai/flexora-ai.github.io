@@ -568,6 +568,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-write-cover-letter-for-first-job",
+    title: "AI Tool to Write a Cover Letter for First Job (Example)",
+    excerpt: "A four-paragraph cover letter formula for freshers, a full example you can learn from, and a safe AI prompt that keeps the letter honest and personal.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-tool-to-write-cover-letter-for-first-job.webp",
+    imageAlt: "AI tool to write cover letter for first job",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-write-faq-page-for-small-business-website",
     title: "AI Tool to Write a FAQ Page for a Small Business Website",
     excerpt: "Build a FAQ page from real customer questions instead of guesses. Where to find the questions, how AI turns them into clear answers, and how to lay out the page.",
