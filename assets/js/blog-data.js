@@ -498,6 +498,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-practice-job-interview-questions-free",
+    title: "Practice Job Interview Questions With a Free AI Tool",
+    excerpt: "Turn a free AI chatbot into an interview partner. A 5-round practice script, how to answer with the STAR method, and a simple score sheet to track progress.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-tool-to-practice-job-interview-questions-free.webp",
+    imageAlt: "AI tool to practice job interview questions free",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-reply-to-google-reviews-automatically",
     title: "AI Tool to Reply to Google Reviews Automatically (Safe Way)",
     excerpt: "How to use AI to draft replies to Google reviews in minutes, without sounding like a robot. Copy-paste prompts for good and bad reviews, plus what to avoid.",
