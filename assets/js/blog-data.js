@@ -624,6 +624,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-write-linkedin-posts-for-beginners",
+    title: "AI Tool to Write LinkedIn Posts for Beginners",
+    excerpt: "Write LinkedIn posts you can actually post, using AI as an editor. Four easy post types, a prompt for each, and what to avoid.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-tool-to-write-linkedin-posts-for-beginners.webp",
+    imageAlt: "AI tool to write LinkedIn posts for beginners",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-write-privacy-policy-for-small-website",
     title: "AI Tool to Write a Privacy Policy for a Small Website (Read First)",
     excerpt: "Can AI write a privacy policy for your small website? Yes for a first draft, no for a final one. A simple checklist, a safe prompt, and when to ask a lawyer.",
