@@ -526,6 +526,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-write-a-resume-for-freshers-free",
+    title: "AI Tool to Write a Resume for Freshers (Free)",
+    excerpt: "Write a fresher resume with a free AI chatbot, one section at a time. Before-and-after examples for projects and skills, plus what not to let AI invent.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-tool-to-write-a-resume-for-freshers-free.webp",
+    imageAlt: "AI tool to write a resume for freshers free",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-write-about-us-page-for-small-business",
     title: "AI Tool to Write an About Us Page (5 Questions)",
     excerpt: "An About Us page that people read starts with five honest answers, not a slogan. Use AI to turn your answers into a clear page with a before-and-after example.",
