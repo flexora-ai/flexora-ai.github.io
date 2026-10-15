@@ -498,6 +498,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-book-appointments-for-small-business-free",
+    title: "AI Tool to Book Appointments for Small Business, Free",
+    excerpt: "Cut booking messages and no-shows. Use a free booking tool for the calendar and a free AI chatbot to write reminders, policies and intake questions.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-tool-to-book-appointments-for-small-business-free.webp",
+    imageAlt: "AI tool to book appointments for small business free",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-clean-messy-excel-data",
     title: "AI Tool to Clean Messy Excel Data (Duplicates, Dates, Names)",
     excerpt: "Use a free AI chatbot to clean messy Excel and Google Sheets data: duplicates, extra spaces, wrong dates, mixed names. Copy-paste prompts and safety steps.",
