@@ -652,6 +652,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-write-alt-text-for-images-in-bulk",
+    title: "AI Tool to Write Alt Text for Images in Bulk: Method + Prompts",
+    excerpt: "Write alt text for many images with a free AI chatbot and a spreadsheet. Three image cases, good vs bad examples, two prompts and a human check.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-tool-to-write-alt-text-for-images-in-bulk.webp",
+    imageAlt: "AI tool to write alt text for images in bulk with a spreadsheet",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-write-cold-emails-for-small-business",
     title: "AI Tool to Write Cold Emails for Small Business (Bad vs Good Example)",
     excerpt: "See a bad cold email and the fixed version, then use a copy-paste AI prompt to write yours. Includes the legal basics for sending business email.",
