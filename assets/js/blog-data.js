@@ -484,6 +484,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-answer-customer-questions-on-instagram-dm",
+    title: "AI Tool to Answer Customer Questions on Instagram DM",
+    excerpt: "Use a free AI chatbot to draft Instagram DM replies for price, stock, delivery and more. Reply patterns, prompts, handoff rules and a 10-minute daily routine.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-tool-to-answer-customer-questions-on-instagram-dm.webp",
+    imageAlt: "AI tool to answer customer questions on Instagram DM",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-clean-messy-excel-data",
     title: "AI Tool to Clean Messy Excel Data (Duplicates, Dates, Names)",
     excerpt: "Use a free AI chatbot to clean messy Excel and Google Sheets data: duplicates, extra spaces, wrong dates, mixed names. Copy-paste prompts and safety steps.",
