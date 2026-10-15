@@ -722,6 +722,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-write-terms-and-conditions-for-a-small-website",
+    title: "AI Tool to Write Terms and Conditions for a Small Website",
+    excerpt: "Can AI draft terms and conditions for a small website? Yes, from your facts only. 8 clauses, a safe prompt, a mismatch check and when to see a lawyer.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-tool-to-write-terms-and-conditions-for-small-website.webp",
+    imageAlt: "AI tool to write terms and conditions for a small website",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-write-whatsapp-business-messages",
     title: "AI Tool to Write WhatsApp Business Messages (Free Prompts)",
     excerpt: "Write WhatsApp Business greetings, replies, follow-ups and offers with a free AI chatbot. Copy-paste prompts for small shops, plus what AI should not send.",
