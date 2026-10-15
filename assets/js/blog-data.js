@@ -778,6 +778,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-write-newsletter-from-blog-post",
+    title: "AI Tool to Write a Newsletter From a Blog Post (3 Formats)",
+    excerpt: "Turn one blog post into a newsletter people read. Three email formats, prompts for each, subject line help, and a 10-minute workflow with a send checklist.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-tool-to-write-newsletter-from-blog-post.webp",
+    imageAlt: "AI tool to write a newsletter from a blog post",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-write-privacy-policy-for-small-website",
     title: "AI Tool to Write a Privacy Policy for a Small Website (Read First)",
     excerpt: "Can AI write a privacy policy for your small website? Yes for a first draft, no for a final one. A simple checklist, a safe prompt, and when to ask a lawyer.",
