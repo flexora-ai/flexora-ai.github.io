@@ -568,6 +568,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-plan-a-week-of-social-media-posts",
+    title: "AI Tool to Plan a Week of Social Media Posts (Free Method)",
+    excerpt: "Plan seven days of posts in one hour. A simple grid, a teach-show-sell mix, one prompt for the full week, and a 60-minute Sunday routine.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-tool-to-plan-a-week-of-social-media-posts.webp",
+    imageAlt: "AI tool to plan a week of social media posts",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-practice-job-interview-questions-free",
     title: "Practice Job Interview Questions With a Free AI Tool",
     excerpt: "Turn a free AI chatbot into an interview partner. A 5-round practice script, how to answer with the STAR method, and a simple score sheet to track progress.",
