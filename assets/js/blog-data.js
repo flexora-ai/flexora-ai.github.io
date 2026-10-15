@@ -512,6 +512,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-find-competitors-for-small-business",
+    title: "AI Tool to Find Competitors for Small Business (Safe Method)",
+    excerpt: "Find real competitors with search, maps and customers, then use a free AI chatbot to compare them. Prompts, a monthly 20-minute check and ethics rules.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-tool-to-find-competitors-for-small-business.webp",
+    imageAlt: "AI tool to find competitors for small business",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-practice-job-interview-questions-free",
     title: "Practice Job Interview Questions With a Free AI Tool",
     excerpt: "Turn a free AI chatbot into an interview partner. A 5-round practice script, how to answer with the STAR method, and a simple score sheet to track progress.",
