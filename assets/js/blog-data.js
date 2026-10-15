@@ -610,6 +610,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-write-customer-survey-questions",
+    title: "AI Tool to Write Customer Survey Questions (Free Prompts)",
+    excerpt: "Write clear customer survey questions with a free AI chatbot. Bad vs fixed examples, three ready 5-question surveys and a prompt to build your own.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-tool-to-write-customer-survey-questions.webp",
+    imageAlt: "AI tool to write customer survey questions",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-write-faq-page-for-small-business-website",
     title: "AI Tool to Write a FAQ Page for a Small Business Website",
     excerpt: "Build a FAQ page from real customer questions instead of guesses. Where to find the questions, how AI turns them into clear answers, and how to lay out the page.",
