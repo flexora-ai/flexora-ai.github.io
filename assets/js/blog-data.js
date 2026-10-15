@@ -526,6 +526,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-find-keywords-for-blog-posts-free",
+    title: "AI Tool to Find Keywords for Blog Posts (Free): 4 Steps",
+    excerpt: "A free AI chatbot can brainstorm blog keywords, but it has no real search data. Use this 4-step method, a prompt, a checklist and a tracking sheet.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-tool-to-find-keywords-for-blog-posts-free.webp",
+    imageAlt: "AI tool to find keywords for blog posts free",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-practice-job-interview-questions-free",
     title: "Practice Job Interview Questions With a Free AI Tool",
     excerpt: "Turn a free AI chatbot into an interview partner. A 5-round practice script, how to answer with the STAR method, and a simple score sheet to track progress.",
