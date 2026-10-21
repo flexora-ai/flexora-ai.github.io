@@ -1226,6 +1226,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tools-for-student-loan-repayment",
+    title: "AI Tools for Student Loan Repayment (Free, 2026)",
+    excerpt: "The best free tools for student loan repayment in 2026: the official calculator, AI chatbots, spreadsheets and servicer portals, and when to use each.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/ai-tools-for-student-loan-repayment.webp",
+    imageAlt: "AI tools for student loan repayment",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tools-for-thumbnail-design",
     title: "AI Tools for Thumbnail Design That Actually Get Clicks (2026)",
     excerpt: "How small businesses can use AI to design thumbnails that stand out in a crowded feed, without hiring a designer for every video or post.",
