@@ -498,6 +498,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-student-loan-repayment-calculator",
+    title: "AI Student Loan Repayment Calculator (Free, 2026)",
+    excerpt: "Use a free AI chatbot as a student loan repayment calculator. Prompts, a worked $30,000 example, the new RAP plan, and how to check the maths.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 6,
+    image: "assets/images/blog/ai-student-loan-repayment-calculator.webp",
+    imageAlt: "AI student loan repayment calculator free",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-summarization-tools-for-small-business",
     title: "AI Summarization Tools for Small Business (What Actually Saves Time)",
     excerpt: "Which AI summarization use cases actually save small businesses time — meetings, documents, reviews, emails — and which tool fits each one.",
