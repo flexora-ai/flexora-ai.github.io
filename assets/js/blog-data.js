@@ -1576,6 +1576,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "how-to-use-ai-to-manage-student-loan-debt",
+    title: "How to Use AI to Manage Student Loan Debt (2026)",
+    excerpt: "A 7-step routine to manage student loan debt with a free AI chatbot: loan table, plan check, budget, payoff order, monthly review, and scam checks.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/how-to-use-ai-to-manage-student-loan-debt.webp",
+    imageAlt: "how to use AI to manage student loan debt",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "no-code-ai-automation-tools-for-small-business",
     title: "No-Code AI Automation Tools for Small Business (No Developer Needed)",
     excerpt: "How to automate real small business tasks with no-code AI tools — no developer, no coding — plus the platforms worth learning first.",
