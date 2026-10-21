@@ -470,6 +470,34 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-student-debt-calculator",
+    title: "AI Student Debt Calculator: Add Up What You Owe",
+    excerpt: "Build a student debt calculator with a free AI chatbot. See total debt, blended rate and the monthly interest each loan costs, with a worked example.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/ai-student-debt-calculator.webp",
+    imageAlt: "AI student debt calculator",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
+    slug: "ai-student-loan-payoff-calculator",
+    title: "AI Student Loan Payoff Calculator (Free, 2026)",
+    excerpt: "Use a free AI chatbot as a student loan payoff calculator. See what $50, $100 or $500 extra a month saves, plus avalanche vs snowball.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/ai-student-loan-payoff-calculator.webp",
+    imageAlt: "AI student loan payoff calculator",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-summarization-tools-for-small-business",
     title: "AI Summarization Tools for Small Business (What Actually Saves Time)",
     excerpt: "Which AI summarization use cases actually save small businesses time — meetings, documents, reviews, emails — and which tool fits each one.",
