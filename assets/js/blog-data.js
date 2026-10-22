@@ -1576,6 +1576,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "how-to-calculate-student-loan-payments-with-ai",
+    title: "How to Calculate Student Loan Payments With AI",
+    excerpt: "Learn the student loan payment formula, then use AI to run it. Worked example, daily interest, accrued interest in school, and how to check the answer.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/how-to-calculate-student-loan-payments-with-ai.webp",
+    imageAlt: "how to calculate student loan payments with AI",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "how-to-rank-a-blog-post-with-ai-tools",
     title: "How to Rank a Blog Post With AI Tools (2026 Guide)",
     excerpt: "AI won",
