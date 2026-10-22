@@ -582,6 +582,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-compare-student-loan-repayment-plans",
+    title: "AI Tool to Compare Student Loan Repayment Plans",
+    excerpt: "Compare Tiered Standard, RAP and IBR with a free AI chatbot. See which plan fits by loan date and income, with a $60,000 worked example.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/ai-tool-to-compare-student-loan-repayment-plans.webp",
+    imageAlt: "AI tool to compare student loan repayment plans",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-create-simple-contracts-for-freelancers",
     title: "AI Tool to Create Simple Contracts for Freelancers",
     excerpt: "Use an AI tool to create a simple freelance contract from your notes. 7 things to include, a one-page prompt, a plain-language table and when to call a lawyer.",
