@@ -484,6 +484,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-student-loan-budget-planner",
+    title: "AI Student Loan Budget Planner (Free, 2026)",
+    excerpt: "Build a monthly budget around your student loan payment with a free AI chatbot. Includes a worked budget, stress tests and a plan for irregular income.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/ai-student-loan-budget-planner.webp",
+    imageAlt: "AI student loan budget planner",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-student-loan-payoff-calculator",
     title: "AI Student Loan Payoff Calculator (Free, 2026)",
     excerpt: "Use a free AI chatbot as a student loan payoff calculator. See what $50, $100 or $500 extra a month saves, plus avalanche vs snowball.",
