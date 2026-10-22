@@ -526,6 +526,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-student-loan-repayment-planner",
+    title: "AI Student Loan Repayment Planner: A 12-Month Plan",
+    excerpt: "Make a dated student loan repayment plan with AI: target payoff date, a first-year calendar, a half-of-every-raise rule and quarterly reviews.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/ai-student-loan-repayment-planner.webp",
+    imageAlt: "AI student loan repayment planner",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-summarization-tools-for-small-business",
     title: "AI Summarization Tools for Small Business (What Actually Saves Time)",
     excerpt: "Which AI summarization use cases actually save small businesses time — meetings, documents, reviews, emails — and which tool fits each one.",
