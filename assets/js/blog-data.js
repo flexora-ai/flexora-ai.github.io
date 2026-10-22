@@ -1072,6 +1072,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tools-for-college-graduates-with-debt",
+    title: "AI Tools for College Graduates With Debt (2026)",
+    excerpt: "A toolkit of free AI tools for graduates with student debt: job search, employer loan benefits, PSLF checks, payment calculators and a 90-day plan.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-tools-for-college-graduates-with-debt.webp",
+    imageAlt: "AI tools for college graduates with student debt",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tools-for-ecommerce-small-business",
     title: "AI Tools for Ecommerce Small Business (2026)",
     excerpt: "Which AI tools actually move the needle for a small ecommerce store — product descriptions, support, personalization — and where to start.",
