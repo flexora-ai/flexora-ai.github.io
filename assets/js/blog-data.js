@@ -526,6 +526,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-student-loan-interest-deduction-calculator",
+    title: "AI Student Loan Interest Deduction Calculator (2026)",
+    excerpt: "Estimate your student loan interest tax deduction with a free AI chatbot. Worked examples for the $2,500 cap, the income phase-out and how much tax you save.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/ai-student-loan-interest-deduction-calculator.webp",
+    imageAlt: "AI student loan interest deduction calculator",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-student-loan-payoff-calculator",
     title: "AI Student Loan Payoff Calculator (Free, 2026)",
     excerpt: "Use a free AI chatbot as a student loan payoff calculator. See what $50, $100 or $500 extra a month saves, plus avalanche vs snowball.",
