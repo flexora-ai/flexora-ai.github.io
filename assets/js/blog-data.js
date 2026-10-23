@@ -722,6 +722,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-rewrite-sentences-in-simple-english",
+    title: "AI Tool to Rewrite Sentences in Simple English: 6 Prompts",
+    excerpt: "Use a free AI chatbot to rewrite sentences in simple English. Six jobs with examples, safe prompts, and checks for your meaning, voice and numbers.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 7,
+    image: "assets/images/blog/ai-tool-to-rewrite-sentences-in-simple-english.webp",
+    imageAlt: "AI tool to rewrite sentences in simple English, long sentence becoming short ones",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-turn-meeting-recording-into-notes-free",
     title: "AI Tool to Turn a Meeting Recording Into Notes (Free Options)",
     excerpt: "How to turn a meeting recording into clear notes and action items with free AI tools. Compare Otter and Fireflies, plus a copy-paste prompt for a chatbot.",
