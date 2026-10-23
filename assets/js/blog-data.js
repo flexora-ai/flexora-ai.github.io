@@ -596,6 +596,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-student-loan-payoff-vs-investing-calculator",
+    title: "AI Student Loan Payoff vs Investing Calculator",
+    excerpt: "Pay off student loans or invest? Use a free AI chatbot to compare both with real numbers, a break-even table and a priority ladder for your money.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/ai-student-loan-payoff-vs-investing-calculator.webp",
+    imageAlt: "AI student loan payoff vs investing calculator",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-student-loan-refinance-calculator",
     title: "AI Student Loan Refinance Calculator: Is It Worth It?",
     excerpt: "Compare keeping federal loans with refinancing using a free AI chatbot. Real payment and interest numbers, and the protections you give up if you refinance.",
