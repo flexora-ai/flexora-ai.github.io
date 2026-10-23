@@ -904,6 +904,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-write-meta-descriptions-in-bulk",
+    title: "AI Tool to Write Meta Descriptions in Bulk, 10 at a Time",
+    excerpt: "Fix missing or copied meta descriptions with a free AI chatbot. Sort your pages, use two prompts, and run a check for duplicates and wrong claims.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 7,
+    image: "assets/images/blog/ai-tool-to-write-meta-descriptions-in-bulk.webp",
+    imageAlt: "AI tool to write meta descriptions in bulk for a small website, shown as a list of pages",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-write-newsletter-from-blog-post",
     title: "AI Tool to Write a Newsletter From a Blog Post (3 Formats)",
     excerpt: "Turn one blog post into a newsletter people read. Three email formats, prompts for each, subject line help, and a 10-minute workflow with a send checklist.",
