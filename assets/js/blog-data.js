@@ -1632,6 +1632,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "how-to-manage-student-loans-after-graduation",
+    title: "How to Manage Student Loans After Graduation (2026)",
+    excerpt: "Five first-year student loan mistakes to avoid after graduation, with real numbers on grace-period interest and autopay, plus AI prompts to plan your first months.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/how-to-manage-student-loans-after-graduation.webp",
+    imageAlt: "how to manage student loans after graduation",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "how-to-rank-a-blog-post-with-ai-tools",
     title: "How to Rank a Blog Post With AI Tools (2026 Guide)",
     excerpt: "AI won",
