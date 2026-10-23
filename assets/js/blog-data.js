@@ -540,6 +540,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-student-loan-calculator-for-teachers",
+    title: "AI Student Loan Calculator for Teachers (TLF vs PSLF)",
+    excerpt: "A student loan calculator guide for teachers: compare Teacher Loan Forgiveness with PSLF using a $38,000 example, decision tables and a ready AI prompt.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/ai-student-loan-calculator-for-teachers.webp",
+    imageAlt: "AI student loan calculator for teachers",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-student-loan-consolidation-calculator",
     title: "AI Student Loan Consolidation Calculator (Free, 2026)",
     excerpt: "Calculate your federal loan consolidation rate with a free AI chatbot. Worked weighted-average example, and the forgiveness and plan costs to check first.",
