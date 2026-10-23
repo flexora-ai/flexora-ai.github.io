@@ -288,6 +288,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-help-for-people-struggling-with-student-loan-payments",
+    title: "AI Help If You Are Struggling With Student Loan Payments",
+    excerpt: "Struggling to pay your student loans? Use AI to organise your numbers, prepare for the servicer call and compare options, before you miss a payment.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/ai-help-for-people-struggling-with-student-loan-payments.webp",
+    imageAlt: "AI help for struggling with student loan payments",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-invoicing-and-billing-automation-for-small-business",
     title: "AI Invoicing and Billing Automation for Small Business (2026)",
     excerpt: "What AI invoicing tools actually automate — data extraction, matching, reminders — and where you still need a human checking the output.",
