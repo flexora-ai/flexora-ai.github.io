@@ -764,6 +764,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-turn-blog-post-into-youtube-video",
+    title: "Turn a Blog Post into a YouTube Video with AI: 5 Steps",
+    excerpt: "Turn a blog post into a YouTube video plan with a free AI chatbot, even without showing your face. Get 5 steps, 2 prompts and a pre-upload checklist.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 7,
+    image: "assets/images/blog/ai-tool-to-turn-blog-post-into-youtube-video.webp",
+    imageAlt: "Blogger turning a blog post into a YouTube video shot list using an AI chatbot on a laptop",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-turn-meeting-recording-into-notes-free",
     title: "AI Tool to Turn a Meeting Recording Into Notes (Free Options)",
     excerpt: "How to turn a meeting recording into clear notes and action items with free AI tools. Compare Otter and Fireflies, plus a copy-paste prompt for a chatbot.",
