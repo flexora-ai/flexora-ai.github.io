@@ -1940,6 +1940,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "what-happens-if-you-ignore-student-loans",
+    title: "What Happens If You Ignore Student Loans? (2026 Timeline)",
+    excerpt: "A day-by-day timeline of what happens if you ignore student loans, with the real dollar costs, what default takes away and how to step back at any stage.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 6,
+    image: "assets/images/blog/what-happens-if-you-ignore-student-loans.webp",
+    imageAlt: "what happens if you ignore student loans",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "what-is-ai-automation-for-small-business",
     title: "What Is AI Automation for Small Business? (Plain-English Definition)",
     excerpt: "AI automation explained without jargon — what it actually means for a small business, how it",
