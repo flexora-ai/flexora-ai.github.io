@@ -554,6 +554,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-student-loan-refinance-calculator",
+    title: "AI Student Loan Refinance Calculator: Is It Worth It?",
+    excerpt: "Compare keeping federal loans with refinancing using a free AI chatbot. Real payment and interest numbers, and the protections you give up if you refinance.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-student-loan-refinance-calculator.webp",
+    imageAlt: "AI student loan refinance calculator",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-student-loan-repayment-calculator",
     title: "AI Student Loan Repayment Calculator (Free, 2026)",
     excerpt: "Use a free AI chatbot as a student loan repayment calculator. Prompts, a worked $30,000 example, the new RAP plan, and how to check the maths.",
