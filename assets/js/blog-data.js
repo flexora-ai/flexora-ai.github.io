@@ -1660,6 +1660,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "how-to-check-student-loan-forgiveness-eligibility-online",
+    title: "How to Check Student Loan Forgiveness Eligibility Online",
+    excerpt: "Check student loan forgiveness eligibility online in five steps: loan type, program match, payment count, employer check and tax. Plus a safe AI checklist prompt.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/how-to-check-student-loan-forgiveness-eligibility-online.webp",
+    imageAlt: "how to check student loan forgiveness eligibility online",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "how-to-manage-student-loans-after-graduation",
     title: "How to Manage Student Loans After Graduation (2026)",
     excerpt: "Five first-year student loan mistakes to avoid after graduation, with real numbers on grace-period interest and autopay, plus AI prompts to plan your first months.",
