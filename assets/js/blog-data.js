@@ -512,6 +512,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-student-loan-borrowing-calculator",
+    title: "AI Student Loan Borrowing Calculator: How Much Is Safe?",
+    excerpt: "How much student loan can you afford? Use a free AI chatbot to test loan sizes against your expected salary, plus the new 2026 federal borrowing limits.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-student-loan-borrowing-calculator.webp",
+    imageAlt: "AI student loan borrowing calculator",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-student-loan-budget-planner",
     title: "AI Student Loan Budget Planner (Free, 2026)",
     excerpt: "Build a monthly budget around your student loan payment with a free AI chatbot. Includes a worked budget, stress tests and a plan for irregular income.",
