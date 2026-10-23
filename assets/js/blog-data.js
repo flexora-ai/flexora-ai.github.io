@@ -498,6 +498,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-student-loan-interest-calculator",
+    title: "AI Student Loan Interest Calculator (Free, 2026)",
+    excerpt: "Calculate student loan interest per day, month and year with a free AI chatbot. See where interest goes over time, what 1% costs and what forbearance adds.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/ai-student-loan-interest-calculator.webp",
+    imageAlt: "AI student loan interest calculator",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-student-loan-payoff-calculator",
     title: "AI Student Loan Payoff Calculator (Free, 2026)",
     excerpt: "Use a free AI chatbot as a student loan payoff calculator. See what $50, $100 or $500 extra a month saves, plus avalanche vs snowball.",
