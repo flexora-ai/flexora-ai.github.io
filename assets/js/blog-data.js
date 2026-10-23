@@ -750,6 +750,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-summarize-youtube-videos-free",
+    title: "Summarize YouTube Videos with AI Free: Checkable Summaries",
+    excerpt: "Summarize a YouTube video with a free chatbot. Get 3 routes, two prompts with timestamps and quotes, and a 3-check rule so you can trust the result.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 7,
+    image: "assets/images/blog/ai-tool-to-summarize-youtube-videos-free.webp",
+    imageAlt: "Student using an AI tool to summarize a YouTube video on a laptop with notes beside it",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-turn-meeting-recording-into-notes-free",
     title: "AI Tool to Turn a Meeting Recording Into Notes (Free Options)",
     excerpt: "How to turn a meeting recording into clear notes and action items with free AI tools. Compare Otter and Fireflies, plus a copy-paste prompt for a chatbot.",
