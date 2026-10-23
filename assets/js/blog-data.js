@@ -386,6 +386,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-private-vs-federal-student-loan-calculator",
+    title: "AI Private vs Federal Student Loan Calculator (2026)",
+    excerpt: "Compare private and federal student loans with a free AI chatbot. Side-by-side payment tables, the variable-rate trap and questions to ask any lender.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/ai-private-vs-federal-student-loan-calculator.webp",
+    imageAlt: "AI private vs federal student loan calculator",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-product-description-generators",
     title: "AI Product Description Generators: What to Check Before You Trust One",
     excerpt: "How AI product description generators actually work, where they get facts wrong, and how to use them without your catalog sounding identical.",
@@ -661,6 +675,20 @@ const BLOG_POSTS = [
     readMins: 5,
     image: "assets/images/blog/ai-student-loan-repayment-planner.webp",
     imageAlt: "AI student loan repayment planner",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
+    slug: "ai-student-loan-tracker-spreadsheet",
+    title: "AI Student Loan Tracker Spreadsheet (Free Template Guide)",
+    excerpt: "Build a free student loan tracker spreadsheet with AI help. Tab layout, tested formulas, a worked three-loan example and a five-minute monthly routine.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/ai-student-loan-tracker-spreadsheet.webp",
+    imageAlt: "AI student loan tracker spreadsheet",
     icon: "⚙️",
     published: true,
     featured: false
