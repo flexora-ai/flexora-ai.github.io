@@ -820,6 +820,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-write-ebook-outline-free",
+    title: "AI Tool to Write an Ebook Outline (Free) From Your Notes",
+    excerpt: "Build a short ebook outline with a free AI chatbot: one reader, one promise, your own notes, two copy-paste prompts and a simple test.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 7,
+    image: "assets/images/blog/ai-tool-to-write-ebook-outline-free.webp",
+    imageAlt: "AI tool to write an ebook outline for free, shown as a chapter plan on a desk",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-write-faq-page-for-small-business-website",
     title: "AI Tool to Write a FAQ Page for a Small Business Website",
     excerpt: "Build a FAQ page from real customer questions instead of guesses. Where to find the questions, how AI turns them into clear answers, and how to lay out the page.",
