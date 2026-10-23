@@ -358,6 +358,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-parent-plus-loan-repayment-calculator",
+    title: "AI Parent PLUS Loan Repayment Calculator (2026)",
+    excerpt: "Calculate Parent PLUS loan payments with a free AI chatbot. See the new $20,000 and $65,000 limits, a $60,000 example, and why the options are narrower.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-parent-plus-loan-repayment-calculator.webp",
+    imageAlt: "AI Parent PLUS loan repayment calculator",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-personal-assistant-tools-for-small-business",
     title: "AI Personal Assistant Tools for Small Business Owners",
     excerpt: "What AI personal assistant tools actually handle well for a small business owner, and where a real assistant still beats software.",
