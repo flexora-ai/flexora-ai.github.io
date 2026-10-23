@@ -610,6 +610,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-check-if-text-is-written-by-ai-free",
+    title: "AI Tool to Check If Text Is Written by AI: 7-Point Review",
+    excerpt: "Free AI-text checkers only give a guess. Use a 7-point human review, a weak-spot prompt and a fair process before you judge any essay or letter.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 7,
+    image: "assets/images/blog/ai-tool-to-check-if-text-is-written-by-ai-free.webp",
+    imageAlt: "Person reading a printed essay with a pen to check if text is written by AI using a free method",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-clean-messy-excel-data",
     title: "AI Tool to Clean Messy Excel Data (Duplicates, Dates, Names)",
     excerpt: "Use a free AI chatbot to clean messy Excel and Google Sheets data: duplicates, extra spaces, wrong dates, mixed names. Copy-paste prompts and safety steps.",
