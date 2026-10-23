@@ -1730,6 +1730,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "student-loan-repayment-calculator-for-graduates",
+    title: "Student Loan Repayment Calculator for Graduates (2026)",
+    excerpt: "A student loan repayment calculator guide built around your starting salary. See fixed vs income-based payments at four salaries and where they cross over.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/student-loan-repayment-calculator-for-graduates.webp",
+    imageAlt: "student loan repayment calculator for graduates",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "what-is-ai-automation-for-small-business",
     title: "What Is AI Automation for Small Business? (Plain-English Definition)",
     excerpt: "AI automation explained without jargon — what it actually means for a small business, how it",
