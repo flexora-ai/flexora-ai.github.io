@@ -512,6 +512,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-student-loan-consolidation-calculator",
+    title: "AI Student Loan Consolidation Calculator (Free, 2026)",
+    excerpt: "Calculate your federal loan consolidation rate with a free AI chatbot. Worked weighted-average example, and the forgiveness and plan costs to check first.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 4,
+    image: "assets/images/blog/ai-student-loan-consolidation-calculator.webp",
+    imageAlt: "AI student loan consolidation calculator",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-student-loan-interest-calculator",
     title: "AI Student Loan Interest Calculator (Free, 2026)",
     excerpt: "Calculate student loan interest per day, month and year with a free AI chatbot. See where interest goes over time, what 1% costs and what forbearance adds.",
