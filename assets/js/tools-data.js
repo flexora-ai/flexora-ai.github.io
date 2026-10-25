@@ -65,8 +65,8 @@ const CATEGORIES = [
 // ---- 22 live tools (Tier 1-3, status = ADD) ----
 const tools = [
   // ===== TIER 1 — Featured =====
-  {name:'FrameThrower', website:'https://framethrower.ai', cat:'video', tier:1, price:'Freemium', free:true, isNew:true, desc:'AI creative video tool with API, MCP and SDK support for professional workflows.', bestFor:'Video creators building at scale', icon:'F', ease:'Moderate'},
-  {name:'RevenueFromChat', website:'https://revenuefromchat.com', cat:'automation', tier:1, price:'Paid/Freemium', free:true, isNew:true, desc:'Turns everyday chat conversations into automated revenue workflows for businesses.', bestFor:'Business automation & sales', icon:'R', ease:'Moderate'},
+  {name:'FrameThrower', website:'https://framethrower.ai', cat:'video', tier:1, price:'Freemium', free:true, isNew:true, sponsored:true, desc:'AI creative video tool with API, MCP and SDK support for professional workflows.', bestFor:'Video creators building at scale', icon:'F', ease:'Moderate'},
+  {name:'RevenueFromChat', website:'https://revenuefromchat.com', cat:'automation', tier:1, price:'Paid/Freemium', free:true, isNew:true, sponsored:true, desc:'Turns everyday chat conversations into automated revenue workflows for businesses.', bestFor:'Business automation & sales', icon:'R', ease:'Moderate'},
   {name:'SalesTouch', website:'https://www.salestouch.io', cat:'automation', tier:1, price:'Paid', free:false, isNew:true, desc:'B2B sales automation platform built to speed up outbound and follow-up.', bestFor:'B2B sales teams', icon:'S', ease:'Moderate'},
   {name:'ModelRush', website:'https://modelrush.ai', cat:'coding', tier:1, price:'Paid', free:false, isNew:true, desc:'AI model infrastructure and tooling for developers shipping AI-powered features.', bestFor:'AI infrastructure & developers', icon:'M', ease:'Advanced'},
   {name:'Make Floor Plan', website:'https://makefloorplan.com/floor-plan-generator', cat:'design', tier:1, price:'Freemium', free:true, isNew:true, desc:'Generates architectural floor plans from simple inputs in minutes.', bestFor:'Architects & home planners', icon:'M', ease:'Easy'},
@@ -109,7 +109,11 @@ function toolCardInnerHTML(t){
       <div><div class="card-name">${t.name}</div><div class="card-cat">${t.cat.charAt(0).toUpperCase()+t.cat.slice(1)}</div></div>
     </div>
     <p>${t.desc}</p>
-    <div class="card-foot"><span class="pill ${t.free ? 'free' : ''}">${t.free ? 'Free plan' : 'Paid'}</span>${t.isNew ? '<span class="pill new">New</span>' : ''}</div>
+    <div class="card-foot">
+      <span class="pill ${t.free ? 'free' : ''}">${t.free ? 'Free plan' : 'Paid'}</span>
+      ${t.isNew ? '<span class="pill new">New</span>' : ''}
+      ${t.sponsored ? '<span class="pill sponsored" style="background:rgba(255,184,76,0.15); color:#FFB84C; border:1px solid rgba(255,184,76,0.4); font-weight:700;">★ Featured</span>' : ''}
+    </div>
   `;
 }
 
