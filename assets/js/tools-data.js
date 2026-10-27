@@ -597,7 +597,46 @@ const tools = [
   },
 ];
 
+function toolCardHTML(t) {
+  var domain = '';
+  try { domain = new URL(t.website).hostname; } catch(e){}
+  var favicon = domain ? ('https://www.google.com/s2/favicons?domain=' + domain + '&sz=64') : '';
+  var isFav = false;
+  try {
+    var favs = JSON.parse(localStorage.getItem('flexora_favs') || '[]');
+    isFav = favs.indexOf(t.id) > -1;
+  } catch(e){}
+  var easeColor = t.ease === 'Easy' ? '#22c55e' : t.ease === 'Moderate' ? '#f59e0b' : '#f43f5e';
+
+  var badges = '';
+  if (t.featured) badges += '<span class="badge badge-featured" style="background:rgba(245,158,11,.12);color:#f59e0b;border:1px solid rgba(245,158,11,.25);padding:2px 7px;border-radius:10px;font-size:10px;font-weight:700;">✨ Featured</span> ';
+  if (t.isNew) badges += '<span class="badge badge-new" style="background:rgba(45,226,200,.1);color:#2DE2C8;border:1px solid rgba(45,226,200,.2);padding:2px 7px;border-radius:10px;font-size:10px;font-weight:700;">New</span> ';
+  if (t.free) badges += '<span class="badge badge-free" style="background:rgba(34,197,94,.1);color:#22c55e;border:1px solid rgba(34,197,94,.2);padding:2px 7px;border-radius:10px;font-size:10px;font-weight:700;">Free plan</span> ';
+  else badges += '<span class="badge badge-paid" style="background:rgba(138,144,166,.08);color:#8A90A6;border:1px solid #232838;padding:2px 7px;border-radius:10px;font-size:10px;font-weight:700;">Paid</span> ';
+  if (t.verified) badges += '<span class="badge badge-verified" style="background:rgba(76,123,255,.1);color:#4C7BFF;border:1px solid rgba(76,123,255,.2);padding:2px 7px;border-radius:10px;font-size:10px;font-weight:700;">✓ Verified</span>';
+
+  return '<div class="tool-card" style="background:var(--surface,#0F131D);border:1px solid var(--line,#232838);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px;position:relative;">' +
+    '<div style="display:flex;align-items:center;gap:12px;">' +
+      '<div style="width:48px;height:48px;border-radius:10px;overflow:hidden;background:var(--surface-2,#161B28);border:1px solid var(--line,#232838);display:flex;align-items:center;justify-content:center;flex-shrink:0;">' +
+        (favicon ? '<img src="' + favicon + '" alt="' + (t.name||'') + ' logo" style="width:100%;height:100%;object-fit:contain;padding:5px;" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"/><span style="display:none;font-size:20px;font-weight:800;color:var(--teal,#2DE2C8);">' + (t.icon || (t.name ? t.name[0] : 'AI')) + '</span>' : '<span style="font-size:20px;font-weight:800;color:var(--teal,#2DE2C8);">' + (t.icon || (t.name ? t.name[0] : 'AI')) + '</span>') +
+      '</div>' +
+      '<div style="flex:1;min-width:0;">' +
+        '<div style="font-size:15px;font-weight:700;color:var(--ink,#F2F4FA);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + (t.name||'') + '</div>' +
+        '<div style="font-size:11px;color:var(--ink-soft,#8A90A6);font-family:\'IBM Plex Mono\',monospace;text-transform:uppercase;">' + (t.subcategory || t.cat || '') + '</div>' +
+      '</div>' +
+    '</div>' +
+    '<div style="display:flex;gap:5px;flex-wrap:wrap;">' + badges + '</div>' +
+    '<p style="font-size:12.5px;color:var(--ink-soft,#8A90A6);line-height:1.5;margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">' + (t.desc || t.fullDescription || '') + '</p>' +
+    '<div style="display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:8px;border-top:1px solid var(--line,#232838);">' +
+      '<span style="font-size:12px;color:var(--amber,#f59e0b);font-weight:700;font-family:\'IBM Plex Mono\',monospace;">⭐ ' + (t.rating ? t.rating.toFixed(1) : '4.8') + '</span>' +
+      '<span style="font-size:11.5px;color:var(--teal,#2DE2C8);font-family:\'IBM Plex Mono\',monospace;">' + (t.price || 'Freemium') + '</span>' +
+    '</div>' +
+    '<a href="' + (t.website || '#') + '" target="_blank" rel="noopener" style="display:block;text-align:center;padding:9px;border-radius:8px;background:var(--teal,#2DE2C8);color:#07090F;font-size:12.5px;font-weight:700;text-decoration:none;transition:transform .15s;">Visit ' + (t.name||'Tool') + ' ↗</a>' +
+  '</div>';
+}
+
 if (typeof window !== 'undefined') {
   window.tools = tools;
   window.TOOLS = tools;
+  window.toolCardHTML = toolCardHTML;
 }
