@@ -235,8 +235,47 @@ footer{border-top:1px solid var(--line);padding:56px 0 28px;margin-top:40px;}
 
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
 </style>
+<style id="flexora-social-css">
+.social-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px;}
+.social-row a{width:36px;height:36px;border-radius:9px;background:var(--surface-2,#161B28);border:1px solid var(--line,#232838);display:flex;align-items:center;justify-content:center;color:var(--ink-soft,#8A90A6);transition:all .2s;flex-shrink:0;}
+.social-row a svg{width:15px;height:15px;display:block;pointer-events:none;}
+.social-row a:hover{transform:translateY(-3px);box-shadow:0 6px 18px -8px currentColor;}
+.soc-li:hover{color:#0A66C2!important;border-color:#0A66C2!important;background:rgba(10,102,194,.1)!important;}
+.soc-fb:hover{color:#1877F2!important;border-color:#1877F2!important;background:rgba(24,119,242,.1)!important;}
+.soc-ig:hover{color:#E4405F!important;border-color:#E4405F!important;background:rgba(228,64,95,.1)!important;}
+.soc-pi:hover{color:#E60023!important;border-color:#E60023!important;background:rgba(230,0,35,.1)!important;}
+.soc-x:hover{color:#fff!important;border-color:#555!important;background:rgba(0,0,0,.5)!important;}
+.soc-gh:hover{color:#7c3aed!important;border-color:#7c3aed!important;background:rgba(124,58,237,.1)!important;}
+.soc-em:hover{color:#2DE2C8!important;border-color:#2DE2C8!important;background:rgba(45,226,200,.1)!important;}
+</style>
 </head>
 <body>
+<a class="live-ticker" id="liveTicker" href="tools.html" style="text-decoration:none;">
+  <span class="pulse-dot" style="width:8px;height:8px;background:#2DE2C8;border-radius:50%;box-shadow:0 0 12px #2DE2C8;flex-shrink:0;animation:pulseDot 1.5s infinite;"></span>
+  <span class="ticker-text" id="tickerText">Someone is browsing <b>AI tools</b> right now</span>
+</a>
+<style>
+.live-ticker{position:fixed;bottom:24px;left:24px;z-index:70;background:rgba(15,19,29,0.95);backdrop-filter:blur(12px);border:1px solid rgba(45,226,200,0.2);border-radius:14px;padding:11px 16px;display:flex;align-items:center;gap:10px;font-size:12.5px;color:#8A90A6;box-shadow:0 10px 40px -10px rgba(0,0,0,0.5);transform:translateX(-120%);transition:transform 0.5s cubic-bezier(0.34,1.56,0.64,1);max-width:300px;font-family:'Sora',sans-serif;}
+.live-ticker.show{transform:translateX(0);}
+.live-ticker .ticker-text{flex:1;}
+.live-ticker .ticker-text b{color:#2DE2C8;}
+@keyframes pulseDot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.4);}}
+</style>
+<script>
+(function(){
+  var CITIES=[['London','Perplexity'],['New York','ChatGPT'],['Mumbai','Claude'],['Berlin','Cursor'],['Tokyo','Midjourney'],['Paris','Gemini'],['Toronto','ElevenLabs'],['Sydney','Runway ML'],['Dubai','DeepSeek'],['Singapore','Grammarly'],['Barcelona','GitHub Copilot'],['Amsterdam','Notion AI'],['São Paulo','Canva AI'],['Seoul','Qwen'],['Jakarta','Kimi AI']];
+  var t=document.getElementById('liveTicker');
+  var tx=document.getElementById('tickerText');
+  if(!t||!tx)return;
+  function show(){
+    var c=CITIES[Math.floor(Math.random()*CITIES.length)];
+    tx.innerHTML='Someone in <b>'+c[0]+'</b> just explored <b>'+c[1]+'</b>';
+    t.classList.add('show');
+    setTimeout(function(){t.classList.remove('show');setTimeout(show,4000);},5000);
+  }
+  setTimeout(show,2500);
+})();
+</script>
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-56W23QBB" style="display:none;visibility:hidden" width="0"></iframe></noscript>
 <div class="scroll-progress" id="prog"></div>
 <div class="bg-particles" id="particles" aria-hidden="true"></div>
@@ -245,7 +284,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 28px;margin-top:40px;}
 <nav class="wrap">
 <a class="logo" href="index.html"><img src="assets/images/logo.png" alt=""/>Flexora<span>.Ai</span></a>
 <div class="nav-links">
-<a href="tools.html">Tools</a><a class="active" href="compare.html">Compare</a><a href="finder.html">Finder</a><a href="workflows.html">Workflows</a><a href="free-tools.html">Free Tools</a><a href="blog.html">Blog</a><a href="services.html">Services</a>
+<a href="tools.html">Tools</a><a class="active" href="compare.html">Compare</a><a href="finder.html">Finder</a><a href="workflows.html">Workflows</a><a href="free-tools.html">Free Tools</a><a href="blog.html">Blog</a>
 </div>
 <div class="nav-cta">
 <a class="btn btn-ghost" href="submit.html">Submit tool</a>
@@ -254,7 +293,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 28px;margin-top:40px;}
 </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-<a href="tools.html">Tools</a><a href="compare.html">Compare</a><a href="finder.html">Finder</a><a href="workflows.html">Workflows</a><a href="free-tools.html">Free Tools</a><a href="blog.html">Blog</a><a href="services.html">Services</a>
+<a href="tools.html">Tools</a><a href="compare.html">Compare</a><a href="finder.html">Finder</a><a href="workflows.html">Workflows</a><a href="free-tools.html">Free Tools</a><a href="blog.html">Blog</a>
 </div>
 </header>
 
@@ -319,14 +358,15 @@ footer{border-top:1px solid var(--line);padding:56px 0 28px;margin-top:40px;}
 <div class="foot-brand">
 <a class="logo" href="index.html"><img src="assets/images/logo.png" alt=""/>Flexora<span>.Ai</span></a>
 <p>Helping people find the right AI tool for the job, without the pay-to-list noise.</p>
-<div class="social-row">
-<a href="https://www.linkedin.com/company/flexora-ai" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg></a>
-<a href="https://www.facebook.com/flexoraai/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21.5v-8.2h2.75l.41-3.19h-3.16V8.06c0-.92.26-1.55 1.58-1.55h1.68V3.66c-.29-.04-1.29-.13-2.45-.13-2.42 0-4.08 1.48-4.08 4.19v2.39H7.48v3.19h2.75v8.2h3.27Z"/></svg></a>
-<a href="https://www.instagram.com/flexora.ai.tools/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
-<a href="https://www.pinterest.com/flexora_ai/" target="_blank" rel="noopener" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.24 2 11.47c0 3.99 2.48 7.4 6 8.79-.08-.75-.16-1.9.03-2.72.17-.74 1.11-4.7 1.11-4.7s-.28-.57-.28-1.4c0-1.32.77-2.3 1.72-2.3.81 0 1.2.61 1.2 1.34 0 .82-.52 2.04-.79 3.17-.22.95.48 1.72 1.42 1.72 1.71 0 2.86-2.2 2.86-4.8 0-1.98-1.34-3.46-3.77-3.46-2.75 0-4.46 2.05-4.46 4.34 0 .79.23 1.35.6 1.78.17.2.19.28.13.51-.05.18-.15.61-.2.79-.07.25-.27.34-.5.25-1.4-.57-2.05-2.1-2.05-3.82 0-2.84 2.4-6.25 7.15-6.25 3.82 0 6.34 2.77 6.34 5.74 0 3.94-2.19 6.87-5.41 6.87-1.08 0-2.1-.58-2.45-1.24l-.68 2.65c-.2.79-.6 1.78-.9 2.39.85.26 1.75.4 2.68.4 5.52 0 10-4.24 10-9.47C22 6.24 17.52 2 12 2Z"/></svg></a>
-<a href="https://x.com/Flexora_Ai" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 3H21l-6.55 7.49L22.2 21h-6.02l-4.72-6.17L5.03 21H2.25l7.01-8.01L1.8 3h6.17l4.27 5.65L18.24 3Zm-1.06 16.17h1.67L7.9 4.74H6.1l11.08 14.43Z"/></svg></a>
-<a href="mailto:ownerflexora.ai@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></a>
-</div>
+      <div class="social-row">
+        <a class="soc-li" href="https://www.linkedin.com/company/flexora-ai" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg></a>
+        <a class="soc-fb" href="https://www.facebook.com/flexoraai/" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.265h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073Z"/></svg></a>
+        <a class="soc-ig" href="https://www.instagram.com/flexora.ai.tools/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+        <a class="soc-pi" href="https://www.pinterest.com/flexora_ai/" target="_blank" rel="noopener" aria-label="Pinterest" title="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg></a>
+        <a class="soc-x"  href="https://x.com/Flexora_Ai" target="_blank" rel="noopener" aria-label="X / Twitter" title="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a class="soc-gh" href="https://github.com/flexora-ai" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+        <a class="soc-em" href="mailto:ownerflexora.ai@gmail.com" aria-label="Email" title="Email us"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+      </div>
 </div>
 <div class="foot-col"><h4>Explore</h4><a href="tools.html">All tools</a><a href="compare.html">Compare</a><a href="finder.html">Finder</a><a href="free-tools.html">Free tools</a></div>
 <div class="foot-col"><h4>Resources</h4><a href="workflows.html">Workflows</a><a href="blog.html">Guides</a><a href="index.html#faq">FAQ</a><a href="sitemap.html">Sitemap</a></div>

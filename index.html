@@ -32,6 +32,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 --blue:#4C7BFF;
 --ink:#F2F4FA;
 --ink-soft:#8A90A6;
+--amber:#f59e0b;
 }
 *{box-sizing:border-box; margin:0; padding:0;}
 html{scroll-behavior:smooth;}
@@ -314,6 +315,19 @@ footer{border-top:1px solid var(--line); padding:56px 0 28px;}
 
 @media (prefers-reduced-motion: reduce){*{animation:none !important; transition:none !important;}}
 </style>
+<style id="flexora-social-css">
+.social-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px;}
+.social-row a{width:36px;height:36px;border-radius:9px;background:var(--surface-2,#161B28);border:1px solid var(--line,#232838);display:flex;align-items:center;justify-content:center;color:var(--ink-soft,#8A90A6);transition:all .2s;flex-shrink:0;}
+.social-row a svg{width:15px;height:15px;display:block;pointer-events:none;}
+.social-row a:hover{transform:translateY(-3px);box-shadow:0 6px 18px -8px currentColor;}
+.soc-li:hover{color:#0A66C2!important;border-color:#0A66C2!important;background:rgba(10,102,194,.1)!important;}
+.soc-fb:hover{color:#1877F2!important;border-color:#1877F2!important;background:rgba(24,119,242,.1)!important;}
+.soc-ig:hover{color:#E4405F!important;border-color:#E4405F!important;background:rgba(228,64,95,.1)!important;}
+.soc-pi:hover{color:#E60023!important;border-color:#E60023!important;background:rgba(230,0,35,.1)!important;}
+.soc-x:hover{color:#fff!important;border-color:#555!important;background:rgba(0,0,0,.5)!important;}
+.soc-gh:hover{color:#7c3aed!important;border-color:#7c3aed!important;background:rgba(124,58,237,.1)!important;}
+.soc-em:hover{color:#2DE2C8!important;border-color:#2DE2C8!important;background:rgba(45,226,200,.1)!important;}
+</style>
 </head>
 <body>
 
@@ -321,7 +335,7 @@ footer{border-top:1px solid var(--line); padding:56px 0 28px;}
 <div class="cursor-glow" id="cursorGlow"></div>
 <a class="live-ticker" id="liveTicker" href="tools.html">
 <span class="pulse-dot"></span>
-<span class="ticker-text" id="tickerText">Someone in <b>London</b> just found <b>FrameThrower</b></span>
+<span class="ticker-text" id="tickerText">Someone is browsing <b>AI tools</b> right now</span>
 </a>
 
 <div class="bg-particles" id="bgParticles"></div>
@@ -339,11 +353,9 @@ Flexora<span>.Ai</span>
 <a href="workflows.html">Workflows</a>
 <a href="free-tools.html">Free Tools</a>
 <a href="blog.html">Blog</a>
-<a href="services.html">Services</a>
 </div>
 <div style="display:flex; gap:12px; align-items:center;">
 <a class="btn btn-ghost" href="submit.html">Submit tool</a>
-<a class="btn btn-primary magnetic" href="finder.html">Find a tool</a>
 <button aria-label="Open menu" class="menu-btn" id="menuBtn">☰</button>
 </div>
 </nav>
@@ -354,7 +366,6 @@ Flexora<span>.Ai</span>
 <a href="workflows.html">Workflows</a>
 <a href="free-tools.html">Free Tools</a>
 <a href="blog.html">Blog</a>
-<a href="services.html">Services</a>
 </div>
 </header>
 
@@ -415,52 +426,90 @@ Flexora<span>.Ai</span>
 
 <section>
 <div class="wrap">
-<div class="section-head reveal"><div><h2>Trending this week</h2><p>Ranked by newest and free-plan availability. Click through to the tool's own site.</p></div><a class="see-all" href="tools.html">Browse all →</a></div>
-<div class="trend-list" id="trendList"></div>
+<div class="section-head reveal"><div><h2>Top 15 AI Tools</h2><p>The best AI tools used by millions — from chatbots to image generators, code editors and more.</p></div><a class="see-all" href="tools.html">Browse all →</a></div>
+<style>
+.ai-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:4px;}
+.ai-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px;transition:transform .2s,border-color .2s,box-shadow .2s;position:relative;overflow:hidden;}
+.ai-card:hover{transform:translateY(-4px);border-color:rgba(45,226,200,.35);box-shadow:0 16px 36px -14px rgba(45,226,200,.25);}
+.ai-card.is-top::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--teal),var(--blue));}
+.ai-card-head{display:flex;align-items:center;gap:11px;}
+.ai-logo{width:46px;height:46px;border-radius:10px;overflow:hidden;background:var(--surface-2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ai-logo img{width:100%;height:100%;object-fit:contain;padding:5px;}
+.ai-logo .ai-icon{font-size:20px;font-weight:800;font-family:'IBM Plex Mono',monospace;color:var(--teal);}
+.ai-name{font-size:14px;font-weight:700;line-height:1.2;}
+.ai-cat{font-size:10.5px;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.04em;margin-top:1px;}
+.ai-desc{font-size:12.5px;color:var(--ink-soft);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.ai-meta{display:flex;align-items:center;justify-content:space-between;}
+.ai-rating{font-size:12px;color:var(--amber);font-weight:700;font-family:'IBM Plex Mono',monospace;}
+.ai-price-badge{font-size:10px;font-weight:700;padding:2px 7px;border-radius:8px;}
+.ai-price-free{background:rgba(34,197,94,.1);color:#22c55e;border:1px solid rgba(34,197,94,.2);}
+.ai-price-paid{background:rgba(138,144,166,.08);color:var(--ink-soft);border:1px solid var(--line);}
+.ai-visit{display:block;text-align:center;padding:8px;border-radius:8px;background:var(--teal);color:#07090F;font-size:12.5px;font-weight:700;transition:all .18s;}
+.ai-visit:hover{transform:translateY(-1px);box-shadow:0 6px 16px -6px rgba(45,226,200,.5);}
+</style>
+<div class="ai-grid" id="featuredAIGrid"></div>
+<script>
+(function(){
+  var TOP15 = [
+    {name:'ChatGPT',     cat:'AI Assistant',   url:'https://chat.openai.com',                       domain:'openai.com',       price:'free',  rating:4.9, icon:'C'},
+    {name:'Claude',      cat:'AI Assistant',   url:'https://claude.ai',                             domain:'claude.ai',        price:'free',  rating:4.9, icon:'C'},
+    {name:'Gemini',      cat:'AI Assistant',   url:'https://gemini.google.com',                     domain:'google.com',       price:'free',  rating:4.8, icon:'G'},
+    {name:'Perplexity',  cat:'AI Search',      url:'https://www.perplexity.ai',                     domain:'perplexity.ai',    price:'free',  rating:4.8, icon:'P'},
+    {name:'DeepSeek',    cat:'AI Assistant',   url:'https://chat.deepseek.com',                     domain:'deepseek.com',     price:'free',  rating:4.8, icon:'D'},
+    {name:'Qwen',        cat:'AI Assistant',   url:'https://chat.qwen.ai',                          domain:'qwen.ai',          price:'free',  rating:4.7, icon:'Q'},
+    {name:'Kimi AI',     cat:'AI Assistant',   url:'https://kimi.ai',                               domain:'kimi.ai',          price:'free',  rating:4.7, icon:'K'},
+    {name:'Midjourney',  cat:'AI Image',       url:'https://www.midjourney.com',                    domain:'midjourney.com',   price:'paid',  rating:4.9, icon:'M'},
+    {name:'Copilot',     cat:'AI Coding',      url:'https://github.com/features/copilot',           domain:'github.com',       price:'free',  rating:4.8, icon:'G'},
+    {name:'Cursor',      cat:'Code Editor',    url:'https://www.cursor.com',                        domain:'cursor.com',       price:'free',  rating:4.9, icon:'C'},
+    {name:'ElevenLabs',  cat:'AI Voice',       url:'https://elevenlabs.io',                         domain:'elevenlabs.io',    price:'free',  rating:4.9, icon:'E'},
+    {name:'Runway ML',   cat:'AI Video',       url:'https://runwayml.com',                          domain:'runwayml.com',     price:'free',  rating:4.8, icon:'R'},
+    {name:'Grammarly',   cat:'AI Writing',     url:'https://www.grammarly.com',                     domain:'grammarly.com',    price:'free',  rating:4.7, icon:'G'},
+    {name:'Canva AI',    cat:'AI Design',      url:'https://www.canva.com',                         domain:'canva.com',        price:'free',  rating:4.8, icon:'C'},
+    {name:'Notion AI',   cat:'Productivity',   url:'https://www.notion.so/product/ai',              domain:'notion.so',        price:'free',  rating:4.7, icon:'N'},
+  ];
+  var DESCS = {
+    'ChatGPT':'The world\'s most-used AI assistant by OpenAI. Chat, code, analyze and create.',
+    'Claude':'Anthropic\'s AI — exceptional at long documents, nuanced writing and analysis.',
+    'Gemini':'Google\'s multimodal AI, integrated with Search, Gmail and Workspace.',
+    'Perplexity':'AI answer engine that searches the web in real-time and cites every source.',
+    'DeepSeek':'Powerful open-source AI with advanced reasoning (R1) — completely free.',
+    'Qwen':'Alibaba\'s frontier AI with Qwen 2.5 — strong reasoning and 100+ languages.',
+    'Kimi AI':'Moonshot AI with a 1M token context — process entire books in one chat.',
+    'Midjourney':'The gold standard for AI art — unmatched artistic quality and photorealism.',
+    'Copilot':'GitHub\'s AI pair programmer — autocomplete, chat and multi-file edits.',
+    'Cursor':'AI-first code editor that understands your entire codebase.',
+    'ElevenLabs':'Most realistic AI voice generation — clone voices in 32 languages.',
+    'Runway ML':'Hollywood-grade AI video — Gen-3 text-to-video and image animation.',
+    'Grammarly':'AI writing assistant for grammar, style, tone and clarity — works everywhere.',
+    'Canva AI':'Magic Design, text-to-image, AI presentations and background removal.',
+    'Notion AI':'AI built into your workspace — write, summarize, translate and Q&A your docs.',
+  };
+  var grid = document.getElementById('featuredAIGrid');
+  TOP15.forEach(function(t, i) {
+    var favicon = 'https://www.google.com/s2/favicons?domain=' + t.domain + '&sz=64';
+    var priceClass = t.price === 'free' ? 'ai-price-free' : 'ai-price-paid';
+    var priceLabel = t.price === 'free' ? '🆓 Free plan' : '💳 Paid';
+    var stars = '★'.repeat(Math.floor(t.rating)) + (t.rating % 1 >= 0.5 ? '½' : '');
+    var div = document.createElement('div');
+    div.className = 'ai-card reveal' + (i < 3 ? ' is-top' : '');
+    div.innerHTML =
+      '<div class="ai-card-head">' +
+        '<div class="ai-logo"><img src="' + favicon + '" alt="' + t.name + ' logo" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'block\'"><span class="ai-icon" style="display:none">' + t.icon + '</span></div>' +
+        '<div><div class="ai-name">' + t.name + '</div><div class="ai-cat">' + t.cat + '</div></div>' +
+      '</div>' +
+      '<div class="ai-desc">' + DESCS[t.name] + '</div>' +
+      '<div class="ai-meta">' +
+        '<span class="ai-rating">⭐ ' + t.rating.toFixed(1) + '</span>' +
+        '<span class="ai-price-badge ' + priceClass + '">' + priceLabel + '</span>' +
+      '</div>' +
+      '<a class="ai-visit" href="' + t.url + '" target="_blank" rel="noopener">Visit ' + t.name + ' ↗</a>';
+    grid.appendChild(div);
+  });
+})();
+</script>
 </div>
 </section>
 
-<!-- FREE TOOLS MONETIZATION & UTILITY SHOWCASE -->
-<section style="padding:60px 0;">
-<div class="wrap">
-  <div style="background:linear-gradient(135deg,rgba(45,226,200,0.08),rgba(76,123,255,0.08)); border:1.5px solid rgba(45,226,200,0.25); border-radius:20px; padding:36px; display:flex; justify-content:space-between; align-items:center; gap:32px; flex-wrap:wrap; box-shadow:0 24px 48px -24px rgba(45,226,200,0.15);">
-    <div style="max-width:580px;">
-      <span class="eyebrow" style="margin-bottom:12px;"><span class="dot"></span>100% Free · No Sign-Up</span>
-      <h2 style="font-size:28px; font-weight:800; margin-bottom:10px; color:var(--ink);">Built-In AI & Growth Utilities Suite</h2>
-      <p style="color:var(--ink-soft); font-size:15px; line-height:1.6; margin-bottom:18px;">
-        Instant browser tools to scale your content and apps: AI Prompt Architect, Live Word & Readability Analyzer, SERP Meta Generator, Schema JSON-LD Builder, and LLM Token Cost Calculator.
-      </p>
-      <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <a class="btn btn-primary" href="free-tools.html">Launch Free Tools →</a>
-        <a class="btn btn-ghost" href="free-tools.html#prompt">AI Prompt Architect</a>
-        <a class="btn btn-ghost" href="free-tools.html#cost">Token Cost Calc</a>
-      </div>
-    </div>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; min-width:280px; flex:1; max-width:440px;">
-      <div style="background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:16px;">
-        <div style="font-size:20px; margin-bottom:6px;">⚡</div>
-        <div style="font-size:13.5px; font-weight:700; color:var(--ink);">Prompt Architect</div>
-        <div style="font-size:12px; color:var(--ink-soft);">Expert prompt engineering</div>
-      </div>
-      <div style="background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:16px;">
-        <div style="font-size:20px; margin-bottom:6px;">🔍</div>
-        <div style="font-size:13.5px; font-weight:700; color:var(--ink);">SERP Previewer</div>
-        <div style="font-size:12px; color:var(--ink-soft);">Google Title & Meta tags</div>
-      </div>
-      <div style="background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:16px;">
-        <div style="font-size:20px; margin-bottom:6px;">💰</div>
-        <div style="font-size:13.5px; font-weight:700; color:var(--ink);">LLM Cost Calc</div>
-        <div style="font-size:12px; color:var(--ink-soft);">Compare API token prices</div>
-      </div>
-      <div style="background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:16px;">
-        <div style="font-size:20px; margin-bottom:6px;">📝</div>
-        <div style="font-size:13.5px; font-weight:700; color:var(--ink);">Word & Speech Time</div>
-        <div style="font-size:12px; color:var(--ink-soft);">Real-time reading density</div>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
 
 <section>
 <div class="wrap">
@@ -563,18 +612,18 @@ Flexora<span>.Ai</span>
 Flexora<span>.Ai</span>
 </a>
 <p>Helping people find the right AI tool for the job — without the pay-to-list noise.</p>
-<div class="social-row">
-<a aria-label="GitHub" href="https://github.com/flexora-ai" target="_blank" rel="noopener"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.1 3.29 9.4 7.86 10.94.57.1.78-.25.78-.56 0-.28-.01-1.02-.01-2-3.2.7-3.87-1.54-3.87-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.66 1.25 3.31.95.1-.74.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.72 0-1.26.45-2.28 1.17-3.08-.12-.29-.51-1.46.11-3.05 0 0 .95-.31 3.12 1.18a10.79 10.79 0 0 1 2.85-.38c.97 0 1.95.13 2.85.38 2.16-1.5 3.11-1.18 3.11-1.18.62 1.59.24 2.76.12 3.05.73.8 1.17 1.82 1.17 3.08 0 4.45-2.69 5.43-5.25 5.71.41.35.77 1.04.77 2.09 0 1.51-.01 2.73-.01 3.1 0 .31.2.67.79.56A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/></svg></a>
-<a aria-label="LinkedIn" href="https://www.linkedin.com/company/flexora-ai" target="_blank" rel="noopener"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.368-1.85 3.602 0 4.268 2.37 4.268 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-<a aria-label="Facebook" href="https://www.facebook.com/flexoraai/" target="_blank" rel="noopener"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24h-1.918c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.407 24 22.676V1.325C24 .593 23.406 0 22.675 0z"/></svg></a>
-<a aria-label="Instagram" href="https://www.instagram.com/flexora.ai.tools/" target="_blank" rel="noopener"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-<a aria-label="Pinterest" href="https://www.pinterest.com/flexora_ai/" target="_blank" rel="noopener"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.083.345l-.333 1.36c-.053.222-.174.269-.402.163-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.003 2.35-1.494 3.146C9.756 23.836 10.855 24 12.017 24c6.607 0 11.972-5.366 11.972-11.987C23.989 5.367 18.624 0 12.017 0z"/></svg></a>
-<a aria-label="X (Twitter)" href="https://x.com/Flexora_Ai" target="_blank" rel="noopener"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-<a aria-label="Email" href="mailto:ownerflexora.ai@gmail.com"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect height="16" rx="2" ry="2" width="20" x="2" y="4"/><path d="M22 6l-10 7L2 6"/></svg></a>
-</div>
+      <div class="social-row">
+        <a class="soc-li" href="https://www.linkedin.com/company/flexora-ai" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg></a>
+        <a class="soc-fb" href="https://www.facebook.com/flexoraai/" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.265h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073Z"/></svg></a>
+        <a class="soc-ig" href="https://www.instagram.com/flexora.ai.tools/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+        <a class="soc-pi" href="https://www.pinterest.com/flexora_ai/" target="_blank" rel="noopener" aria-label="Pinterest" title="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg></a>
+        <a class="soc-x"  href="https://x.com/Flexora_Ai" target="_blank" rel="noopener" aria-label="X / Twitter" title="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a class="soc-gh" href="https://github.com/flexora-ai" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+        <a class="soc-em" href="mailto:ownerflexora.ai@gmail.com" aria-label="Email" title="Email us"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+      </div>
 </div>
 <div class="foot-col"><h4>Explore</h4><a href="tools.html">All tools</a><a href="tools.html#categories">Categories</a><a href="compare.html">Compare</a><a href="free-tools.html">Free tools</a></div>
-<div class="foot-col"><h4>Resources</h4><a href="workflows.html">Workflows</a><a href="blog.html">Guides</a><a href="index.html#faq">FAQ</a><a href="https://aiweekly.co" target="_blank" rel="noopener">AI Weekly ↗</a></div>
+<div class="foot-col"><h4>Resources</h4><a href="workflows.html">Workflows</a><a href="blog.html">Guides</a><a href="index.html#faq">FAQ</a></div>
 <div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="submit.html">Submit a tool</a><a href="services.html">Contact</a></div>
 <div class="foot-col"><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="privacy.html#affiliate">Affiliate disclosure</a><a href="sitemap.html">Sitemap</a></div>
 </div>
