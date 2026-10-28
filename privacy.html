@@ -1353,7 +1353,7 @@ document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
       <div class="blog-body">
         <span class="blog-cat">${p.category.toUpperCase()}</span>
         <h4>${p.title}</h4>
-        <div class="blog-meta">${p.readMins} min read · ${p.published ? formatDate(p.date) : 'Coming soon'}</div>
+        <div class="blog-meta">${p.readMins} min read &middot; ${p.published ? formatDate(p.date) : 'Coming soon'}</div>
       </div>`;
     return p.published
       ? `<a class="blog-card" href="${prefix}blog/${p.slug}.html">${inner}</a>`
