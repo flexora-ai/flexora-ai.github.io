@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-56W23QBB');</script>
+<!-- End Google Tag Manager -->
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pragor - AI Automation Tool | Flexora.Ai</title>
+<meta content="Discover Pragor, an AI automation tool. AI agent platform for automating day-to-day operational tasks.. Explore features, pricing, use cases, and visit the official website." name="description"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://flexora-ai.github.io/tools/pragor.html" rel="canonical"/>
+<link href="../assets/images/logo.png" rel="icon" type="image/png"/>
+
+<!-- Open Graph / Social -->
+<meta content="Pragor - AI Automation Tool | Flexora.Ai" property="og:title"/>
+<meta content="Discover Pragor, an AI automation tool. AI agent platform for automating day-to-day operational tasks.. Explore features, pricing, use cases, and visit the official website." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://flexora-ai.github.io/tools/pragor.html" property="og:url"/>
+<meta content="https://flexora-ai.github.io/assets/images/logo.png" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Pragor - AI Automation Tool | Flexora.Ai" name="twitter:title"/>
+<meta content="Discover Pragor, an AI automation tool. AI agent platform for automating day-to-day operational tasks.." name="twitter:description"/>
+<meta content="https://flexora-ai.github.io/assets/images/logo.png" name="twitter:image"/>
+
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#07090F; --surface:#0F131D; --surface-2:#161B28; --line:#232838;
+  --teal:#2DE2C8; --blue:#4C7BFF; --ink:#F2F4FA; --ink-soft:#8A90A6; --amber:#f59e0b;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg); color:var(--ink); font-family:'Sora',sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden;}
+.mono{font-family:'IBM Plex Mono',monospace;}
+a{color:inherit; text-decoration:none;}
+.wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+img,svg{display:block; max-width:100%;}
+button{font-family:inherit; cursor:pointer;}
+:focus-visible{outline:2px solid var(--teal); outline-offset:3px;}
+
+header{position:sticky; top:0; z-index:60; background:rgba(7,9,15,0.75); backdrop-filter:blur(12px); border-bottom:1px solid var(--line);}
+nav.wrap{height:76px; display:flex; align-items:center; justify-content:space-between;}
+.logo{display:flex; align-items:center; gap:10px; font-weight:700; font-size:18px;}
+.logo img{width:26px; height:26px; object-fit:contain;}
+.logo span{color:var(--teal);}
+.nav-links{display:flex; gap:26px; font-size:14px; color:var(--ink-soft);}
+.nav-links a{cursor:pointer; transition:color .15s; padding-bottom:4px; border-bottom:2px solid transparent; position:relative;}
+.nav-links a:hover{color:var(--teal);}
+.nav-links a.active{color:var(--ink);}
+@media(max-width:960px){.nav-links{display:none;}}
+.btn{font-family:'Sora'; font-weight:600; font-size:14px; padding:11px 20px; border-radius:8px; border:none; cursor:pointer; transition:transform .15s, box-shadow .15s; position:relative; overflow:hidden;}
+.btn-primary{background:var(--teal); color:#07090F;}
+.btn-primary:hover{transform:translateY(-2px); box-shadow:0 10px 24px -6px rgba(45,226,200,0.5);}
+.btn-ghost{color:var(--ink-soft); border:1px solid var(--line); background:transparent;}
+.btn-ghost:hover{color:var(--ink); border-color:var(--ink-soft);}
+.menu-btn{display:none; background:none; border:1px solid var(--line); border-radius:8px; width:40px; height:40px; color:var(--ink);}
+@media(max-width:960px){.menu-btn{display:block;}}
+.mobile-menu{display:none; flex-direction:column; gap:4px; padding:12px 32px 20px; border-bottom:1px solid var(--line);}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{padding:10px 0; color:var(--ink-soft); font-size:14.5px; border-bottom:1px solid var(--line);}
+
+/* Breadcrumb */
+.breadcrumb{padding:24px 0 12px; font-size:13px; color:var(--ink-soft); font-family:'IBM Plex Mono',monospace; display:flex; align-items:center; gap:8px; flex-wrap:wrap;}
+.breadcrumb a{color:var(--ink-soft); transition:color .15s;}
+.breadcrumb a:hover{color:var(--teal);}
+.breadcrumb span.sep{color:var(--line);}
+
+/* Tool Hero Section */
+.tool-hero{background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:36px 40px; margin-bottom:40px; box-shadow:0 20px 40px -20px rgba(0,0,0,0.5); position:relative; overflow:hidden;}
+.tool-hero-top{display:flex; gap:24px; align-items:flex-start; margin-bottom:24px; flex-wrap:wrap;}
+.tool-big-icon{width:72px; height:72px; border-radius:16px; background:var(--surface-2); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono'; font-size:32px; font-weight:800; color:var(--teal); flex:none;}
+.tool-hero-title{flex:1; min-width:260px;}
+.tool-hero-title h1{font-size:32px; font-weight:800; margin-bottom:8px; color:var(--ink); display:flex; align-items:center; gap:12px; flex-wrap:wrap;}
+.tool-badges{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px;}
+.badge{font-family:'IBM Plex Mono'; font-size:11px; padding:4px 10px; border-radius:6px; font-weight:600;}
+.badge-verified{background:rgba(45,226,200,0.12); color:var(--teal); border:1px solid rgba(45,226,200,0.3);}
+.badge-featured{background:rgba(245,158,11,0.12); color:var(--amber); border:1px solid rgba(245,158,11,0.3);}
+.badge-price{background:rgba(76,123,255,0.12); color:var(--blue); border:1px solid rgba(76,123,255,0.3);}
+.tool-lede{font-size:16px; color:var(--ink-soft); line-height:1.6; max-width:800px;}
+
+.tool-hero-ctas{display:flex; gap:16px; align-items:center; flex-wrap:wrap; margin-top:28px; padding-top:24px; border-top:1px solid var(--line);}
+.btn-visit{font-size:15px; padding:13px 28px; border-radius:10px; font-weight:700;}
+
+/* Grid Layout for Detail Sections */
+.detail-grid{display:grid; grid-template-columns:2.2fr 1fr; gap:36px; margin-bottom:60px;}
+@media(max-width:960px){.detail-grid{grid-template-columns:1fr;}}
+
+.section-box{background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:28px 32px; margin-bottom:28px;}
+.section-box h2{font-size:19px; font-weight:700; color:var(--ink); margin-bottom:16px; display:flex; align-items:center; gap:10px;}
+.section-box h2::before{content:""; display:inline-block; width:4px; height:18px; background:var(--teal); border-radius:2px;}
+.section-box p{font-size:14.5px; color:var(--ink-soft); line-height:1.7; margin-bottom:14px;}
+
+.feature-list{list-style:none; display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px; margin-top:16px;}
+.feature-item{background:var(--surface-2); border:1px solid var(--line); padding:14px 18px; border-radius:10px; font-size:13.5px; color:var(--ink); display:flex; align-items:center; gap:10px;}
+.feature-item svg{width:16px; height:16px; color:var(--teal); flex:none;}
+
+.sidebar-box{background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:24px; margin-bottom:24px;}
+.sidebar-box h3{font-size:16px; font-weight:700; color:var(--ink); margin-bottom:14px;}
+.meta-row{display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--line); font-size:13.5px;}
+.meta-row:last-child{border-bottom:none;}
+.meta-label{color:var(--ink-soft);}
+.meta-val{color:var(--ink); font-weight:600;}
+
+.biz-card{background:linear-gradient(135deg,var(--surface),var(--surface-2)); border:1px solid var(--line); border-radius:16px; padding:22px; margin-bottom:20px; text-align:left;}
+.biz-card h4{font-size:15px; font-weight:700; color:var(--ink); margin-bottom:6px;}
+.biz-card p{font-size:13px; color:var(--ink-soft); margin-bottom:14px; line-height:1.5;}
+.biz-btn{font-size:12.5px; padding:8px 14px; width:100%; text-align:center;}
+
+/* Related tools */
+.related-sec{margin-top:60px; padding-top:40px; border-top:1px solid var(--line);}
+.related-sec h2{font-size:24px; margin-bottom:24px;}
+.grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.grid{grid-template-columns:1fr;}}
+.card{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:24px; transition:border-color .2s, box-shadow .2s, transform .2s; display:block; cursor:pointer;}
+.card:hover{border-color:var(--teal); box-shadow:0 20px 40px -16px rgba(45,226,200,0.25);}
+.pill{font-family:'IBM Plex Mono'; font-size:10.5px; padding:4px 9px; border-radius:6px; background:rgba(76,123,255,0.12); color:var(--blue);}
+.pill.free{background:rgba(45,226,200,0.12); color:var(--teal);}
+.pill.new{background:rgba(255,255,255,0.08); color:var(--ink-soft);}
+
+footer{border-top:1px solid var(--line); padding:56px 0 28px; margin-top:80px; position:relative; z-index:1;}
+.foot-top{display:grid; grid-template-columns:1.3fr repeat(4,1fr); gap:32px; margin-bottom:40px;}
+@media(max-width:860px){.foot-top{grid-template-columns:1fr 1fr;}}
+.foot-brand p{font-size:13px; color:var(--ink-soft); max-width:240px; margin-bottom:18px;}
+.foot-col h4{font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-soft); margin-bottom:14px; font-weight:600;}
+.foot-col a{display:block; font-size:13.5px; color:var(--ink-soft); margin-bottom:10px; transition:color .2s;}
+.foot-col a:hover{color:var(--teal);}
+.foot-bottom{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; font-size:12.5px; color:var(--ink-soft); padding-top:22px; border-top:1px solid var(--line);}
+
+.modal-overlay{position:fixed; inset:0; z-index:200; background:rgba(4,5,9,0.72); backdrop-filter:blur(4px); display:none; align-items:center; justify-content:center; padding:20px;}
+.modal-overlay.open{display:flex; animation:modalFade .25s ease;}
+@keyframes modalFade{from{opacity:0;} to{opacity:1;}}
+.modal-box{background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:32px; max-width:540px; width:100%; max-height:90vh; overflow-y:auto; position:relative;}
+.modal-close{position:absolute; top:18px; right:18px; background:none; border:none; color:var(--ink-soft); font-size:20px; cursor:pointer;}
+.modal-close:hover{color:var(--teal);}
+.modal-box h3{font-size:20px; margin:10px 0 6px; color:var(--ink);}
+.modal-sub{color:var(--ink-soft); font-size:13.5px; margin-bottom:20px;}
+.form-group{margin-bottom:14px;}
+.form-group label{display:block; font-size:12.5px; font-weight:600; color:var(--ink-soft); margin-bottom:6px;}
+.form-group input, .form-group textarea, .form-group select{width:100%; background:var(--surface-2); border:1px solid var(--line); border-radius:8px; padding:10px 14px; color:var(--ink); font-family:'Sora'; font-size:13.5px;}
+.form-group input:focus, .form-group textarea:focus{border-color:var(--teal); outline:none;}
+
+.toast{position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(20px); background:var(--surface); border:1px solid var(--teal); color:var(--ink); padding:12px 20px; border-radius:8px; font-size:13px; opacity:0; pointer-events:none; transition:all .3s; z-index:100;}
+.toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Pragor",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "url": "https://flexora-ai.github.io/tools/pragor.html",
+  "description": "Discover Pragor, an AI automation tool. AI agent platform for automating day-to-day operational tasks.. Explore features, pricing, use cases, and visit the official website.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Flexora.Ai",
+    "url": "https://flexora-ai.github.io/"
+  }
+}
+</script>
+</head>
+<body>
+<a class="live-ticker show" id="liveTicker" href="../tools.html">
+  <span class="pulse-dot"></span>
+  <span class="ticker-text" id="tickerText">Someone is browsing <b>AI tools</b> right now</span>
+</a>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe class="u-gtm-hidden" height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-56W23QBB" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+
+<header>
+<nav class="wrap">
+<a class="logo" href="../index.html"><img alt="Flexora.Ai" src="../assets/images/logo.png"/>Flexora<span>.Ai</span></a>
+<div class="nav-links">
+<a class="active" href="../tools.html">Tools</a>
+<a href="../compare.html">Compare</a>
+<a href="../finder.html">Finder</a>
+<a href="../workflows.html">Workflows</a>
+<a href="../free-tools.html">Free Tools</a>
+<a href="../blog.html">Blog</a>
+</div>
+<div style="display:flex; gap:12px; align-items:center;">
+<a class="btn btn-ghost" href="../submit.html">Submit tool</a>
+<button aria-label="Open menu" class="menu-btn" id="menuBtn">â˜°</button>
+</div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+<a href="../tools.html">Tools</a>
+<a href="../compare.html">Compare</a>
+<a href="../finder.html">Finder</a>
+<a href="../workflows.html">Workflows</a>
+<a href="../free-tools.html">Free Tools</a>
+<a href="../blog.html">Blog</a>
+</div>
+</header>
+
+<main class="wrap">
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="../index.html">Flexora.Ai</a>
+    <span class="sep">/</span>
+    <a href="../tools.html">Tools Directory</a>
+    <span class="sep">/</span>
+    <a href="../tools.html?cat=automation">Automation</a>
+    <span class="sep">/</span>
+    <span style="color:var(--ink);">Pragor</span>
+  </div>
+
+  <!-- Tool Hero Card -->
+  <div class="tool-hero">
+    <div class="tool-hero-top">
+      <div class="tool-big-icon">P</div>
+      <div class="tool-hero-title">
+        <h1>Pragor</h1>
+        <div class="tool-badges">
+          <span class="badge badge-verified">âœ“ Verified</span>
+          
+          <span class="badge badge-price">Free</span>
+          <span class="badge" style="background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line);">â­ 4.7 Rating</span>
+        </div>
+        <p class="tool-lede">AI agent platform for automating day-to-day operational tasks.</p>
+      </div>
+    </div>
+    <div class="tool-hero-ctas">
+      <a class="btn btn-primary btn-visit" href="https://pragor.net" target="_blank" rel="noopener noreferrer" data-tool-name="Pragor" data-tool-id="pragor" data-action="visit-website">🚀 Visit Pragor Website â†’</a>
+      <button type="button" class="btn btn-ghost" onclick="toggleFavorite('Pragor', this);" id="heroFavBtn">â­ Save to Favorites</button>
+    </div>
+  </div>
+
+  <!-- Detail Grid -->
+  <div class="detail-grid">
+    <!-- Main Content -->
+    <div class="main-col">
+      <!-- ABOUT -->
+      <div class="section-box">
+        <h2>About Pragor</h2>
+        <p>Pragor is an autonomous AI agent framework designed to execute repetitive operational tasks such as data entry, email triage, report generation, and multi-app workflows.</p>
+      </div>
+
+      <!-- KEY FEATURES -->
+      <div class="section-box">
+        <h2>Key Features</h2>
+        <ul class="feature-list">
+          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Autonomous task execution agents</span></li>
+<li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Web scraping & browser automation</span></li>
+<li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>API & Webhook connectivity</span></li>
+<li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Custom workflow logic builder</span></li>
+<li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Real-time task monitoring logs</span></li>
+        </ul>
+      </div>
+
+      <!-- BEST FOR & USE CASES -->
+      <div class="section-box">
+        <h2>Best For & Use Cases</h2>
+        <h3 style="font-size:14px; color:var(--ink-soft); margin:12px 0 8px; font-weight:600;">Target Audience:</h3>
+        <ul class="feature-list" style="margin-bottom:20px;">
+          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Operations Managers</span></li>
+<li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Startup Teams</span></li>
+<li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Data Analysts</span></li>
+<li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span>Automation Engineers</span></li>
+        </ul>
+        <h3 style="font-size:14px; color:var(--ink-soft); margin:12px 0 8px; font-weight:600;">Popular Use Cases:</h3>
+        <ul class="feature-list">
+          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg><span>Automated daily reporting</span></li>
+<li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg><span>Web data extraction</span></li>
+<li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg><span>Email auto-processing</span></li>
+<li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg><span>Workflow orchestration</span></li>
+        </ul>
+      </div>
+
+      <!-- PRICING DETAIL -->
+      <div class="section-box">
+        <h2>Pricing & Plans</h2>
+        <p><strong>Pricing Model:</strong> Free</p>
+        <p><strong>Starting Price:</strong> 100% Free & Open Community Edition</p>
+      </div>
+
+      <!-- OFFICIAL WEBSITE -->
+      <div class="section-box">
+        <h2>Official Website Link</h2>
+        <p>You can visit the official website for Pragor directly using the verified link below:</p>
+        <div style="background:var(--surface-2); border:1px solid var(--line); padding:16px 20px; border-radius:10px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+          <span class="mono" style="color:var(--teal); font-size:14px; word-break:break-all;">https://pragor.net</span>
+          <a class="btn btn-primary" href="https://pragor.net" target="_blank" rel="noopener noreferrer" data-tool-name="Pragor" data-tool-id="pragor" data-action="visit-website">Visit Website</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar-col">
+      <div class="sidebar-box">
+        <h3>Tool Summary</h3>
+        <div class="meta-row"><span class="meta-label">Category</span><span class="meta-val">Automation</span></div>
+        <div class="meta-row"><span class="meta-label">Subcategory</span><span class="meta-val">Autonomous AI Operational Agents</span></div>
+        <div class="meta-row"><span class="meta-label">Pricing</span><span class="meta-val">Free</span></div>
+        <div class="meta-row"><span class="meta-label">Rating</span><span class="meta-val">â­ 4.7 / 5.0</span></div>
+        <div class="meta-row"><span class="meta-label">Status</span><span class="meta-val" style="color:var(--teal);">Verified Listing</span></div>
+      </div>
+
+      <!-- IS THIS YOUR TOOL? -->
+      <div class="biz-card">
+        <h4>Is this your tool?</h4>
+        <p>Are you the owner or authorized representative of  Claim this listing to manage details and gain insights.</p>
+        <button type="button" class="btn btn-ghost biz-btn" id="claimListingBtn">Claim this listing</button>
+      </div>
+
+      <!-- WANT MORE VISIBILITY? -->
+      <div class="biz-card">
+        <h4>Want more visibility?</h4>
+        <p>Promote Pragor to thousands of active AI software buyers on Flexora AI.</p>
+        <button type="button" class="btn btn-primary biz-btn" id="getFeaturedBtn">Get Featured</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RELATED TOOLS -->
+  <div class="related-sec">
+    <h2>Related Automation Tools</h2>
+    <div class="grid">
+      <a class="card" href="revenuefromchat.html" data-tool-name="RevenueFromChat" data-tool-id="revenuefromchat">
+      <div class="card-top" style="display:flex; gap:12px; align-items:center; margin-bottom:12px;">
+        <div class="card-icon" style="width:36px; height:36px; border-radius:8px; background:var(--surface-2); display:flex; align-items:center; justify-content:center; color:var(--teal); font-weight:700; font-family:'IBM Plex Mono';">R</div>
+        <div>
+          <div class="card-name" style="font-weight:700; font-size:15px;">RevenueFromChat</div>
+          <div class="card-cat" style="font-size:12px; color:var(--ink-soft);">Automation • â­ </div>
+        </div>
+      </div>
+      <p style="font-size:13px; color:var(--ink-soft); margin-bottom:14px; line-height:1.4;">Turns everyday chat conversations into automated revenue workflows for businesses.</p>
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span class="pill free">Paid/Freemium</span>
+        <span style="font-size:12px; color:var(--teal); font-weight:600;">View Tool â†’</span>
+      </div>
+    </a>
+<a class="card" href="salestouch.html" data-tool-name="SalesTouch" data-tool-id="salestouch">
+      <div class="card-top" style="display:flex; gap:12px; align-items:center; margin-bottom:12px;">
+        <div class="card-icon" style="width:36px; height:36px; border-radius:8px; background:var(--surface-2); display:flex; align-items:center; justify-content:center; color:var(--teal); font-weight:700; font-family:'IBM Plex Mono';">S</div>
+        <div>
+          <div class="card-name" style="font-weight:700; font-size:15px;">SalesTouch</div>
+          <div class="card-cat" style="font-size:12px; color:var(--ink-soft);">Automation • â­ </div>
+        </div>
+      </div>
+      <p style="font-size:13px; color:var(--ink-soft); margin-bottom:14px; line-height:1.4;">B2B sales automation platform built to speed up outbound and follow-up.</p>
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span class="pill ">Paid</span>
+        <span style="font-size:12px; color:var(--teal); font-weight:600;">View Tool â†’</span>
+      </div>
+    </a>
+<a class="card" href="socialecho.html" data-tool-name="SocialEcho" data-tool-id="socialecho">
+      <div class="card-top" style="display:flex; gap:12px; align-items:center; margin-bottom:12px;">
+        <div class="card-icon" style="width:36px; height:36px; border-radius:8px; background:var(--surface-2); display:flex; align-items:center; justify-content:center; color:var(--teal); font-weight:700; font-family:'IBM Plex Mono';">S</div>
+        <div>
+          <div class="card-name" style="font-weight:700; font-size:15px;">SocialEcho</div>
+          <div class="card-cat" style="font-size:12px; color:var(--ink-soft);">Automation • â­ </div>
+        </div>
+      </div>
+      <p style="font-size:13px; color:var(--ink-soft); margin-bottom:14px; line-height:1.4;">Automates social media posting and engagement across platforms.</p>
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span class="pill free">Freemium</span>
+        <span style="font-size:12px; color:var(--teal); font-weight:600;">View Tool â†’</span>
+      </div>
+    </a>
+    </div>
+  </div>
+</main>
+
+<!-- CLAIM LISTING MODAL -->
+<div class="modal-overlay" id="claimModal">
+  <div class="modal-box">
+    <button class="modal-close" id="claimModalClose">âœ•</button>
+    <span class="eyebrow"><span class="dot"></span>Tool Verification</span>
+    <h3>Claim Listing: Pragor</h3>
+    <p class="modal-sub">Prove ownership and request editing access for this listing.</p>
+    <form id="claimForm">
+      <input type="hidden" name="tool_name" value="Pragor"/>
+      <div class="form-group">
+        <label>Your Name *</label>
+        <input type="text" name="claimant_name" required placeholder="Jane Doe"/>
+      </div>
+      <div class="form-group">
+        <label>Business Email * (must match official domain)</label>
+        <input type="email" name="claimant_email" required placeholder="jane@pragor.com"/>
+      </div>
+      <div class="form-group">
+        <label>Role / Job Title *</label>
+        <input type="text" name="claimant_role" required placeholder="Founder, Marketing Director, etc."/>
+      </div>
+      <div class="form-group">
+        <label>Verification Proof / Notes</label>
+        <textarea name="claim_notes" rows="3" placeholder="Provide link to team page, LinkedIn profile, or official contact proof."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary u-w-full" style="width:100%; margin-top:10px;">Submit Claim Request</button>
+    </form>
+    <div id="claimSuccess" style="display:none; text-align:center; padding:20px 0;">
+      <span style="font-size:32px;">âœ…</span>
+      <h4 style="font-size:18px; margin:10px 0; color:var(--ink);">Claim Request Received</h4>
+      <p style="font-size:13.5px; color:var(--ink-soft);">Our team will review your business email domain and contact you shortly.</p>
+    </div>
+  </div>
+</div>
+
+<!-- GET FEATURED MODAL -->
+<div class="modal-overlay" id="featuredModal">
+  <div class="modal-box">
+    <button class="modal-close" id="featuredModalClose">âœ•</button>
+    <span class="eyebrow"><span class="dot"></span>Boost Visibility</span>
+    <h3>Promote Pragor</h3>
+    <p class="modal-sub">Get featured at the top of category pages and reach thousands of AI buyers.</p>
+    <form id="featuredForm">
+      <input type="hidden" name="tool_name" value="Pragor"/>
+      <div class="form-group">
+        <label>Your Name *</label>
+        <input type="text" name="name" required placeholder="John Smith"/>
+      </div>
+      <div class="form-group">
+        <label>Work Email *</label>
+        <input type="email" name="email" required placeholder="john@company.com"/>
+      </div>
+      <div class="form-group">
+        <label>Placement Interest</label>
+        <select name="placement">
+          <option value="featured_card">Featured Directory Card</option>
+          <option value="category_spotlight">Category Spotlight Placement</option>
+          <option value="newsletter_sponsor">Newsletter & Blog Sponsorship</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Additional Notes</label>
+        <textarea name="notes" rows="2" placeholder="Tell us about your target launch timeline or goals."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary u-w-full" style="width:100%; margin-top:10px;">Request Promotional Options</button>
+    </form>
+    <div id="featuredSuccess" style="display:none; text-align:center; padding:20px 0;">
+      <span style="font-size:32px;">🚀</span>
+      <h4 style="font-size:18px; margin:10px 0; color:var(--ink);">Interest Received!</h4>
+      <p style="font-size:13.5px; color:var(--ink-soft);">We'll send media kit and placement options to your business email shortly.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+<div class="wrap">
+<div class="foot-top">
+<div class="foot-brand">
+<a class="logo" href="../index.html"><img alt="" src="../assets/images/logo.png"/>Flexora<span>.Ai</span></a>
+<p>Helping people find the right AI tool for the job — without the pay-to-list noise.</p>
+</div>
+<div class="foot-col">
+<h4>Directory</h4>
+<a href="../tools.html">All AI Tools</a>
+<a href="../free-tools.html">Free AI Tools</a>
+<a href="../workflows.html">AI Workflows</a>
+</div>
+<div class="foot-col">
+<h4>Platform</h4>
+<a href="../compare.html">Compare Tools</a>
+<a href="../finder.html">AI Tool Finder</a>
+<a href="../submit.html">Submit Your Tool</a>
+<a href="../blog.html">AI Guides & Blog</a>
+</div>
+<div class="foot-col">
+<h4>Company</h4>
+<a href="../about.html">About Flexora.Ai</a>
+<a href="../terms.html">Terms of Service</a>
+<a href="../privacy.html">Privacy Policy</a>
+<a href="../sitemap.html">Sitemap</a>
+</div>
+</div>
+<div class="foot-bottom">
+<div>© 2026 Flexora.Ai — Independent AI Tools Directory.</div>
+<div>All external tool links open official provider websites.</div>
+</div>
+</div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/js/tools-data.js"></script>
+<script>
+document.getElementById('menuBtn')?.addEventListener('click', () => document.getElementById('mobileMenu')?.classList.toggle('open'));
+
+const toast = document.getElementById('toast');
+function showToast(msg){ if(!toast) return; toast.textContent = msg; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2600); }
+
+// Wire Claim & Featured Modals
+(function(){
+  function setupModal(btnId, modalId, closeId, formId, successId){
+    const btn = document.getElementById(btnId), modal = document.getElementById(modalId), close = document.getElementById(closeId);
+    const form = document.getElementById(formId), success = document.getElementById(successId);
+    if(!btn || !modal) return;
+    btn.addEventListener('click', () => modal.classList.add('open'));
+    close?.addEventListener('click', () => modal.classList.remove('open'));
+    modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('open'); });
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      form.style.display = 'none';
+      if(success) success.style.display = 'block';
+      showToast('Request received!');
+    });
+  }
+  setupModal('claimListingBtn', 'claimModal', 'claimModalClose', 'claimForm', 'claimSuccess');
+  setupModal('getFeaturedBtn', 'featuredModal', 'featuredModalClose', 'featuredForm', 'featuredSuccess');
+})();
+</script>
+</body>
+</html>
