@@ -329,68 +329,97 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <div style="margin-bottom:28px; border-top:1px solid var(--line); padding-top:24px;">
             <div class="form-section-title">
               <span class="form-step-num">4</span>
-              Choose Listing Plan &amp; Review Speed
+              Choose Listing Plan &amp; Partnership Model
             </div>
 
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:14px; margin-bottom:12px;">
-              <!-- Free Tier -->
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:14px; margin-bottom:16px;">
+              
+              <!-- Option 1: Backlink Exchange (Free Partner) -->
               <label class="plan-card active" style="border:1.5px solid var(--teal); background:rgba(45,226,200,0.06); border-radius:12px; padding:16px; cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; position:relative; transition:all .2s;">
-                <input type="radio" name="submission_tier" value="Standard Free" checked style="display:none;" onchange="updatePlanUI(this)">
+                <span style="position:absolute; top:-9px; right:12px; background:var(--teal); color:#000; font-size:9.5px; font-weight:800; padding:1px 7px; border-radius:10px; text-transform:uppercase;">Best for Traffic</span>
+                <input type="radio" name="submission_tier" value="Partner Exchange (Free with Backlink)" checked style="display:none;" onchange="updatePlanUI(this)">
                 <div>
                   <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-                    <b style="font-size:14px; color:var(--ink);">Standard</b>
+                    <b style="font-size:14px; color:var(--ink);">Partner Exchange</b>
                     <span style="font-size:16px; font-weight:800; color:var(--teal); font-family:'IBM Plex Mono',monospace;">Free</span>
                   </div>
-                  <p style="font-size:12px; color:var(--ink-soft); line-height:1.45; margin-bottom:8px;">Basic editorial review and permanent directory placement.</p>
+                  <p style="font-size:12px; color:var(--ink-soft); line-height:1.45; margin-bottom:8px;">Add our badge or link to your site for guaranteed priority listing &amp; mutual growth.</p>
                 </div>
                 <ul style="font-size:11.5px; color:var(--ink-soft); list-style:none; padding:0; line-height:1.7;">
-                  <li>✓ 5–7 business days review</li>
+                  <li>✓ <b>Guaranteed fast review (24-48h)</b></li>
+                  <li>✓ <b>Homepage &amp; Directory visibility</b></li>
+                  <li>✓ Permanent Dofollow SEO backlink</li>
+                  <li>✓ Mutual backlink exchange</li>
+                </ul>
+              </label>
+
+              <!-- Option 2: Paid 1-Year Featured ($50) -->
+              <label class="plan-card" style="border:1px solid var(--line); background:var(--surface-2); border-radius:12px; padding:16px; cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; position:relative; transition:all .2s;">
+                <span style="position:absolute; top:-9px; right:12px; background:var(--amber); color:#000; font-size:9.5px; font-weight:800; padding:1px 7px; border-radius:10px; text-transform:uppercase;">1 Year Spot</span>
+                <input type="radio" name="submission_tier" value="Featured Partner ($50 / 1 Year)" style="display:none;" onchange="updatePlanUI(this)">
+                <div>
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                    <b style="font-size:14px; color:var(--ink);">Featured 1-Year</b>
+                    <span style="font-size:16px; font-weight:800; color:var(--amber); font-family:'IBM Plex Mono',monospace;">$50</span>
+                  </div>
+                  <p style="font-size:12px; color:var(--ink-soft); line-height:1.45; margin-bottom:8px;">1 full year permanent featured spot on Homepage. No backlink required.</p>
+                </div>
+                <ul style="font-size:11.5px; color:var(--ink-soft); list-style:none; padding:0; line-height:1.7;">
+                  <li>✓ <b>Top of Homepage for 1 Full Year</b></li>
+                  <li>✓ <b>Gold "⭐ Featured" badge</b></li>
+                  <li>✓ Guaranteed 24h publishing</li>
+                  <li>✓ <b>No link required on your website</b></li>
+                </ul>
+              </label>
+
+              <!-- Option 3: Standard Free Review -->
+              <label class="plan-card" style="border:1px solid var(--line); background:var(--surface-2); border-radius:12px; padding:16px; cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; position:relative; transition:all .2s;">
+                <input type="radio" name="submission_tier" value="Standard Free Review" style="display:none;" onchange="updatePlanUI(this)">
+                <div>
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                    <b style="font-size:14px; color:var(--ink);">Standard Review</b>
+                    <span style="font-size:16px; font-weight:800; color:var(--ink-soft); font-family:'IBM Plex Mono',monospace;">Free</span>
+                  </div>
+                  <p style="font-size:12px; color:var(--ink-soft); line-height:1.45; margin-bottom:8px;">Standard editorial queue with manual testing.</p>
+                </div>
+                <ul style="font-size:11.5px; color:var(--ink-soft); list-style:none; padding:0; line-height:1.7;">
                   <li>✓ Standard category listing</li>
-                  <li>✓ Canonical link to your tool</li>
+                  <li>✓ General queue (2-4 weeks)</li>
+                  <li>✓ Dofollow backlink</li>
                 </ul>
               </label>
+            </div>
 
-              <!-- Fast-Track Tier -->
-              <label class="plan-card" style="border:1px solid var(--line); background:var(--surface-2); border-radius:12px; padding:16px; cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; position:relative; transition:all .2s;">
-                <input type="radio" name="submission_tier" value="Fast-Track ($29)" style="display:none;" onchange="updatePlanUI(this)">
-                <div>
-                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-                    <b style="font-size:14px; color:var(--ink);">Fast-Track</b>
-                    <span style="font-size:16px; font-weight:800; color:#4C7BFF; font-family:'IBM Plex Mono',monospace;">$29</span>
-                  </div>
-                  <p style="font-size:12px; color:var(--ink-soft); line-height:1.45; margin-bottom:8px;">Skip the queue with guaranteed 24h review &amp; verification.</p>
-                </div>
-                <ul style="font-size:11.5px; color:var(--ink-soft); list-style:none; padding:0; line-height:1.7;">
-                  <li>✓ <b>Guaranteed 24-hour review</b></li>
-                  <li>✓ <b>Blue "✓ Verified" badge</b></li>
-                  <li>✓ Priority indexing &amp; dofollow backlink</li>
-                </ul>
-              </label>
+            <!-- Partner Backlink Box (shows when Partner Exchange is selected) -->
+            <div id="partnerBacklinkBox" style="background:var(--surface-2); border:1px solid rgba(45,226,200,0.3); border-radius:12px; padding:16px; margin-bottom:16px;">
+              <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px; font-size:13.5px; font-weight:700; color:var(--teal);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                Partner Badge / Link Exchange (Free Instant Approval)
+              </div>
+              <p style="font-size:12.5px; color:var(--ink-soft); line-height:1.5; margin-bottom:12px;">
+                Copy and place this "Featured on Flexora.Ai" badge or text link in your website's footer, docs, or partner page. We check this link before publishing.
+              </p>
 
-              <!-- Featured Tier -->
-              <label class="plan-card" style="border:1px solid var(--line); background:var(--surface-2); border-radius:12px; padding:16px; cursor:pointer; display:flex; flex-direction:column; justify-content:space-between; position:relative; transition:all .2s;">
-                <span style="position:absolute; top:-9px; right:12px; background:var(--amber); color:#000; font-size:9.5px; font-weight:800; padding:1px 7px; border-radius:10px; text-transform:uppercase;">Popular</span>
-                <input type="radio" name="submission_tier" value="Featured Spotlight ($79)" style="display:none;" onchange="updatePlanUI(this)">
-                <div>
-                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-                    <b style="font-size:14px; color:var(--ink);">Featured</b>
-                    <span style="font-size:16px; font-weight:800; color:var(--amber); font-family:'IBM Plex Mono',monospace;">$79</span>
-                  </div>
-                  <p style="font-size:12px; color:var(--ink-soft); line-height:1.45; margin-bottom:8px;">Maximum exposure across Homepage, Category &amp; Socials.</p>
+              <!-- Badge Preview & Code -->
+              <div style="display:flex; gap:16px; align-items:center; flex-wrap:wrap; margin-bottom:12px; background:var(--surface); padding:12px; border-radius:8px; border:1px solid var(--line);">
+                <img src="assets/images/badge-featured.svg" alt="Featured on Flexora.Ai" width="180" height="47" style="border-radius:10px;"/>
+                <div style="flex:1; min-width:220px;">
+                  <label style="font-size:11px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.5px; display:block; margin-bottom:4px;">Embed Code (HTML):</label>
+                  <input type="text" readonly value='&lt;a href="https://flexora-ai.github.io/" target="_blank" rel="noopener"&gt;&lt;img src="https://flexora-ai.github.io/assets/images/badge-featured.svg" alt="Featured on Flexora.Ai" width="200" height="52"/&gt;&lt;/a&gt;' onclick="this.select(); document.execCommand('copy'); window.showToast ? window.showToast('Badge code copied!') : alert('Badge code copied!');" style="font-size:11.5px; font-family:'IBM Plex Mono',monospace; width:100%; padding:8px 10px; background:var(--surface-2); border:1px solid var(--line); color:var(--teal); border-radius:6px; cursor:pointer;" title="Click to copy"/>
                 </div>
-                <ul style="font-size:11.5px; color:var(--ink-soft); list-style:none; padding:0; line-height:1.7;">
-                  <li>✓ <b>Top of Homepage (30 days)</b></li>
-                  <li>✓ <b>Gold "✨ Featured" badge</b></li>
-                  <li>✓ Social spotlight on X &amp; LinkedIn</li>
-                </ul>
-              </label>
+              </div>
+
+              <div class="form-group" style="margin-bottom:0;">
+                <label style="font-size:12.5px;">URL where our link or badge is placed (or will be placed) *</label>
+                <input name="partner_backlink_url" id="partnerBacklinkUrl" placeholder="https://yourtool.ai/ or https://yourtool.ai/partners" type="url" style="font-size:13px;"/>
+              </div>
             </div>
           </div>
 
           <div id="submitStatus" style="font-size:13px;color:var(--teal);text-align:center;margin-bottom:12px;min-height:18px;"></div>
           <button class="btn btn-primary" id="submitBtn" style="width:100%;padding:14px;font-size:16px;display:flex;align-items:center;justify-content:center;gap:10px;" type="submit">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4 20-7z"/></svg>
-            <span id="submitBtnText">Submit AI Tool for Free Review 🚀</span>
+            <span id="submitBtnText">Submit AI Tool with Partner Exchange 🤝</span>
           </button>
         </form>
 
@@ -401,18 +430,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             c.style.background = 'var(--surface-2)';
           });
           var parent = radio.closest('.plan-card');
-          if (radio.value === 'Standard Free') {
+          var partnerBox = document.getElementById('partnerBacklinkBox');
+          var backlinkInput = document.getElementById('partnerBacklinkUrl');
+
+          if (radio.value.indexOf('Partner Exchange') > -1) {
             parent.style.border = '1.5px solid var(--teal)';
             parent.style.background = 'rgba(45,226,200,0.06)';
-            document.getElementById('submitBtnText').textContent = 'Submit AI Tool for Free Review 🚀';
-          } else if (radio.value.indexOf('Fast-Track') > -1) {
-            parent.style.border = '1.5px solid #4C7BFF';
-            parent.style.background = 'rgba(76,123,255,0.08)';
-            document.getElementById('submitBtnText').textContent = 'Submit & Proceed with Fast-Track ($29) ⚡';
+            partnerBox.style.display = 'block';
+            if (backlinkInput) backlinkInput.required = true;
+            document.getElementById('submitBtnText').textContent = 'Submit AI Tool with Partner Exchange 🤝';
           } else if (radio.value.indexOf('Featured') > -1) {
             parent.style.border = '1.5px solid var(--amber)';
             parent.style.background = 'rgba(245,158,11,0.08)';
-            document.getElementById('submitBtnText').textContent = 'Submit & Get Featured ($79) ⭐';
+            partnerBox.style.display = 'none';
+            if (backlinkInput) backlinkInput.required = false;
+            document.getElementById('submitBtnText').textContent = 'Submit & Get 1-Year Featured ($50) ⭐';
+          } else {
+            parent.style.border = '1.5px solid var(--line)';
+            parent.style.background = 'rgba(255,255,255,0.03)';
+            partnerBox.style.display = 'none';
+            if (backlinkInput) backlinkInput.required = false;
+            document.getElementById('submitBtnText').textContent = 'Submit AI Tool for Standard Review 🚀';
           }
         }
         </script>
