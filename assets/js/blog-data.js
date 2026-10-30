@@ -1842,6 +1842,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-zerg-rush-trick",
+    title: "Google Zerg Rush Trick: Does It Still Work? How to Play",
+    excerpt: "Google",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-zerg-rush-trick.webp",
+    imageAlt: "Google Zerg Rush trick with colored Os swarming search results",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "how-much-does-ai-automation-cost-for-small-business",
     title: "How Much Does AI Automation Cost for Small Business? (2026 Pricing)",
     excerpt: "Real pricing ranges for AI automation tools for small business — from $0 to $200+/month — plus the cheapest options that actually work.",
