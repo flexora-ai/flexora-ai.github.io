@@ -11,154 +11,156 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Page Not Found (404) — Flexora.Ai</title>
-<meta content="The page you requested could not be found. Explore our AI tools directory or tool finder." name="description"/>
+<meta content="This page wandered off. The page you're looking for doesn't exist yet or the link is outdated." name="description"/>
 <meta content="noindex, follow" name="robots"/>
-<link href="assets/images/logo.png" rel="icon" type="image/png"/>
-
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="/assets/images/logo.png" rel="icon" type="image/png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/assets/css/style.css"/>
 
-<!-- Core & Tools Stylesheets -->
-<link rel="stylesheet" href="assets/css/style.css"/>
-<link rel="stylesheet" href="assets/css/tools.css"/>
-<style id="flexora-social-css">
-.social-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px;}
-.social-row a{width:36px;height:36px;border-radius:9px;background:var(--surface-2,#161B28);border:1px solid var(--line,#232838);display:flex;align-items:center;justify-content:center;color:var(--ink-soft,#8A90A6);transition:all .2s;flex-shrink:0;}
-.social-row a svg{width:15px;height:15px;display:block;pointer-events:none;}
-.social-row a:hover{transform:translateY(-3px);box-shadow:0 6px 18px -8px currentColor;}
-.soc-li:hover{color:#0A66C2!important;border-color:#0A66C2!important;background:rgba(10,102,194,.1)!important;}
-.soc-fb:hover{color:#1877F2!important;border-color:#1877F2!important;background:rgba(24,119,242,.1)!important;}
-.soc-ig:hover{color:#E4405F!important;border-color:#E4405F!important;background:rgba(228,64,95,.1)!important;}
-.soc-pi:hover{color:#E60023!important;border-color:#E60023!important;background:rgba(230,0,35,.1)!important;}
-.soc-x:hover{color:#fff!important;border-color:#555!important;background:rgba(0,0,0,.5)!important;}
-.soc-gh:hover{color:#7c3aed!important;border-color:#7c3aed!important;background:rgba(124,58,237,.1)!important;}
-.soc-em:hover{color:#2DE2C8!important;border-color:#2DE2C8!important;background:rgba(45,226,200,.1)!important;}
+<style>
+:root{
+  --bg:#07090F; --surface:#0F131D; --surface-2:#161B28; --line:#232838;
+  --teal:#2DE2C8; --blue:#4C7BFF; --ink:#F2F4FA; --ink-soft:#8A90A6;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg); color:var(--ink); font-family:'Sora',sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; min-height:100vh; display:flex; flex-direction:column;}
+.mono{font-family:'IBM Plex Mono',monospace;}
+a{color:inherit; text-decoration:none;}
+.wrap{max-width:1180px; margin:0 auto; padding:0 32px; width:100%;}
+img,svg{display:block;}
+button{font-family:inherit; cursor:pointer;}
+
+header{position:sticky; top:0; z-index:60; background:rgba(7,9,15,0.75); backdrop-filter:blur(12px); border-bottom:1px solid var(--line);}
+nav.wrap{height:76px; display:flex; align-items:center; justify-content:space-between;}
+.logo{display:flex; align-items:center; gap:10px; font-weight:700; font-size:18px;}
+.logo img{width:26px; height:26px; object-fit:contain;}
+.logo span{color:var(--teal);}
+.nav-links{display:flex; gap:26px; font-size:14px; color:var(--ink-soft);}
+.nav-links a{cursor:pointer; transition:color .15s; padding-bottom:4px; border-bottom:2px solid transparent;}
+.nav-links a:hover{color:var(--teal);}
+.nav-links a.active{color:var(--ink); border-bottom-color:var(--teal);}
+@media(max-width:960px){.nav-links{display:none;}}
+
+.btn{font-family:'Sora'; font-weight:600; font-size:14px; padding:11px 20px; border-radius:8px; border:none; cursor:pointer; transition:transform .15s, box-shadow .15s; display:inline-flex; align-items:center; justify-content:center; gap:8px;}
+.btn-primary{background:var(--teal); color:#07090F;}
+.btn-primary:hover{transform:translateY(-2px); box-shadow:0 10px 24px -6px rgba(45,226,200,0.5);}
+.btn-ghost{color:var(--ink-soft); border:1px solid var(--line); background:transparent;}
+.btn-ghost:hover{color:var(--ink); border-color:var(--ink-soft);}
+
+.menu-btn{display:none; background:none; border:1px solid var(--line); border-radius:8px; width:40px; height:40px; color:var(--ink);}
+@media(max-width:960px){.menu-btn{display:block;}}
+.mobile-menu{display:none; flex-direction:column; gap:4px; padding:12px 32px 20px; border-bottom:1px solid var(--line);}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{padding:10px 0; color:var(--ink-soft); font-size:14.5px; border-bottom:1px solid var(--line);}
+
+/* 404 Hero Section */
+.error-hero{flex:1; display:flex; align-items:center; justify-content:center; padding:100px 0 80px; text-align:center;}
+.error-box{max-width:620px; margin:0 auto;}
+.error-tag{font-family:'IBM Plex Mono',monospace; color:var(--teal); font-size:15px; font-weight:700; background:rgba(45,226,200,0.1); border:1px solid rgba(45,226,200,0.3); padding:4px 14px; border-radius:20px; display:inline-block; margin-bottom:20px;}
+.error-title{font-size:42px; font-weight:800; line-height:1.15; margin-bottom:14px; color:var(--ink);}
+@media(max-width:640px){.error-title{font-size:30px;}}
+.error-desc{color:var(--ink-soft); font-size:16px; line-height:1.6; margin-bottom:32px; max-width:480px; margin-left:auto; margin-right:auto;}
+.error-actions{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+
+footer{border-top:1px solid var(--line); padding:48px 0 24px; margin-top:auto;}
+.foot-top{display:grid; grid-template-columns:1.3fr repeat(4,1fr); gap:32px; margin-bottom:36px;}
+@media(max-width:860px){.foot-top{grid-template-columns:1fr 1fr;}}
+.foot-brand p{font-size:13px; color:var(--ink-soft); max-width:240px; margin-bottom:18px;}
+.foot-col h4{font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-soft); margin-bottom:14px; font-weight:600;}
+.foot-col a{display:block; font-size:13.5px; color:var(--ink-soft); margin-bottom:10px; transition:color .2s;}
+.foot-col a:hover{color:var(--teal);}
+.foot-bottom{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; font-size:12.5px; color:var(--ink-soft); padding-top:20px; border-top:1px solid var(--line);}
 </style>
 </head>
 <body>
-<a class="live-ticker" id="liveTicker" href="tools.html" style="text-decoration:none;">
-  <span class="pulse-dot" style="width:8px;height:8px;background:#2DE2C8;border-radius:50%;box-shadow:0 0 12px #2DE2C8;flex-shrink:0;animation:pulseDot 1.5s infinite;"></span>
-  <span class="ticker-text" id="tickerText">Someone is browsing <b>AI tools</b> right now</span>
-</a>
-<style>
-.live-ticker{position:fixed; bottom:136px; left:24px; z-index:70; background:rgba(15,19,29,0.96); backdrop-filter:blur(12px); border:1px solid rgba(45,226,200,0.35); border-radius:12px; padding:10px 16px; display:flex; align-items:center; gap:10px; font-size:12.5px; color:#8A90A6; box-shadow:0 12px 36px -10px rgba(0,0,0,0.6); transform:translateX(-160%); transition:transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); max-width:300px; font-family:'Sora',sans-serif;}
-.live-ticker.show{transform:translateX(0);}
-.live-ticker .ticker-text{flex:1;}
-.live-ticker .ticker-text b{color:#2DE2C8;}
-@keyframes pulseDot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.4);}}
-</style>
-<script>
-(function(){
-  var CITIES=[['London','Perplexity'],['New York','ChatGPT'],['Mumbai','Claude'],['Berlin','Cursor'],['Tokyo','Midjourney'],['Paris','Gemini'],['Toronto','ElevenLabs'],['Sydney','Runway ML'],['Dubai','DeepSeek'],['Singapore','Grammarly'],['Barcelona','GitHub Copilot'],['Amsterdam','Notion AI'],['São Paulo','Canva AI'],['Seoul','Qwen'],['Jakarta','Kimi AI']];
-  var t=document.getElementById('liveTicker');
-  var tx=document.getElementById('tickerText');
-  if(!t||!tx)return;
-  function show(){
-    var c=CITIES[Math.floor(Math.random()*CITIES.length)];
-    tx.innerHTML='Someone in <b>'+c[0]+'</b> just explored <b>'+c[1]+'</b>';
-    t.classList.add('show');
-    setTimeout(function(){t.classList.remove('show');setTimeout(show,4000);},5000);
-  }
-  setTimeout(show,2500);
-})();
-</script>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-56W23QBB" style="display:none;visibility:hidden" width="0"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
-<div class="bg-particles" id="bgParticles"></div>
 
 <header>
 <nav class="wrap">
-  <a class="logo" href="index.html">
-    <img alt="Flexora Logo" src="assets/images/logo.png"/>
-    Flexora<span>.Ai</span>
-  </a>
+  <a class="logo" href="/index.html"><img alt="Flexora.Ai" src="/assets/images/logo.png"/>Flexora<span>.Ai</span></a>
   <div class="nav-links">
-    <a href="tools.html">Tools</a>
-    <a href="compare.html">Compare</a>
-    <a href="finder.html">Finder</a>
-    <a href="workflows.html">Workflows</a>
-    <a href="free-tools.html">Free Tools</a>
-    <a href="blog.html">Blog</a>
+    <a href="/tools.html">Tools</a>
+    <a href="/compare.html">Compare</a>
+    <a href="/finder.html">Finder</a>
+    <a href="/workflows.html">Workflows</a>
+    <a href="/free-tools.html">Free Tools</a>
+    <a href="/blog.html">Blog</a>
   </div>
-  <div class="nav-cta">
-    <a class="btn btn-primary" href="tools.html">Browse all tools</a>
-    <button aria-label="Open menu" class="menu-btn" id="menuBtn">☰</button>
+  <div style="display:flex; gap:12px; align-items:center;">
+    <a class="btn btn-ghost" href="/submit.html">Submit tool</a>
+    <a class="btn btn-primary" href="/finder.html">Find a tool</a>
+    <button aria-label="Open menu" class="menu-btn" id="menuBtn">&#9776;</button>
   </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="tools.html">Tools</a>
-  <a href="compare.html">Compare</a>
-  <a href="finder.html">Finder</a>
-  <a href="workflows.html">Workflows</a>
-  <a href="free-tools.html">Free Tools</a>
-  <a href="blog.html">Blog</a>
-  <a href="services.html">Services</a>
-  <a href="submit.html">Submit tool</a>
+  <a href="/index.html">Home</a>
+  <a href="/tools.html">Tools</a>
+  <a href="/compare.html">Compare</a>
+  <a href="/finder.html">Finder</a>
+  <a href="/workflows.html">Workflows</a>
+  <a href="/free-tools.html">Free Tools</a>
+  <a href="/blog.html">Blog</a>
+  <a href="/submit.html">Submit tool</a>
 </div>
 </header>
 
-<main>
-  <section class="page-hero" style="min-height:65vh; display:flex; align-items:center; text-align:center;">
-    <div class="wrap" style="max-width:640px; margin:0 auto;">
-      <div style="font-family:'IBM Plex Mono',monospace; font-size:96px; font-weight:800; color:var(--teal); line-height:1; margin-bottom:12px; text-shadow:0 0 35px rgba(45,226,200,0.35);">404</div>
-      <h1 style="font-size:32px; font-weight:800; margin-bottom:14px;">Page Not Found</h1>
-      <p class="lede" style="margin:0 auto 28px;">The page you are looking for might have been moved, renamed, or is temporarily unavailable. Let's get you back on track.</p>
-
-      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-        <a class="btn btn-primary" href="tools.html">Explore AI Tools Directory →</a>
-        <a class="btn btn-ghost" href="finder.html">Launch Tool Finder</a>
-        <a class="btn btn-secondary" href="index.html">Back to Home</a>
+<main class="error-hero">
+  <div class="wrap">
+    <div class="error-box">
+      <span class="error-tag">404</span>
+      <h1 class="error-title">This page wandered off.</h1>
+      <p class="error-desc">The page you're looking for doesn't exist yet &mdash; or the link's outdated.</p>
+      <div class="error-actions">
+        <a class="btn btn-primary" href="/index.html">&larr; Back to homepage</a>
+        <a class="btn btn-ghost" href="/tools.html">Browse AI Tools Directory</a>
       </div>
     </div>
-  </section>
+  </div>
 </main>
 
 <footer>
 <div class="wrap">
   <div class="foot-top">
     <div class="foot-brand">
-      <a class="logo" href="index.html">
-        <img alt="Flexora Logo" src="assets/images/logo.png"/>
-        Flexora<span>.Ai</span>
-      </a>
-      <p>Helping people find the right AI tool for the job — without the pay-to-list noise.</p>
+      <a class="logo" href="/index.html"><img alt="" src="/assets/images/logo.png"/>Flexora<span>.Ai</span></a>
+      <p>Helping people find the right AI tool for the job &mdash; without the pay-to-list noise.</p>
     </div>
     <div class="foot-col">
       <h4>Directory</h4>
-      <a href="tools.html">All Tools</a>
-      <a href="tools.html#categories">Categories</a>
-      <a href="compare.html">Compare Tools</a>
-      <a href="free-tools.html">Free AI Tools</a>
+      <a href="/tools.html">All AI Tools</a>
+      <a href="/free-tools.html">Free AI Tools</a>
+      <a href="/workflows.html">AI Workflows</a>
     </div>
     <div class="foot-col">
       <h4>Platform</h4>
-      <a href="finder.html">Tool Finder</a>
-      <a href="workflows.html">Workflows</a>
-      <a href="blog.html">AI Guides & Blog</a>
+      <a href="/compare.html">Compare Tools</a>
+      <a href="/finder.html">AI Tool Finder</a>
+      <a href="/submit.html">Submit Your Tool</a>
+      <a href="/blog.html">AI Guides & Blog</a>
     </div>
     <div class="foot-col">
       <h4>Company</h4>
-      <a href="about.html">About Flexora.Ai</a>
-      <a href="submit.html">Submit a Tool</a>
-      <a href="services.html">Contact & Services</a>
-      <a href="sitemap.html">Sitemap</a>
-    </div>
-    <div class="foot-col">
-      <h4>Legal</h4>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
+      <a href="/about.html">About Flexora.Ai</a>
+      <a href="/terms.html">Terms of Service</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/sitemap.html">Sitemap</a>
     </div>
   </div>
   <div class="foot-bottom">
-    <span>© 2026 Flexora.Ai — Independent AI Tools Directory</span>
-    <span>All external tool links open official provider websites</span>
+    <div>&copy; 2026 Flexora.Ai &mdash; Independent AI Tools Directory.</div>
+    <div>All external tool links open official provider websites.</div>
   </div>
 </div>
 </footer>
 
-<script src="assets/js/main.js"></script>
+<script>
+document.getElementById('menuBtn')?.addEventListener('click', function() {
+  var m = document.getElementById('mobileMenu');
+  if (m) m.classList.toggle('open');
+});
+</script>
 </body>
 </html>
