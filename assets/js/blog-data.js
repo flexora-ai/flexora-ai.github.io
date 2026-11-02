@@ -8,6 +8,20 @@
 
 const BLOG_POSTS = [
   {
+    slug: "google-easter-eggs-for-christmas",
+    title: "Google Easter Eggs for Christmas: What Still Works",
+    excerpt: "“Let it snow,” holiday lights and the Santa Tracker: which Christmas Google tricks are worth trying this December, and which are old news.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-02",
+    readMins: 5,
+    image: "assets/images/blog/google-easter-eggs-for-christmas.webp",
+    imageAlt: "Google Easter eggs for Christmas: snowflakes falling over a search results page",
+    icon: "📄",
+    published: true,
+    featured: true
+  },
+  {
     slug: "google-easter-eggs-list",
     title: "Google Easter Eggs List: Every Trick, Game and Status",
     excerpt: "A plain list of Google Easter eggs and hidden games, showing what still works, what’s retired, and what only survives in fan-made copies.",
@@ -19,7 +33,7 @@ const BLOG_POSTS = [
     imageAlt: "Google Easter eggs list: hidden tricks and games with status labels",
     icon: "📄",
     published: true,
-    featured: true
+    featured: false
   },
   {
     slug: "ai-tools-for-solopreneurs",
