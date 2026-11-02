@@ -8,6 +8,20 @@
 
 const BLOG_POSTS = [
   {
+    slug: "google-easter-eggs-list",
+    title: "Google Easter Eggs List: Every Trick, Game and Status",
+    excerpt: "A plain list of Google Easter eggs and hidden games, showing what still works, what’s retired, and what only survives in fan-made copies.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-02",
+    readMins: 8,
+    image: "assets/images/blog/google-easter-eggs-list.webp",
+    imageAlt: "Google Easter eggs list: hidden tricks and games with status labels",
+    icon: "📄",
+    published: true,
+    featured: true
+  },
+  {
     slug: "ai-tools-for-solopreneurs",
     title: "Best AI Tools for Solopreneurs (2026 Complete Guide)",
     excerpt: "Discover the best AI tools for solopreneurs to automate tasks, boost productivity, and scale your one-person business in 2026.",
@@ -19,7 +33,7 @@ const BLOG_POSTS = [
     imageAlt: "Solopreneur using AI tools to manage multiple aspects of their one-person business efficiently",
     icon: "🧑‍💻",
     published: true,
-    featured: true
+    featured: false
   },
   {
     slug: "free-ai-tools-for-small-business",
