@@ -1926,6 +1926,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-cricket-game-trick",
+    title: "Google Cricket Game Trick",
+    excerpt: "There is no secret search phrase for Google",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-cricket-game-trick.webp",
+    imageAlt: "Google Doodle cricket game with an insect batter and snail fielders",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-zerg-rush-trick",
     title: "Google Zerg Rush Trick: Does It Still Work? How to Play",
     excerpt: "Google",
