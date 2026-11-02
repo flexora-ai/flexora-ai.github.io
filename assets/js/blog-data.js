@@ -2052,6 +2052,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-solitaire-trick",
+    title: "Google Solitaire Trick",
+    excerpt: "Search solitaire on Google and play a full game of Klondike in the results. Here is how to start, what features you get and habits that win more games.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 6,
+    image: "assets/images/blog/google-solitaire-trick.webp",
+    imageAlt: "Google Solitaire card game playing inside the search results",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-zerg-rush-trick",
     title: "Google Zerg Rush Trick: Does It Still Work? How to Play",
     excerpt: "Google",
