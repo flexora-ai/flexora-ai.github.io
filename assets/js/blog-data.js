@@ -2066,6 +2066,34 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-spin-a-dreidel-trick",
+    title: "Google Spin a Dreidel Trick",
+    excerpt: "Search spin the dreidel on Google and an interactive dreidel appears. Here is how to find it, what the four letters mean and how to play a family game.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 6,
+    image: "assets/images/blog/google-spin-a-dreidel-trick.webp",
+    imageAlt: "Google spin a dreidel trick with an interactive dreidel in search results",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
+    slug: "google-text-adventure-trick",
+    title: "Google Text Adventure Trick",
+    excerpt: "A hidden text adventure lives in Google Search. Here is how to open it in the console, the commands to try and how to stay safe while you play.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 6,
+    image: "assets/images/blog/google-text-adventure-trick.webp",
+    imageAlt: "Google text adventure trick showing a game played in the browser console",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-zerg-rush-trick",
     title: "Google Zerg Rush Trick: Does It Still Work? How to Play",
     excerpt: "Google",
