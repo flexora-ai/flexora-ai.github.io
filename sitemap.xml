@@ -907,6 +907,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://flexora-ai.github.io/blog/google-gravity-tricks-guide.html</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://flexora-ai.github.io/blog/google-guitar-doodle-trick.html</loc>
     <lastmod>2026-11-02</lastmod>
     <changefreq>monthly</changefreq>
@@ -938,6 +944,18 @@
   </url>
   <url>
     <loc>https://flexora-ai.github.io/blog/google-santa-tracker-tricks.html</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://flexora-ai.github.io/blog/google-solitaire-trick.html</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://flexora-ai.github.io/blog/google-spin-a-dreidel-trick.html</loc>
     <lastmod>2026-11-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
