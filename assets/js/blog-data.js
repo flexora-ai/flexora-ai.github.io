@@ -1940,6 +1940,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-doodle-games-to-play-with-friends",
+    title: "Google Doodle Games to Play with Friends",
+    excerpt: "The best Google Doodle games to play with friends, from the first multiplayer Doodle to pétanque and popcorn, and how to set up a match.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-doodle-games-to-play-with-friends.webp",
+    imageAlt: "Google Doodle games to play with friends in a multiplayer match",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-zerg-rush-trick",
     title: "Google Zerg Rush Trick: Does It Still Work? How to Play",
     excerpt: "Google",
