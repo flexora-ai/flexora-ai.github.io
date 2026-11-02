@@ -36,6 +36,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-santa-tracker-tricks",
+    title: "Google Santa Tracker Tricks: Games, Map and NORAD Tips",
+    excerpt: "How Google’s Santa Tracker works, when the live map starts, what to do before Christmas Eve, and how it differs from NORAD Tracks Santa.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-02",
+    readMins: 5,
+    image: "assets/images/blog/google-santa-tracker-tricks.webp",
+    imageAlt: "Google Santa Tracker tricks: a live map following Santa across the world",
+    icon: "📄",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tools-for-solopreneurs",
     title: "Best AI Tools for Solopreneurs (2026 Complete Guide)",
     excerpt: "Discover the best AI tools for solopreneurs to automate tasks, boost productivity, and scale your one-person business in 2026.",
