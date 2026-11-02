@@ -1996,6 +1996,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-minesweeper-trick",
+    title: "Google Minesweeper Trick",
+    excerpt: "Search minesweeper on Google and play it inside the results page. Here is how to start, what the three levels mean and tips to clear boards.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-minesweeper-trick.webp",
+    imageAlt: "Google Minesweeper game playing inside the search results page",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-zerg-rush-trick",
     title: "Google Zerg Rush Trick: Does It Still Work? How to Play",
     excerpt: "Google",
