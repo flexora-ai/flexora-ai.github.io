@@ -50,6 +50,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "hidden-google-games-list",
+    title: "Hidden Google Games List: What You Can Still Play",
+    excerpt: "Snake, Solitaire, Pac-Man, Chrome Dino and more: every hidden Google game worth knowing, how to open it and whether it still works.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-02",
+    readMins: 5,
+    image: "assets/images/blog/hidden-google-games-list.webp",
+    imageAlt: "Hidden Google games list: Snake, Solitaire, Pac-Man and the Chrome dinosaur",
+    icon: "📄",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tools-for-solopreneurs",
     title: "Best AI Tools for Solopreneurs (2026 Complete Guide)",
     excerpt: "Discover the best AI tools for solopreneurs to automate tasks, boost productivity, and scale your one-person business in 2026.",
