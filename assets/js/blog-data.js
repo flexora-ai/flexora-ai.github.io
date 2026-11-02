@@ -8,6 +8,20 @@
 
 const BLOG_POSTS = [
   {
+    slug: "google-dinosaur-game-hacks",
+    title: "Google Dinosaur Game Hacks: Speed, Jump, Invincible",
+    excerpt: "Copy-paste console cheats for Chrome’s dinosaur game, plus how to open it, where it came from, and what to do when a hack stops working.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-02",
+    readMins: 5,
+    image: "assets/images/blog/google-dinosaur-game-hacks.webp",
+    imageAlt: "Google dinosaur game hacks: the Chrome T-Rex running past cactus obstacles",
+    icon: "📄",
+    published: true,
+    featured: true
+  },
+  {
     slug: "google-easter-eggs-for-christmas",
     title: "Google Easter Eggs for Christmas: What Still Works",
     excerpt: "“Let it snow,” holiday lights and the Santa Tracker: which Christmas Google tricks are worth trying this December, and which are old news.",
@@ -19,7 +33,7 @@ const BLOG_POSTS = [
     imageAlt: "Google Easter eggs for Christmas: snowflakes falling over a search results page",
     icon: "📄",
     published: true,
-    featured: true
+    featured: false
   },
   {
     slug: "google-easter-eggs-list",
@@ -1893,6 +1907,20 @@ const BLOG_POSTS = [
     readMins: 6,
     image: "assets/images/blog/free-ai-translation-tools-for-websites.webp",
     imageAlt: "Free AI translation tools for websites comparison",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
+    slug: "google-conway-game-of-life-trick",
+    title: "Google Conway Game of Life Trick",
+    excerpt: "Search Conway",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-conway-game-of-life-trick.webp",
+    imageAlt: "Google Conway",
     icon: "⚙️",
     published: true,
     featured: false
