@@ -1968,6 +1968,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-gravity-tricks-guide",
+    title: "Google Gravity and Underwater Tricks Guide",
+    excerpt: "Your guide to Google Gravity and the underwater, mirror, sphere and cat tricks that grew around it, with links to every guide in the family.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 7,
+    image: "assets/images/blog/google-gravity-tricks-guide.webp",
+    imageAlt: "Google gravity and underwater tricks guide showing the Google page falling into a pile",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-guitar-doodle-trick",
     title: "Google Guitar Doodle Trick",
     excerpt: "Google",
@@ -2005,6 +2019,34 @@ const BLOG_POSTS = [
     readMins: 5,
     image: "assets/images/blog/google-minesweeper-trick.webp",
     imageAlt: "Google Minesweeper game playing inside the search results page",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
+    slug: "google-pacman-doodle-trick",
+    title: "Google Pacman Doodle Trick",
+    excerpt: "Google",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-pacman-doodle-trick.webp",
+    imageAlt: "Google Pac-Man Doodle with the maze replacing the Google logo",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
+    slug: "google-pong-trick",
+    title: "Google Pong Trick",
+    excerpt: "Is there a Pong trick on Google? Here is what actually exists, from the 2019 Wimbledon tennis game to Atari Breakout, and what is just online myth.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-pong-trick.webp",
+    imageAlt: "Google Pong trick comparing the Wimbledon tennis mini-game with retro arcade games",
     icon: "⚙️",
     published: true,
     featured: false
