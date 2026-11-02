@@ -2094,6 +2094,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-tic-tac-toe-trick",
+    title: "Google Tic Tac Toe Trick",
+    excerpt: "Search tic tac toe on Google and play in the results. Learn the three levels, how to pick X or O, and the moves that mean you never lose.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 6,
+    image: "assets/images/blog/google-tic-tac-toe-trick.webp",
+    imageAlt: "Google Tic Tac Toe game with Easy, Medium and Impossible levels",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-zerg-rush-trick",
     title: "Google Zerg Rush Trick: Does It Still Work? How to Play",
     excerpt: "Google",
