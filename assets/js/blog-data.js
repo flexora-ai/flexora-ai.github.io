@@ -1912,6 +1912,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-ball-pit-trick",
+    title: "Google Ball Pit Trick",
+    excerpt: "Meet Mr.doob",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-ball-pit-trick.webp",
+    imageAlt: "Google ball pit trick showing colored balls bouncing in a browser physics experiment",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-conway-game-of-life-trick",
     title: "Google Conway Game of Life Trick",
     excerpt: "Search Conway",
