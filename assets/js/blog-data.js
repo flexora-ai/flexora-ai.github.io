@@ -1968,6 +1968,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-fall-down-trick-explained",
+    title: "Google Fall Down Trick Explained",
+    excerpt: "How does the Google Gravity trick make the page fall? A plain-language explanation of the JavaScript, the physics engine and why it works.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 6,
+    image: "assets/images/blog/google-fall-down-trick-explained.webp",
+    imageAlt: "Google fall down trick explained with page elements falling under simulated gravity",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-fidget-spinner-trick",
     title: "Google Fidget Spinner Trick",
     excerpt: "Search the word spinner on Google and a virtual fidget spinner appears. Here is how to use it, where it came from and whether it still works.",
