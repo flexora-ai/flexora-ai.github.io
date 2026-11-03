@@ -1996,6 +1996,34 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-gravity-chrome-trick",
+    title: "Google Gravity Chrome Trick",
+    excerpt: "Does Google Gravity only work in Chrome? Learn why it is called a Chrome experiment, how to run it well and what to check if it fails.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-gravity-chrome-trick.webp",
+    imageAlt: "Google gravity Chrome trick with page elements falling in a Chrome browser window",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
+    slug: "google-gravity-mirror-trick",
+    title: "Google Gravity Mirror Trick",
+    excerpt: "Is there a Google Gravity Mirror? Here is what people usually mean, what elgooG is, and how to use mirror sites safely.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-gravity-mirror-trick.webp",
+    imageAlt: "Google gravity mirror trick comparing elgooG and the original experiment",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-gravity-tricks-guide",
     title: "Google Gravity and Underwater Tricks Guide",
     excerpt: "Your guide to Google Gravity and the underwater, mirror, sphere and cat tricks that grew around it, with links to every guide in the family.",
