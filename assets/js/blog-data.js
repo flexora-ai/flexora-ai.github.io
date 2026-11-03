@@ -2038,6 +2038,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-gravity-on-phone",
+    title: "Google Gravity on Phone",
+    excerpt: "Step-by-step instructions to try Google Gravity on your phone, fix common problems, and record a clip to share with friends.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-gravity-on-phone.webp",
+    imageAlt: "Google gravity on phone showing page elements being dragged on a touch screen",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-gravity-tricks-guide",
     title: "Google Gravity and Underwater Tricks Guide",
     excerpt: "Your guide to Google Gravity and the underwater, mirror, sphere and cat tricks that grew around it, with links to every guide in the family.",
