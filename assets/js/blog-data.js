@@ -1226,6 +1226,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-write-linkedin-about-section-free",
+    title: "AI Tool to Write a LinkedIn About Section (Free)",
+    excerpt: "Write your LinkedIn About section with a free AI chatbot. Get a 4-part shape, two copy-paste prompts, a before/after example and a facts-check rule.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 7,
+    image: "assets/images/blog/ai-tool-to-write-linkedin-about-section-free.webp",
+    imageAlt: "AI tool to write a LinkedIn About section, a person typing a short profile summary on a laptop",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-write-linkedin-posts-for-beginners",
     title: "AI Tool to Write LinkedIn Posts for Beginners",
     excerpt: "Write LinkedIn posts you can actually post, using AI as an editor. Four easy post types, a prompt for each, and what to avoid.",
