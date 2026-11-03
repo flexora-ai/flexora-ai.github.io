@@ -974,6 +974,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-resize-images-for-social-media-free",
+    title: "Resize Images for Social Media Free: What Gets Cut Off",
+    excerpt: "Fit one picture into square, portrait, vertical and wide shapes. Learn crop vs borders vs AI extend, a safe-zone rule, two prompts and a checklist.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 7,
+    image: "assets/images/blog/ai-tool-to-resize-images-for-social-media-free.webp",
+    imageAlt: "AI tool to resize images for social media, one photo shown in square, portrait and vertical shapes",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-rewrite-sentences-in-simple-english",
     title: "AI Tool to Rewrite Sentences in Simple English: 6 Prompts",
     excerpt: "Use a free AI chatbot to rewrite sentences in simple English. Six jobs with examples, safe prompts, and checks for your meaning, voice and numbers.",
