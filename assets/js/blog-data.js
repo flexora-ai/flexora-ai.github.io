@@ -806,6 +806,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-check-grammar-without-grammarly",
+    title: "AI Tool to Check Grammar Without Grammarly: 4 Free Routes",
+    excerpt: "Check grammar and spelling with AI without Grammarly. Four free routes, a task table, two prompts that explain every fix, and a proofreading routine.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 7,
+    image: "assets/images/blog/ai-tool-to-check-grammar-without-grammarly.webp",
+    imageAlt: "AI tool to check grammar without Grammarly, a laptop showing corrected text with a list of changes",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-check-if-text-is-written-by-ai-free",
     title: "AI Tool to Check If Text Is Written by AI: 7-Point Review",
     excerpt: "Free AI-text checkers only give a guess. Use a 7-point human review, a weak-spot prompt and a fair process before you judge any essay or letter.",
