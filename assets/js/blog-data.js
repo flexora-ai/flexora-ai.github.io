@@ -1002,6 +1002,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-turn-text-into-voice-free-no-signup",
+    title: "AI Tool to Turn Text into Voice Free, No Signup: Checks",
+    excerpt: "Turn text into voice without an account: the 3 kinds of free tools, what to check before using the audio, how to prep text, plus 2 prompts.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 6,
+    image: "assets/images/blog/ai-tool-to-turn-text-into-voice-free-no-signup.webp",
+    imageAlt: "AI tool to turn text into voice free with no signup, a person listening to text read aloud",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-write-a-resume-for-freshers-free",
     title: "AI Tool to Write a Resume for Freshers (Free)",
     excerpt: "Write a fresher resume with a free AI chatbot, one section at a time. Before-and-after examples for projects and skills, plus what not to let AI invent.",
