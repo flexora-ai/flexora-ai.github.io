@@ -918,6 +918,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-make-product-photos-look-professional",
+    title: "AI Tool to Make Product Photos Look Professional",
+    excerpt: "Shoot with your phone, then edit in the right order. Learn what AI can fix in product photos, what it cannot, and get two prompts and a checklist.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 7,
+    image: "assets/images/blog/ai-tool-to-make-product-photos-look-professional.webp",
+    imageAlt: "AI tool to make product photos look professional, a phone photo of a candle on a plain backdrop by a window",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-plan-a-week-of-social-media-posts",
     title: "AI Tool to Plan a Week of Social Media Posts (Free Method)",
     excerpt: "Plan seven days of posts in one hour. A simple grid, a teach-show-sell mix, one prompt for the full week, and a 60-minute Sunday routine.",
