@@ -2094,6 +2094,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-gravity-unblocked",
+    title: "Google Gravity Unblocked",
+    excerpt: "What does Google Gravity unblocked mean? Learn why copies exist, the risks to watch for, and the safest way to play the original.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-gravity-unblocked.webp",
+    imageAlt: "Google gravity unblocked safety guide showing the original experiment versus copy sites",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-guitar-doodle-trick",
     title: "Google Guitar Doodle Trick",
     excerpt: "Google",
