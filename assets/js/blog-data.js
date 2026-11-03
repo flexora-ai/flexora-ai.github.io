@@ -2024,6 +2024,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-gravity-mobile-trick",
+    title: "Google Gravity Mobile Trick",
+    excerpt: "Google Gravity works on touch screens, and your phone",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-gravity-mobile-trick.webp",
+    imageAlt: "Google gravity mobile trick on a phone with elements falling as the phone tilts",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-gravity-tricks-guide",
     title: "Google Gravity and Underwater Tricks Guide",
     excerpt: "Your guide to Google Gravity and the underwater, mirror, sphere and cat tricks that grew around it, with links to every guide in the family.",
