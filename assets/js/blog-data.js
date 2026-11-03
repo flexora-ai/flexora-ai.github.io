@@ -2108,6 +2108,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-underwater-fish-trick",
+    title: "Google Underwater Fish Trick",
+    excerpt: "Turn Google into an aquarium with the underwater trick. See what it does, how to try it, and how it differs from Google Gravity.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-underwater-fish-trick.webp",
+    imageAlt: "Google underwater fish trick turning the Google page into a floating aquarium",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-zerg-rush-trick",
     title: "Google Zerg Rush Trick: Does It Still Work? How to Play",
     excerpt: "Google",
