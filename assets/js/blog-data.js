@@ -778,6 +778,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "ai-tool-to-add-subtitles-to-video-free-no-watermark",
+    title: "AI Tool to Add Subtitles to Video Free, No Watermark",
+    excerpt: "Add subtitles to video free without a logo: burned-in vs caption file, a check table for any tool, a 5-step workflow and two prompts.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 6,
+    image: "assets/images/blog/ai-tool-to-add-subtitles-to-video-free-no-watermark.webp",
+    imageAlt: "AI tool to add subtitles to a short video on a phone, free with no watermark",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tool-to-answer-customer-questions-on-instagram-dm",
     title: "AI Tool to Answer Customer Questions on Instagram DM",
     excerpt: "Use a free AI chatbot to draft Instagram DM replies for price, stock, delivery and more. Reply patterns, prompts, handoff rules and a 10-minute daily routine.",
