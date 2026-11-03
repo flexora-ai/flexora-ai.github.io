@@ -2052,6 +2052,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-gravity-pacman-trick",
+    title: "Google Gravity Pacman Trick",
+    excerpt: "Is there a Google Gravity Pacman? Here is why the two get mixed up, what each one really is, and how to try both.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-gravity-pacman-trick.webp",
+    imageAlt: "Google gravity pacman trick comparing the gravity experiment and the Pac-Man Doodle",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-gravity-tricks-guide",
     title: "Google Gravity and Underwater Tricks Guide",
     excerpt: "Your guide to Google Gravity and the underwater, mirror, sphere and cat tricks that grew around it, with links to every guide in the family.",
