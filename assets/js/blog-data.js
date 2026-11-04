@@ -64,6 +64,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-in-1998-game-play",
+    title: "Google in 1998 Game Play: Is It a Game? How to Try It",
+    excerpt: "Google in 1998 isn’t a game, but there is a retro page to play with. How to open it, what you can click, and what the simulators really are.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-02",
+    readMins: 4,
+    image: "assets/images/blog/google-in-1998-game-play.webp",
+    imageAlt: "Google in 1998 game play: the early Google homepage in a retro browser window",
+    icon: "📄",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-mr-doob-experiments-list",
     title: "Mr.doob Google Experiments List: What Each One Does",
     excerpt: "Who Mr.doob is, which Google-style experiments he made, which ones people credit to him by mistake, and where to try each one safely.",
