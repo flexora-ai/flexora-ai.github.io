@@ -78,6 +78,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-pendulum-trick",
+    title: "Google Pendulum Trick: Does It Exist? What to Try",
+    excerpt: "People search for a swinging Google page. Here is what we could and couldn’t verify, plus the floating and flinging tricks that come closest.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-02",
+    readMins: 4,
+    image: "assets/images/blog/google-pendulum-trick.webp",
+    imageAlt: "Google pendulum trick: a Google-style logo swinging like a pendulum",
+    icon: "📄",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-santa-tracker-tricks",
     title: "Google Santa Tracker Tricks: Games, Map and NORAD Tips",
     excerpt: "How Google’s Santa Tracker works, when the live map starts, what to do before Christmas Eve, and how it differs from NORAD Tracks Santa.",
