@@ -50,6 +50,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-mr-doob-experiments-list",
+    title: "Mr.doob Google Experiments List: What Each One Does",
+    excerpt: "Who Mr.doob is, which Google-style experiments he made, which ones people credit to him by mistake, and where to try each one safely.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-02",
+    readMins: 5,
+    image: "assets/images/blog/google-mr-doob-experiments-list.webp",
+    imageAlt: "Google Mr.doob experiments list: Gravity, Space and Sphere on a Google-style homepage",
+    icon: "📄",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-santa-tracker-tricks",
     title: "Google Santa Tracker Tricks: Games, Map and NORAD Tips",
     excerpt: "How Google’s Santa Tracker works, when the live map starts, what to do before Christmas Eve, and how it differs from NORAD Tracks Santa.",
