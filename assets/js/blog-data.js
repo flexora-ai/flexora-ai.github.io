@@ -8,6 +8,20 @@
 
 const BLOG_POSTS = [
   {
+    slug: "google-april-fools-pranks-history",
+    title: "Google April Fools Pranks History: Best Jokes and Flops",
+    excerpt: "From Gmail Paper to Pac-Man Maps: Google’s best April Fools’ pranks by year, the Mic Drop flop, and why the tradition went quiet after 2020.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-02",
+    readMins: 5,
+    image: "assets/images/blog/google-april-fools-pranks-history.webp",
+    imageAlt: "Google April Fools pranks history: a timeline of Google’s jokes from Gmail Paper to Pac-Man Maps",
+    icon: "📄",
+    published: true,
+    featured: true
+  },
+  {
     slug: "google-dinosaur-game-hacks",
     title: "Google Dinosaur Game Hacks: Speed, Jump, Invincible",
     excerpt: "Copy-paste console cheats for Chrome’s dinosaur game, plus how to open it, where it came from, and what to do when a hack stops working.",
@@ -19,7 +33,7 @@ const BLOG_POSTS = [
     imageAlt: "Google dinosaur game hacks: the Chrome T-Rex running past cactus obstacles",
     icon: "📄",
     published: true,
-    featured: true
+    featured: false
   },
   {
     slug: "google-easter-eggs-for-christmas",
