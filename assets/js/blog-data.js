@@ -64,6 +64,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-oneko-cat-trick",
+    title: "Google Oneko Cat Trick: Does It Exist? How to Get It",
+    excerpt: "A cat that chases your cursor: where Oneko really comes from, whether a Google version exists, and safe ways to get the cat on your screen.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-02",
+    readMins: 4,
+    image: "assets/images/blog/google-oneko-cat-trick.webp",
+    imageAlt: "Google Oneko cat trick: a pixel cat chasing the mouse cursor",
+    icon: "📄",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-santa-tracker-tricks",
     title: "Google Santa Tracker Tricks: Games, Map and NORAD Tips",
     excerpt: "How Google’s Santa Tracker works, when the live map starts, what to do before Christmas Eve, and how it differs from NORAD Tracks Santa.",
