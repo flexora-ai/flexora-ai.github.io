@@ -162,6 +162,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "retro-google-tricks-guide",
+    title: "Retro Google Tricks Guide: See Google in 1998 and More",
+    excerpt: "See what Google looked like in 1998, revisit the 2018 birthday eggs, and learn which retro Google tricks still work and which are fan recreations.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-02",
+    readMins: 5,
+    image: "assets/images/blog/retro-google-tricks-guide.webp",
+    imageAlt: "Retro Google tricks guide: the 1998 Google homepage with its early logo",
+    icon: "📄",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tools-for-solopreneurs",
     title: "Best AI Tools for Solopreneurs (2026 Complete Guide)",
     excerpt: "Discover the best AI tools for solopreneurs to automate tasks, boost productivity, and scale your one-person business in 2026.",
