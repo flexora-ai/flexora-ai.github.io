@@ -10,204 +10,388 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>AI Workflows & Automation Chains — Flexora.Ai</title>
-<meta name="keywords" content="AI tools directory, free AI tools, best AI software, AI tools comparison, AI workflows, generative AI"/>
-<meta name="author" content="Flexora.Ai"/>
-<meta property="og:site_name" content="Flexora.Ai"/>
-<meta content="End-to-end multi-tool workflows: connect top AI tools into production pipelines for content creation, sales outreach, video synthesis, and developer operations." name="description"/>
+<title>AI Workflows &amp; Automation Pipelines &mdash; FlexoraAi</title>
+<meta name="keywords" content="AI workflows, AI automation chains, multi-tool AI pipelines, AI video production workflow, AI coding workflow, AI B2B sales automation"/>
+<meta name="author" content="FlexoraAi"/>
+<meta property="og:site_name" content="FlexoraAi"/>
+<meta content="Practical multi-tool AI workflows: chain specialized AI tools into autonomous production pipelines for video creation, B2B sales, coding, e-commerce, and research." name="description"/>
 <meta content="index, follow" name="robots"/>
 <link href="https://flexora-ai.github.io/workflows.html" rel="canonical"/>
 <link href="assets/images/logo.png" rel="icon" type="image/png"/>
 
 <!-- Social Meta -->
-<meta content="AI Workflows & Automation Chains — Flexora.Ai" property="og:title"/>
-<meta content="End-to-end multi-tool workflows: connect top AI tools into production pipelines for content creation, sales outreach, video synthesis, and developer operations." property="og:description"/>
+<meta content="AI Workflows &amp; Automation Pipelines &mdash; FlexoraAi" property="og:title"/>
+<meta content="Practical multi-tool AI workflows: chain specialized AI tools into autonomous production pipelines for video creation, B2B sales, coding, e-commerce, and research." property="og:description"/>
 <meta content="website" property="og:type"/>
-<meta content="https://flexora-ai.github.io/assets/images/logo.png" property="og:image"/>
+<meta content="https://flexora-ai.github.io/assets/images/og-cover.jpg" property="og:image"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="AI Workflows & Automation Chains — Flexora.Ai" name="twitter:title"/>
-<meta content="End-to-end multi-tool workflows: connect top AI tools into production pipelines for content creation, sales outreach, video synthesis, and developer operations." name="twitter:description"/>
-<meta content="https://flexora-ai.github.io/assets/images/logo.png" name="twitter:image"/>
+<meta content="AI Workflows &amp; Automation Pipelines &mdash; FlexoraAi" name="twitter:title"/>
+<meta content="Practical multi-tool AI workflows: chain specialized AI tools into autonomous production pipelines." name="twitter:description"/>
+<meta content="https://flexora-ai.github.io/assets/images/og-cover.jpg" name="twitter:image"/>
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
 
-<!-- Core & Tools Stylesheets -->
+<!-- Core Stylesheets -->
 <link rel="stylesheet" href="assets/css/style.css?v=2.2"/>
 <link rel="stylesheet" href="assets/css/tools.css"/>
+
 <style>
+:root{
+  --bg:#07090F; --surface:#0F131D; --surface-2:#161B28; --line:#232838;
+  --teal:#2DE2C8; --blue:#4C7BFF; --amber:#f59e0b; --ink:#F2F4FA; --ink-soft:#8A90A6;
+}
+
+/* Page Hero */
+.page-hero {
+  padding: 80px 0 40px;
+  text-align: center;
+  position: relative;
+}
+.page-hero .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--teal);
+  border: 1px solid rgba(45,226,200,.3);
+  background: rgba(45,226,200,.08);
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+.page-hero h1 {
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  color: var(--ink);
+}
+.page-hero .grad {
+  background: linear-gradient(90deg, var(--teal), var(--blue), var(--teal));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradShift 6s ease-in-out infinite;
+}
+@keyframes gradShift {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+.page-hero p.lede {
+  color: var(--ink-soft);
+  font-size: 16px;
+  max-width: 680px;
+  margin: 0 auto 32px;
+  line-height: 1.6;
+}
+
+/* Category Filter Chips */
+.wf-filters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 44px;
+}
+.wf-chip {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 9px 18px;
+  border-radius: 10px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.wf-chip:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+  transform: translateY(-2px);
+}
+.wf-chip.active {
+  background: var(--teal);
+  color: #07090F;
+  border-color: var(--teal);
+  font-weight: 700;
+}
+
+/* Workflow Cards Grid */
 .wf-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-bottom: 60px;
 }
-@media (max-width: 980px) {
-  .wf-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 640px) {
+@media (max-width: 900px) {
   .wf-grid { grid-template-columns: 1fr; }
 }
+
 .wf-card {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  padding: 28px;
-  transition: var(--transition);
+  border-radius: 18px;
+  padding: 32px;
+  transition: all 0.25s ease;
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px -15px rgba(0,0,0,0.5);
 }
 .wf-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--teal);
-  box-shadow: 0 18px 36px -18px rgba(45, 226, 200, 0.25);
+  border-color: rgba(45, 226, 200, 0.5);
+  box-shadow: 0 20px 45px -15px rgba(45, 226, 200, 0.25);
+  transform: translateY(-4px);
 }
-.wf-goal {
+
+/* Card Header & Stack Flow */
+.wf-head {
+  margin-bottom: 20px;
+}
+.wf-badge-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.wf-tag {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 11px;
   font-weight: 700;
   color: var(--teal);
+  text-transform: uppercase;
   letter-spacing: 0.06em;
-  margin-bottom: 8px;
-  display: block;
+  background: rgba(45, 226, 200, 0.1);
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(45, 226, 200, 0.25);
+}
+.wf-savings {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11.5px;
+  color: var(--amber);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 .wf-card h3 {
-  font-size: 19px;
+  font-size: 22px;
   font-weight: 700;
-  margin-bottom: 20px;
   color: var(--ink);
+  margin-bottom: 8px;
 }
-.wf-chain {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  margin-bottom: 24px;
+.wf-desc {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin-bottom: 20px;
 }
-.wf-step {
+
+/* Visual Chain Strip */
+.wf-chain-strip {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 13.5px;
-  color: var(--ink-soft);
-  padding: 10px 0;
-  position: relative;
-  transition: color 0.2s;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
 }
-.wf-card:hover .wf-step {
+.wf-tool-node {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 600;
   color: var(--ink);
+  transition: all 0.15s ease;
 }
-.wf-step .n {
-  width: 24px;
-  height: 24px;
+.wf-tool-node:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+  transform: translateY(-1px);
+}
+.wf-tool-node img {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  object-fit: contain;
+}
+.wf-chain-arrow {
+  color: var(--teal);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* Detailed Step-by-Step Chain */
+.wf-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.wf-step-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  font-size: 13.5px;
+  position: relative;
+}
+.wf-step-num {
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   background: var(--surface-2);
   border: 1px solid var(--line);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 11px;
-  color: var(--teal);
-  font-weight: 700;
   font-family: 'IBM Plex Mono', monospace;
-  transition: all 0.3s;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--teal);
   flex: none;
+  margin-top: 1px;
+  transition: all 0.2s;
 }
-.wf-card:hover .wf-step .n {
-  background: var(--teal);
-  color: #07090F;
+.wf-card:hover .wf-step-num {
+  background: rgba(45, 226, 200, 0.15);
   border-color: var(--teal);
 }
-.wf-step:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  left: 11px;
-  top: 34px;
-  width: 2px;
-  height: 16px;
-  background: var(--line);
+.wf-step-content {
+  flex: 1;
 }
-.wf-step a {
-  color: var(--teal);
+.wf-step-title {
   font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.wf-step-title a {
+  color: var(--teal);
   text-decoration: underline;
   text-underline-offset: 3px;
-  text-decoration-color: transparent;
+  text-decoration-color: rgba(45, 226, 200, 0.4);
   transition: text-decoration-color 0.2s;
 }
-.wf-step a:hover {
+.wf-step-title a:hover {
   text-decoration-color: var(--teal);
 }
-.wf-card-foot {
+.wf-step-detail {
+  color: var(--ink-soft);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+/* Card Footer */
+.wf-foot {
   margin-top: auto;
-  padding-top: 16px;
-  border-top: 1px solid rgba(35, 40, 56, 0.6);
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
 }
-</style>
-<style id="flexora-social-css">
-.social-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px;}
-.social-row a{width:36px;height:36px;border-radius:9px;background:var(--surface-2,#161B28);border:1px solid var(--line,#232838);display:flex;align-items:center;justify-content:center;color:var(--ink-soft,#8A90A6);transition:all .2s;flex-shrink:0;}
-.social-row a svg{width:15px;height:15px;display:block;pointer-events:none;}
-.social-row a:hover{transform:translateY(-3px);box-shadow:0 6px 18px -8px currentColor;}
-.soc-li:hover{color:#0A66C2!important;border-color:#0A66C2!important;background:rgba(10,102,194,.1)!important;}
-.soc-fb:hover{color:#1877F2!important;border-color:#1877F2!important;background:rgba(24,119,242,.1)!important;}
-.soc-ig:hover{color:#E4405F!important;border-color:#E4405F!important;background:rgba(228,64,95,.1)!important;}
-.soc-pi:hover{color:#E60023!important;border-color:#E60023!important;background:rgba(230,0,35,.1)!important;}
-.soc-x:hover{color:#fff!important;border-color:#555!important;background:rgba(0,0,0,.5)!important;}
-.soc-gh:hover{color:#7c3aed!important;border-color:#7c3aed!important;background:rgba(124,58,237,.1)!important;}
-.soc-em:hover{color:#2DE2C8!important;border-color:#2DE2C8!important;background:rgba(45,226,200,.1)!important;}
+.wf-cost-pill {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(76, 123, 255, 0.12);
+  color: var(--blue);
+  border: 1px solid rgba(76, 123, 255, 0.3);
+}
+.wf-cost-pill.free {
+  background: rgba(45, 226, 200, 0.12);
+  color: var(--teal);
+  border-color: rgba(45, 226, 200, 0.3);
+}
+.wf-action-btn {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--teal);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: gap 0.2s;
+}
+.wf-action-btn:hover {
+  gap: 10px;
+  text-decoration: underline;
+}
+
+/* Toast message */
+.wf-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--surface);
+  border: 1px solid var(--teal);
+  color: var(--ink);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+  z-index: 100;
+}
+.wf-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
 </style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "name": "AI Workflows & Multi-Tool Recipes | Flexora.Ai",
-  "description": "Ready-made chains of AI tools to accomplish complete business, coding, video, and SEO goals.",
+  "name": "AI Workflows & Multi-Tool Automation Chains | FlexoraAi",
+  "description": "Step-by-step multi-tool AI recipes that connect top AI software into automated production workflows.",
   "url": "https://flexora-ai.github.io/workflows.html"
 }
 </script>
 </head>
 <body>
-<a class="live-ticker" id="liveTicker" href="tools.html" style="text-decoration:none;">
-  <span class="pulse-dot" style="width:8px;height:8px;background:#2DE2C8;border-radius:50%;box-shadow:0 0 12px #2DE2C8;flex-shrink:0;animation:pulseDot 1.5s infinite;"></span>
-  <span class="ticker-text" id="tickerText">Someone is browsing <b>AI tools</b> right now</span>
+
+<!-- Live browsing ticker -->
+<a class="live-ticker show" id="liveTicker" href="tools.html" style="text-decoration:none;">
+  <span class="pulse-dot"></span>
+  <span class="ticker-text" id="tickerText">Someone is exploring <b>AI workflows</b> right now</span>
 </a>
-<style>
-.live-ticker{position:fixed; bottom:136px; left:24px; z-index:70; background:rgba(15,19,29,0.96); backdrop-filter:blur(12px); border:1px solid rgba(45,226,200,0.35); border-radius:12px; padding:10px 16px; display:flex; align-items:center; gap:10px; font-size:12.5px; color:#8A90A6; box-shadow:0 12px 36px -10px rgba(0,0,0,0.6); transform:translateX(-160%); transition:transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); max-width:300px; font-family:'Sora',sans-serif;}
-.live-ticker.show{transform:translateX(0);}
-.live-ticker .ticker-text{flex:1;}
-.live-ticker .ticker-text b{color:#2DE2C8;}
-@keyframes pulseDot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.4);}}
-</style>
-<script>
-(function(){
-  var CITIES=[['London','Perplexity'],['New York','ChatGPT'],['Mumbai','Claude'],['Berlin','Cursor'],['Tokyo','Midjourney'],['Paris','Gemini'],['Toronto','ElevenLabs'],['Sydney','Runway ML'],['Dubai','DeepSeek'],['Singapore','Grammarly'],['Barcelona','GitHub Copilot'],['Amsterdam','Notion AI'],['São Paulo','Canva AI'],['Seoul','Qwen'],['Jakarta','Kimi AI']];
-  var t=document.getElementById('liveTicker');
-  var tx=document.getElementById('tickerText');
-  if(!t||!tx)return;
-  function show(){
-    var c=CITIES[Math.floor(Math.random()*CITIES.length)];
-    tx.innerHTML='Someone in <b>'+c[0]+'</b> just explored <b>'+c[1]+'</b>';
-    t.classList.add('show');
-    setTimeout(function(){t.classList.remove('show');setTimeout(show,4000);},5000);
-  }
-  setTimeout(show,2500);
-})();
-</script>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-56W23QBB" style="display:none;visibility:hidden" width="0"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 
 <div class="bg-particles" id="bgParticles"></div>
 
+<!-- HEADER -->
 <header>
 <nav class="wrap">
-  <a class="logo" href="index.html">
-    <img alt="Flexora Logo" src="assets/images/logo.png"/>
-    Flexora<span>.Ai</span>
-  </a>
+  <a class="logo" href="index.html"><img alt="FlexoraAi" src="assets/images/logo.png"/>Flexora<span>Ai</span></a>
   <div class="nav-links">
     <a href="tools.html">Tools</a>
     <a href="compare.html">Compare</a>
@@ -219,7 +403,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="nav-cta">
     <a class="btn btn-ghost" href="submit.html">Submit tool</a>
     <a class="btn btn-primary" href="tools.html">Browse all</a>
-    <button aria-label="Open menu" class="menu-btn" id="menuBtn">☰</button>
+    <button aria-label="Open menu" class="menu-btn" id="menuBtn">&#9776;</button>
   </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
@@ -235,206 +419,467 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </header>
 
 <main>
+  <!-- HERO SECTION -->
   <section class="page-hero">
     <div class="wrap">
-      <span class="eyebrow"><span class="dot"></span>Ready-Made Stacks</span>
+      <span class="eyebrow"><span class="dot"></span>Production-Ready AI Stacks</span>
       <h1>Autonomous <span class="grad">AI Workflows</span></h1>
-      <p class="lede">Chain specialized tools together to automate complex multi-stage tasks end-to-end, from video pipelines and B2B sales engines to code scaffolding and SEO ranking.</p>
+      <p class="lede">Single tools solve single tasks. Connecting specialized AI tools into cohesive multi-stage pipelines unlocks 10x leverage for video production, outbound sales, coding, e-commerce, and deep research.</p>
+
+      <!-- Category Filter Chips -->
+      <div class="wf-filters" id="wfFilters">
+        <button class="wf-chip active" data-cat="all">All Workflows</button>
+        <button class="wf-chip" data-cat="creative">Creative &amp; Video</button>
+        <button class="wf-chip" data-cat="sales">B2B &amp; Revenue</button>
+        <button class="wf-chip" data-cat="dev">Development</button>
+        <button class="wf-chip" data-cat="ecommerce">E-Commerce</button>
+        <button class="wf-chip" data-cat="research">Research &amp; Docs</button>
+      </div>
     </div>
   </section>
 
-  <section style="padding:10px 0 80px;">
+  <!-- WORKFLOWS GRID -->
+  <section style="padding: 0 0 80px;">
     <div class="wrap">
-      <div class="wf-grid">
-        
-        <!-- Workflow 1: AI Video Studio Pipeline -->
-        <div class="wf-card reveal">
-          <span class="wf-goal">GOAL — STUDIO VIDEO PRODUCTION</span>
-          <h3>AI Video Creative Pipeline</h3>
-          <div class="wf-chain">
-            <div class="wf-step">
-              <span class="n">1</span>
-              <span>Draft storyboard &amp; script</span>
+      <div class="wf-grid" id="wfGrid">
+
+        <!-- WORKFLOW 1: AI Video Studio Pipeline -->
+        <div class="wf-card" data-cat="creative">
+          <div class="wf-head">
+            <div class="wf-badge-row">
+              <span class="wf-tag">Video Production</span>
+              <span class="wf-savings">&#9733; Saves 18 hrs / video</span>
             </div>
-            <div class="wf-step">
-              <span class="n">2</span>
-              <span>Generate video assets — <a href="tools/framethrower.html">FrameThrower</a></span>
+            <h3>End-to-End AI Video Studio</h3>
+            <p class="wf-desc">Generate complete cinematic videos from an initial concept &mdash; complete with researched scripts, AI-generated scene frames, studio voiceover, and high-fps motion render.</p>
+          </div>
+
+          <!-- Chain Strip -->
+          <div class="wf-chain-strip">
+            <a class="wf-tool-node" href="tools/perplexity.html">
+              <img src="https://www.google.com/s2/favicons?domain=perplexity.ai&amp;sz=64" alt="Perplexity"/> Perplexity
+            </a>
+            <span class="wf-chain-arrow">&rarr;</span>
+            <a class="wf-tool-node" href="tools/claude.html">
+              <img src="https://www.google.com/s2/favicons?domain=claude.ai&amp;sz=64" alt="Claude"/> Claude
+            </a>
+            <span class="wf-chain-arrow">&rarr;</span>
+            <a class="wf-tool-node" href="tools/elevenlabs.html">
+              <img src="https://www.google.com/s2/favicons?domain=elevenlabs.io&amp;sz=64" alt="ElevenLabs"/> ElevenLabs
+            </a>
+            <span class="wf-chain-arrow">&rarr;</span>
+            <a class="wf-tool-node" href="tools/runway.html">
+              <img src="https://www.google.com/s2/favicons?domain=runwayml.com&amp;sz=64" alt="Runway"/> Runway
+            </a>
+          </div>
+
+          <!-- Steps -->
+          <div class="wf-steps">
+            <div class="wf-step-item">
+              <div class="wf-step-num">1</div>
+              <div class="wf-step-content">
+                <div class="wf-step-title">Research &amp; Fact Gathering &mdash; <a href="tools/perplexity.html">Perplexity</a></div>
+                <div class="wf-step-detail">Extract trending angles, verifiable sources, and key talking points with live web consensus.</div>
+              </div>
             </div>
-            <div class="wf-step">
-              <span class="n">3</span>
-              <span>Automate render pipelines — <a href="tools/allvideoai.html">AllVideoAI</a></span>
+            <div class="wf-step-item">
+              <div class="wf-step-num">2</div>
+              <div class="wf-step-content">
+                <div class="wf-step-title">Scriptwriting &amp; Storyboarding &mdash; <a href="tools/claude.html">Claude</a></div>
+                <div class="wf-step-detail">Synthesize a timed hook, scene-by-scene visual descriptions, and audio cues into a master script.</div>
+              </div>
             </div>
-            <div class="wf-step">
-              <span class="n">4</span>
-              <span>Publish &amp; distribute automatically</span>
+            <div class="wf-step-item">
+              <div class="wf-step-num">3</div>
+              <div class="wf-step-content">
+                <div class="wf-step-title">Studio Voice Synthesis &mdash; <a href="tools/elevenlabs.html">ElevenLabs</a></div>
+                <div class="wf-step-detail">Render broadcast-quality narration with emotive pacing, inflection, and natural pauses.</div>
+              </div>
+            </div>
+            <div class="wf-step-item">
+              <div class="wf-step-num">4</div>
+              <div class="wf-step-content">
+                <div class="wf-step-title">Cinematic Motion Render &mdash; <a href="tools/runway.html">Runway</a> &amp; <a href="tools/ltx-video.html">LTX 2.5</a></div>
+                <div class="wf-step-detail">Animate keyframes into smooth camera sweeps and output final 4K video ready for YouTube &amp; Reels.</div>
+              </div>
             </div>
           </div>
-          <div class="wf-card-foot">
-            <span class="pill free">Freemium Stack</span>
-            <a class="view-tool-btn" href="tools.html?cat=video">Explore Video Tools →</a>
+
+          <div class="wf-foot">
+            <span class="wf-cost-pill free">Free Tiers Available</span>
+            <span class="wf-action-btn" onclick="copyWorkflow('AI Video Studio', 'Perplexity -> Claude -> ElevenLabs -> Runway')">Copy Stack Recipe &rarr;</span>
           </div>
         </div>
 
-        <!-- Workflow 2: Automated B2B Sales & Lead Engine -->
-        <div class="wf-card reveal">
-          <span class="wf-goal">GOAL — ACCELERATE OUTBOUND REVENUE</span>
-          <h3>B2B Sales Automation Engine</h3>
-          <div class="wf-chain">
-            <div class="wf-step">
-              <span class="n">1</span>
-              <span>Enrich &amp; sequence leads — <a href="tools/salestouch.html">SalesTouch</a></span>
+        <!-- WORKFLOW 2: Autonomous B2B Outbound Engine -->
+        <div class="wf-card" data-cat="sales">
+          <div class="wf-head">
+            <div class="wf-badge-row">
+              <span class="wf-tag">Revenue Automation</span>
+              <span class="wf-savings">&#9733; 3.8x Reply Rate</span>
             </div>
-            <div class="wf-step">
-              <span class="n">2</span>
-              <span>In-chat lead conversion — <a href="tools/revenuefromchat.html">RevenueFromChat</a></span>
+            <h3>Autonomous B2B Outbound Engine</h3>
+            <p class="wf-desc">Convert ice-cold accounts into booked demos on autopilot by enriching prospect data, crafting hyper-tailored value propositions, and tracking deal velocity.</p>
+          </div>
+
+          <!-- Chain Strip -->
+          <div class="wf-chain-strip">
+            <a class="wf-tool-node" href="tools/salestouch.html">
+              <img src="https://www.google.com/s2/favicons?domain=salestouch.ai&amp;sz=64" alt="SalesTouch"/> SalesTouch
+            </a>
+            <span class="wf-chain-arrow">&rarr;</span>
+            <a class="wf-tool-node" href="tools/argorant.html">
+              <img src="https://www.google.com/s2/favicons?domain=argorant.com&amp;sz=64" alt="Argorant"/> Argorant
+            </a>
+            <span class="wf-chain-arrow">&rarr;</span>
+            <a class="wf-tool-node" href="tools/chatgpt.html">
+              <img src="https://www.google.com/s2/favicons?domain=chat.openai.com&amp;sz=64" alt="ChatGPT"/> ChatGPT
+            </a>
+            <span class="wf-chain-arrow">&rarr;</span>
+            <a class="wf-tool-node" href="tools/booksmate.html">
+              <img src="https://www.google.com/s2/favicons?domain=booksmate.ai&amp;sz=64" alt="Booksmate"/> Booksmate
+            </a>
+          </div>
+
+          <!-- Steps -->
+          <div class="wf-steps">
+            <div class="wf-step-item">
+              <div class="wf-step-num">1</div>
+              <div class="wf-step-content">
+                <div class="wf-step-title">Prospect Enrichment &mdash; <a href="tools/salestouch.html">SalesTouch</a></div>
+                <div class="wf-step-detail">Identify verified decision-maker emails, corporate tech stacks, and recent hiring triggers.</div>
+              </div>
             </div>
-            <div class="wf-step">
-              <span class="n">3</span>
-              <span>Multi-channel follow-up tracking</span>
+            <div class="wf-step-item">
+              <div class="wf-step-num">2</div>
+              <div class="wf-step-content">
+                <div class="wf-step-title">Personalized Outbound Delivery &mdash; <a href="tools/argorant.html">Argorant</a></div>
+                <div class="wf-step-detail">Dispatch 1-on-1 personalized email sequences referencing each prospect&apos;s specific recent news.</div>
+              </div>
             </div>
-            <div class="wf-step">
-              <span class="n">4</span>
-              <span>Close deals 24/7 with CRM sync</span>
+            <div class="wf-step-item">
+              <div class="wf-step-num">3</div>
+              <div class="wf-step-content">
+                <div class="wf-step-title">Instant Objection Handling &mdash; <a href="tools/chatgpt.html">ChatGPT</a></div>
+                <div class="wf-step-detail">Draft tailored answers to inbound inquiries, feature questions, and competitive pricing objections.</div>
+              </div>
+            </div>
+            <div class="wf-step-item">
+              <div class="wf-step-num">4</div>
+              <div class="wf-step-content">
+                <div class="wf-step-title">Bookkeeping &amp; Contract Sync &mdash; <a href="tools/booksmate.html">Booksmate</a></div>
+                <div class="wf-step-detail">Log deals, generate automated client invoicing, and sync accounts receivable without manual data entry.</div>
+              </div>
             </div>
           </div>
-          <div class="wf-card-foot">
-            <span class="pill">Pro Automation</span>
-            <a class="view-tool-btn" href="tools.html?cat=automation">Explore Sales Tools →</a>
+
+          <div class="wf-foot">
+            <span class="wf-cost-pill">Growth Stack</span>
+            <span class="wf-action-btn" onclick="copyWorkflow('B2B Outbound Engine', 'SalesTouch -> Argorant -> ChatGPT -> Booksmate')">Copy Stack Recipe &rarr;</span>
           </div>
         </div>
 
-        <!-- Workflow 3: Developer Infrastructure & LLM Deployments -->
-        <div class="wf-card reveal">
-          <span class="wf-goal">GOAL — SHIP AI FEATURES FASTER</span>
-          <h3>Developer API &amp; Model Hosting</h3>
-          <div class="wf-chain">
-            <div class="wf-step">
-              <span class="n">1</span>
-              <span>Deploy LLM endpoints — <a href="tools/modelrush.html">ModelRush</a></span>
+        <!-- WORKFLOW 3: Full-Stack AI Software Engineering -->
+        <div class="wf-card" data-cat="dev">
+          <div class="wf-head">
+            <div class="wf-badge-row">
+              <span class="wf-tag">Developer Stack</span>
+              <span class="wf-savings">&#9733; 4x Faster Delivery</span>
             </div>
-            <div class="wf-step">
-              <span class="n">2</span>
-              <span>Fine-tune &amp; benchmark latency</span>
+            <h3>Full-Stack AI Software Engineering</h3>
+            <p class="wf-desc">Go from product requirement doc (PRD) to tested production pull requests in record time using multi-model agentic coding and backend pipeline generation.</p>
+          </div>
+
+          <!-- Chain Strip -->
+          <div class="wf-chain-strip">
+            <a class="wf-tool-node" href="tools/claude.html">
+              <img src="https://www.google.com/s2/favicons?domain=claude.ai&amp;sz=64" alt="Claude"/> Claude 3.5
+            </a>
+            <span class="wf-chain-arrow">&rarr;</span>
+            <a class="wf-tool-node" href="tools/cursor.html">
+              <img src="https://www.google.com/s2/favicons?domain=cursor.com&amp;sz=64" alt="Cursor"/> Cursor
+            </a>
+            <span class="wf-chain-arrow">&rarr;</span>
+            <a class="wf-tool-node" href="tools/byteflow.html">
+              <img src="https://www.google.com/s2/favicons?domain=byteflow.dev&amp;sz=64" alt="ByteFlow"/> ByteFlow
+            </a>
+            <span class="wf-chain-arrow">&rarr;</span>
+            <a class="wf-tool-node" href="tools/deepseek.html">
+              <img src="https://www.google.com/s2/favicons?domain=deepseek.com&amp;sz=64" alt="DeepSeek"/> DeepSeek
+            </a>
+          </div>
+
+          <!-- Steps -->
+          <div class="wf-steps">
+            <div class="wf-step-item">
+              <div class="wf-step-num">1</div>
+              <div class="wf-step-content">
+                <div class="wf-step-title">Architecture &amp; Tech Spec &mdash; <a href="tools/claude.html">Claude</a></div>
+                <div class="wf-step-detail">Draft detailed schema designs, API contracts, edge case tests, and migration roadmaps.</div>
+              </div>
             </div>
-            <div class="wf-step">
-              <span class="n">3</span>
-              <span>MCP &amp; SDK integration</span>
+            <div class="wf-step-item">
+              <div class="wf-step-num">2</div>
+              <div class="wf-step-content">
+                <div class="wf-step-title">Full-Repository Coding &mdash; <a href="tools/cursor.html">Cursor</a> / <a href="tools/github-copilot.html">Copilot</a></div>
+                <div class="wf-step-detail">Implement features with multi-file edits, inline terminal debugging, and clean refactoring loops.</div>
+              </div>
             </div>
-            <div class="wf-step">
-              <span class="n">4</span>
-              <span>Production monitoring &amp; observability</span>
+            <div class="wf-step-item">
+              <div class="wf-step-num">3</div>
+              <div class="wf-step-content">
+                <div class="wf-step-title">Data Pipeline Automation &mdash; <a href="tools/byteflow.html">ByteFlow</a></div>
+                <div class="wf-step-detail">Generate robust ETL connectors, webhook handlers, and background event listeners.</div>
+              </div>
+            </div>
+            <div class="wf-step-item">
+              <div class="wf-step-num">4</div>
+              <div class="wf-step-content">
+                <div class="wf-step-title">Security &amp; Logic Audit &mdash; <a href="tools/deepseek.html">DeepSeek V3</a></div>
+                <div class="wf-step-detail">Run deep reasoning checks to catch SQL injections, race conditions, and unhandled memory leaks.</div>
+              </div>
             </div>
           </div>
-          <div class="wf-card-foot">
-            <span class="pill">Developer Stack</span>
-            <a class="view-tool-btn" href="tools.html?cat=coding">Explore Dev Tools →</a>
+
+          <div class="wf-foot">
+            <span class="wf-cost-pill free">Freemium Ready</span>
+            <span class="wf-action-btn" onclick="copyWorkflow('Full-Stack Software Engineering', 'Claude -> Cursor -> ByteFlow -> DeepSeek')">Copy Stack Recipe &rarr;</span>
           </div>
         </div>
 
-        <!-- Workflow 4: Architectural 3D Space Planning -->
-        <div class="wf-card reveal">
-          <span class="wf-goal">GOAL — REAL ESTATE &amp; INTERIORS</span>
-          <h3>Architectural Floor Plan Pipeline</h3>
-          <div class="wf-chain">
-            <div class="wf-step">
-              <span class="n">1</span>
-              <span>Input rough sketch or dimensions</span>
+        <!-- WORKFLOW 4: E-Commerce Studio & Product Catalog -->
+        <div class="wf-card" data-cat="ecommerce">
+          <div class="wf-head">
+            <div class="wf-badge-row">
+              <span class="wf-tag">E-Commerce Studio</span>
+              <span class="wf-savings">&#9733; 90% Photo Studio Savings</span>
             </div>
-            <div class="wf-step">
-              <span class="n">2</span>
-              <span>Generate 2D/3D layouts — <a href="tools/make-floor-plan.html">Make Floor Plan</a></span>
+            <h3>E-Commerce Studio &amp; Store Automation</h3>
+            <p class="wf-desc">Transform raw smartphone product photos into luxury advertising assets, automated promotional banners, and 24/7 AI-guided customer support.</p>
+          </div>
+
+          <!-- Chain Strip -->
+          <div class="wf-chain-strip">
+            <a class="wf-tool-node" href="tools/productshot-ai.html">
+              <img src="https://www.google.com/s2/favicons?domain=productshot.ai&amp;sz=64" alt="ProductShot AI"/> ProductShot
+            </a>
+            <span class="wf-chain-arrow">&rarr;</span>
+            <a class="wf-tool-node" href="tools/retouchia.html">
+              <img src="https://www.google.com/s2/favicons?domain=retouchia.com&amp;sz=64" alt="Retouchia"/> Retouchia
+            </a>
+            <span class="wf-chain-arrow">&rarr;</span>
+            <a class="wf-tool-node" href="tools/canva-ai.html">
+              <img src="https://www.google.com/s2/favicons?domain=canva.com&amp;sz=64" alt="Canva AI"/> Canva AI
+            </a>
+            <span class="wf-chain-arrow">&rarr;</span>
+            <a class="wf-tool-node" href="tools/robylon.html">
+              <img src="https://www.google.com/s2/favicons?domain=robylon.ai&amp;sz=64" alt="Robylon"/> Robylon
+            </a>
+          </div>
+
+          <!-- Steps -->
+          <div class="wf-steps">
+            <div class="wf-step-item">
+              <div class="wf-step-num">1</div>
+              <div class="wf-step-content">
+                <div class="wf-step-title">3D Studio Environment &mdash; <a href="tools/productshot-ai.html">ProductShot AI</a></div>
+                <div class="wf-step-detail">Place isolated product images into custom studio scenes with realistic lighting, shadows, and reflections.</div>
+              </div>
             </div>
-            <div class="wf-step">
-              <span class="n">3</span>
-              <span>Add interior furniture &amp; lighting</span>
+            <div class="wf-step-item">
+              <div class="wf-step-num">2</div>
+              <div class="wf-step-content">
+                <div class="wf-step-title">Detail &amp; Texture Enhancement &mdash; <a href="tools/retouchia.html">Retouchia</a></div>
+                <div class="wf-step-detail">Remove micro-blemishes, sharpen fine material textures, and standardize color grading across SKUs.</div>
+              </div>
             </div>
-            <div class="wf-step">
-              <span class="n">4</span>
-              <span>Export print-ready PDF blueprints</span>
+            <div class="wf-step-item">
+              <div class="wf-step-num">3</div>
+              <div class="wf-step-content">
+                <div class="wf-step-title">Catalog Ads &amp; Social Creatives &mdash; <a href="tools/canva-ai.html">Canva AI</a></div>
+                <div class="wf-step-detail">Batch-generate Instagram carousel slides, promotional web banners, and TikTok ad creative variants.</div>
+              </div>
+            </div>
+            <div class="wf-step-item">
+              <div class="wf-step-num">4</div>
+              <div class="wf-step-content">
+                <div class="wf-step-title">Autonomous Store Support &mdash; <a href="tools/robylon.html">Robylon</a></div>
+                <div class="wf-step-detail">Deploy conversational shopping assistants to answer sizing questions and boost checkout conversion rates.</div>
+              </div>
             </div>
           </div>
-          <div class="wf-card-foot">
-            <span class="pill free">Free Plan Ready</span>
-            <a class="view-tool-btn" href="tools.html?cat=design">Explore Design Tools →</a>
+
+          <div class="wf-foot">
+            <span class="wf-cost-pill free">Free Plans Available</span>
+            <span class="wf-action-btn" onclick="copyWorkflow('E-Commerce Studio Pipeline', 'ProductShot AI -> Retouchia -> Canva AI -> Robylon')">Copy Stack Recipe &rarr;</span>
           </div>
         </div>
 
-        <!-- Workflow 5: Executive Presentations & Web Slides -->
-        <div class="wf-card reveal">
-          <span class="wf-goal">GOAL — PITCH &amp; WEBINAR DECKS</span>
-          <h3>Markdown-to-Slide Deck Engine</h3>
-          <div class="wf-chain">
-            <div class="wf-step">
-              <span class="n">1</span>
-              <span>Draft outline or markdown notes</span>
+        <!-- WORKFLOW 5: Deep Academic Research & Knowledge Synthesis -->
+        <div class="wf-card" data-cat="research">
+          <div class="wf-head">
+            <div class="wf-badge-row">
+              <span class="wf-tag">Research &amp; Docs</span>
+              <span class="wf-savings">&#9733; 50+ Papers in 1 Hour</span>
             </div>
-            <div class="wf-step">
-              <span class="n">2</span>
-              <span>Synthesize HTML slides — <a href="tools/htmlslides.html">HtmlSlides</a></span>
+            <h3>Deep Academic &amp; Market Research</h3>
+            <p class="wf-desc">Rapidly survey dozens of scientific papers, technical whitepapers, or industry reports and transform findings into structured executive memos with citations.</p>
+          </div>
+
+          <!-- Chain Strip -->
+          <div class="wf-chain-strip">
+            <a class="wf-tool-node" href="tools/perplexity.html">
+              <img src="https://www.google.com/s2/favicons?domain=perplexity.ai&amp;sz=64" alt="Perplexity"/> Perplexity
+            </a>
+            <span class="wf-chain-arrow">&rarr;</span>
+            <a class="wf-tool-node" href="tools/paperfig.html">
+              <img src="https://www.google.com/s2/favicons?domain=paperfig.com&amp;sz=64" alt="PaperFig"/> PaperFig
+            </a>
+            <span class="wf-chain-arrow">&rarr;</span>
+            <a class="wf-tool-node" href="tools/markany.html">
+              <img src="https://www.google.com/s2/favicons?domain=markany.ai&amp;sz=64" alt="MarkAny"/> MarkAny
+            </a>
+            <span class="wf-chain-arrow">&rarr;</span>
+            <a class="wf-tool-node" href="tools/notion-ai.html">
+              <img src="https://www.google.com/s2/favicons?domain=notion.so&amp;sz=64" alt="Notion AI"/> Notion AI
+            </a>
+          </div>
+
+          <!-- Steps -->
+          <div class="wf-steps">
+            <div class="wf-step-item">
+              <div class="wf-step-num">1</div>
+              <div class="wf-step-content">
+                <div class="wf-step-title">Broad Discovery &amp; Synthesis &mdash; <a href="tools/perplexity.html">Perplexity</a></div>
+                <div class="wf-step-detail">Search peer-reviewed literature, identify primary author consensus, and compile citation lists.</div>
+              </div>
             </div>
-            <div class="wf-step">
-              <span class="n">3</span>
-              <span>Apply custom branding &amp; speaker notes</span>
+            <div class="wf-step-item">
+              <div class="wf-step-num">2</div>
+              <div class="wf-step-content">
+                <div class="wf-step-title">Deep PDF Analysis &amp; Figures &mdash; <a href="tools/paperfig.html">PaperFig</a></div>
+                <div class="wf-step-detail">Extract complex data tables, scientific figures, and methodology notes from 40-page technical PDFs.</div>
+              </div>
             </div>
-            <div class="wf-step">
-              <span class="n">4</span>
-              <span>Share instant responsive web link</span>
+            <div class="wf-step-item">
+              <div class="wf-step-num">3</div>
+              <div class="wf-step-content">
+                <div class="wf-step-title">Structured Markdown Memo &mdash; <a href="tools/markany.html">MarkAny</a></div>
+                <div class="wf-step-detail">Format mathematical formulas, charts, and key executive takeaways into crisp, clean documentation.</div>
+              </div>
+            </div>
+            <div class="wf-step-item">
+              <div class="wf-step-num">4</div>
+              <div class="wf-step-content">
+                <div class="wf-step-title">Knowledge Base Archival &mdash; <a href="tools/notion-ai.html">Notion AI</a></div>
+                <div class="wf-step-detail">Index research into team workspaces for semantic question-answering across future projects.</div>
+              </div>
             </div>
           </div>
-          <div class="wf-card-foot">
-            <span class="pill free">Freemium</span>
-            <a class="view-tool-btn" href="tools.html?cat=productivity">Explore Productivity →</a>
+
+          <div class="wf-foot">
+            <span class="wf-cost-pill free">Freemium Stack</span>
+            <span class="wf-action-btn" onclick="copyWorkflow('Deep Research Pipeline', 'Perplexity -> PaperFig -> MarkAny -> Notion AI')">Copy Stack Recipe &rarr;</span>
           </div>
         </div>
 
-        <!-- Workflow 6: Organic Search & Content Authority -->
-        <div class="wf-card reveal">
-          <span class="wf-goal">GOAL — TOP 3 GOOGLE RANKINGS</span>
-          <h3>SEO Dominance &amp; Content Strategy</h3>
-          <div class="wf-chain">
-            <div class="wf-step">
-              <span class="n">1</span>
-              <span>Audit keywords &amp; competitors — <a href="tools/seokru.html">SeoKru</a></span>
+        <!-- WORKFLOW 6: Markdown-to-Presentation Deck Engine -->
+        <div class="wf-card" data-cat="creative">
+          <div class="wf-head">
+            <div class="wf-badge-row">
+              <span class="wf-tag">Presentations</span>
+              <span class="wf-savings">&#9733; Instant Deck Building</span>
             </div>
-            <div class="wf-step">
-              <span class="n">2</span>
-              <span>Draft high-intent authoritative guides</span>
+            <h3>Interactive Web Slides &amp; Pitch Decks</h3>
+            <p class="wf-desc">Generate beautiful, responsive, web-native presentations from raw bullet points and notes &mdash; fully shareable via URL without cumbersome PowerPoint or Keynote files.</p>
+          </div>
+
+          <!-- Chain Strip -->
+          <div class="wf-chain-strip">
+            <a class="wf-tool-node" href="tools/claude.html">
+              <img src="https://www.google.com/s2/favicons?domain=claude.ai&amp;sz=64" alt="Claude"/> Claude
+            </a>
+            <span class="wf-chain-arrow">&rarr;</span>
+            <a class="wf-tool-node" href="tools/htmlslides.html">
+              <img src="https://www.google.com/s2/favicons?domain=www.htmlslides.ai&amp;sz=64" alt="HtmlSlides"/> HtmlSlides
+            </a>
+            <span class="wf-chain-arrow">&rarr;</span>
+            <a class="wf-tool-node" href="tools/canva-ai.html">
+              <img src="https://www.google.com/s2/favicons?domain=canva.com&amp;sz=64" alt="Canva AI"/> Canva AI
+            </a>
+            <span class="wf-chain-arrow">&rarr;</span>
+            <a class="wf-tool-node" href="tools/vivamaker.html">
+              <img src="https://www.google.com/s2/favicons?domain=vivamaker.com&amp;sz=64" alt="VivaMaker"/> VivaMaker
+            </a>
+          </div>
+
+          <!-- Steps -->
+          <div class="wf-steps">
+            <div class="wf-step-item">
+              <div class="wf-step-num">1</div>
+              <div class="wf-step-content">
+                <div class="wf-step-title">Deck Narrative &amp; Pacing &mdash; <a href="tools/claude.html">Claude</a></div>
+                <div class="wf-step-detail">Structure the problem-solution storyline, compress slide copy, and write executive talking notes.</div>
+              </div>
             </div>
-            <div class="wf-step">
-              <span class="n">3</span>
-              <span>Optimize word density — <a href="free-tools.html">Free Tools</a></span>
+            <div class="wf-step-item">
+              <div class="wf-step-num">2</div>
+              <div class="wf-step-content">
+                <div class="wf-step-title">Web Slide Synthesis &mdash; <a href="tools/htmlslides.html">HtmlSlides</a></div>
+                <div class="wf-step-detail">Convert Markdown into responsive HTML/CSS slides with keyboard navigation and instant link sharing.</div>
+              </div>
             </div>
-            <div class="wf-step">
-              <span class="n">4</span>
-              <span>Publish, index, &amp; track backlink growth</span>
+            <div class="wf-step-item">
+              <div class="wf-step-num">3</div>
+              <div class="wf-step-content">
+                <div class="wf-step-title">Brand Visuals &amp; Diagramming &mdash; <a href="tools/canva-ai.html">Canva AI</a></div>
+                <div class="wf-step-detail">Generate brand-aligned diagrams, vector graphics, and chart assets for key milestone slides.</div>
+              </div>
+            </div>
+            <div class="wf-step-item">
+              <div class="wf-step-num">4</div>
+              <div class="wf-step-content">
+                <div class="wf-step-title">Interactive Elements &amp; Forms &mdash; <a href="tools/vivamaker.html">VivaMaker</a></div>
+                <div class="wf-step-detail">Embed live audience polls, demo calculators, and lead capture forms directly inside your web presentation.</div>
+              </div>
             </div>
           </div>
-          <div class="wf-card-foot">
-            <span class="pill">SEO Stack</span>
-            <a class="view-tool-btn" href="tools.html?cat=seo">Explore SEO Tools →</a>
+
+          <div class="wf-foot">
+            <span class="wf-cost-pill free">100% Free Ready</span>
+            <span class="wf-action-btn" onclick="copyWorkflow('Interactive Web Slides Engine', 'Claude -> HtmlSlides -> Canva AI -> VivaMaker')">Copy Stack Recipe &rarr;</span>
           </div>
         </div>
 
       </div>
+
+      <!-- BOTTOM CTA -->
+      <div style="background:linear-gradient(135deg,var(--surface),var(--surface-2)); border:1px solid var(--line); border-radius:20px; padding:48px 36px; text-align:center; max-width:860px; margin:0 auto;">
+        <h2 style="font-size:26px; font-weight:800; color:var(--ink); margin-bottom:12px;">Have a Unique Multi-Tool AI Workflow?</h2>
+        <p style="color:var(--ink-soft); font-size:15px; max-width:540px; margin:0 auto 24px; line-height:1.6;">We feature production workflows submitted by founders, creators, and engineers. Share your stack and get your tool combinations discovered by 10,000+ monthly AI operators.</p>
+        <div style="display:flex; justify-content:center; gap:14px; flex-wrap:wrap;">
+          <a class="btn btn-primary" href="submit.html">Submit Your Workflow Stack</a>
+          <a class="btn btn-ghost" href="compare.html">Compare Tools Side-by-Side &rarr;</a>
+        </div>
+      </div>
+
     </div>
   </section>
 </main>
 
+<!-- FOOTER -->
 <footer>
 <div class="wrap">
   <div class="foot-top">
     <div class="foot-brand">
-      <a class="logo" href="index.html">
-        <img alt="Flexora Logo" src="assets/images/logo.png"/>
-        Flexora<span>.Ai</span>
-      </a>
-      <p>Helping people find the right AI tool for the job — without the pay-to-list noise.</p>
-            <div class="social-row">
+      <a class="logo" href="index.html"><img alt="FlexoraAi" src="assets/images/logo.png"/>Flexora<span>Ai</span></a>
+      <p style="font-size:13px; color:var(--ink-soft); margin:14px 0 18px; line-height:1.6;">Discover, compare, and connect the world&apos;s best AI tools into automated production pipelines.</p>
+      <div class="social-row">
         <a class="soc-li" href="https://www.linkedin.com/company/flexora-ai" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg></a>
         <a class="soc-fb" href="https://www.facebook.com/flexoraai/" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.265h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073Z"/></svg></a>
         <a class="soc-ig" href="https://www.instagram.com/flexora.ai.tools/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
         <a class="soc-pi" href="https://www.pinterest.com/flexora_ai/" target="_blank" rel="noopener" aria-label="Pinterest" title="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg></a>
-        <a class="soc-x"  href="https://x.com/Flexora_Ai" target="_blank" rel="noopener" aria-label="X / Twitter" title="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a class="soc-x" href="https://x.com/Flexora_Ai" target="_blank" rel="noopener" aria-label="X / Twitter" title="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
         <a class="soc-gh" href="https://github.com/flexora-ai" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
         <a class="soc-em" href="mailto:ownerflexora.ai@gmail.com" aria-label="Email" title="Email us"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
       </div>
@@ -448,84 +893,83 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
     <div class="foot-col">
       <h4>Platform</h4>
-      <a href="finder.html">Tool Finder</a>
+      <a href="finder.html">AI Tool Finder</a>
       <a href="workflows.html">Workflows</a>
-      <a href="blog.html">AI Guides & Blog</a>
+      <a href="services.html">Services &amp; Pricing</a>
+      <a href="submit.html">Submit a Tool</a>
     </div>
     <div class="foot-col">
-      <h4>Company</h4>
-      <a href="about.html">About Flexora.Ai</a>
-      <a href="submit.html">Submit a Tool</a>
-      <a href="services.html">Contact & Services</a>
-      <a href="sitemap.html">Sitemap</a>
+      <h4>Resources</h4>
+      <a href="blog.html">AI Blog &amp; Guides</a>
+      <a href="about.html">About Flexora</a>
+      <a href="sitemap.html">HTML Sitemap</a>
+      <a href="sitemap.xml">XML Sitemap</a>
     </div>
     <div class="foot-col">
       <h4>Legal</h4>
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms of Service</a>
-      <a href="privacy.html#affiliate">Affiliate Disclosure</a>
+      <a href="submit.html#advertise">Advertise With Us</a>
     </div>
   </div>
   <div class="foot-bottom">
-    <span>© 2026 Flexora.Ai — Independent AI Tools Directory</span>
-    <span>All external tool links open official provider websites</span>
+    <div>&copy; 2026 FlexoraAi &mdash; Curated directory of verified AI tools.</div>
+    <div style="display:flex; gap:16px;">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="sitemap.html">Sitemap</a>
+    </div>
   </div>
 </div>
 </footer>
 
-<!-- Modals & FAB -->
-<button aria-label="Back to top" class="back-to-top" id="backToTop">↑</button>
-<div class="toast" id="toast"></div>
-<button aria-label="Contact us" class="fab fab-contact" id="fabContact"><i class="fab-icon">✉</i><span>Contact</span></button>
-<button aria-label="Submit a tool" class="fab fab-submit" id="fabSubmit"><i class="fab-icon">+</i><span>Submit tool</span></button>
+<div class="wf-toast" id="wfToast">Stack recipe copied to clipboard!</div>
 
-<div class="modal-overlay" id="contactModal">
-  <div class="modal-box">
-    <button aria-label="Close" class="modal-close" id="contactModalClose">✕</button>
-    <span class="eyebrow"><span class="dot"></span>Get in touch</span>
-    <h3>Contact Flexora.Ai</h3>
-    <p class="modal-sub">We usually reply within 24 hours.</p>
-    <form action="https://formspree.io/f/xyegnwpy" class="mini-form" id="popupContactForm" method="POST">
-      <div class="mf-row">
-        <input name="name" placeholder="Your name" required type="text"/>
-        <input name="email" placeholder="Your email" required type="email"/>
-      </div>
-      <textarea name="message" placeholder="What's on your mind?" required rows="4"></textarea>
-      <button class="btn btn-primary" style="width:100%;" type="submit">Send Message</button>
-    </form>
-    <div class="mf-success" id="popupContactSuccess">
-      <span style="font-size:32px;">✅</span>
-      <h3>Thanks — message sent!</h3>
-      <p>We'll get back to you soon.</p>
-    </div>
-  </div>
-</div>
+<script>
+// Filter chips logic
+document.querySelectorAll('.wf-chip').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.wf-chip').forEach(function(b){ b.classList.remove('active'); });
+    this.classList.add('active');
+    var cat = this.getAttribute('data-cat');
+    document.querySelectorAll('.wf-card').forEach(function(card){
+      if(cat === 'all' || card.getAttribute('data-cat') === cat){
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
 
-<div class="modal-overlay" id="submitModal">
-  <div class="modal-box">
-    <button aria-label="Close" class="modal-close" id="submitModalClose">✕</button>
-    <span class="eyebrow"><span class="dot"></span>Building an AI tool?</span>
-    <h3>Submit Your Tool</h3>
-    <p class="modal-sub">Free to submit — every tool is reviewed by hand.</p>
-    <form action="https://formspree.io/f/xzepjrvz" class="mini-form" id="popupSubmitForm" method="POST">
-      <div class="mf-row">
-        <input name="tool_name" placeholder="Tool name" required type="text"/>
-        <input name="website" placeholder="Website URL" required type="url"/>
-      </div>
-      <textarea name="description" placeholder="Brief description of what your tool does" required rows="3"></textarea>
-      <input name="contact_email" placeholder="Your contact email" required type="email"/>
-      <button class="btn btn-primary" style="width:100%;" type="submit">Submit for Review</button>
-    </form>
-    <div class="mf-success" id="popupSubmitSuccess">
-      <span style="font-size:32px;">🚀</span>
-      <h3>Got it — thank you!</h3>
-      <p>We review every submission carefully before listing.</p>
-    </div>
-  </div>
-</div>
+// Copy workflow recipe
+function copyWorkflow(name, chain){
+  var text = 'FlexoraAi Workflow: ' + name + '\nStack: ' + chain + '\nExplore tools on https://flexora-ai.github.io/workflows.html';
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(text).then(function(){
+      showToast('"' + name + '" recipe copied to clipboard!');
+    });
+  } else {
+    showToast('Workflow: ' + chain);
+  }
+}
 
-<!-- Core Scripts -->
-<script src="assets/js/main.js?v=2.2"></script>
-<script src="assets/js/modals.js?v=2.2"></script>
+function showToast(msg){
+  var t = document.getElementById('wfToast');
+  if(!t) return;
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 3000);
+}
+
+// Mobile menu toggle
+var mBtn = document.getElementById('menuBtn');
+var mMenu = document.getElementById('mobileMenu');
+if(mBtn && mMenu){
+  mBtn.addEventListener('click', function(){
+    mMenu.classList.toggle('open');
+  });
+}
+</script>
 </body>
 </html>
