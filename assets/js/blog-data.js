@@ -120,6 +120,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-zero-gravity-mode",
+    title: "Google Zero Gravity Mode: What It Is and How to Try It",
+    excerpt: "Zero gravity Google is Mr.doob’s Google Space: a homepage that floats and drifts. How it works, where to try it, and why search doesn’t.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-02",
+    readMins: 4,
+    image: "assets/images/blog/google-zero-gravity-mode.webp",
+    imageAlt: "Google zero gravity mode: the Google logo and search box floating in space",
+    icon: "📄",
+    published: true,
+    featured: false
+  },
+  {
     slug: "hidden-google-games-list",
     title: "Hidden Google Games List: What You Can Still Play",
     excerpt: "Snake, Solitaire, Pac-Man, Chrome Dino and more: every hidden Google game worth knowing, how to open it and whether it still works.",
