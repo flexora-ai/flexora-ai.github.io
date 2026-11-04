@@ -106,6 +106,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-underwater-mr-doob-experiments",
+    title: "Google Underwater: Is It a Mr.doob Experiment?",
+    excerpt: "Google Underwater is often credited to Mr.doob. The record points to a 2012 Google China April Fools prank. Here is the story and where to play it.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-02",
+    readMins: 4,
+    image: "assets/images/blog/google-underwater-mr-doob-experiments.webp",
+    imageAlt: "Google Underwater Search: the Google logo floating on water with fish swimming below",
+    icon: "📄",
+    published: true,
+    featured: false
+  },
+  {
     slug: "hidden-google-games-list",
     title: "Hidden Google Games List: What You Can Still Play",
     excerpt: "Snake, Solitaire, Pac-Man, Chrome Dino and more: every hidden Google game worth knowing, how to open it and whether it still works.",
