@@ -64,6 +64,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-in-1997-trick",
+    title: "Google in 1997 Trick: Is There One? What to Try Instead",
+    excerpt: "There is no known official “Google in 1997” trick. Here is what Google was in 1997, what to search instead, and how to view early Google safely.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-02",
+    readMins: 4,
+    image: "assets/images/blog/google-in-1997-trick.webp",
+    imageAlt: "Google in 1997 trick: an early Google search page on an old computer monitor",
+    icon: "📄",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-in-1998-game-play",
     title: "Google in 1998 Game Play: Is It a Game? How to Try It",
     excerpt: "Google in 1998 isn’t a game, but there is a retro page to play with. How to open it, what you can click, and what the simulators really are.",
