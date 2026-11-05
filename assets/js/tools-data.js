@@ -1,5 +1,5 @@
 ﻿/* ============================================================
-   Flexora.Ai — assets/js/tools-data.js
+   FlexoraAi — assets/js/tools-data.js
    SINGLE SOURCE OF TRUTH for tool + category data.
    Loaded by index.html, tools.html, compare.html, finder.html, etc.
    ============================================================ */
