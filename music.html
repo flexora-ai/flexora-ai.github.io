@@ -1389,13 +1389,33 @@ footer {
 
     // â”€â”€ POPULAR ARTIST & TRACK METADATA â”€â”€
   var knownMeta = {
-    'the-weeknd-blinding-lights.m4a': { name: 'Blinding Lights', artist: 'The Weeknd', mood: 'Synthwave Hit' },
-    'roddy-ricch-the-box.m4a': { name: 'The Box', artist: 'Roddy Ricch', mood: 'Hip-Hop Trap' },
-    'the-weeknd-starboy.m4a': { name: 'Starboy', artist: 'The Weeknd ft. Daft Punk', mood: 'Electropop' },
-    'travis-scott-goosebumps.m4a': { name: 'Goosebumps', artist: 'Travis Scott', mood: 'Atmospheric Trap' },
-    'post-malone-circles.m4a': { name: 'Circles', artist: 'Post Malone', mood: 'Melodic Chill' },
-    'pulse-vector.mp3': { name: 'Pulse Vector', artist: 'FlexoraAi Lounge', mood: 'Ambient Focus' }
-  };
+      'the-weeknd-blinding-lights.m4a': { name: 'Blinding Lights', artist: 'The Weeknd', mood: 'Synthwave Hit' },
+      'roddy-ricch-the-box.m4a': { name: 'The Box', artist: 'Roddy Ricch', mood: 'Hip-Hop Trap' },
+      'the-weeknd-starboy.m4a': { name: 'Starboy', artist: 'The Weeknd ft. Daft Punk', mood: 'Electropop' },
+      'travis-scott-goosebumps.m4a': { name: 'Goosebumps', artist: 'Travis Scott', mood: 'Atmospheric Trap' },
+      'post-malone-circles.m4a': { name: 'Circles', artist: 'Post Malone', mood: 'Melodic Chill' },
+      'drake-gods-plan.m4a': { name: 'God''s Plan', artist: 'Drake', mood: 'Hip-Hop Anthem' },
+      'travis-scott-sicko-mode.m4a': { name: 'SICKO MODE', artist: 'Travis Scott ft. Drake', mood: 'Trap Masterpiece' },
+      'the-weeknd-save-your-tears.m4a': { name: 'Save Your Tears', artist: 'The Weeknd', mood: 'Synthpop Hit' },
+      'kendrick-lamar-humble.m4a': { name: 'HUMBLE.', artist: 'Kendrick Lamar', mood: 'West Coast Rap' },
+      'roddy-ricch-high-fashion.m4a': { name: 'High Fashion', artist: 'Roddy Ricch ft. Mustard', mood: 'Melodic Trap' },
+      'metro-boomin-superhero.m4a': { name: 'Superhero', artist: 'Metro Boomin & Future', mood: 'Dark Trap' },
+      '21-savage-bank-account.m4a': { name: 'Bank Account', artist: '21 Savage', mood: 'Atlanta Trap' },
+      'post-malone-sunflower.m4a': { name: 'Sunflower', artist: 'Post Malone & Swae Lee', mood: 'Vibrant Pop' },
+      'sza-kill-bill.m4a': { name: 'Kill Bill', artist: 'SZA', mood: 'Alt R&B' },
+      'juice-wrld-lucid-dreams.m4a': { name: 'Lucid Dreams', artist: 'Juice WRLD', mood: 'Emo Rap' },
+      'drake-jimmy-cooks.m4a': { name: 'Jimmy Cooks', artist: 'Drake ft. 21 Savage', mood: 'Hype Rap' },
+      'the-weeknd-cant-feel-my-face.m4a': { name: 'Can''t Feel My Face', artist: 'The Weeknd', mood: 'Funk Pop' },
+      'jack-harlow-first-class.m4a': { name: 'First Class', artist: 'Jack Harlow', mood: 'Chill Rap' },
+      'eminem-lose-yourself.m4a': { name: 'Lose Yourself', artist: 'Eminem', mood: 'Legendary Hip-Hop' },
+      'j-cole-no-role-modelz.m4a': { name: 'No Role Modelz', artist: 'J. Cole', mood: 'Conscious Rap' },
+      'frank-ocean-chanel.m4a': { name: 'Chanel', artist: 'Frank Ocean', mood: 'Atmospheric R&B' },
+      'daft-punk-get-lucky.m4a': { name: 'Get Lucky', artist: 'Daft Punk ft. Pharrell Williams', mood: 'Disco Funk' },
+      'asap-rocky-praise-the-lord.m4a': { name: 'Praise The Lord', artist: 'A$AP Rocky ft. Skepta', mood: 'Flute Trap' },
+      'lil-baby-drip-too-hard.m4a': { name: 'Drip Too Hard', artist: 'Lil Baby & Gunna', mood: 'Melodic Trap' },
+      'metro-boomin-creepin.m4a': { name: 'Creepin''', artist: 'Metro Boomin, The Weeknd & 21 Savage', mood: 'Midnight R&B' },
+      'pulse-vector.mp3': { name: 'Pulse Vector', artist: 'FlexoraAi Lounge', mood: 'Ambient Focus' }
+    };
 function prettifyFilename(name) {
     var n = name.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
     return n.replace(/\b\w/g, function(c){ return c.toUpperCase(); });
