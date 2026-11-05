@@ -22,6 +22,20 @@ const BLOG_POSTS = [
     featured: true
   },
   {
+    slug: "google-askew-tilt-trick",
+    title: "Google Askew Trick: Make the Search Page Tilt",
+    excerpt: "Search “askew” and Google leans the page. How it works, the older tilt version, why the next search straightens it, and a CSS snippet to build your own.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-02",
+    readMins: 5,
+    image: "assets/images/blog/google-askew-tilt-trick.webp",
+    imageAlt: "Google askew trick: the search results page tilted slightly to one side",
+    icon: "📄",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-dinosaur-game-hacks",
     title: "Google Dinosaur Game Hacks: Speed, Jump, Invincible",
     excerpt: "Copy-paste console cheats for Chrome’s dinosaur game, plus how to open it, where it came from, and what to do when a hack stops working.",
