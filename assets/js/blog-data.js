@@ -2528,6 +2528,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-time-machine-trick",
+    title: "Google Time Machine Trick: 5 Ways to Browse the Past",
+    excerpt: "Google has no time machine button, but five tools let you browse its past: the 1998 Easter egg, Wayback links, the Wayback Machine, date filters and Doodles.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-time-machine-trick.webp",
+    imageAlt: "Google time machine trick with a clock and archived versions of the Google homepage",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-underwater-fish-trick",
     title: "Google Underwater Fish Trick",
     excerpt: "Turn Google into an aquarium with the underwater trick. See what it does, how to try it, and how it differs from Google Gravity.",
