@@ -148,6 +148,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-search-tricks-list",
+    title: "Google Search Tricks List: Phrases That Still Work",
+    excerpt: "Every search phrase that makes Google do something odd, from barrel roll to 42, with what each does, whether it still works, and why some don’t.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-02",
+    readMins: 6,
+    image: "assets/images/blog/google-search-tricks-list.webp",
+    imageAlt: "Google search tricks list: phrases that spin, tilt and answer with 42 on the results page",
+    icon: "📄",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-underwater-mr-doob-experiments",
     title: "Google Underwater: Is It a Mr.doob Experiment?",
     excerpt: "Google Underwater is often credited to Mr.doob. The record points to a 2012 Google China April Fools prank. Here is the story and where to play it.",
