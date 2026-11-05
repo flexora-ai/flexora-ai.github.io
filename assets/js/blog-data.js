@@ -2388,6 +2388,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-in-2005-old-look",
+    title: "Google in 2005: Old Look, Maps, Earth and Analytics",
+    excerpt: "What did Google look like in 2005? The homepage barely changed, but Maps, Earth, Sitemaps and Analytics arrived. See the timeline and how to view snapshots.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-in-2005-old-look.webp",
+    imageAlt: "Google in 2005 old look with the Catull logo and the year of Maps and Earth",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-konami-code-trick",
     title: "Google Konami Code Trick",
     excerpt: "Say the Konami Code to Google voice search and it unlocks a joke cheat mode. Here is where it works, what it says and how to trigger it.",
