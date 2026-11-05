@@ -22,6 +22,20 @@ const BLOG_POSTS = [
     featured: true
   },
   {
+    slug: "google-answer-to-life-trick",
+    title: "Google Answer to Life Trick: Why It Says 42",
+    excerpt: "Ask Google for the answer to life, the universe and everything and it says 42. The Hitchhiker’s Guide joke, the exact phrase, and fun calculator tricks.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-02",
+    readMins: 6,
+    image: "assets/images/blog/google-answer-to-life-trick.webp",
+    imageAlt: "Google answer to life trick: the Google calculator answering 42",
+    icon: "📄",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-april-fools-pranks-history",
     title: "Google April Fools Pranks History: Best Jokes and Flops",
     excerpt: "From Gmail Paper to Pac-Man Maps: Google’s best April Fools’ pranks by year, the Mic Drop flop, and why the tradition went quiet after 2020.",
