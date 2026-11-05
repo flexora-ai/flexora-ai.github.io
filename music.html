@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-56W23QBB');</script>
+<!-- End Google Tag Manager -->
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Music Lounge &mdash; FlexoraAi</title>
+<meta name="description" content="Relax and focus with curated AI-generated ambient music while you explore the best AI tools. Built-in music player by FlexoraAi."/>
+<meta name="robots" content="index, follow"/>
+<link href="https://flexora-ai.github.io/music.html" rel="canonical"/>
+<link href="assets/images/logo.png" rel="icon" type="image/png"/>
+
+<!-- Social Meta -->
+<meta content="Music Lounge &mdash; FlexoraAi" property="og:title"/>
+<meta content="Relax and focus with curated ambient music while exploring AI tools." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://flexora-ai.github.io/assets/images/og-cover.jpg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+
+<style>
+:root {
+  --bg: #07090F;
+  --surface: #0F131D;
+  --surface-2: #161B28;
+  --line: #232838;
+  --teal: #2DE2C8;
+  --blue: #4C7BFF;
+  --purple: #A855F7;
+  --amber: #f59e0b;
+  --pink: #ec4899;
+  --ink: #F2F4FA;
+  --ink-soft: #8A90A6;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Sora', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+img, svg { display: block; max-width: 100%; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+.mono { font-family: 'IBM Plex Mono', monospace; }
+
+/* ── NAV ── */
+header {
+  position: sticky; top: 0; z-index: 60;
+  background: rgba(7,9,15,0.78);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+nav.wrap {
+  height: 76px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; }
+.logo img { width: 26px; height: 26px; object-fit: contain; }
+.logo span { color: var(--teal); }
+.nav-links { display: flex; gap: 26px; font-size: 14px; color: var(--ink-soft); }
+.nav-links a { position: relative; padding-bottom: 4px; transition: color .15s; }
+.nav-links a::after {
+  content: ""; position: absolute; left: 0; right: 100%; bottom: -2px;
+  height: 2px; background: var(--teal); transition: right .25s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--ink); }
+.nav-links a:hover::after, .nav-links a.active::after { right: 0; }
+@media(max-width:960px) { .nav-links { display: none; } }
+.btn {
+  font-weight: 600; font-size: 14px; padding: 11px 20px; border-radius: 8px;
+  border: none; cursor: pointer; transition: transform .15s, box-shadow .15s;
+}
+.btn-primary { background: var(--teal); color: #07090F; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -6px rgba(45,226,200,.5); }
+.btn-ghost { color: var(--ink-soft); border: 1px solid var(--line); background: transparent; }
+.btn-ghost:hover { color: var(--ink); border-color: var(--ink-soft); }
+.nav-cta { display: flex; gap: 12px; align-items: center; }
+.menu-btn {
+  display: none; background: none; border: 1px solid var(--line);
+  border-radius: 8px; width: 40px; height: 40px; color: var(--ink); font-size: 18px;
+}
+@media(max-width:960px) { .menu-btn { display: block; } .nav-cta .btn-ghost { display: none; } }
+.mobile-menu { display: none; flex-direction: column; padding: 12px 32px 20px; border-bottom: 1px solid var(--line); }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { padding: 10px 0; color: var(--ink-soft); font-size: 14.5px; border-bottom: 1px solid var(--line); }
+
+/* ── HERO ── */
+.music-hero {
+  padding: 80px 0 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.music-hero::before {
+  content: "";
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168,85,247,0.25), transparent 70%);
+  top: -200px; left: 50%; transform: translateX(-50%);
+  animation: heroGlow 6s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+@keyframes heroGlow {
+  0% { opacity: 0.4; scale: 1; }
+  100% { opacity: 0.7; scale: 1.2; }
+}
+.music-hero .eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12.5px; color: var(--purple);
+  border: 1px solid rgba(168,85,247,.35);
+  background: rgba(168,85,247,.08);
+  padding: 6px 14px; border-radius: 20px;
+  font-family: 'IBM Plex Mono', monospace;
+  margin-bottom: 18px;
+}
+.music-hero h1 {
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+.music-hero .grad {
+  background: linear-gradient(90deg, var(--purple), var(--pink), var(--teal));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradShift 5s ease-in-out infinite;
+}
+@keyframes gradShift {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+.music-hero p.lede {
+  color: var(--ink-soft);
+  font-size: 16px;
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ── PLAYER SECTION ── */
+.player-section {
+  padding: 0 0 80px;
+}
+
+/* ── MAIN PLAYER CARD ── */
+.player-card {
+  background: linear-gradient(145deg, var(--surface), var(--surface-2));
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 40px;
+  max-width: 720px;
+  margin: 0 auto 48px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6);
+}
+.player-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 20%, rgba(168,85,247,0.08), transparent 60%),
+              radial-gradient(ellipse at 70% 80%, rgba(45,226,200,0.06), transparent 60%);
+  pointer-events: none;
+}
+
+/* Now-playing info */
+.now-playing {
+  position: relative;
+  text-align: center;
+  margin-bottom: 32px;
+}
+.np-icon {
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  margin: 0 auto 20px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 10px 40px -10px rgba(168,85,247,0.5);
+  transition: all 0.3s;
+  animation: discSpin 8s linear infinite paused;
+}
+.np-icon.spinning { animation-play-state: running; }
+@keyframes discSpin {
+  to { transform: rotate(360deg); }
+}
+.np-icon svg { width: 36px; height: 36px; color: #fff; fill: none; stroke: currentColor; stroke-width: 2; }
+.np-title {
+  font-size: 22px; font-weight: 700; color: var(--ink);
+  margin-bottom: 6px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  max-width: 100%;
+}
+.np-artist {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px; color: var(--ink-soft);
+  letter-spacing: 0.04em;
+}
+
+/* ── VISUALIZER ── */
+.visualizer-wrap {
+  position: relative;
+  height: 80px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(22, 27, 40, 0.6);
+  border: 1px solid var(--line);
+}
+#visualizer {
+  width: 100%; height: 100%;
+  display: block;
+}
+
+/* ── PROGRESS BAR ── */
+.progress-wrap {
+  position: relative;
+  margin-bottom: 12px;
+}
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--line);
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  overflow: visible;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--purple), var(--teal));
+  border-radius: 3px;
+  width: 0%;
+  position: relative;
+  transition: width 0.1s linear;
+}
+.progress-fill::after {
+  content: "";
+  position: absolute;
+  right: -6px; top: -3px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 10px rgba(45,226,200,0.5);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.progress-bar:hover .progress-fill::after { opacity: 1; }
+.time-row {
+  display: flex; justify-content: space-between;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11.5px; color: var(--ink-soft);
+}
+
+/* ── CONTROLS ── */
+.controls {
+  display: flex; align-items: center; justify-content: center;
+  gap: 16px; margin: 24px 0 20px;
+  position: relative;
+}
+.ctrl-btn {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink-soft);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.ctrl-btn:hover {
+  color: var(--teal);
+  border-color: var(--teal);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px -6px rgba(45,226,200,0.3);
+}
+.ctrl-btn.active { color: var(--purple); border-color: var(--purple); }
+.ctrl-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+.play-btn {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 28px -6px rgba(168,85,247,0.5);
+  transition: all 0.2s;
+}
+.play-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 12px 36px -6px rgba(168,85,247,0.6);
+}
+.play-btn svg { width: 28px; height: 28px; fill: currentColor; stroke: none; }
+
+/* ── VOLUME ── */
+.volume-row {
+  display: flex; align-items: center; gap: 10px;
+  justify-content: center;
+  position: relative;
+}
+.vol-icon { color: var(--ink-soft); cursor: pointer; transition: color 0.2s; flex-shrink: 0; }
+.vol-icon:hover { color: var(--teal); }
+.vol-icon svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; }
+.vol-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 120px; height: 4px;
+  background: var(--line);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+.vol-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 8px rgba(45,226,200,0.4);
+  cursor: pointer;
+}
+.vol-slider::-moz-range-thumb {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--teal); border: none;
+}
+
+/* ── PLAYLIST ── */
+.playlist-section {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.playlist-head {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 18px; flex-wrap: wrap; gap: 12px;
+}
+.playlist-head h2 {
+  font-size: 22px; font-weight: 700;
+  display: flex; align-items: center; gap: 10px;
+}
+.playlist-head .count {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px; color: var(--purple);
+  background: rgba(168,85,247,0.12);
+  border: 1px solid rgba(168,85,247,0.3);
+  padding: 3px 10px; border-radius: 20px;
+}
+
+.playlist {
+  display: flex; flex-direction: column; gap: 6px;
+}
+.track {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 18px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+.track:hover {
+  border-color: rgba(168,85,247,0.45);
+  background: linear-gradient(145deg, var(--surface-2), var(--surface));
+  transform: translateX(4px);
+  box-shadow: 0 8px 24px -10px rgba(168,85,247,0.25);
+}
+.track.active {
+  border-color: var(--purple);
+  background: linear-gradient(145deg, rgba(168,85,247,0.1), var(--surface));
+  box-shadow: 0 0 0 1px rgba(168,85,247,0.15), 0 10px 30px -10px rgba(168,85,247,0.3);
+}
+.track-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px; font-weight: 600;
+  color: var(--ink-soft);
+  width: 28px; text-align: center; flex-shrink: 0;
+}
+.track.active .track-num { color: var(--purple); }
+.track-eq {
+  display: none;
+  align-items: flex-end; gap: 2px; height: 16px;
+  width: 28px; justify-content: center; flex-shrink: 0;
+}
+.track.active .track-num { display: none; }
+.track.active .track-eq { display: flex; }
+.track-eq i {
+  width: 3px; background: var(--purple); border-radius: 1px;
+  animation: eqBar 0.7s ease-in-out infinite;
+}
+.track-eq i:nth-child(1) { height: 60%; animation-delay: 0s; }
+.track-eq i:nth-child(2) { height: 100%; animation-delay: 0.15s; }
+.track-eq i:nth-child(3) { height: 40%; animation-delay: 0.3s; }
+.track-eq i:nth-child(4) { height: 80%; animation-delay: 0.45s; }
+@keyframes eqBar {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+
+.track-icon {
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(168,85,247,0.2), rgba(236,72,153,0.15));
+  border: 1px solid rgba(168,85,247,0.25);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--purple);
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+.track:hover .track-icon, .track.active .track-icon {
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 16px -4px rgba(168,85,247,0.4);
+}
+.track-icon svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+.track-info { flex: 1; min-width: 0; }
+.track-name {
+  font-size: 14.5px; font-weight: 600; color: var(--ink);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  margin-bottom: 3px;
+}
+.track-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11.5px; color: var(--ink-soft);
+  display: flex; gap: 12px; align-items: center;
+}
+.track-dur {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px; color: var(--ink-soft); flex-shrink: 0;
+}
+
+/* ── EMPTY STATE ── */
+.empty-playlist {
+  text-align: center;
+  padding: 60px 24px;
+  border: 1.5px dashed var(--line);
+  border-radius: 18px;
+  background: rgba(15,19,29,0.5);
+}
+.empty-playlist h3 { font-size: 20px; margin-bottom: 10px; color: var(--ink); }
+.empty-playlist p { color: var(--ink-soft); font-size: 14px; max-width: 440px; margin: 0 auto 20px; line-height: 1.6; }
+.empty-playlist code {
+  display: inline-block;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  color: var(--teal);
+}
+
+/* ── LOADING ── */
+.loading-state {
+  text-align: center; padding: 40px;
+  color: var(--ink-soft); font-size: 14px;
+}
+.loading-state .spinner {
+  width: 32px; height: 32px;
+  border: 3px solid var(--line);
+  border-top-color: var(--purple);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 14px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── HOW TO ADD SECTION ── */
+.how-to {
+  max-width: 720px;
+  margin: 48px auto 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 32px;
+}
+.how-to h3 {
+  font-size: 18px; font-weight: 700; margin-bottom: 18px;
+  display: flex; align-items: center; gap: 10px;
+  color: var(--ink);
+}
+.how-to h3::before {
+  content: "";
+  display: inline-block;
+  width: 4px; height: 18px;
+  background: var(--purple);
+  border-radius: 2px;
+}
+.how-steps {
+  display: flex; flex-direction: column; gap: 16px;
+}
+.how-step {
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.how-step-num {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: rgba(168,85,247,0.12);
+  border: 1px solid rgba(168,85,247,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px; font-weight: 700;
+  color: var(--purple);
+  flex-shrink: 0;
+}
+.how-step-text {
+  font-size: 14px; color: var(--ink-soft); line-height: 1.6;
+}
+.how-step-text strong { color: var(--ink); }
+.how-step-text code {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  padding: 2px 8px;
+  border-radius: 5px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12.5px;
+  color: var(--teal);
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 56px 0 28px;
+  margin-top: 60px;
+}
+.foot-top {
+  display: grid; grid-template-columns: 1.3fr repeat(4,1fr);
+  gap: 32px; margin-bottom: 40px;
+}
+@media(max-width:860px) { .foot-top { grid-template-columns: 1fr 1fr; } }
+.foot-brand p { font-size: 13px; color: var(--ink-soft); max-width: 240px; margin: 12px 0 18px; line-height: 1.6; }
+.social-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.social-row a {
+  width: 36px; height: 36px; border-radius: 9px;
+  background: var(--surface-2); border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-soft); transition: all 0.2s;
+}
+.social-row a:hover { color: var(--teal); border-color: var(--teal); transform: translateY(-3px); }
+.social-row svg { width: 15px; height: 15px; }
+.foot-col h4 {
+  font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--ink-soft); margin-bottom: 14px; font-weight: 600;
+}
+.foot-col a { display: block; font-size: 13.5px; color: var(--ink-soft); margin-bottom: 10px; transition: color 0.2s; }
+.foot-col a:hover { color: var(--teal); }
+.foot-bottom {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  font-size: 12.5px; color: var(--ink-soft); padding-top: 22px; border-top: 1px solid var(--line);
+}
+
+@media(prefers-reduced-motion:reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-56W23QBB" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+
+<!-- HEADER -->
+<header>
+<nav class="wrap">
+  <a class="logo" href="index.html"><img alt="FlexoraAi" src="assets/images/logo.png"/>Flexora<span>Ai</span></a>
+  <div class="nav-links">
+    <a href="tools.html">Tools</a>
+    <a href="compare.html">Compare</a>
+    <a href="finder.html">Finder</a>
+    <a href="workflows.html">Workflows</a>
+    <a href="free-tools.html">Free Tools</a>
+    <a class="active" href="music.html">Music</a>
+    <a href="blog.html">Blog</a>
+  </div>
+  <div class="nav-cta">
+    <a class="btn btn-ghost" href="submit.html">Submit tool</a>
+    <button aria-label="Open menu" class="menu-btn" id="menuBtn">&#9776;</button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="tools.html">Tools</a>
+  <a href="compare.html">Compare</a>
+  <a href="finder.html">Finder</a>
+  <a href="workflows.html">Workflows</a>
+  <a href="free-tools.html">Free Tools</a>
+  <a href="music.html">Music</a>
+  <a href="blog.html">Blog</a>
+  <a href="submit.html">Submit tool</a>
+</div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="music-hero">
+    <div class="wrap">
+      <span class="eyebrow"><span style="width:7px;height:7px;border-radius:50%;background:var(--purple);box-shadow:0 0 10px var(--purple);animation:eqBar 1.2s ease-in-out infinite;display:inline-block;"></span>Now Streaming</span>
+      <h1><span class="grad">Music Lounge</span></h1>
+      <p class="lede">Relax, focus, and explore AI tools with curated ambient tracks. Upload your own songs to the audio folder and they appear here automatically.</p>
+    </div>
+  </section>
+
+  <!-- PLAYER -->
+  <section class="player-section">
+    <div class="wrap">
+
+      <!-- Main Player Card -->
+      <div class="player-card" id="playerCard">
+        <!-- Now Playing -->
+        <div class="now-playing">
+          <div class="np-icon" id="npIcon">
+            <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          </div>
+          <div class="np-title" id="npTitle">Select a track</div>
+          <div class="np-artist" id="npArtist">FlexoraAi Music Lounge</div>
+        </div>
+
+        <!-- Audio Visualizer -->
+        <div class="visualizer-wrap">
+          <canvas id="visualizer"></canvas>
+        </div>
+
+        <!-- Progress -->
+        <div class="progress-wrap">
+          <div class="progress-bar" id="progressBar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <div class="time-row">
+            <span id="currentTime">0:00</span>
+            <span id="totalTime">0:00</span>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+          <button class="ctrl-btn" id="shuffleBtn" title="Shuffle" aria-label="Shuffle">
+            <svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+          </button>
+          <button class="ctrl-btn" id="prevBtn" title="Previous" aria-label="Previous">
+            <svg viewBox="0 0 24 24"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" y1="19" x2="5" y2="5"/></svg>
+          </button>
+          <button class="play-btn" id="playBtn" title="Play/Pause" aria-label="Play">
+            <svg id="playIcon" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <svg id="pauseIcon" viewBox="0 0 24 24" style="display:none;"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+          </button>
+          <button class="ctrl-btn" id="nextBtn" title="Next" aria-label="Next">
+            <svg viewBox="0 0 24 24"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg>
+          </button>
+          <button class="ctrl-btn" id="repeatBtn" title="Repeat" aria-label="Repeat">
+            <svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+          </button>
+        </div>
+
+        <!-- Volume -->
+        <div class="volume-row">
+          <span class="vol-icon" id="volIcon" title="Mute/Unmute">
+            <svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          </span>
+          <input type="range" class="vol-slider" id="volSlider" min="0" max="100" value="75" aria-label="Volume"/>
+        </div>
+      </div>
+
+      <!-- Playlist -->
+      <div class="playlist-section">
+        <div class="playlist-head">
+          <h2>Playlist <span class="count" id="trackCount">0 tracks</span></h2>
+        </div>
+        <div class="playlist" id="playlist">
+          <div class="loading-state" id="loadingState">
+            <div class="spinner"></div>
+            Loading tracks from library&hellip;
+          </div>
+        </div>
+      </div>
+
+      <!-- How to Add Songs -->
+      <div class="how-to">
+        <h3>How to Add Your Songs</h3>
+        <div class="how-steps">
+          <div class="how-step">
+            <div class="how-step-num">1</div>
+            <div class="how-step-text">Go to your GitHub repository: <strong>flexora-ai/flexora-ai.github.io</strong></div>
+          </div>
+          <div class="how-step">
+            <div class="how-step-num">2</div>
+            <div class="how-step-text">Navigate to the <code>assets/audio/</code> folder</div>
+          </div>
+          <div class="how-step">
+            <div class="how-step-num">3</div>
+            <div class="how-step-text">Click <strong>&ldquo;Add file&rdquo; &rarr; &ldquo;Upload files&rdquo;</strong> and drop your <code>.mp3</code>, <code>.ogg</code>, or <code>.wav</code> files</div>
+          </div>
+          <div class="how-step">
+            <div class="how-step-num">4</div>
+            <div class="how-step-text">Commit the changes. <strong>That&rsquo;s it!</strong> Songs will appear on this page automatically within minutes.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+<div class="wrap">
+  <div class="foot-top">
+    <div class="foot-brand">
+      <a class="logo" href="index.html"><img alt="FlexoraAi" src="assets/images/logo.png"/>Flexora<span>Ai</span></a>
+      <p>Discover, compare, and connect the world&rsquo;s best AI tools into automated production pipelines.</p>
+      <div class="social-row">
+        <a href="https://www.linkedin.com/company/flexora-ai" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg></a>
+        <a href="https://www.facebook.com/flexoraai/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.265h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073Z"/></svg></a>
+        <a href="https://www.instagram.com/flexora.ai.tools/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+        <a href="https://x.com/Flexora_Ai" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a href="https://github.com/flexora-ai" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h4>Directory</h4>
+      <a href="tools.html">All Tools</a>
+      <a href="compare.html">Compare Tools</a>
+      <a href="free-tools.html">Free AI Tools</a>
+      <a href="music.html">Music Lounge</a>
+    </div>
+    <div class="foot-col">
+      <h4>Platform</h4>
+      <a href="finder.html">AI Tool Finder</a>
+      <a href="workflows.html">Workflows</a>
+      <a href="services.html">Services</a>
+      <a href="submit.html">Submit a Tool</a>
+    </div>
+    <div class="foot-col">
+      <h4>Resources</h4>
+      <a href="blog.html">Blog &amp; Guides</a>
+      <a href="about.html">About</a>
+      <a href="sitemap.html">Sitemap</a>
+    </div>
+    <div class="foot-col">
+      <h4>Legal</h4>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div>&copy; 2026 FlexoraAi &mdash; Curated directory of verified AI tools.</div>
+    <div style="display:flex; gap:16px;">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="sitemap.html">Sitemap</a>
+    </div>
+  </div>
+</div>
+</footer>
+
+<!-- AUDIO ELEMENT (hidden) -->
+<audio id="audio" preload="auto"></audio>
+
+<script>
+(function(){
+  'use strict';
+
+  // ── CONFIG ──
+  var GITHUB_API = 'https://api.github.com/repos/flexora-ai/flexora-ai.github.io/contents/assets/audio';
+  var AUDIO_BASE = 'assets/audio/';
+  var AUDIO_EXTS = ['.mp3', '.ogg', '.wav', '.m4a', '.aac', '.flac', '.webm'];
+
+  // ── DOM REFS ──
+  var audio      = document.getElementById('audio');
+  var playBtn    = document.getElementById('playBtn');
+  var playIcon   = document.getElementById('playIcon');
+  var pauseIcon  = document.getElementById('pauseIcon');
+  var prevBtn    = document.getElementById('prevBtn');
+  var nextBtn    = document.getElementById('nextBtn');
+  var shuffleBtn = document.getElementById('shuffleBtn');
+  var repeatBtn  = document.getElementById('repeatBtn');
+  var progressBar  = document.getElementById('progressBar');
+  var progressFill = document.getElementById('progressFill');
+  var currentTimeEl = document.getElementById('currentTime');
+  var totalTimeEl   = document.getElementById('totalTime');
+  var npTitle  = document.getElementById('npTitle');
+  var npArtist = document.getElementById('npArtist');
+  var npIcon   = document.getElementById('npIcon');
+  var volSlider = document.getElementById('volSlider');
+  var volIconEl = document.getElementById('volIcon');
+  var playlistEl = document.getElementById('playlist');
+  var trackCountEl = document.getElementById('trackCount');
+  var loadingEl = document.getElementById('loadingState');
+  var canvas    = document.getElementById('visualizer');
+  var canvasCtx = canvas.getContext('2d');
+
+  // ── STATE ──
+  var tracks = [];
+  var currentIdx = -1;
+  var isPlaying = false;
+  var isShuffle = false;
+  var repeatMode = 0; // 0 = off, 1 = all, 2 = one
+  var audioCtx, analyser, source, dataArray, sourceConnected = false;
+
+  // ── UTILITIES ──
+  function formatTime(s) {
+    if (!s || isNaN(s)) return '0:00';
+    var m = Math.floor(s / 60);
+    var sec = Math.floor(s % 60);
+    return m + ':' + (sec < 10 ? '0' : '') + sec;
+  }
+
+  function prettifyFilename(name) {
+    // Remove extension
+    var n = name.replace(/\.[^.]+$/, '');
+    // Replace dashes/underscores with spaces
+    n = n.replace(/[-_]/g, ' ');
+    // Title case
+    n = n.replace(/\b\w/g, function(c) { return c.toUpperCase(); });
+    return n;
+  }
+
+  // ── LOAD TRACKS FROM GITHUB API ──
+  function loadTracks() {
+    // First try GitHub API to discover all audio files
+    fetch(GITHUB_API)
+      .then(function(r) {
+        if (!r.ok) throw new Error('API error: ' + r.status);
+        return r.json();
+      })
+      .then(function(files) {
+        var audioFiles = files.filter(function(f) {
+          var ext = f.name.substring(f.name.lastIndexOf('.')).toLowerCase();
+          return AUDIO_EXTS.indexOf(ext) > -1;
+        });
+
+        if (audioFiles.length === 0) {
+          showEmpty();
+          return;
+        }
+
+        tracks = audioFiles.map(function(f, i) {
+          return {
+            name: prettifyFilename(f.name),
+            file: f.name,
+            src: AUDIO_BASE + f.name,
+            size: f.size,
+            idx: i
+          };
+        });
+
+        renderPlaylist();
+      })
+      .catch(function(err) {
+        console.warn('GitHub API failed, trying local fallback:', err);
+        // Fallback: try loading the known file
+        tracks = [{
+          name: 'Pulse Vector',
+          file: 'pulse-vector.mp3',
+          src: AUDIO_BASE + 'pulse-vector.mp3',
+          size: 237841,
+          idx: 0
+        }];
+        renderPlaylist();
+      });
+  }
+
+  function showEmpty() {
+    loadingEl.style.display = 'none';
+    playlistEl.innerHTML = '<div class="empty-playlist">' +
+      '<h3>No Tracks Found</h3>' +
+      '<p>Upload audio files to your GitHub repository to get started. Supported formats: MP3, OGG, WAV, M4A, FLAC.</p>' +
+      '<code>assets/audio/your-song.mp3</code>' +
+      '</div>';
+    trackCountEl.textContent = '0 tracks';
+  }
+
+  // ── RENDER PLAYLIST ──
+  function renderPlaylist() {
+    loadingEl.style.display = 'none';
+    trackCountEl.textContent = tracks.length + ' track' + (tracks.length !== 1 ? 's' : '');
+
+    var html = '';
+    tracks.forEach(function(t, i) {
+      var sizeKB = Math.round(t.size / 1024);
+      var sizeStr = sizeKB > 1024 ? (sizeKB / 1024).toFixed(1) + ' MB' : sizeKB + ' KB';
+      var ext = t.file.substring(t.file.lastIndexOf('.') + 1).toUpperCase();
+
+      html += '<div class="track' + (i === currentIdx ? ' active' : '') + '" data-idx="' + i + '">' +
+        '<span class="track-num">' + (i + 1) + '</span>' +
+        '<span class="track-eq"><i></i><i></i><i></i><i></i></span>' +
+        '<div class="track-icon"><svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>' +
+        '<div class="track-info">' +
+          '<div class="track-name">' + t.name + '</div>' +
+          '<div class="track-meta"><span>' + ext + '</span><span>' + sizeStr + '</span></div>' +
+        '</div>' +
+        '<span class="track-dur" id="dur-' + i + '">&mdash;</span>' +
+      '</div>';
+    });
+    playlistEl.innerHTML = html;
+
+    // Click listeners
+    playlistEl.querySelectorAll('.track').forEach(function(el) {
+      el.addEventListener('click', function() {
+        var idx = parseInt(this.getAttribute('data-idx'));
+        if (idx === currentIdx && isPlaying) {
+          pause();
+        } else if (idx === currentIdx) {
+          play();
+        } else {
+          loadTrack(idx);
+          play();
+        }
+      });
+    });
+
+    // Pre-load durations
+    tracks.forEach(function(t, i) {
+      var tempAudio = new Audio();
+      tempAudio.preload = 'metadata';
+      tempAudio.src = t.src;
+      tempAudio.addEventListener('loadedmetadata', function() {
+        var durEl = document.getElementById('dur-' + i);
+        if (durEl) durEl.textContent = formatTime(this.duration);
+      });
+    });
+  }
+
+  // ── TRACK LOADING ──
+  function loadTrack(idx) {
+    if (idx < 0 || idx >= tracks.length) return;
+    currentIdx = idx;
+    var t = tracks[idx];
+
+    audio.src = t.src;
+    audio.load();
+
+    npTitle.textContent = t.name;
+    npArtist.textContent = 'FlexoraAi Music Lounge';
+
+    // Update playlist active state
+    playlistEl.querySelectorAll('.track').forEach(function(el, i) {
+      el.classList.toggle('active', i === idx);
+    });
+  }
+
+  // ── PLAY / PAUSE ──
+  function play() {
+    if (currentIdx < 0 && tracks.length > 0) {
+      loadTrack(0);
+    }
+    if (currentIdx < 0) return;
+
+    audio.play().then(function() {
+      isPlaying = true;
+      playIcon.style.display = 'none';
+      pauseIcon.style.display = 'block';
+      npIcon.classList.add('spinning');
+      initVisualizer();
+    }).catch(function(err) {
+      console.warn('Play failed:', err);
+    });
+  }
+
+  function pause() {
+    audio.pause();
+    isPlaying = false;
+    playIcon.style.display = 'block';
+    pauseIcon.style.display = 'none';
+    npIcon.classList.remove('spinning');
+  }
+
+  function nextTrack() {
+    if (tracks.length === 0) return;
+    var next;
+    if (isShuffle) {
+      next = Math.floor(Math.random() * tracks.length);
+      if (next === currentIdx && tracks.length > 1) next = (next + 1) % tracks.length;
+    } else {
+      next = (currentIdx + 1) % tracks.length;
+    }
+    loadTrack(next);
+    play();
+  }
+
+  function prevTrack() {
+    if (tracks.length === 0) return;
+    if (audio.currentTime > 3) {
+      audio.currentTime = 0;
+      return;
+    }
+    var prev = (currentIdx - 1 + tracks.length) % tracks.length;
+    loadTrack(prev);
+    play();
+  }
+
+  // ── CONTROLS ──
+  playBtn.addEventListener('click', function() {
+    if (isPlaying) pause(); else play();
+  });
+
+  nextBtn.addEventListener('click', nextTrack);
+  prevBtn.addEventListener('click', prevTrack);
+
+  shuffleBtn.addEventListener('click', function() {
+    isShuffle = !isShuffle;
+    this.classList.toggle('active', isShuffle);
+  });
+
+  repeatBtn.addEventListener('click', function() {
+    repeatMode = (repeatMode + 1) % 3;
+    this.classList.toggle('active', repeatMode > 0);
+    if (repeatMode === 2) {
+      this.style.boxShadow = '0 0 0 2px var(--purple)';
+    } else {
+      this.style.boxShadow = '';
+    }
+  });
+
+  // ── PROGRESS ──
+  audio.addEventListener('timeupdate', function() {
+    if (!audio.duration) return;
+    var pct = (audio.currentTime / audio.duration) * 100;
+    progressFill.style.width = pct + '%';
+    currentTimeEl.textContent = formatTime(audio.currentTime);
+  });
+
+  audio.addEventListener('loadedmetadata', function() {
+    totalTimeEl.textContent = formatTime(audio.duration);
+  });
+
+  audio.addEventListener('ended', function() {
+    if (repeatMode === 2) {
+      audio.currentTime = 0;
+      play();
+    } else if (repeatMode === 1 || currentIdx < tracks.length - 1) {
+      nextTrack();
+    } else {
+      pause();
+      progressFill.style.width = '0%';
+    }
+  });
+
+  progressBar.addEventListener('click', function(e) {
+    if (!audio.duration) return;
+    var rect = this.getBoundingClientRect();
+    var pct = (e.clientX - rect.left) / rect.width;
+    audio.currentTime = pct * audio.duration;
+  });
+
+  // ── VOLUME ──
+  volSlider.addEventListener('input', function() {
+    audio.volume = this.value / 100;
+  });
+  audio.volume = 0.75;
+
+  volIconEl.addEventListener('click', function() {
+    if (audio.volume > 0) {
+      audio._savedVol = audio.volume;
+      audio.volume = 0;
+      volSlider.value = 0;
+    } else {
+      audio.volume = audio._savedVol || 0.75;
+      volSlider.value = Math.round(audio.volume * 100);
+    }
+  });
+
+  // ── AUDIO VISUALIZER ──
+  function initVisualizer() {
+    if (sourceConnected) return;
+    try {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      analyser = audioCtx.createAnalyser();
+      analyser.fftSize = 256;
+      source = audioCtx.createMediaElementSource(audio);
+      source.connect(analyser);
+      analyser.connect(audioCtx.destination);
+      dataArray = new Uint8Array(analyser.frequencyBinCount);
+      sourceConnected = true;
+      drawVisualizer();
+    } catch (e) {
+      console.warn('Visualizer init failed:', e);
+    }
+  }
+
+  function drawVisualizer() {
+    requestAnimationFrame(drawVisualizer);
+
+    var w = canvas.parentElement.clientWidth;
+    var h = canvas.parentElement.clientHeight;
+    if (canvas.width !== w) canvas.width = w;
+    if (canvas.height !== h) canvas.height = h;
+
+    canvasCtx.clearRect(0, 0, w, h);
+
+    if (!analyser || !isPlaying) {
+      // Idle animation - subtle sine wave
+      canvasCtx.beginPath();
+      canvasCtx.strokeStyle = 'rgba(168,85,247,0.2)';
+      canvasCtx.lineWidth = 1.5;
+      var t = Date.now() / 1200;
+      for (var i = 0; i < w; i++) {
+        var y = h / 2 + Math.sin(i * 0.02 + t) * 8 + Math.sin(i * 0.01 + t * 0.7) * 5;
+        if (i === 0) canvasCtx.moveTo(i, y);
+        else canvasCtx.lineTo(i, y);
+      }
+      canvasCtx.stroke();
+      return;
+    }
+
+    analyser.getByteFrequencyData(dataArray);
+    var barCount = Math.min(dataArray.length, 64);
+    var barWidth = (w / barCount) * 0.7;
+    var gap = (w / barCount) * 0.3;
+
+    for (var j = 0; j < barCount; j++) {
+      var val = dataArray[j] / 255;
+      var barHeight = val * h * 0.85;
+      var x = j * (barWidth + gap) + gap / 2;
+
+      // Gradient color from purple to teal
+      var ratio = j / barCount;
+      var r = Math.round(168 - ratio * 123);
+      var g = Math.round(85 + ratio * 141);
+      var b = Math.round(247 - ratio * 47);
+
+      canvasCtx.fillStyle = 'rgba(' + r + ',' + g + ',' + b + ',' + (0.5 + val * 0.5) + ')';
+      canvasCtx.beginPath();
+      canvasCtx.roundRect(x, h - barHeight, barWidth, barHeight, [4, 4, 0, 0]);
+      canvasCtx.fill();
+
+      // Reflection
+      canvasCtx.fillStyle = 'rgba(' + r + ',' + g + ',' + b + ',0.08)';
+      canvasCtx.fillRect(x, h - barHeight - 2, barWidth, 2);
+    }
+  }
+
+  // ── MOBILE MENU ──
+  var menuBtn = document.getElementById('menuBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', function() {
+      mobileMenu.classList.toggle('open');
+    });
+  }
+
+  // ── KEYBOARD SHORTCUTS ──
+  document.addEventListener('keydown', function(e) {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    switch (e.key) {
+      case ' ':
+        e.preventDefault();
+        if (isPlaying) pause(); else play();
+        break;
+      case 'ArrowRight':
+        if (audio.duration) audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+        break;
+      case 'ArrowLeft':
+        audio.currentTime = Math.max(0, audio.currentTime - 10);
+        break;
+      case 'n': case 'N':
+        nextTrack();
+        break;
+      case 'p': case 'P':
+        prevTrack();
+        break;
+    }
+  });
+
+  // ── roundRect polyfill ──
+  if (!CanvasRenderingContext2D.prototype.roundRect) {
+    CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
+      if (!r) r = [0,0,0,0];
+      var tl = r[0] || 0, tr = r[1] || 0;
+      this.moveTo(x + tl, y);
+      this.lineTo(x + w - tr, y);
+      this.quadraticCurveTo(x + w, y, x + w, y + tr);
+      this.lineTo(x + w, y + h);
+      this.lineTo(x, y + h);
+      this.lineTo(x, y + tl);
+      this.quadraticCurveTo(x, y, x + tl, y);
+      this.closePath();
+    };
+  }
+
+  // ── INIT ──
+  loadTracks();
+  drawVisualizer();
+
+})();
+</script>
+</body>
+</html>
