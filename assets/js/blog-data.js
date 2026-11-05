@@ -2710,6 +2710,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "old-google-homepage-trick",
+    title: "Old Google Homepage Trick: 4 Quick Ways to See It Fast",
+    excerpt: "Want to see the old Google homepage fast? Here are four ways, from a ten-second Easter egg to Wayback Machine snapshots, and what each one shows you today.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/old-google-homepage-trick.webp",
+    imageAlt: "Old Google homepage trick with four ways to view the retro Google page",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "pay-to-list-vs-free-ai-directory",
     title: "Pay-to-List vs Free AI Directory: Which Is Worth It? (2026)",
     excerpt: "A founder",
