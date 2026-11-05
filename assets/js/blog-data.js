@@ -2374,6 +2374,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-in-2000-old-look",
+    title: "Google in 2000: The Old Homepage, Logo and Features",
+    excerpt: "What did Google look like in 2000? See the old homepage, the Catull logo by Ruth Kedar, MentalPlex and the first ads, plus how to view snapshots yourself.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-in-2000-old-look.webp",
+    imageAlt: "Google in 2000 old look showing the early homepage with the Catull logo",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-konami-code-trick",
     title: "Google Konami Code Trick",
     excerpt: "Say the Konami Code to Google voice search and it unlocks a joke cheat mode. Here is where it works, what it says and how to trigger it.",
