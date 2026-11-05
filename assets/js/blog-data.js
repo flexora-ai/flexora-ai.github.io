@@ -8,6 +8,20 @@
 
 const BLOG_POSTS = [
   {
+    slug: "google-anagram-trick",
+    title: "Google Anagram Trick: Why It Asks “Nag a Ram?”",
+    excerpt: "Search “anagram” and Google asks if you meant “nag a ram.” The joke explained, the “define anagram” twist, other languages, and a checker you can build.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-02",
+    readMins: 5,
+    image: "assets/images/blog/google-anagram-trick.webp",
+    imageAlt: "Google anagram trick: the search page asking Did you mean nag a ram",
+    icon: "📄",
+    published: true,
+    featured: true
+  },
+  {
     slug: "google-april-fools-pranks-history",
     title: "Google April Fools Pranks History: Best Jokes and Flops",
     excerpt: "From Gmail Paper to Pac-Man Maps: Google’s best April Fools’ pranks by year, the Mic Drop flop, and why the tradition went quiet after 2020.",
@@ -19,7 +33,7 @@ const BLOG_POSTS = [
     imageAlt: "Google April Fools pranks history: a timeline of Google’s jokes from Gmail Paper to Pac-Man Maps",
     icon: "📄",
     published: true,
-    featured: true
+    featured: false
   },
   {
     slug: "google-askew-tilt-trick",
