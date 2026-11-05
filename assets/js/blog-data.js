@@ -2122,6 +2122,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-90s-easter-eggs",
+    title: "Google 90s Easter Eggs: Real Throwbacks and Myths Sorted",
+    excerpt: "Google was founded in 1998, so its 90s Easter eggs are throwbacks. See the real ones, from Google in 1998 to the 20th anniversary and the 2026 Zelda egg.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-90s-easter-eggs.webp",
+    imageAlt: "Google 90s Easter eggs showing retro throwbacks from 1998 onward",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-ball-pit-trick",
     title: "Google Ball Pit Trick",
     excerpt: "Meet Mr.doob",
