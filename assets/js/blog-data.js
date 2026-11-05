@@ -2136,6 +2136,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-backrub-1996-original",
+    title: "Google BackRub 1996: The Original Search Engine Explained",
+    excerpt: "BackRub was the 1996 Stanford project that became Google. Learn why it got that name, how it worked and how it turned into google.com in 1997 after a typo.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-backrub-1996-original.webp",
+    imageAlt: "Google BackRub 1996 original showing the Stanford research project behind Google",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-ball-pit-trick",
     title: "Google Ball Pit Trick",
     excerpt: "Meet Mr.doob",
