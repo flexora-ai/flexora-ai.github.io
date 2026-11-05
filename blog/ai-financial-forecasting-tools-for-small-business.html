@@ -838,6 +838,10 @@ topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smoo
 <style>
 @keyframes fxSpin { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
 </style>
+<!-- Floating Music Player Widget with Crisp Inline SVGs -->
+<style>
+@keyframes fxSpin { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+</style>
 <div class="blog-music-player" id="blogMusicPlayer" style="position:fixed;bottom:24px;right:24px;z-index:90;background:#0F131D;border:1px solid #232838;border-radius:50px;padding:6px 14px 6px 8px;display:flex;align-items:center;gap:10px;box-shadow:0 10px 30px -10px rgba(0,0,0,0.65);transition:all 0.3s;">
   <a href="https://flexora-ai.github.io/music.html" title="Open Music Lounge" style="display:flex;align-items:center;flex-shrink:0;">
     <img id="blogMusicCover" src="https://flexora-ai.github.io/assets/audio/the-weeknd-blinding-lights.jpg" alt="Cover" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,0.15);"/>
@@ -863,10 +867,25 @@ topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smoo
   var svgPause = '<svg width="13" height="13" viewBox="0 0 24 24" fill="#07090F"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>';
   var playlist = [
     { title: 'Blinding Lights', artist: 'The Weeknd', src: 'https://flexora-ai.github.io/assets/audio/the-weeknd-blinding-lights.m4a', cover: 'https://flexora-ai.github.io/assets/audio/the-weeknd-blinding-lights.jpg' },
+    { title: 'God''s Plan', artist: 'Drake', src: 'https://flexora-ai.github.io/assets/audio/drake-gods-plan.m4a', cover: 'https://flexora-ai.github.io/assets/audio/drake-gods-plan.jpg' },
     { title: 'The Box', artist: 'Roddy Ricch', src: 'https://flexora-ai.github.io/assets/audio/roddy-ricch-the-box.m4a', cover: 'https://flexora-ai.github.io/assets/audio/roddy-ricch-the-box.jpg' },
+    { title: 'SICKO MODE', artist: 'Travis Scott ft. Drake', src: 'https://flexora-ai.github.io/assets/audio/travis-scott-sicko-mode.m4a', cover: 'https://flexora-ai.github.io/assets/audio/travis-scott-sicko-mode.jpg' },
     { title: 'Starboy', artist: 'The Weeknd ft. Daft Punk', src: 'https://flexora-ai.github.io/assets/audio/the-weeknd-starboy.m4a', cover: 'https://flexora-ai.github.io/assets/audio/the-weeknd-starboy.jpg' },
+    { title: 'Sunflower', artist: 'Post Malone & Swae Lee', src: 'https://flexora-ai.github.io/assets/audio/post-malone-sunflower.m4a', cover: 'https://flexora-ai.github.io/assets/audio/post-malone-sunflower.jpg' },
+    { title: 'HUMBLE.', artist: 'Kendrick Lamar', src: 'https://flexora-ai.github.io/assets/audio/kendrick-lamar-humble.m4a', cover: 'https://flexora-ai.github.io/assets/audio/kendrick-lamar-humble.jpg' },
+    { title: 'High Fashion', artist: 'Roddy Ricch', src: 'https://flexora-ai.github.io/assets/audio/roddy-ricch-high-fashion.m4a', cover: 'https://flexora-ai.github.io/assets/audio/roddy-ricch-high-fashion.jpg' },
+    { title: 'Kill Bill', artist: 'SZA', src: 'https://flexora-ai.github.io/assets/audio/sza-kill-bill.m4a', cover: 'https://flexora-ai.github.io/assets/audio/sza-kill-bill.jpg' },
     { title: 'Goosebumps', artist: 'Travis Scott', src: 'https://flexora-ai.github.io/assets/audio/travis-scott-goosebumps.m4a', cover: 'https://flexora-ai.github.io/assets/audio/travis-scott-goosebumps.jpg' },
+    { title: 'Superhero', artist: 'Metro Boomin & Future', src: 'https://flexora-ai.github.io/assets/audio/metro-boomin-superhero.m4a', cover: 'https://flexora-ai.github.io/assets/audio/metro-boomin-superhero.jpg' },
+    { title: 'Bank Account', artist: '21 Savage', src: 'https://flexora-ai.github.io/assets/audio/21-savage-bank-account.m4a', cover: 'https://flexora-ai.github.io/assets/audio/21-savage-bank-account.jpg' },
     { title: 'Circles', artist: 'Post Malone', src: 'https://flexora-ai.github.io/assets/audio/post-malone-circles.m4a', cover: 'https://flexora-ai.github.io/assets/audio/post-malone-circles.jpg' },
+    { title: 'Lucid Dreams', artist: 'Juice WRLD', src: 'https://flexora-ai.github.io/assets/audio/juice-wrld-lucid-dreams.m4a', cover: 'https://flexora-ai.github.io/assets/audio/juice-wrld-lucid-dreams.jpg' },
+    { title: 'Save Your Tears', artist: 'The Weeknd', src: 'https://flexora-ai.github.io/assets/audio/the-weeknd-save-your-tears.m4a', cover: 'https://flexora-ai.github.io/assets/audio/the-weeknd-save-your-tears.jpg' },
+    { title: 'First Class', artist: 'Jack Harlow', src: 'https://flexora-ai.github.io/assets/audio/jack-harlow-first-class.m4a', cover: 'https://flexora-ai.github.io/assets/audio/jack-harlow-first-class.jpg' },
+    { title: 'Lose Yourself', artist: 'Eminem', src: 'https://flexora-ai.github.io/assets/audio/eminem-lose-yourself.m4a', cover: 'https://flexora-ai.github.io/assets/audio/eminem-lose-yourself.jpg' },
+    { title: 'No Role Modelz', artist: 'J. Cole', src: 'https://flexora-ai.github.io/assets/audio/j-cole-no-role-modelz.m4a', cover: 'https://flexora-ai.github.io/assets/audio/j-cole-no-role-modelz.jpg' },
+    { title: 'Chanel', artist: 'Frank Ocean', src: 'https://flexora-ai.github.io/assets/audio/frank-ocean-chanel.m4a', cover: 'https://flexora-ai.github.io/assets/audio/frank-ocean-chanel.jpg' },
+    { title: 'Get Lucky', artist: 'Daft Punk', src: 'https://flexora-ai.github.io/assets/audio/daft-punk-get-lucky.m4a', cover: 'https://flexora-ai.github.io/assets/audio/daft-punk-get-lucky.jpg' },
     { title: 'Pulse Vector', artist: 'FlexoraAi Lounge', src: 'https://flexora-ai.github.io/assets/audio/pulse-vector.mp3', cover: 'https://flexora-ai.github.io/assets/audio/pulse-vector.png' }
   ];
   var idx = 0;
