@@ -2556,6 +2556,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-y2k-homepage-trick",
+    title: "Google Y2K Homepage Trick: Google at the Turn of 2000",
+    excerpt: "Is there a Google Y2K homepage trick? We checked. See what Google looked like at the turn of 2000, what the Y2K bug was and how you can view the old page.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-y2k-homepage-trick.webp",
+    imageAlt: "Google Y2K homepage trick showing the Google page at the turn of the year 2000",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-zerg-rush-trick",
     title: "Google Zerg Rush Trick: Does It Still Work? How to Play",
     excerpt: "Google",
