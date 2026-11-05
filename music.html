@@ -14,7 +14,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="description" content="Relax, focus, and stream curated ambient music while exploring AI tools. Real-time visualizers, EQ presets, album thumbnails, and background soundscapes."/>
 <meta name="robots" content="index, follow"/>
 <link href="https://flexora-ai.github.io/music.html" rel="canonical"/>
-<link href="assets/images/logo.png" rel="icon" type="image/png"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="icon" type="image/png" href="assets/images/logo.png"/>
+<link rel="alternate icon" href="favicon.ico"/>
 
 <!-- Social Meta -->
 <meta content="Music Lounge &mdash; FlexoraAi" property="og:title"/>
@@ -970,7 +972,7 @@ footer {
   </div>
   <div class="nav-cta">
     <a class="btn btn-ghost" href="submit.html">Submit tool</a>
-    <button aria-label="Open menu" class="menu-btn" id="menuBtn">&#9776;</button>
+    <button aria-label="Open menu" class="menu-btn" id="menuBtn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
   </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
@@ -1225,7 +1227,10 @@ footer {
   <div class="zen-artist" id="zenArtist">FlexoraAi Ambient Lounge</div>
   <div class="main-transport" style="margin-top:10px;">
     <button class="ctrl-btn" id="zenPrevBtn"><svg viewBox="0 0 24 24"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" y1="19" x2="5" y2="5"/></svg></button>
-    <button class="play-btn" id="zenPlayBtn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
+    <button class="play-btn" id="zenPlayBtn" title="Play / Pause" aria-label="Play / Pause">
+      <svg id="zenPlayIcon" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      <svg id="zenPauseIcon" viewBox="0 0 24 24" style="display:none;"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+    </button>
     <button class="ctrl-btn" id="zenNextBtn"><svg viewBox="0 0 24 24"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg></button>
   </div>
 </div>
@@ -1317,6 +1322,8 @@ footer {
   var zenTitle      = document.getElementById('zenTitle');
   var zenArtist     = document.getElementById('zenArtist');
   var zenPlayBtn    = document.getElementById('zenPlayBtn');
+    var zenPlayIcon   = document.getElementById('zenPlayIcon');
+    var zenPauseIcon  = document.getElementById('zenPauseIcon');
   var zenPrevBtn    = document.getElementById('zenPrevBtn');
   var zenNextBtn    = document.getElementById('zenNextBtn');
 
