@@ -1380,7 +1380,16 @@ footer {
     return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
   }
 
-  function prettifyFilename(name) {
+    // â”€â”€ POPULAR ARTIST & TRACK METADATA â”€â”€
+  var knownMeta = {
+    'the-weeknd-blinding-lights.m4a': { name: 'Blinding Lights', artist: 'The Weeknd', mood: 'Synthwave Hit' },
+    'roddy-ricch-the-box.m4a': { name: 'The Box', artist: 'Roddy Ricch', mood: 'Hip-Hop Trap' },
+    'the-weeknd-starboy.m4a': { name: 'Starboy', artist: 'The Weeknd ft. Daft Punk', mood: 'Electropop' },
+    'travis-scott-goosebumps.m4a': { name: 'Goosebumps', artist: 'Travis Scott', mood: 'Atmospheric Trap' },
+    'post-malone-circles.m4a': { name: 'Circles', artist: 'Post Malone', mood: 'Melodic Chill' },
+    'pulse-vector.mp3': { name: 'Pulse Vector', artist: 'FlexoraAi Lounge', mood: 'Ambient Focus' }
+  };
+function prettifyFilename(name) {
     var n = name.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
     return n.replace(/\b\w/g, function(c){ return c.toUpperCase(); });
   }
@@ -1429,14 +1438,16 @@ footer {
         tracks = audioFiles.map(function(f, i){
           var base = f.name.toLowerCase().substring(0, f.name.lastIndexOf('.'));
           var cover = imageMap[base] || generateCoverSvg(f.name, i);
+          var meta = knownMeta[f.name.toLowerCase()] || {};
           return {
-            name: prettifyFilename(f.name),
+            name: meta.name || prettifyFilename(f.name),
+            artist: meta.artist || 'FlexoraAi Lounge',
             file: f.name,
             src: AUDIO_BASE + f.name,
             size: f.size,
             cover: cover,
             idx: i,
-            mood: (i % 2 === 0 ? 'Ambient Focus' : 'Deep Chill')
+            mood: meta.mood || (i % 2 === 0 ? 'Ambient Focus' : 'Deep Chill')
           };
         });
 
@@ -1450,15 +1461,68 @@ footer {
   }
 
   function fallbackTrack() {
-    tracks = [{
-      name: 'Pulse Vector',
-      file: 'pulse-vector.mp3',
-      src: AUDIO_BASE + 'pulse-vector.mp3',
-      size: 237841,
-      cover: AUDIO_BASE + 'pulse-vector.png',
-      idx: 0,
-      mood: 'Ambient Focus'
-    }];
+    tracks = [
+      {
+        name: 'Blinding Lights',
+        artist: 'The Weeknd',
+        file: 'the-weeknd-blinding-lights.m4a',
+        src: AUDIO_BASE + 'the-weeknd-blinding-lights.m4a',
+        size: 1025590,
+        cover: AUDIO_BASE + 'the-weeknd-blinding-lights.jpg',
+        idx: 0,
+        mood: 'Synthwave Hit'
+      },
+      {
+        name: 'The Box',
+        artist: 'Roddy Ricch',
+        file: 'roddy-ricch-the-box.m4a',
+        src: AUDIO_BASE + 'roddy-ricch-the-box.m4a',
+        size: 996162,
+        cover: AUDIO_BASE + 'roddy-ricch-the-box.jpg',
+        idx: 1,
+        mood: 'Hip-Hop Trap'
+      },
+      {
+        name: 'Starboy',
+        artist: 'The Weeknd ft. Daft Punk',
+        file: 'the-weeknd-starboy.m4a',
+        src: AUDIO_BASE + 'the-weeknd-starboy.m4a',
+        size: 1028231,
+        cover: AUDIO_BASE + 'the-weeknd-starboy.jpg',
+        idx: 2,
+        mood: 'Electropop'
+      },
+      {
+        name: 'Goosebumps',
+        artist: 'Travis Scott',
+        file: 'travis-scott-goosebumps.m4a',
+        src: AUDIO_BASE + 'travis-scott-goosebumps.m4a',
+        size: 991597,
+        cover: AUDIO_BASE + 'travis-scott-goosebumps.jpg',
+        idx: 3,
+        mood: 'Atmospheric Trap'
+      },
+      {
+        name: 'Circles',
+        artist: 'Post Malone',
+        file: 'post-malone-circles.m4a',
+        src: AUDIO_BASE + 'post-malone-circles.m4a',
+        size: 1069614,
+        cover: AUDIO_BASE + 'post-malone-circles.jpg',
+        idx: 4,
+        mood: 'Melodic Chill'
+      },
+      {
+        name: 'Pulse Vector',
+        artist: 'FlexoraAi Lounge',
+        file: 'pulse-vector.mp3',
+        src: AUDIO_BASE + 'pulse-vector.mp3',
+        size: 237841,
+        cover: AUDIO_BASE + 'pulse-vector.png',
+        idx: 5,
+        mood: 'Ambient Focus'
+      }
+    ];
     renderPlaylist();
     checkDeepLink();
   }
@@ -1506,7 +1570,7 @@ footer {
           '<div class="t-thumb-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>' +
         '</div>' +
         '<div class="t-info">' +
-          '<div class="t-name">' + t.name + '</div>' +
+          '<div class="t-name">' + t.name + ' <span style="font-weight:400;color:var(--ink-soft);font-size:12px;">&bull; ' + (t.artist || "FlexoraAi") + '</span></div>' +
           '<div class="t-meta"><span>' + ext + '</span><span>' + sizeStr + '</span><span style="color:var(--teal);">&bull; ' + t.mood + '</span></div>' +
         '</div>' +
         '<span class="t-dur" id="dur-' + t.idx + '">&mdash;</span>' +
@@ -1570,12 +1634,12 @@ footer {
     audio.load();
 
     npTitle.textContent = t.name;
-    npArtist.textContent = 'FlexoraAi Lounge';
+    npArtist.textContent = (t.artist || 'FlexoraAi Lounge');
     moodBadge.textContent = t.mood;
     albumCoverImg.src = t.cover;
     zenVinylImg.src = t.cover;
     zenTitle.textContent = t.name;
-    zenArtist.textContent = 'FlexoraAi Lounge &bull; ' + t.mood;
+    zenArtist.textContent = (t.artist || 'FlexoraAi Lounge') + ' &bull; ' + t.mood;
     albumBadge.textContent = t.file.substring(t.file.lastIndexOf('.') + 1).toUpperCase();
 
     // Update Media Session
