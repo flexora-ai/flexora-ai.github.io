@@ -24,7 +24,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:title" content="Free AI Tools for Small Business (2026 Complete List)">
 <meta property="og:description" content="Discover the best free AI tools for small business. Save money while automating tasks, boosting productivity, and scaling your operations in 2026.">
 <meta property="og:image" content="https://flexora-ai.github.io/assets/images/blog/free-ai-tools-for-small-business.webp">
-<meta property="og:site_name" content="Flexora.Ai">
+<meta property="og:site_name" content="FlexoraAi">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-09-18T08:00:00+00:00">
 <meta property="article:modified_time" content="2026-09-18T08:00:00+00:00">
@@ -61,7 +61,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   },
   "publisher": {
     "@type": "Organization",
-    "name": "Flexora.Ai",
+    "name": "FlexoraAi",
     "logo": {
       "@type": "ImageObject",
       "url": "https://flexora-ai.github.io/assets/images/logo.png"
@@ -880,7 +880,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="author-avatar">PL</div>
       <div class="author-info">
         <h4>Written by Piyush Lalwani</h4>
-        <p>Founder & AI Automation Expert at Flexora.Ai. Helping small businesses leverage AI tools to compete with enterprise companies—without the enterprise budget.</p>
+        <p>Founder & AI Automation Expert at FlexoraAi. Helping small businesses leverage AI tools to compete with enterprise companies—without the enterprise budget.</p>
       </div>
     </div>
   </div>
@@ -941,7 +941,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="foot-col"><h4>Legal</h4><a href="https://flexora-ai.github.io/privacy.html">Privacy</a><a href="https://flexora-ai.github.io/terms.html">Terms</a><a href="https://flexora-ai.github.io/privacy.html#affiliate">Affiliate disclosure</a></div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 Flexora.Ai</span>
+      <span>© 2026 FlexoraAi</span>
       <span>Built with GitHub Pages — still a prototype, not the final site</span>
     </div>
   </div>
@@ -1075,23 +1075,33 @@ document.getElementById('menuBtn')?.addEventListener('click', () => { document.g
 })();
 </script>
 <!-- FLOATING BLOG MUSIC PLAYER -->
+<!-- Floating Music Player Widget with Crisp Inline SVGs -->
+<style>
+@keyframes fxSpin { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+</style>
 <div class="blog-music-player" id="blogMusicPlayer" style="position:fixed;bottom:24px;right:24px;z-index:90;background:#0F131D;border:1px solid #232838;border-radius:50px;padding:6px 14px 6px 8px;display:flex;align-items:center;gap:10px;box-shadow:0 10px 30px -10px rgba(0,0,0,0.65);transition:all 0.3s;">
   <a href="https://flexora-ai.github.io/music.html" title="Open Music Lounge" style="display:flex;align-items:center;flex-shrink:0;">
     <img id="blogMusicCover" src="https://flexora-ai.github.io/assets/audio/the-weeknd-blinding-lights.jpg" alt="Cover" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,0.15);"/>
   </a>
-  <button id="blogMusicBtn" aria-label="Toggle music" style="width:32px;height:32px;border-radius:50%;background:#2DE2C8;border:none;color:#07090F;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;font-weight:700;">&#9654;</button>
+  <button id="blogMusicBtn" aria-label="Toggle music" style="width:32px;height:32px;border-radius:50%;background:#2DE2C8;border:none;color:#07090F;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;">
+    <svg id="blogPlaySvg" width="13" height="13" viewBox="0 0 24 24" fill="#07090F" style="margin-left:2px;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+  </button>
   <div style="font-size:12px;color:#8A90A6;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
     <a href="https://flexora-ai.github.io/music.html" title="Open Music Lounge" style="color:inherit;text-decoration:none;">
       <b id="blogMusicTitle" style="color:#2DE2C8;font-size:12px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Blinding Lights &nearr;</b>
     </a>
     <span id="blogMusicArtist" style="font-size:11px;">The Weeknd</span>
   </div>
-  <button id="blogMusicNext" aria-label="Next song" title="Next song" style="background:none;border:none;color:#8A90A6;cursor:pointer;padding:2px 4px;font-size:14px;line-height:1;">&#9197;</button>
+  <button id="blogMusicNext" aria-label="Next song" title="Next song" style="background:none;border:none;color:#8A90A6;cursor:pointer;padding:2px 4px;display:flex;align-items:center;justify-content:center;">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+  </button>
 </div>
 <script>
 (function(){
   if(window._fxBlogMusicLoaded) return;
   window._fxBlogMusicLoaded = true;
+  var svgPlay = '<svg width="13" height="13" viewBox="0 0 24 24" fill="#07090F" style="margin-left:2px;"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
+  var svgPause = '<svg width="13" height="13" viewBox="0 0 24 24" fill="#07090F"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>';
   var playlist = [
     { title: 'Blinding Lights', artist: 'The Weeknd', src: 'https://flexora-ai.github.io/assets/audio/the-weeknd-blinding-lights.m4a', cover: 'https://flexora-ai.github.io/assets/audio/the-weeknd-blinding-lights.jpg' },
     { title: 'The Box', artist: 'Roddy Ricch', src: 'https://flexora-ai.github.io/assets/audio/roddy-ricch-the-box.m4a', cover: 'https://flexora-ai.github.io/assets/audio/roddy-ricch-the-box.jpg' },
@@ -1125,23 +1135,23 @@ document.getElementById('menuBtn')?.addEventListener('click', () => { document.g
     if(isPlaying) {
       audio.pause();
       isPlaying = false;
-      btn.innerHTML = '&#9654;';
+      btn.innerHTML = svgPlay;
       if(cover) cover.style.animation = 'none';
     } else {
       audio.play().then(function(){
         isPlaying = true;
-        btn.innerHTML = '&#10074;&#10074;';
-        if(cover) cover.style.animation = 'spinVinyl 8s linear infinite';
+        btn.innerHTML = svgPause;
+        if(cover) cover.style.animation = 'fxSpin 8s linear infinite';
       }).catch(function(e){ console.warn(e); });
     }
   }
 
   btn.addEventListener('click', toggle);
   if(nextBtn){
-    nextBtn.addEventListener('click', function(e){
-      e.stopPropagation();
+    nextBtn.addEventListener('click', function(){
+      var wasPlaying = isPlaying;
       load(idx + 1);
-      if(isPlaying) audio.play();
+      if(wasPlaying) audio.play();
     });
   }
   audio.addEventListener('ended', function(){
