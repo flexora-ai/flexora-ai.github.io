@@ -1074,5 +1074,82 @@ document.getElementById('menuBtn')?.addEventListener('click', () => { document.g
   stats.forEach(stat => obs.observe(stat));
 })();
 </script>
+<!-- FLOATING BLOG MUSIC PLAYER -->
+<div class="blog-music-player" id="blogMusicPlayer" style="position:fixed;bottom:24px;right:24px;z-index:90;background:#0F131D;border:1px solid #232838;border-radius:50px;padding:6px 14px 6px 8px;display:flex;align-items:center;gap:10px;box-shadow:0 10px 30px -10px rgba(0,0,0,0.65);transition:all 0.3s;">
+  <a href="https://flexora-ai.github.io/music.html" title="Open Music Lounge" style="display:flex;align-items:center;flex-shrink:0;">
+    <img id="blogMusicCover" src="https://flexora-ai.github.io/assets/audio/the-weeknd-blinding-lights.jpg" alt="Cover" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,0.15);"/>
+  </a>
+  <button id="blogMusicBtn" aria-label="Toggle music" style="width:32px;height:32px;border-radius:50%;background:#2DE2C8;border:none;color:#07090F;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;font-weight:700;">&#9654;</button>
+  <div style="font-size:12px;color:#8A90A6;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+    <a href="https://flexora-ai.github.io/music.html" title="Open Music Lounge" style="color:inherit;text-decoration:none;">
+      <b id="blogMusicTitle" style="color:#2DE2C8;font-size:12px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Blinding Lights &nearr;</b>
+    </a>
+    <span id="blogMusicArtist" style="font-size:11px;">The Weeknd</span>
+  </div>
+  <button id="blogMusicNext" aria-label="Next song" title="Next song" style="background:none;border:none;color:#8A90A6;cursor:pointer;padding:2px 4px;font-size:14px;line-height:1;">&#9197;</button>
+</div>
+<script>
+(function(){
+  if(window._fxBlogMusicLoaded) return;
+  window._fxBlogMusicLoaded = true;
+  var playlist = [
+    { title: 'Blinding Lights', artist: 'The Weeknd', src: 'https://flexora-ai.github.io/assets/audio/the-weeknd-blinding-lights.m4a', cover: 'https://flexora-ai.github.io/assets/audio/the-weeknd-blinding-lights.jpg' },
+    { title: 'The Box', artist: 'Roddy Ricch', src: 'https://flexora-ai.github.io/assets/audio/roddy-ricch-the-box.m4a', cover: 'https://flexora-ai.github.io/assets/audio/roddy-ricch-the-box.jpg' },
+    { title: 'Starboy', artist: 'The Weeknd ft. Daft Punk', src: 'https://flexora-ai.github.io/assets/audio/the-weeknd-starboy.m4a', cover: 'https://flexora-ai.github.io/assets/audio/the-weeknd-starboy.jpg' },
+    { title: 'Goosebumps', artist: 'Travis Scott', src: 'https://flexora-ai.github.io/assets/audio/travis-scott-goosebumps.m4a', cover: 'https://flexora-ai.github.io/assets/audio/travis-scott-goosebumps.jpg' },
+    { title: 'Circles', artist: 'Post Malone', src: 'https://flexora-ai.github.io/assets/audio/post-malone-circles.m4a', cover: 'https://flexora-ai.github.io/assets/audio/post-malone-circles.jpg' },
+    { title: 'Pulse Vector', artist: 'FlexoraAi Lounge', src: 'https://flexora-ai.github.io/assets/audio/pulse-vector.mp3', cover: 'https://flexora-ai.github.io/assets/audio/pulse-vector.png' }
+  ];
+  var idx = 0;
+  var audio = new Audio();
+  audio.volume = 0.65;
+  var isPlaying = false;
+  var btn = document.getElementById('blogMusicBtn');
+  var cover = document.getElementById('blogMusicCover');
+  var title = document.getElementById('blogMusicTitle');
+  var artist = document.getElementById('blogMusicArtist');
+  var nextBtn = document.getElementById('blogMusicNext');
+  if(!btn) return;
+
+  function load(i) {
+    idx = (i + playlist.length) % playlist.length;
+    var t = playlist[idx];
+    audio.src = t.src;
+    if(cover) cover.src = t.cover;
+    if(title) title.innerHTML = t.title + ' &nearr;';
+    if(artist) artist.textContent = t.artist;
+  }
+  load(0);
+
+  function toggle() {
+    if(isPlaying) {
+      audio.pause();
+      isPlaying = false;
+      btn.innerHTML = '&#9654;';
+      if(cover) cover.style.animation = 'none';
+    } else {
+      audio.play().then(function(){
+        isPlaying = true;
+        btn.innerHTML = '&#10074;&#10074;';
+        if(cover) cover.style.animation = 'spinVinyl 8s linear infinite';
+      }).catch(function(e){ console.warn(e); });
+    }
+  }
+
+  btn.addEventListener('click', toggle);
+  if(nextBtn){
+    nextBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      load(idx + 1);
+      if(isPlaying) audio.play();
+    });
+  }
+  audio.addEventListener('ended', function(){
+    load(idx + 1);
+    audio.play();
+  });
+})();
+</script>
+<!-- END FLOATING BLOG MUSIC PLAYER -->
 </body>
 </html>
