@@ -36,6 +36,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-do-a-barrel-roll",
+    title: "Google Do a Barrel Roll: How It Works and Why It Spins",
+    excerpt: "Search “do a barrel roll” and Google spins the page 360 degrees. Where it came from, how to spin it more, and how to build the effect yourself.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-02",
+    readMins: 6,
+    image: "assets/images/blog/google-do-a-barrel-roll.webp",
+    imageAlt: "Google do a barrel roll: the search results page spinning a full 360 degrees",
+    icon: "📄",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-easter-eggs-for-christmas",
     title: "Google Easter Eggs for Christmas: What Still Works",
     excerpt: "“Let it snow,” holiday lights and the Santa Tracker: which Christmas Google tricks are worth trying this December, and which are old news.",
