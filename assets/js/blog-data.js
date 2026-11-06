@@ -2570,6 +2570,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-metronome-trick",
+    title: "Google Metronome Trick: Keep Time Right in Search Results",
+    excerpt: "Search metronome and Google gives you a free tempo tool, 40 to 208 beats per minute. Learn how to use it, what the tempos mean and how to practice with it.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-metronome-trick.webp",
+    imageAlt: "Google metronome trick with a tempo slider showing 100 beats per minute",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-minesweeper-trick",
     title: "Google Minesweeper Trick",
     excerpt: "Search minesweeper on Google and play it inside the results page. Here is how to start, what the three levels mean and tips to clear boards.",
