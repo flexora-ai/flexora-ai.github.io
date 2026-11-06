@@ -2346,6 +2346,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-flip-a-table-trick",
+    title: "Google Flip a Table Trick: Fact Check and the Real Origin",
+    excerpt: "Is there a Google flip a table trick? We checked. See what is real, what the table flip emoticon is made of, and which Google tricks flip your page for real.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-flip-a-table-trick.webp",
+    imageAlt: "Google flip a table trick showing the table flip emoticon and a flipped Google page",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-gravity-chrome-trick",
     title: "Google Gravity Chrome Trick",
     excerpt: "Does Google Gravity only work in Chrome? Learn why it is called a Chrome experiment, how to run it well and what to check if it fails.",
