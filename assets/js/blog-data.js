@@ -2206,6 +2206,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-ascii-art-trick",
+    title: "Google ASCII Art Trick: Is There One? How to Make Your Own",
+    excerpt: "Is there a Google ASCII art trick? We checked. Learn what ASCII art is, why Google has no official one, and how to make text art of your own with a few rules.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-ascii-art-trick.webp",
+    imageAlt: "Google ASCII art trick showing a picture drawn from text characters",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-backrub-1996-original",
     title: "Google BackRub 1996: The Original Search Engine Explained",
     excerpt: "BackRub was the 1996 Stanford project that became Google. Learn why it got that name, how it worked and how it turned into google.com in 1997 after a typo.",
