@@ -2808,6 +2808,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "oogle-blink-html-trick",
+    title: "Google Blink HTML Trick: How the Blinking Easter Egg Works",
+    excerpt: "Search blink html and the words flash in your results. Learn how the trick works, the story of the blink tag, and why blinking text is bad for accessibility.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-blink-html-trick.webp",
+    imageAlt: "Google blink html trick with search result words flashing on and off",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "pay-to-list-vs-free-ai-directory",
     title: "Pay-to-List vs Free AI Directory: Which Is Worth It? (2026)",
     excerpt: "A founder",
