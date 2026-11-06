@@ -2262,6 +2262,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-color-picker-trick",
+    title: "Google Color Picker Trick: Get HEX, RGB and CMYK Codes Fast",
+    excerpt: "Search color picker and Google gives you HEX, RGB, CMYK, HSV and HSL codes. Learn how to use it, what each format means and how to check text contrast.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-color-picker-trick.webp",
+    imageAlt: "Google color picker trick showing a spectrum and HEX, RGB and CMYK values",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-conway-game-of-life-trick",
     title: "Google Conway Game of Life Trick",
     excerpt: "Search Conway",
