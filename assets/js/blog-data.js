@@ -274,6 +274,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-let-it-snow-trick",
+    title: "Google Let It Snow Trick: How to See the Frost Effect",
+    excerpt: "Search let it snow and Google can cover your screen in snow and frost. Learn how it works, how to defrost it, and why it may not appear outside winter.",
+    category: "Google Easter Eggs",
+    author: "Prashant Lalwani",
+    date: "2026-11-01",
+    readMins: 5,
+    image: "assets/images/blog/google-let-it-snow-trick.webp",
+    imageAlt: "Google let it snow trick with falling snow and frost on the search page",
+    icon: "📄",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tools-for-solopreneurs",
     title: "Best AI Tools for Solopreneurs (2026 Complete Guide)",
     excerpt: "Discover the best AI tools for solopreneurs to automate tasks, boost productivity, and scale your one-person business in 2026.",
@@ -2565,20 +2579,6 @@ const BLOG_POSTS = [
     readMins: 5,
     image: "assets/images/blog/google-konami-code-trick.webp",
     imageAlt: "Google Konami Code trick with directional arrows and a cheat mode message",
-    icon: "⚙️",
-    published: true,
-    featured: false
-  },
-  {
-    slug: "google-let-it-snow-trick",
-    title: "Google Let It Snow Trick: How to See the Frost Effect",
-    excerpt: "Search let it snow and Google can cover your screen in snow and frost. Learn how it works, how to defrost it, and why it may not appear outside winter.",
-    category: "Guide",
-    author: "Prashant Lalwani",
-    date: "",
-    readMins: 5,
-    image: "assets/images/blog/google-let-it-snow-trick.webp",
-    imageAlt: "Google let it snow trick with falling snow and frost on the search page",
     icon: "⚙️",
     published: true,
     featured: false
