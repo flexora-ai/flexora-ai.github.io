@@ -2556,6 +2556,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-let-it-snow-trick",
+    title: "Google Let It Snow Trick: How to See the Frost Effect",
+    excerpt: "Search let it snow and Google can cover your screen in snow and frost. Learn how it works, how to defrost it, and why it may not appear outside winter.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-let-it-snow-trick.webp",
+    imageAlt: "Google let it snow trick with falling snow and frost on the search page",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-minesweeper-trick",
     title: "Google Minesweeper Trick",
     excerpt: "Search minesweeper on Google and play it inside the results page. Here is how to start, what the three levels mean and tips to clear boards.",
