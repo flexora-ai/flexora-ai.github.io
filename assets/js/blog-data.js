@@ -2626,6 +2626,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-recursion-trick",
+    title: "Google Recursion Trick: The “Did You Mean” Loop Explained",
+    excerpt: "Search recursion and Google asks, “Did you mean: recursion?” in an endless loop. Learn the joke, how recursion works in code and where it shows up in life.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-recursion-trick.webp",
+    imageAlt: "Google recursion trick showing the Did you mean recursion loop",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-solitaire-trick",
     title: "Google Solitaire Trick",
     excerpt: "Search solitaire on Google and play a full game of Klondike in the results. Here is how to start, what features you get and habits that win more games.",
