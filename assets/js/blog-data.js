@@ -2668,6 +2668,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-sticky-notes-trick",
+    title: "Google Sticky Notes Trick: What Really Works (Keep Tips)",
+    excerpt: "Is there a Google sticky notes trick? We checked. Here is what exists, how to use Google Keep as sticky notes, and one extension risk worth knowing about.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-sticky-notes-trick.webp",
+    imageAlt: "Google sticky notes trick showing digital notes in Google Keep",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-text-adventure-trick",
     title: "Google Text Adventure Trick",
     excerpt: "A hidden text adventure lives in Google Search. Here is how to open it in the console, the commands to try and how to stay safe while you play.",
