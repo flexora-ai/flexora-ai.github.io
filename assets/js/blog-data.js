@@ -2248,6 +2248,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-blink-html-trick",
+    title: "Google Blink HTML Trick: How the Blinking Easter Egg Works",
+    excerpt: "Search blink html and the words flash in your results. Learn how the trick works, the story of the blink tag, and why blinking text is bad for accessibility.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-blink-html-trick.webp",
+    imageAlt: "Google blink html trick with search result words flashing on and off",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-bubble-level-trick",
     title: "Google Bubble Level Trick: Level Anything With Your Phone",
     excerpt: "Search bubble level on your phone and Google turns it into a spirit level. See how to use it, how accurate it is, and how to test it before you hang that shelf.",
@@ -2915,20 +2929,6 @@ const BLOG_POSTS = [
     readMins: 5,
     image: "assets/images/blog/old-google-homepage-trick.webp",
     imageAlt: "Old Google homepage trick with four ways to view the retro Google page",
-    icon: "⚙️",
-    published: true,
-    featured: false
-  },
-  {
-    slug: "oogle-blink-html-trick",
-    title: "Google Blink HTML Trick: How the Blinking Easter Egg Works",
-    excerpt: "Search blink html and the words flash in your results. Learn how the trick works, the story of the blink tag, and why blinking text is bad for accessibility.",
-    category: "Guide",
-    author: "Prashant Lalwani",
-    date: "",
-    readMins: 5,
-    image: "assets/images/blog/google-blink-html-trick.webp",
-    imageAlt: "Google blink html trick with search result words flashing on and off",
     icon: "⚙️",
     published: true,
     featured: false
