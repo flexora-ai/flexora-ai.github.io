@@ -2724,6 +2724,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-timer-and-stopwatch-trick",
+    title: "Google Timer and Stopwatch Trick: Set One From Search",
+    excerpt: "Type timer for 10 minutes into Google and it starts counting. Learn the commands, the stopwatch toggle, the 2024 redesign and smart ways to use both tools.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-timer-and-stopwatch-trick.webp",
+    imageAlt: "Google timer and stopwatch trick showing a countdown in search results",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-underwater-fish-trick",
     title: "Google Underwater Fish Trick",
     excerpt: "Turn Google into an aquarium with the underwater trick. See what it does, how to try it, and how it differs from Google Gravity.",
