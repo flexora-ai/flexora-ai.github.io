@@ -2248,6 +2248,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-bubble-level-trick",
+    title: "Google Bubble Level Trick: Level Anything With Your Phone",
+    excerpt: "Search bubble level on your phone and Google turns it into a spirit level. See how to use it, how accurate it is, and how to test it before you hang that shelf.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-bubble-level-trick.webp",
+    imageAlt: "Google bubble level trick on a phone showing a level reading of 0.0 degrees",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-conway-game-of-life-trick",
     title: "Google Conway Game of Life Trick",
     excerpt: "Search Conway",
