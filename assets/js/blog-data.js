@@ -2640,6 +2640,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-products-easter-eggs-list",
+    title: "Google Products Easter Eggs List: Android, Chrome, Gemini +",
+    excerpt: "Find the Easter eggs hidden in Google products, from Android and Chrome to Sheets, Gemini and Assistant, with a guide to every post and what still works.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-products-easter-eggs-list.webp",
+    imageAlt: "Google products Easter eggs list covering Android, Chrome, Sheets, Gemini and Assistant",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-recursion-trick",
     title: "Google Recursion Trick: The “Did You Mean” Loop Explained",
     excerpt: "Search recursion and Google asks, “Did you mean: recursion?” in an endless loop. Learn the joke, how recursion works in code and where it shows up in life.",
