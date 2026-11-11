@@ -2052,6 +2052,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "android-easter-eggs-list",
+    title: "Android Easter Eggs List: Every Version and How to Find Them",
+    excerpt: "Every Android Easter egg from Gingerbread to Android 16: the tap-the-version trick, Neko, the Android 11 volume dial and tips for finding yours on any phone.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/android-easter-eggs-list.webp",
+    imageAlt: "Android Easter eggs list showing the tap-the-version routine in Settings",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "beginners-guide-to-ai-tools-for-small-business",
     title: "Beginner",
     excerpt: "A no-jargon starting point for small business owners who haven",
