@@ -2388,6 +2388,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-gemini-easter-eggs",
+    title: "Google Gemini Easter Eggs: What Is Real and What to Try",
+    excerpt: "Are there Google Gemini Easter eggs? We checked. See what is documented, what is just a creative prompt, and how Gemini differs from Assistant and ChatGPT.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-gemini-easter-eggs.webp",
+    imageAlt: "Google Gemini Easter eggs guide with fun prompts and a three-part status guide",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-gravity-chrome-trick",
     title: "Google Gravity Chrome Trick",
     excerpt: "Does Google Gravity only work in Chrome? Learn why it is called a Chrome experiment, how to run it well and what to check if it fails.",
