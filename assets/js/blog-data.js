@@ -2234,6 +2234,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-assistant-easter-eggs",
+    title: "Google Assistant Easter Eggs: Fun Commands After Gemini",
+    excerpt: "Google Assistant is being replaced by Gemini on Android. See which fun commands may still work, how to test them, and what Siri and Alexa fans should know.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-assistant-easter-eggs.webp",
+    imageAlt: "Google Assistant Easter eggs with fun voice commands now handled by Gemini",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-backrub-1996-original",
     title: "Google BackRub 1996: The Original Search Engine Explained",
     excerpt: "BackRub was the 1996 Stanford project that became Google. Learn why it got that name, how it worked and how it turned into google.com in 1997 after a typo.",
