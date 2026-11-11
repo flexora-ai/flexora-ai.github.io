@@ -2178,6 +2178,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "chrome-hidden-features-and-flags",
+    title: "Chrome Hidden Features and Flags: What to Try (and Avoid)",
+    excerpt: "Chrome hides useful tools behind flags and internal pages. Learn chrome://flags, Tab Search, chrome://dino and the warning on every flag, with safe steps.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/chrome-hidden-features-and-flags.webp",
+    imageAlt: "Chrome hidden features and flags showing the chrome://flags experimental page",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "free-ai-marketing-tools-for-small-business",
     title: "Free AI Marketing Tools for Small Business (2026)",
     excerpt: "Genuinely free AI marketing tools for small business — no trial traps, what each one actually covers, and where free runs out.",
