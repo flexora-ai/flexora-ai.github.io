@@ -2248,6 +2248,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-ai-mode-easter-eggs",
+    title: "Google AI Mode Easter Eggs: Fact Check and Fun Prompts",
+    excerpt: "Does Google AI Mode have Easter eggs? We checked. Here is what AI Mode is, why answers vary, and fun prompts to try instead, plus what classic eggs still do.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-ai-mode-easter-eggs.webp",
+    imageAlt: "Google AI Mode Easter eggs fact check with a conversational search answer",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-ascii-art-trick",
     title: "Google ASCII Art Trick: Is There One? How to Make Your Own",
     excerpt: "Is there a Google ASCII art trick? We checked. Learn what ASCII art is, why Google has no official one, and how to make text art of your own with a few rules.",
