@@ -2682,6 +2682,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-sheets-easter-eggs",
+    title: "Google Sheets Easter Eggs: Hidden Functions and PRIDE",
+    excerpt: "Google Sheets hides fun tricks, from the PRIDE rainbow to COINFLIP, DUCKHUNT and CURSORPARK functions. See how to try each and which ones to trust today.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-sheets-easter-eggs.webp",
+    imageAlt: "Google Sheets Easter eggs showing the PRIDE rainbow and hidden functions",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-solitaire-trick",
     title: "Google Solitaire Trick",
     excerpt: "Search solitaire on Google and play a full game of Klondike in the results. Here is how to start, what features you get and habits that win more games.",
