@@ -2346,6 +2346,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "funny-things-to-google",
+    title: "Funny Things to Google: 12 Safe, Silly Searches to Try",
+    excerpt: "Funny things to Google that are safe for work and school, from do a barrel roll to recursion and zerg rush, with what each does and whether it still works.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/funny-things-to-google.webp",
+    imageAlt: "Funny things to Google with safe, silly searches for work and school",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-90s-easter-eggs",
     title: "Google 90s Easter Eggs: Real Throwbacks and Myths Sorted",
     excerpt: "Google was founded in 1998, so its 90s Easter eggs are throwbacks. See the real ones, from Google in 1998 to the 20th anniversary and the 2026 Zelda egg.",
