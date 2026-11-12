@@ -2332,6 +2332,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "fun-google-tricks-to-do-with-friends",
+    title: "Fun Google Tricks to Do With Friends: 10 Ideas That Work",
+    excerpt: "Fun Google tricks to do with friends: two-player games, score battles, a beatbox jam and more, with steps, tips and what to do if a trick has been retired.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/fun-google-tricks-to-do-with-friends.webp",
+    imageAlt: "Fun Google tricks to do with friends including games and challenges",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-90s-easter-eggs",
     title: "Google 90s Easter Eggs: Real Throwbacks and Myths Sorted",
     excerpt: "Google was founded in 1998, so its 90s Easter eggs are throwbacks. See the real ones, from Google in 1998 to the 20th anniversary and the 2026 Zelda egg.",
