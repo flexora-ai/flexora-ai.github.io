@@ -2934,6 +2934,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-search-operators-cheat-sheet",
+    title: "Google Search Operators Cheat Sheet: What Works in 2026",
+    excerpt: "A Google search operators cheat sheet for 2026: working operators with examples, retired ones like cache: and link:, and tips for combining them correctly.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-search-operators-cheat-sheet.webp",
+    imageAlt: "Google search operators cheat sheet with working and retired operators",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-sheets-easter-eggs",
     title: "Google Sheets Easter Eggs: Hidden Functions and PRIDE",
     excerpt: "Google Sheets hides fun tricks, from the PRIDE rainbow to COINFLIP, DUCKHUNT and CURSORPARK functions. See how to try each and which ones to trust today.",
