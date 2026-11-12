@@ -2948,6 +2948,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-search-tips-guide",
+    title: "Google Search Tips Guide: 13 Ways to Search Smarter",
+    excerpt: "Your guide to smarter Google searching: operators, image tricks, student tips, hidden features and fun surprises, with links to every guide and a clear plan.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-search-tips-guide.webp",
+    imageAlt: "Google search tips guide with operators, filters and built-in tools",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-sheets-easter-eggs",
     title: "Google Sheets Easter Eggs: Hidden Functions and PRIDE",
     excerpt: "Google Sheets hides fun tricks, from the PRIDE rainbow to COINFLIP, DUCKHUNT and CURSORPARK functions. See how to try each and which ones to trust today.",
