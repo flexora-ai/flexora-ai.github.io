@@ -3088,6 +3088,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-tricks-for-students",
+    title: "Google Tricks for Students: Study Smarter With Search",
+    excerpt: "Google tricks for students: define:, Scholar citations, voice typing in Docs, file-type searches and the calculator, plus how to check and cite sources.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-tricks-for-students.webp",
+    imageAlt: "Google tricks for students showing Scholar, define: and voice typing",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-underwater-fish-trick",
     title: "Google Underwater Fish Trick",
     excerpt: "Turn Google into an aquarium with the underwater trick. See what it does, how to try it, and how it differs from Google Gravity.",
