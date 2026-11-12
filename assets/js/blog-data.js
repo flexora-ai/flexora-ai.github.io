@@ -3074,6 +3074,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-translate-beatbox-trick",
+    title: "Google Translate Beatbox Trick: How It Works (and Why)",
+    excerpt: "Make Google Translate beatbox by setting German to German and pressing Listen. Learn the 2010 origin, the sound notation and why it may sound different today.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-translate-beatbox-trick.webp",
+    imageAlt: "Google Translate beatbox trick with German text turning into drum sounds",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-underwater-fish-trick",
     title: "Google Underwater Fish Trick",
     excerpt: "Turn Google into an aquarium with the underwater trick. See what it does, how to try it, and how it differs from Google Gravity.",
