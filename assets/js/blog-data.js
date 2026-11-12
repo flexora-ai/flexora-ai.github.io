@@ -36,6 +36,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-earth-flight-simulator-trick",
+    title: "Google Earth Flight Simulator Trick: How to Fly in 2026",
+    excerpt: "Google’s hidden flight simulator began as a 2007 Easter egg and reached the web in June 2026. How to open it, the controls and the two planes.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-06",
+    readMins: 6,
+    image: "assets/images/blog/google-earth-flight-simulator-trick.webp",
+    imageAlt: "Google Earth flight simulator trick: a small plane flying over a 3D city in Google Earth",
+    icon: "📄",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-anagram-trick",
     title: "Google Anagram Trick: Why It Asks “Nag a Ram?”",
     excerpt: "Search “anagram” and Google asks if you meant “nag a ram.” The joke explained, the “define anagram” twist, other languages, and a checker you can build.",
