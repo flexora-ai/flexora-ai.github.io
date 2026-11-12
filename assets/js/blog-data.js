@@ -8,6 +8,20 @@
 
 const BLOG_POSTS = [
   {
+    slug: "google-calendar-easter-eggs",
+    title: "Google Calendar Easter Eggs: Is There One? What to Try",
+    excerpt: "We found no documented Google Calendar Easter egg. Here is what is hidden in plain sight, the shortcuts worth knowing, and where Calendar meets Docs.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-06",
+    readMins: 5,
+    image: "assets/images/blog/google-calendar-easter-eggs.webp",
+    imageAlt: "Google Calendar Easter eggs: a calendar with keyboard shortcuts and hidden features highlighted",
+    icon: "📄",
+    published: true,
+    featured: true
+  },
+  {
     slug: "google-anagram-trick",
     title: "Google Anagram Trick: Why It Asks “Nag a Ram?”",
     excerpt: "Search “anagram” and Google asks if you meant “nag a ram.” The joke explained, the “define anagram” twist, other languages, and a checker you can build.",
@@ -19,7 +33,7 @@ const BLOG_POSTS = [
     imageAlt: "Google anagram trick: the search page asking Did you mean nag a ram",
     icon: "📄",
     published: true,
-    featured: true
+    featured: false
   },
   {
     slug: "google-answer-to-life-trick",
