@@ -2528,6 +2528,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-doodle-archive-best-games",
+    title: "Google Doodle Archive Best Games: 8 Worth Playing Now",
+    excerpt: "The best Google Doodle games you can still play, from Pac-Man and Champion Island Games to Magic Cat Academy, plus how to find them in the archive today.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-doodle-archive-best-games.webp",
+    imageAlt: "Google Doodle archive best games including Pac-Man and Champion Island Games",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-doodle-games-to-play-with-friends",
     title: "Google Doodle Games to Play with Friends",
     excerpt: "The best Google Doodle games to play with friends, from the first multiplayer Doodle to pétanque and popcorn, and how to set up a match.",
