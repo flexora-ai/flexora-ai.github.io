@@ -22,6 +22,20 @@ const BLOG_POSTS = [
     featured: true
   },
   {
+    slug: "google-docs-easter-eggs",
+    title: "Google Docs Easter Eggs: The Game of Life Shortcut",
+    excerpt: "Google Docs hides a Conway’s Game of Life shortcut. The keys for Windows and Mac, how to undo it, and the hidden Docs features worth knowing.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-06",
+    readMins: 5,
+    image: "assets/images/blog/google-docs-easter-eggs.webp",
+    imageAlt: "Google Docs Easter eggs: a document filled with a Game of Life pattern",
+    icon: "📄",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-anagram-trick",
     title: "Google Anagram Trick: Why It Asks “Nag a Ram?”",
     excerpt: "Search “anagram” and Google asks if you meant “nag a ram.” The joke explained, the “define anagram” twist, other languages, and a checker you can build.",
