@@ -2766,6 +2766,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-image-search-tricks",
+    title: "Google Image Search Tricks: Filters, Lens and Rights Tips",
+    excerpt: "Google image search tricks: reverse image search with Lens, size and color filters, transparent backgrounds, usage rights and tips to trace a picture.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-image-search-tricks.webp",
+    imageAlt: "Google image search tricks with filters, reverse search and usage rights",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-in-1985-easter-egg-explained",
     title: "Google in 1985 Easter Egg Explained: What Is Really Going On",
     excerpt: "Google did not exist in 1985, so what is the",
