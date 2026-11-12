@@ -64,6 +64,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-lens-hidden-tricks",
+    title: "Google Lens Hidden Tricks: Features Most People Miss",
+    excerpt: "Copy text to your computer, ask about an image, translate signs and get homework help: Google Lens hidden features worth trying, and how to open Lens.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-06",
+    readMins: 5,
+    image: "assets/images/blog/google-lens-hidden-tricks.webp",
+    imageAlt: "Google Lens hidden tricks: a phone camera copying text from a sign and translating it",
+    icon: "📄",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-anagram-trick",
     title: "Google Anagram Trick: Why It Asks “Nag a Ram?”",
     excerpt: "Search “anagram” and Google asks if you meant “nag a ram.” The joke explained, the “define anagram” twist, other languages, and a checker you can build.",
