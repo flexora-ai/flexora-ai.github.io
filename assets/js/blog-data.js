@@ -2738,6 +2738,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-hidden-features-you-didnt-know",
+    title: "Google Hidden Features You Didn",
+    excerpt: "Google hidden features you didn",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-hidden-features-you-didnt-know.webp",
+    imageAlt: "Google hidden features including timer, calculator and color picker",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-home-easter-eggs-list",
     title: "Google Home Easter Eggs List: Fun Voice Commands to Try",
     excerpt: "Looking for Google Home Easter eggs? Here is how to find fun voice commands, why results vary since Gemini arrived, and how to test them safely at home.",
