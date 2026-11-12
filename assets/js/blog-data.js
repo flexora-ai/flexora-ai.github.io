@@ -92,6 +92,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-street-view-easter-eggs",
+    title: "Google Street View Easter Eggs: Pegman, TARDIS and More",
+    excerpt: "Pegman turns into Nessie at Loch Ness, the TARDIS hides in London, and the ISS opens in Street View: Street View Easter eggs and whether they still work.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-06",
+    readMins: 5,
+    image: "assets/images/blog/google-street-view-easter-eggs.webp",
+    imageAlt: "Google Street View Easter eggs: Pegman turned into the Loch Ness monster and a TARDIS in London",
+    icon: "📄",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-anagram-trick",
     title: "Google Anagram Trick: Why It Asks “Nag a Ram?”",
     excerpt: "Search “anagram” and Google asks if you meant “nag a ram.” The joke explained, the “define anagram” twist, other languages, and a checker you can build.",
