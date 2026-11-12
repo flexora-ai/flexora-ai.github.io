@@ -2374,6 +2374,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-advanced-search-tips",
+    title: "Google Advanced Search Tips: Filters, Operators and More",
+    excerpt: "Google advanced search tips: use the Advanced Search page, filters, date ranges and operators to find what you want faster, with examples you can copy today.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-advanced-search-tips.webp",
+    imageAlt: "Google advanced search tips showing the Advanced Search page and filters",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-ai-mode-easter-eggs",
     title: "Google AI Mode Easter Eggs: Fact Check and Fun Prompts",
     excerpt: "Does Google AI Mode have Easter eggs? We checked. Here is what AI Mode is, why answers vary, and fun prompts to try instead, plus what classic eggs still do.",
