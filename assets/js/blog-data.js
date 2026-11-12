@@ -78,6 +78,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-photos-easter-eggs",
+    title: "Google Photos Easter Eggs: What Exists and What’s Fun",
+    excerpt: "Google Photos has few documented Easter eggs, like a 2019 Halloween pumpkin. What it was, what to try, and hidden features that feel like secrets.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-06",
+    readMins: 5,
+    image: "assets/images/blog/google-photos-easter-eggs.webp",
+    imageAlt: "Google Photos Easter eggs: a jack-o-lantern animation rolling across a photo search screen",
+    icon: "📄",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-anagram-trick",
     title: "Google Anagram Trick: Why It Asks “Nag a Ram?”",
     excerpt: "Search “anagram” and Google asks if you meant “nag a ram.” The joke explained, the “define anagram” twist, other languages, and a checker you can build.",
