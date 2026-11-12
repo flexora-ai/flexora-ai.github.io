@@ -50,6 +50,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-keep-hidden-tricks",
+    title: "Google Keep Hidden Tricks: Features Worth Knowing",
+    excerpt: "Google Keep has no documented Easter egg, but it hides useful tricks: grab text from images, location reminders, shortcuts and a side panel in Docs.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-06",
+    readMins: 5,
+    image: "assets/images/blog/google-keep-hidden-tricks.webp",
+    imageAlt: "Google Keep hidden tricks: colorful notes with labels, checklists and an image text grab",
+    icon: "📄",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-anagram-trick",
     title: "Google Anagram Trick: Why It Asks “Nag a Ram?”",
     excerpt: "Search “anagram” and Google asks if you meant “nag a ram.” The joke explained, the “define anagram” twist, other languages, and a checker you can build.",
