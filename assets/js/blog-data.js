@@ -36,6 +36,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-voice-search-hidden-commands",
+    title: "Google Voice Search Hidden Commands: What Works Now",
+    excerpt: "Voice search, Search Live, hum to search and the Hey Google trigger: which voice commands work in 2026 and where, now that Gemini is replacing Assistant.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-13",
+    readMins: 5,
+    image: "assets/images/blog/google-voice-search-hidden-commands.webp",
+    imageAlt: "Google voice search hidden commands: a phone showing Search Live, voice search and song search options",
+    icon: "📄",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-calendar-easter-eggs",
     title: "Google Calendar Easter Eggs: Is There One? What to Try",
     excerpt: "We found no documented Google Calendar Easter egg. Here is what is hidden in plain sight, the shortcuts worth knowing, and where Calendar meets Docs.",
