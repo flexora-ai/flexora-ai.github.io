@@ -2962,6 +2962,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-nano-banana-prompts",
+    title: "Google Nano Banana Prompts: 10 Templates for Better Images",
+    excerpt: "Learn Google",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-nano-banana-prompts.webp",
+    imageAlt: "Google Nano Banana prompts for generating and editing images with Gemini",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-pacman-doodle-trick",
     title: "Google Pacman Doodle Trick",
     excerpt: "Google",
