@@ -8,6 +8,20 @@
 
 const BLOG_POSTS = [
   {
+    slug: "google-tricks-for-android-phone",
+    title: "Google Tricks for Android Phone: Features Worth Knowing",
+    excerpt: "Circle to Search, Search Live, Gemini and Quick Share to iPhone: the best Google tricks for Android phones now that Android 17 and Gemini have arrived.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-13",
+    readMins: 6,
+    image: "assets/images/blog/google-tricks-for-android-phone.webp",
+    imageAlt: "Google tricks for Android phone: Circle to Search, Search Live and Quick Share on a phone screen",
+    icon: "📄",
+    published: true,
+    featured: true
+  },
+  {
     slug: "google-calendar-easter-eggs",
     title: "Google Calendar Easter Eggs: Is There One? What to Try",
     excerpt: "We found no documented Google Calendar Easter egg. Here is what is hidden in plain sight, the shortcuts worth knowing, and where Calendar meets Docs.",
@@ -19,7 +33,7 @@ const BLOG_POSTS = [
     imageAlt: "Google Calendar Easter eggs: a calendar with keyboard shortcuts and hidden features highlighted",
     icon: "📄",
     published: true,
-    featured: true
+    featured: false
   },
   {
     slug: "google-docs-easter-eggs",
