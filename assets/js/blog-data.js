@@ -8,6 +8,20 @@
 
 const BLOG_POSTS = [
   {
+    slug: "google-ai-tools-guide",
+    title: "Google AI Tools Guide: Gemini, NotebookLM, Veo and More",
+    excerpt: "A plain guide to Google’s AI tools: Gemini, AI Mode, NotebookLM, AI Studio, Nano Banana, Antigravity and more, what each does and how to choose.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-13",
+    readMins: 6,
+    image: "assets/images/blog/google-ai-tools-guide.webp",
+    imageAlt: "Google AI tools guide: Gemini, NotebookLM, AI Studio, Nano Banana and Antigravity grouped by use",
+    icon: "📄",
+    published: true,
+    featured: true
+  },
+  {
     slug: "google-tricks-for-android-phone",
     title: "Google Tricks for Android Phone: Features Worth Knowing",
     excerpt: "Circle to Search, Search Live, Gemini and Quick Share to iPhone: the best Google tricks for Android phones now that Android 17 and Gemini have arrived.",
@@ -19,7 +33,7 @@ const BLOG_POSTS = [
     imageAlt: "Google tricks for Android phone: Circle to Search, Search Live and Quick Share on a phone screen",
     icon: "📄",
     published: true,
-    featured: true
+    featured: false
   },
   {
     slug: "google-tricks-for-iphone",
