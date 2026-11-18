@@ -22,6 +22,20 @@ const BLOG_POSTS = [
     featured: true
   },
   {
+    slug: "google-tricks-for-iphone",
+    title: "Google Tricks for iPhone: Lens, Search Live and Widgets",
+    excerpt: "The best Google tricks for iPhone: Search Screen with Lens, Search Live, widgets, hum to search and flight Live Activities, and what iOS can’t do.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-13",
+    readMins: 6,
+    image: "assets/images/blog/google-tricks-for-iphone.webp",
+    imageAlt: "Google tricks for iPhone: the Google app with Lens, Search Live and a lock screen widget",
+    icon: "📄",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-calendar-easter-eggs",
     title: "Google Calendar Easter Eggs: Is There One? What to Try",
     excerpt: "We found no documented Google Calendar Easter egg. Here is what is hidden in plain sight, the shortcuts worth knowing, and where Calendar meets Docs.",
