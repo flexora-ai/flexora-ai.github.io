@@ -2976,6 +2976,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-notebooklm-tips",
+    title: "Google NotebookLM Tips: Sources, Studio and Study Workflows",
+    excerpt: "NotebookLM answers from your own sources with citations. Learn the three panels, Studio tools, current limits and a simple study workflow for exams.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-notebooklm-tips.webp",
+    imageAlt: "Google NotebookLM tips with sources, chat and the Studio panel",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-pacman-doodle-trick",
     title: "Google Pacman Doodle Trick",
     excerpt: "Google",
