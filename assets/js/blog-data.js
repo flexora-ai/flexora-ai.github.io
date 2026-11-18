@@ -2374,6 +2374,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "gemini-prompts-for-beginners",
+    title: "Gemini Prompts for Beginners: A 5-Part Formula + 10 Examples",
+    excerpt: "New to Gemini? Learn a simple five-part prompt formula, copy ten starter prompts, and fix weak answers with follow-ups. No special words or tricks are needed.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/gemini-prompts-for-beginners.webp",
+    imageAlt: "Gemini prompts for beginners with a five-part prompt formula and examples",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-90s-easter-eggs",
     title: "Google 90s Easter Eggs: Real Throwbacks and Myths Sorted",
     excerpt: "Google was founded in 1998, so its 90s Easter eggs are throwbacks. See the real ones, from Google in 1998 to the 20th anniversary and the 2026 Zelda egg.",
