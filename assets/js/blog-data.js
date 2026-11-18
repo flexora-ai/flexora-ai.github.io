@@ -2444,6 +2444,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-ai-studio-tutorial",
+    title: "Google AI Studio Tutorial: Prompts, Build Mode and API Keys",
+    excerpt: "A beginner",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-ai-studio-tutorial.webp",
+    imageAlt: "Google AI Studio tutorial showing the Playground, Build mode and API keys",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-ascii-art-trick",
     title: "Google ASCII Art Trick: Is There One? How to Make Your Own",
     excerpt: "Is there a Google ASCII art trick? We checked. Learn what ASCII art is, why Google has no official one, and how to make text art of your own with a few rules.",
