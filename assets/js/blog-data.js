@@ -2360,6 +2360,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "gemini-hidden-features",
+    title: "Gemini Hidden Features: Gems, Canvas, Live and More (2026)",
+    excerpt: "Gemini hides useful features: Gems, Canvas, Deep Research, standing instructions, scheduled actions and Temporary Chat. See where to find each one in 2026.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/gemini-hidden-features.webp",
+    imageAlt: "Gemini hidden features including Gems, Canvas, Deep Research and Temporary Chat",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-90s-easter-eggs",
     title: "Google 90s Easter Eggs: Real Throwbacks and Myths Sorted",
     excerpt: "Google was founded in 1998, so its 90s Easter eggs are throwbacks. See the real ones, from Google in 1998 to the 20th anniversary and the 2026 Zelda egg.",
