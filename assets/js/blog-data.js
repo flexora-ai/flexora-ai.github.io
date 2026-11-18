@@ -2654,6 +2654,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-gemini-api-pricing",
+    title: "Google Gemini API Pricing: Costs Explained With Examples",
+    excerpt: "How Gemini API pricing works: tokens, input and output rates, the free tier, Batch and caching discounts, and a worked example so you can estimate your bill.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-gemini-api-pricing.webp",
+    imageAlt: "Google Gemini API pricing explained with a worked cost example",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-gemini-easter-eggs",
     title: "Google Gemini Easter Eggs: What Is Real and What to Try",
     excerpt: "Are there Google Gemini Easter eggs? We checked. See what is documented, what is just a creative prompt, and how Gemini differs from Assistant and ChatGPT.",
@@ -2663,6 +2677,20 @@ const BLOG_POSTS = [
     readMins: 5,
     image: "assets/images/blog/google-gemini-easter-eggs.webp",
     imageAlt: "Google Gemini Easter eggs guide with fun prompts and a three-part status guide",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
+    slug: "google-gemini-vs-chatgpt-for-search",
+    title: "Google Gemini vs ChatGPT for Search: An Honest Comparison",
+    excerpt: "Gemini or ChatGPT for search? See how they differ, where each tends to shine, and run a five-question test to decide for yourself instead of trusting hype.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-gemini-vs-chatgpt-for-search.webp",
+    imageAlt: "Google Gemini vs ChatGPT for search compared with a five-question test",
     icon: "⚙️",
     published: true,
     featured: false
