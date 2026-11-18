@@ -64,6 +64,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "things-to-search-on-google-when-bored",
+    title: "Things to Search on Google When Bored: 25 Fun Ideas",
+    excerpt: "25 fun things to search or try on Google when you are bored, from barrel roll and Snake to a TARDIS in Street View, with what each one does.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-13",
+    readMins: 5,
+    image: "assets/images/blog/things-to-search-on-google-when-bored.webp",
+    imageAlt: "Things to search on Google when bored: a list of 25 fun searches, games and tricks",
+    icon: "📄",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-calendar-easter-eggs",
     title: "Google Calendar Easter Eggs: Is There One? What to Try",
     excerpt: "We found no documented Google Calendar Easter egg. Here is what is hidden in plain sight, the shortcuts worth knowing, and where Calendar meets Docs.",
