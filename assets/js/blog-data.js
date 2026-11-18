@@ -50,6 +50,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "how-to-use-google-like-a-pro",
+    title: "How to Use Google Like a Pro: Habits That Save Time",
+    excerpt: "A practical guide to searching Google like a pro: the few operators that matter, date filters, Advanced Search, reverse image search and AI Mode.",
+    category: "Google Tricks",
+    author: "Prashant Lalwani",
+    date: "2026-11-13",
+    readMins: 5,
+    image: "assets/images/blog/how-to-use-google-like-a-pro.webp",
+    imageAlt: "How to use Google like a pro: a search box with quotes, minus and site operators highlighted",
+    icon: "📄",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-calendar-easter-eggs",
     title: "Google Calendar Easter Eggs: Is There One? What to Try",
     excerpt: "We found no documented Google Calendar Easter egg. Here is what is hidden in plain sight, the shortcuts worth knowing, and where Calendar meets Docs.",
