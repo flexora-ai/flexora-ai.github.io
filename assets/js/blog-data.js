@@ -3186,6 +3186,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-tpu-vs-nvidia-gpu-explained",
+    title: "Google TPU vs NVIDIA GPU Explained in Plain English",
+    excerpt: "Google TPU vs NVIDIA GPU explained simply: what a TPU is, how systolic arrays work, what Ironwood is, why GPUs still matter and how to compare chips fairly.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-tpu-vs-nvidia-gpu-explained.webp",
+    imageAlt: "Google TPU vs NVIDIA GPU explained with a systolic array diagram",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-translate-beatbox-trick",
     title: "Google Translate Beatbox Trick: How It Works (and Why)",
     excerpt: "Make Google Translate beatbox by setting German to German and pressing Listen. Learn the 2010 origin, the sound notation and why it may sound different today.",
