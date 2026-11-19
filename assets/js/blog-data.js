@@ -3424,6 +3424,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-veo-prompts-guide",
+    title: "Google Veo Prompts Guide: 5-Part Formula and 10 Examples",
+    excerpt: "A practical Google Veo prompts guide: the five-part formula, how to add dialogue and sound, ten prompts to adapt and the mistakes that waste generations.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-veo-prompts-guide.webp",
+    imageAlt: "Google Veo prompts guide with a camera, subject, action, context and style formula",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-y2k-homepage-trick",
     title: "Google Y2K Homepage Trick: Google at the Turn of 2000",
     excerpt: "Is there a Google Y2K homepage trick? We checked. See what Google looked like at the turn of 2000, what the Y2K bug was and how you can view the old page.",
