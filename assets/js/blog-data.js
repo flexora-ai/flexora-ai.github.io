@@ -2738,6 +2738,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-easter-eggs-for-halloween",
+    title: "Google Easter Eggs for Halloween: Doodles, Ghosts and Photos",
+    excerpt: "Google Halloween Easter eggs: Doodle games from 2016 to 2025, ghost and monster searches, a Google Photos pumpkin and how to find this year",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-easter-eggs-for-halloween.webp",
+    imageAlt: "Google Easter eggs for Halloween including Doodle games and ghost animations",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-fall-down-trick-explained",
     title: "Google Fall Down Trick Explained",
     excerpt: "How does the Google Gravity trick make the page fall? A plain-language explanation of the JavaScript, the physics engine and why it works.",
