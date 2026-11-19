@@ -3074,6 +3074,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-ive-easter-egg",
+    title: "Google IVE Easter Egg: How to Trigger the Star Fireworks",
+    excerpt: "Search IVE on Google and click the black star icon to light up the page with star fireworks. See how it works, what Google said and what to try if it is gone.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-ive-easter-egg.webp",
+    imageAlt: "Google IVE Easter egg with star-shaped fireworks on a darkened search page",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-konami-code-trick",
     title: "Google Konami Code Trick",
     excerpt: "Say the Konami Code to Google voice search and it unlocks a joke cheat mode. Here is where it works, what it says and how to trigger it.",
