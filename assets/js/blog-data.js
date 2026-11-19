@@ -2640,6 +2640,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-bts-easter-egg",
+    title: "Google BTS Easter Egg: Purple Balloons and the ARIRANG Quiz",
+    excerpt: "Search BTS on Google for purple balloons in 2022 and a quiz with rewards in 2026. See how both worked, how they differ and what to do if they have ended.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-bts-easter-egg.webp",
+    imageAlt: "Google BTS Easter egg with a purple heart, balloons and a quiz",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-bubble-level-trick",
     title: "Google Bubble Level Trick: Level Anything With Your Phone",
     excerpt: "Search bubble level on your phone and Google turns it into a spirit level. See how to use it, how accurate it is, and how to test it before you hang that shelf.",
