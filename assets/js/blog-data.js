@@ -2528,6 +2528,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-ai-overview-fun-tricks",
+    title: "Google AI Overview Fun Tricks: Skip, Test and Fact-Check",
+    excerpt: "Google AI Overviews can",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-ai-overview-fun-tricks.webp",
+    imageAlt: "Google AI Overview fun tricks showing how to skip and fact-check summaries",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-ai-studio-tutorial",
     title: "Google AI Studio Tutorial: Prompts, Build Mode and API Keys",
     excerpt: "A beginner",
