@@ -2752,6 +2752,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-easter-eggs-that-no-longer-work",
+    title: "Google Easter Eggs That No Longer Work: A 2026 Status Check",
+    excerpt: "Which Google Easter eggs no longer work? See a 2026 status table, why a trick may fail on your screen, a five-step test and what to try instead.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-easter-eggs-that-no-longer-work.webp",
+    imageAlt: "Google Easter eggs that no longer work with a 2026 status table",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-fall-down-trick-explained",
     title: "Google Fall Down Trick Explained",
     excerpt: "How does the Google Gravity trick make the page fall? A plain-language explanation of the JavaScript, the physics engine and why it works.",
