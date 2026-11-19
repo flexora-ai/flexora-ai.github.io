@@ -3214,6 +3214,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-retired-easter-eggs-list",
+    title: "Google Retired Easter Eggs List: What Was Removed and Why",
+    excerpt: "See the Google Easter eggs reported as retired, from Zerg Rush and Atari Breakout to the Thanos snap, why they disappear and where recreations still live.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-retired-easter-eggs-list.webp",
+    imageAlt: "Google retired Easter eggs list including Zerg Rush and Atari Breakout",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-search-operators-cheat-sheet",
     title: "Google Search Operators Cheat Sheet: What Works in 2026",
     excerpt: "A Google search operators cheat sheet for 2026: working operators with examples, retired ones like cache: and link:, and tips for combining them correctly.",
