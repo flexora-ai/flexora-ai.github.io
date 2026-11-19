@@ -2612,6 +2612,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-blackpink-easter-egg",
+    title: "Google BLACKPINK Easter Egg: Hearts, Confetti and Pegman",
+    excerpt: "Search BLACKPINK on Google for hearts, confetti and a lightstick Pegman on Maps. See how each Easter egg worked, when it launched and what to try if it is gone.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-blackpink-easter-egg.webp",
+    imageAlt: "Google BLACKPINK Easter egg with pink hearts and confetti on the search page",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-blink-html-trick",
     title: "Google Blink HTML Trick: How the Blinking Easter Egg Works",
     excerpt: "Search blink html and the words flash in your results. Learn how the trick works, the story of the blink tag, and why blinking text is bad for accessibility.",
