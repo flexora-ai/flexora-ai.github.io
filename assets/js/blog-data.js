@@ -3438,6 +3438,20 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "google-world-cup-easter-eggs",
+    title: "Google World Cup Easter Eggs: 2026 Doodles, Haaland and Mini Cup",
+    excerpt: "See the Google World Cup Easter eggs: the 2026 Doodles and search hub, the Haaland Viking Row animation, the 2022 Mini Cup game and how to find tournament surprises.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 5,
+    image: "assets/images/blog/google-world-cup-easter-eggs.webp",
+    imageAlt: "Google World Cup Easter eggs including football Doodles and the Mini Cup game",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "google-y2k-homepage-trick",
     title: "Google Y2K Homepage Trick: Google at the Turn of 2000",
     excerpt: "Is there a Google Y2K homepage trick? We checked. See what Google looked like at the turn of 2000, what the Y2K bug was and how you can view the old page.",
