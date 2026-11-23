@@ -92,6 +92,48 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "best-ai-brand-kit-generator",
+    title: "Best AI Brand Kit Generators for Small Business (2026)",
+    excerpt: "Compare the best AI brand kit generators in 2026. Reviewing logo suites, color palettes, typography guidelines, and vector business card files.",
+    category: "Branding",
+    author: "Prashant Lalwani",
+    date: "2026-11-23",
+    readMins: 7,
+    image: "assets/images/blog/best-ai-logo-design.webp",
+    imageAlt: "Best AI brand kit generators for small business",
+    icon: "🎨",
+    published: true,
+    featured: false
+  },
+  {
+    slug: "best-ai-image-generator-for-website-design",
+    title: "Best AI Image Generators for Website Design (Compared)",
+    excerpt: "Compare the best AI image generators for website design in 2026. Evaluating hero section visuals, transparent UI assets, and multi-model tools.",
+    category: "AI Tools",
+    author: "Prashant Lalwani",
+    date: "2026-11-23",
+    readMins: 7,
+    image: "assets/images/blog/best-ai-image-generator-for-blog-graphics.webp",
+    imageAlt: "Best AI image generators for website design comparison",
+    icon: "🖼️",
+    published: true,
+    featured: false
+  },
+  {
+    slug: "how-to-convert-webinars-to-shorts-ai",
+    title: "How to Convert Webinars into Viral Shorts with AI (2026)",
+    excerpt: "Learn how to convert long webinars and Zoom recordings into viral Shorts, Reels, and TikToks with AI in 2026. Step-by-step tools and workflows.",
+    category: "Video",
+    author: "Prashant Lalwani",
+    date: "2026-11-23",
+    readMins: 7,
+    image: "assets/images/blog/how-to-turn-youtube-videos-into-shorts-ai.webp",
+    imageAlt: "How to convert webinars into viral shorts with AI comparison",
+    icon: "🎬",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tools-for-solopreneurs",
     title: "Best AI Tools for Solopreneurs (2026 Complete Guide)",
     excerpt: "Discover the best AI tools for solopreneurs to automate tasks, boost productivity, and scale your one-person business in 2026.",
