@@ -134,6 +134,48 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "best-ai-logo-maker-for-youtube-channel",
+    title: "Best AI Logo Makers for YouTube Channels (2026 Tested)",
+    excerpt: "Compare the best AI logo makers for YouTube channels in 2026. Evaluating avatar profile pictures, banner art, gaming marks, and transparent PNGs.",
+    category: "Branding",
+    author: "Prashant Lalwani",
+    date: "2026-11-23",
+    readMins: 7,
+    image: "assets/images/blog/best-ai-logo-design.webp",
+    imageAlt: "Best AI logo makers for YouTube channels comparison",
+    icon: "🎨",
+    published: true,
+    featured: false
+  },
+  {
+    slug: "best-ai-image-generator-for-consistent-characters",
+    title: "Best AI Image Generators for Consistent Characters (2026)",
+    excerpt: "Compare the best AI image generators for consistent characters in 2026. Reviewing face seeding, multi-model workflows, poses, and storyboards.",
+    category: "AI Tools",
+    author: "Prashant Lalwani",
+    date: "2026-11-23",
+    readMins: 7,
+    image: "assets/images/blog/best-ai-image-generator-for-blog-graphics.webp",
+    imageAlt: "Best AI image generators for consistent characters comparison",
+    icon: "🖼️",
+    published: true,
+    featured: false
+  },
+  {
+    slug: "how-to-repurpose-zoom-interviews-into-reels-ai",
+    title: "How to Repurpose Zoom Interviews into Reels with AI (2026)",
+    excerpt: "Learn how to turn long Zoom interviews into viral Instagram Reels and Shorts with AI in 2026. Auto reframing, active speaker focus, and captions.",
+    category: "Video",
+    author: "Prashant Lalwani",
+    date: "2026-11-23",
+    readMins: 7,
+    image: "assets/images/blog/how-to-turn-youtube-videos-into-shorts-ai.webp",
+    imageAlt: "How to repurpose Zoom interviews into Reels with AI comparison",
+    icon: "🎬",
+    published: true,
+    featured: false
+  },
+  {
     slug: "ai-tools-for-solopreneurs",
     title: "Best AI Tools for Solopreneurs (2026 Complete Guide)",
     excerpt: "Discover the best AI tools for solopreneurs to automate tasks, boost productivity, and scale your one-person business in 2026.",
