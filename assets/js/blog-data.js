@@ -2402,6 +2402,34 @@ const BLOG_POSTS = [
     featured: false
   },
   {
+    slug: "best-ai-image-generator-for-youtube-thumbnails",
+    title: "Best AI Image Generator for YouTube Thumbnails (2027 Tested)",
+    excerpt: "Compare the best AI image generators for YouTube thumbnails in 2027. Testing face consistency, text rendering, aspect ratios, CTR-optimized compositions, and multi-model outputs.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 8,
+    image: "assets/images/blog/best-ai-image-generator-for-youtube-thumbnails.webp",
+    imageAlt: "Best AI image generator for YouTube thumbnails comparison 2027",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
+    slug: "best-ai-logo-generator-for-gaming-and-esports",
+    title: "Best AI Logo Generator for Gaming &amp; Esports (2027 Tested)",
+    excerpt: "Compare the best AI logo generators for gaming teams and esports orgs in 2027. Testing vector exports, mascot generation, transparent PNGs, and stream overlay kits.",
+    category: "Guide",
+    author: "Prashant Lalwani",
+    date: "",
+    readMins: 8,
+    image: "assets/images/blog/best-ai-logo-generator-for-gaming-and-esports.webp",
+    imageAlt: "Best AI logo generator for gaming and esports comparison 2027",
+    icon: "⚙️",
+    published: true,
+    featured: false
+  },
+  {
     slug: "best-ai-logo-generator-tools",
     title: "Best AI Logo Generator Tools (And When to Skip Them)",
     excerpt: "Which AI logo generators are actually worth using, and the situations where hiring a real designer is still the better call.",
