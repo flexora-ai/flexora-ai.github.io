@@ -2006,7 +2006,7 @@ function prettifyFilename(name) {
       } else {
         var remM = Math.floor(remaining / 60000);
         var remS = Math.floor((remaining % 60000) / 1000);
-        timerStatusText.textContent = 'â± ' + remM + ':' + (remS < 10 ? '0' : '') + remS;
+        timerStatusText.textContent = remM + ':' + (remS < 10 ? '0' : '') + remS;
       }
     }, 1000);
   }

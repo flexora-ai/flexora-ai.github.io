@@ -198,7 +198,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <p class="lede" style="margin:0 auto 10px;">Every submission is human-reviewed. Choose between our free Partner Link Exchange or our 1-Year Featured Spotlight.</p>
 
       <div class="submit-form-box" style="text-align:left;">
-        <form action="https://formspree.io/f/xzepjrvz" id="submitPageForm" method="POST">
+        <form action="https://script.google.com/macros/s/AKfycbyzS--DlkIfG2OFNHZFYBBt47MtIWG9FHJJypyh8UYwBw1E5UukSpmj9MTvi_vwb8id/exec" id="submitPageForm" method="POST">
+          <input type="hidden" name="form_type" value="tool_submission"/>
           
           <!-- Section 1: Tool Information -->
           <div style="border-bottom:1px solid var(--line); padding-bottom:24px; margin-bottom:28px;">
@@ -462,8 +463,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             status.textContent = '';
             var fd = new FormData(document.getElementById('submitPageForm'));
             var selectedTier = fd.get('submission_tier') || 'Partner Exchange';
-            fetch('https://formspree.io/f/xzepjrvz', {
-              method: 'POST', body: fd, headers: { 'Accept': 'application/json' }
+            var endpoint = window.FLEXORA_FORMS_ENDPOINT || 'https://script.google.com/macros/s/AKfycbyzS--DlkIfG2OFNHZFYBBt47MtIWG9FHJJypyh8UYwBw1E5UukSpmj9MTvi_vwb8id/exec';
+            fetch(endpoint, {
+              method: 'POST', body: new URLSearchParams(fd), headers: { 'Accept': 'application/json' }
             }).then(function(r) {
               if (r.ok) {
                 document.getElementById('submitPageForm').style.display = 'none';

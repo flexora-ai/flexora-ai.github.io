@@ -1,7 +1,11 @@
 /**
  * Flexora.Ai — Modal & Form Handler (assets/js/modals.js)
- * Manages modal popups, Formspree AJAX submissions, validation & toast feedback.
+ * Manages modal popups, Google Sheets & Formspree AJAX submissions, validation & toast feedback.
  */
+
+// Central Forms & Email Automation Endpoint
+// Connected to Google Apps Script Web App (100% free, unlimited submissions & auto-emails):
+window.FLEXORA_FORMS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyzS--DlkIfG2OFNHZFYBBt47MtIWG9FHJJypyh8UYwBw1E5UukSpmj9MTvi_vwb8id/exec';
 
 (function () {
   'use strict';
@@ -61,10 +65,10 @@
 
       try {
         const formData = new FormData(form);
-        const endpoint = form.getAttribute('action') || 'https://formspree.io/f/xyegnwpy';
+        const endpoint = window.FLEXORA_FORMS_ENDPOINT || form.getAttribute('action') || 'https://formspree.io/f/xyegnwpy';
         const res = await fetch(endpoint, {
           method: 'POST',
-          body: formData,
+          body: new URLSearchParams(formData),
           headers: { 'Accept': 'application/json' }
         });
 
@@ -101,12 +105,11 @@
     wireModal('#claimListingBtn, .trigger-claim-modal', 'claimModal', 'claimModalClose');
     wireModal('#getFeaturedBtn, .trigger-featured-modal', 'featuredModal', 'featuredModalClose');
 
-    // 2. Wire Formspree Forms
+    // 2. Wire Forms
     wireFormspree('popupContactForm', 'popupContactSuccess');
     wireFormspree('popupSubmitForm', 'popupSubmitSuccess');
     wireFormspree('claimForm', 'claimSuccess');
     wireFormspree('featuredForm', 'featuredSuccess');
-    wireFormspree('submitPageForm', 'submitPageSuccess');
   });
 
 })();

@@ -130,11 +130,29 @@ if (fs.existsSync(BLOG_DIR)) {
       group: 'Blog posts',
     };
   }).filter(Boolean).sort((a, b) => a.loc.localeCompare(b.loc));
+// ---------- 3b. auto-discover every tool page that exists in tools/ ----------
+const TOOLS_DIR = path.join(ROOT, 'tools');
+let toolEntries = [];
+if (fs.existsSync(TOOLS_DIR)) {
+  const toolFiles = fs.readdirSync(TOOLS_DIR).filter(f => f.endsWith('.html') && !f.startsWith('_'));
+  toolEntries = toolFiles.map(file => {
+    const slug = file.replace(/\.html$/, '');
+    const abs = path.join(TOOLS_DIR, file);
+    const html = fs.readFileSync(abs, 'utf8');
+    return {
+      loc: `${BASE_URL}/tools/${slug}.html`,
+      lastmod: isoDate(fs.statSync(abs).mtime),
+      changefreq: 'weekly',
+      priority: '0.8',
+      label: extractTitle(html, slug),
+      group: 'Tool pages',
+    };
+  }).sort((a, b) => a.loc.localeCompare(b.loc));
 } else {
-  console.log('No blog/ folder found — skipping blog post discovery.');
+  console.log('No tools/ folder found — skipping tool page discovery.');
 }
 
-const allEntries = [...staticEntries, ...blogEntries];
+const allEntries = [...staticEntries, ...blogEntries, ...toolEntries];
 
 if (allEntries.length === 0) {
   console.error('No pages discovered at all. Refusing to write an empty sitemap — check this script is actually running from the repo root (it expects to live at scripts/generate-sitemap.js).');

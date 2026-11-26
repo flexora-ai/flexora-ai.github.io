@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <!-- Google Tag Manager -->
@@ -756,22 +756,32 @@ footer{border-top:1px solid var(--line); padding:56px 0 28px;}
 
 <button aria-label="Back to top" class="back-to-top" id="backToTop">↑</button>
 <div class="toast" id="toast"></div>
-<button aria-label="Contact us" class="fab fab-contact" id="fabContact"><i class="fab-icon">✉</i><span>Contact</span></button>
-<button aria-label="Submit a tool" class="fab fab-submit" id="fabSubmit"><i class="fab-icon">+</i><span>Submit tool</span></button>
+<button aria-label="Contact us" class="fab fab-contact" id="fabContact">
+  <svg class="fab-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+  <span>Contact</span>
+</button>
+<button aria-label="Submit a tool" class="fab fab-submit" id="fabSubmit">
+  <svg class="fab-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+  <span>Submit tool</span>
+</button>
 
 <div class="modal-overlay" id="contactModal">
 <div class="modal-box">
-<button aria-label="Close" class="modal-close" id="contactModalClose"></button>
+<button aria-label="Close" class="modal-close" id="contactModalClose">✕</button>
 <span class="eyebrow"><span class="dot"></span>Get in touch</span>
 <h3>Contact us</h3>
 <p class="modal-sub">We usually reply within a day or two.</p>
-<form action="https://formspree.io/f/xyegnwpy" class="mini-form" id="popupContactForm" method="POST">
+<form action="https://script.google.com/macros/s/AKfycbyzS--DlkIfG2OFNHZFYBBt47MtIWG9FHJJypyh8UYwBw1E5UukSpmj9MTvi_vwb8id/exec" class="mini-form" id="popupContactForm" method="POST">
+<input type="hidden" name="form_type" value="contact_inquiry"/>
 <div class="mf-row">
 <input name="name" placeholder="Your name" required type="text"/>
 <input name="email" placeholder="Your email" required type="email"/>
 </div>
 <textarea name="message" placeholder="What's on your mind?" required rows="4"></textarea>
-<button class="btn btn-primary" type="submit">Send message</button>
+<button class="btn btn-primary" type="submit" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+  <span>Send message</span>
+</button>
 </form>
 <div class="mf-success" id="popupContactSuccess">
 <span style="font-size:28px;">✅</span>
@@ -783,14 +793,15 @@ footer{border-top:1px solid var(--line); padding:56px 0 28px;}
 
 <div class="modal-overlay" id="submitModal">
 <div class="modal-box">
-<button aria-label="Close" class="modal-close" id="submitModalClose"></button>
+<button aria-label="Close" class="modal-close" id="submitModalClose">✕</button>
 <span class="eyebrow"><span class="dot"></span>Building an AI tool?</span>
 <h3>Submit your tool</h3>
-<p class="modal-sub">Free to submit — every tool reviewed by hand.</p>
-<form action="https://formspree.io/f/xzepjrvz" class="mini-form" id="popupSubmitForm" method="POST">
+<p class="modal-sub">Free Partner Link Exchange or 1-Year Featured Spotlight.</p>
+<form action="https://script.google.com/macros/s/AKfycbyzS--DlkIfG2OFNHZFYBBt47MtIWG9FHJJypyh8UYwBw1E5UukSpmj9MTvi_vwb8id/exec" class="mini-form" id="popupSubmitForm" method="POST">
+<input type="hidden" name="form_type" value="tool_submission"/>
 <div class="mf-row">
 <input name="tool_name" placeholder="Tool name" required type="text"/>
-<input name="website" placeholder="Website URL" required type="url"/>
+<input name="website" placeholder="Website URL (https://...)" required type="url"/>
 </div>
 <div class="mf-row">
 <select name="category" required>
@@ -798,19 +809,23 @@ footer{border-top:1px solid var(--line); padding:56px 0 28px;}
 <option>Writing</option><option>Image</option><option>Video</option><option>Coding</option>
 <option>SEO</option><option>Design</option><option>Productivity</option><option>Automation</option><option>Other</option>
 </select>
-<select name="pricing" required>
-<option disabled selected value="">Pricing</option>
-<option>Free</option><option>Freemium</option><option>Paid only</option>
+<select name="submission_tier" required>
+<option value="Partner Exchange (Free with Backlink)" selected>Partner Link Exchange (Free)</option>
+<option value="Featured Partner ($50 / 1 Year)">Featured 1-Year ($50)</option>
 </select>
 </div>
 <textarea name="description" placeholder="Short description of what it does" required rows="3"></textarea>
-<input name="contact_email" placeholder="Contact email" required type="email"/>
-<button class="btn btn-primary" type="submit">Submit for review</button>
+<input name="contact_email" placeholder="Business contact email" required type="email"/>
+<button class="btn btn-primary" type="submit" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4 20-7z"/></svg>
+  <span>Submit for review</span>
+</button>
+<a href="submit.html" style="display:block;text-align:center;font-size:12px;color:var(--teal);margin-top:8px;text-decoration:none;">Need full form or partner badge? Visit Submit Page →</a>
 </form>
 <div class="mf-success" id="popupSubmitSuccess">
 <span style="font-size:28px;">✅</span>
 <h3>Got it — thanks!</h3>
-<p>We review every submission by hand before it goes live.</p>
+<p>We review every submission by hand and follow up via email.</p>
 </div>
 </div>
 </div>
@@ -1162,6 +1177,7 @@ entry.target.classList.add('in-view');
 revealObs.unobserve(entry.target);
 }
 });
+});
 document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 // Immediately activate any elements already in or near viewport
 setTimeout(() => {
@@ -1220,18 +1236,21 @@ wireModal('fabContact', 'contactModal', 'contactModalClose');
 wireModal('fabSubmit', 'submitModal', 'submitModalClose');
 })();
 
-// ===== 23. FORMSPREE SUBMISSION WITH CONFETTI =====
+// ===== 23. FORMSPREE & GOOGLE SHEETS UNIFIED SUBMISSION WITH CONFETTI =====
+window.FLEXORA_FORMS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyzS--DlkIfG2OFNHZFYBBt47MtIWG9FHJJypyh8UYwBw1E5UukSpmj9MTvi_vwb8id/exec';
 function wireFormspree(formId, successId){
 const form = document.getElementById(formId);
 if(!form) return;
 form.addEventListener('submit', async (e) => {
 e.preventDefault();
 const submitBtn = form.querySelector('button[type="submit"]');
+const origText = submitBtn ? submitBtn.innerHTML : 'Send';
 if(submitBtn){ submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
 try{
-const res = await fetch(form.action, {
+const endpoint = window.FLEXORA_FORMS_ENDPOINT || form.action;
+const res = await fetch(endpoint, {
 method: 'POST',
-body: new FormData(form),
+body: new URLSearchParams(new FormData(form)),
 headers: {'Accept': 'application/json'}
 });
 if(res.ok){
@@ -1243,9 +1262,13 @@ if(toast){ toast.textContent = '✅ Sent — thank you!'; toast.classList.add('s
 setTimeout(() => {
 document.getElementById(formId.replace('Form','Modal'))?.classList.remove('open');
 }, 3500);
+} else {
+const toast = document.getElementById('toast');
+if(toast){ toast.textContent = 'Failed to send — please try again.'; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 3000); }
+if(submitBtn){ submitBtn.disabled = false; submitBtn.innerHTML = origText; }
 }
 } catch(err){
-if(submitBtn){ submitBtn.disabled = false; submitBtn.textContent = 'Send'; }
+if(submitBtn){ submitBtn.disabled = false; submitBtn.innerHTML = origText; }
 }
 });
 }
@@ -1277,11 +1300,11 @@ let isPlaying = false;
 function updateUI(){
 if(isPlaying){
 btn.classList.add('playing');
-btn.textContent = 'â¸'; status.textContent = 'Now playing';
+btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>'; status.textContent = 'Now playing';
 player.classList.remove('paused');
 } else {
 btn.classList.remove('playing');
-btn.textContent = 'â–¶'; status.textContent = 'Click to play';
+btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>'; status.textContent = 'Click to play';
 player.classList.add('paused');
 }
 }

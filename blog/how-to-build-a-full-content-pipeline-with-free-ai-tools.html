@@ -618,7 +618,7 @@ aside{position:sticky;top:80px;height:fit-content;display:flex;flex-direction:co
 
 <!-- Music Player -->
 <div class="music-player paused" id="musicPlayer">
-  <button class="music-btn" id="musicBtn" aria-label="Play background music">▶</button>
+  <button class="music-btn" id="musicBtn" aria-label="Play background music"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg></button>
   <div class="music-info">
     <b>Flexora FM</b>
     <span>Focus Mode</span>
@@ -788,8 +788,8 @@ topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smoo
   audio.src = 'https://flexora-ai.github.io/assets/audio/pulse-vector.mp3'; audio.loop = true; audio.preload = 'none';
   document.body.appendChild(audio);
   function setUI(playing){
-    if(playing){ player.classList.remove('paused'); btn.classList.add('playing'); btn.innerHTML = '⏸'; btn.setAttribute('aria-label', 'Pause background music'); }
-    else { player.classList.add('paused'); btn.classList.remove('playing'); btn.innerHTML = '▶'; btn.setAttribute('aria-label', 'Play background music'); }
+    if(playing){ player.classList.remove('paused'); btn.classList.add('playing'); btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>'; btn.setAttribute('aria-label', 'Pause background music'); }
+    else { player.classList.add('paused'); btn.classList.remove('playing'); btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>'; btn.setAttribute('aria-label', 'Play background music'); }
   }
   function play(){ audio.play().then(() => { localStorage.setItem(STORAGE_KEY,'1'); setUI(true); }).catch(() => {}); }
   function pause(){ audio.pause(); localStorage.setItem(STORAGE_KEY,'0'); setUI(false); }
