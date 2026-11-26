@@ -31,7 +31,7 @@ const path = require('path');
 const vm = require('vm');
 
 const ROOT = path.resolve(__dirname, '..');
-const PAGES_JSON = path.join(ROOT, 'scripts', 'pages.json');
+const PAGES_JSON = fs.existsSync(path.join(ROOT, 'scripts', 'pages.json')) ? path.join(ROOT, 'scripts', 'pages.json') : path.join(ROOT, 'pages.json');
 const BLOG_DATA_JS = path.join(ROOT, 'assets', 'js', 'blog-data.js');
 const BLOG_DIR = path.join(ROOT, 'blog');
 const SITEMAP_XML = path.join(ROOT, 'sitemap.xml');
@@ -130,6 +130,8 @@ if (fs.existsSync(BLOG_DIR)) {
       group: 'Blog posts',
     };
   }).filter(Boolean).sort((a, b) => a.loc.localeCompare(b.loc));
+}
+
 // ---------- 3b. auto-discover every tool page that exists in tools/ ----------
 const TOOLS_DIR = path.join(ROOT, 'tools');
 let toolEntries = [];

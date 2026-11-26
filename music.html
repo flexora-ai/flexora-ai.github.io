@@ -64,7 +64,7 @@ img, svg { display: block; max-width: 100%; }
 .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
 .mono { font-family: 'IBM Plex Mono', monospace; }
 
-/* â”€â”€ NAV â”€â”€ */
+/* -- NAV -- */
 header {
   position: sticky; top: 0; z-index: 60;
   background: rgba(7,9,15,0.85);
@@ -106,7 +106,7 @@ nav.wrap {
 .mobile-menu.open { display: flex; }
 .mobile-menu a { padding: 10px 0; color: var(--ink-soft); font-size: 14.5px; border-bottom: 1px solid var(--line); }
 
-/* â”€â”€ HERO â”€â”€ */
+/* -- HERO -- */
 .music-hero {
   padding: 64px 0 36px;
   text-align: center;
@@ -198,10 +198,10 @@ nav.wrap {
 }
 .quick-pill svg { width: 14px; height: 14px; }
 
-/* â”€â”€ PLAYER SECTION â”€â”€ */
+/* -- PLAYER SECTION -- */
 .player-section { padding: 10px 0 80px; }
 
-/* â”€â”€ MAIN PLAYER CARD â”€â”€ */
+/* -- MAIN PLAYER CARD -- */
 .player-card {
   background: linear-gradient(145deg, rgba(15,19,29,0.95), rgba(22,27,40,0.9));
   border: 1px solid var(--line-light);
@@ -238,7 +238,7 @@ nav.wrap {
   .player-card { padding: 24px; }
 }
 
-/* â”€â”€ VINYL & ALBUM SLEEVE â”€â”€ */
+/* -- VINYL & ALBUM SLEEVE -- */
 .album-sleeve-stage {
   position: relative;
   width: 240px;
@@ -350,7 +350,7 @@ nav.wrap {
 }
 .album-cover-wrap:hover .zen-hint-pill { opacity: 1; }
 
-/* â”€â”€ TRACK INFO & CONTROLS (Right Col) â”€â”€ */
+/* -- TRACK INFO & CONTROLS (Right Col) -- */
 .track-headline {
   display: flex; align-items: flex-start; justify-content: space-between; gap: 14px;
   margin-bottom: 14px;
@@ -391,7 +391,7 @@ nav.wrap {
 .share-track-btn:hover { color: var(--teal); border-color: var(--teal); }
 .share-track-btn svg { width: 14px; height: 14px; }
 
-/* â”€â”€ VISUALIZER WITH MODES â”€â”€ */
+/* -- VISUALIZER WITH MODES -- */
 .visualizer-container {
   position: relative;
   background: rgba(15,19,29,0.7);
@@ -434,7 +434,7 @@ nav.wrap {
 }
 #visualizer { width: 100%; height: 100%; display: block; }
 
-/* â”€â”€ PROGRESS BAR â”€â”€ */
+/* -- PROGRESS BAR -- */
 .progress-wrap { margin-bottom: 14px; position: relative; }
 .progress-bar {
   width: 100%; height: 7px;
@@ -469,7 +469,7 @@ nav.wrap {
   margin-top: 6px;
 }
 
-/* â”€â”€ CONTROLS ROW â”€â”€ */
+/* -- CONTROLS ROW -- */
 .controls-row {
   display: flex; align-items: center; justify-content: space-between;
   gap: 16px;
@@ -537,7 +537,7 @@ nav.wrap {
   cursor: pointer;
 }
 
-/* â”€â”€ TOOLBAR TABS (EQ / AMBIENT SOUNDS / TIMER) â”€â”€ */
+/* -- TOOLBAR TABS (EQ / AMBIENT SOUNDS / TIMER) -- */
 .player-dock {
   margin-top: 24px;
   padding-top: 20px;
@@ -661,7 +661,7 @@ nav.wrap {
   cursor: pointer;
 }
 
-/* â”€â”€ PLAYLIST SECTION â”€â”€ */
+/* -- PLAYLIST SECTION -- */
 .playlist-section {
   max-width: 860px;
   margin: 0 auto 56px;
@@ -804,7 +804,7 @@ nav.wrap {
 .t-action-btn:hover { color: var(--teal); background: var(--surface-3); }
 .t-action-btn svg { width: 14px; height: 14px; }
 
-/* â”€â”€ HOW TO ADD SONGS â”€â”€ */
+/* -- HOW TO ADD SONGS -- */
 .how-to {
   max-width: 860px; margin: 0 auto;
   background: var(--surface);
@@ -844,7 +844,7 @@ nav.wrap {
   font-size: 11px;
 }
 
-/* â”€â”€ ZEN FOCUS FULLSCREEN MODE â”€â”€ */
+/* -- ZEN FOCUS FULLSCREEN MODE -- */
 .zen-overlay {
   position: fixed; inset: 0; z-index: 1000;
   background: #05070B;
@@ -919,7 +919,7 @@ nav.wrap {
 }
 .toast-msg.show { opacity: 1; transform: translateY(0); }
 
-/* â”€â”€ FOOTER â”€â”€ */
+/* -- FOOTER -- */
 footer {
   border-top: 1px solid var(--line);
   padding: 56px 0 28px;
@@ -1276,13 +1276,13 @@ footer {
 (function(){
   'use strict';
 
-  // â”€â”€ CONFIG â”€â”€
+  // -- CONFIG --
   var GITHUB_API = 'https://api.github.com/repos/flexora-ai/flexora-ai.github.io/contents/assets/audio';
   var AUDIO_BASE = 'assets/audio/';
   var AUDIO_EXTS = ['.mp3', '.ogg', '.wav', '.m4a', '.aac', '.flac', '.webm'];
   var IMG_EXTS   = ['.png', '.jpg', '.jpeg', '.webp'];
 
-  // â”€â”€ DOM REFS â”€â”€
+  // -- DOM REFS --
   var audio         = document.getElementById('audio');
   var playerCard    = document.getElementById('playerCard');
   var playBtn       = document.getElementById('playBtn');
@@ -1335,7 +1335,7 @@ footer {
   var timerStatusText = document.getElementById('timerStatusText');
   var speedBtn      = document.getElementById('speedBtn');
 
-  // â”€â”€ STATE â”€â”€
+  // -- STATE --
   var tracks = [];
   var currentIdx = -1;
   var isPlaying = false;
@@ -1352,7 +1352,7 @@ footer {
   var bassFilter, midFilter, trebleFilter;
   var ambientCtx, ambientSource, ambientGain, activeAmbient = null;
 
-  // â”€â”€ PROCEDURAL COVER GENERATOR â”€â”€
+  // -- PROCEDURAL COVER GENERATOR --
   // Creates unique neon gradients based on song title if no custom image was provided
   function generateCoverSvg(title, idx) {
     var colors = [
@@ -1387,7 +1387,7 @@ footer {
     return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
   }
 
-    // â”€â”€ POPULAR ARTIST & TRACK METADATA â”€â”€
+    // -- POPULAR ARTIST & TRACK METADATA --
   var knownMeta = {
       'the-weeknd-blinding-lights.m4a': { name: 'Blinding Lights', artist: 'The Weeknd', mood: 'Synthwave Hit' },
       'roddy-ricch-the-box.m4a': { name: 'The Box', artist: 'Roddy Ricch', mood: 'Hip-Hop Trap' },
@@ -1434,7 +1434,7 @@ function prettifyFilename(name) {
     setTimeout(function(){ toastMsg.classList.remove('show'); }, 2400);
   }
 
-  // â”€â”€ LOAD TRACKS FROM GITHUB API â”€â”€
+  // -- LOAD TRACKS FROM GITHUB API --
   function loadTracks() {
     fetch(GITHUB_API)
       .then(function(r){
@@ -1566,7 +1566,7 @@ function prettifyFilename(name) {
     loadTrack(idxToPlay);
   }
 
-  // â”€â”€ RENDER PLAYLIST â”€â”€
+  // -- RENDER PLAYLIST --
   function renderPlaylist(filterQuery) {
     trackCountEl.textContent = tracks.length + ' track' + (tracks.length !== 1 ? 's' : '');
     var list = tracks;
@@ -1651,7 +1651,7 @@ function prettifyFilename(name) {
     renderPlaylist(this.value);
   });
 
-  // â”€â”€ TRACK LOADING â”€â”€
+  // -- TRACK LOADING --
   function loadTrack(idx) {
     if (idx < 0 || idx >= tracks.length) return;
     currentIdx = idx;
@@ -1686,7 +1686,7 @@ function prettifyFilename(name) {
     });
   }
 
-  // â”€â”€ PLAY / PAUSE â”€â”€
+  // -- PLAY / PAUSE --
   function play() {
     if (currentIdx < 0 && tracks.length > 0) loadTrack(0);
     if (currentIdx < 0) return;
@@ -1736,7 +1736,7 @@ function prettifyFilename(name) {
     play();
   }
 
-  // â”€â”€ CONTROLS LISTENERS â”€â”€
+  // -- CONTROLS LISTENERS --
   playBtn.addEventListener('click', function(){ if (isPlaying) pause(); else play(); });
   zenPlayBtn.addEventListener('click', function(){ if (isPlaying) pause(); else play(); });
   nextBtn.addEventListener('click', nextTrack);
@@ -1756,7 +1756,7 @@ function prettifyFilename(name) {
     showToast(repeatMode === 2 ? 'Repeat: Current Track' : (repeatMode === 1 ? 'Repeat: All' : 'Repeat: Off'));
   });
 
-  // â”€â”€ PROGRESS & TIME â”€â”€
+  // -- PROGRESS & TIME --
   audio.addEventListener('timeupdate', function(){
     if (!audio.duration) return;
     var pct = (audio.currentTime / audio.duration) * 100;
@@ -1787,7 +1787,7 @@ function prettifyFilename(name) {
     audio.currentTime = pct * audio.duration;
   });
 
-  // â”€â”€ VOLUME â”€â”€
+  // -- VOLUME --
   volSlider.addEventListener('input', function(){
     audio.volume = this.value / 100;
   });
@@ -1804,7 +1804,7 @@ function prettifyFilename(name) {
     }
   });
 
-  // â”€â”€ PLAYBACK SPEED â”€â”€
+  // -- PLAYBACK SPEED --
   speedBtn.addEventListener('click', function(){
     speedIdx = (speedIdx + 1) % speeds.length;
     var s = speeds[speedIdx];
@@ -1813,7 +1813,7 @@ function prettifyFilename(name) {
     showToast('Playback Speed: ' + s + 'x');
   });
 
-  // â”€â”€ WEB AUDIO & EQ CHAIN â”€â”€
+  // -- WEB AUDIO & EQ CHAIN --
   function initAudioChain() {
     if (sourceConnected) return;
     try {
@@ -1875,7 +1875,7 @@ function prettifyFilename(name) {
     });
   });
 
-  // â”€â”€ AMBIENT BACKGROUND SYNTHESIZER â”€â”€
+  // -- AMBIENT BACKGROUND SYNTHESIZER --
   // Pure Web Audio procedural soundscapes (Rain, Fire, Waves, Cosmic Drone)
   function startAmbient(type) {
     stopAmbient();
@@ -1972,7 +1972,7 @@ function prettifyFilename(name) {
     }
   });
 
-  // â”€â”€ SLEEP TIMER â”€â”€
+  // -- SLEEP TIMER --
   function setSleepTimer(minutes) {
     if (sleepTimer) clearInterval(sleepTimer);
     if (!minutes || minutes === '0') {
@@ -2036,7 +2036,7 @@ function prettifyFilename(name) {
     setSleepTimer(nextVal);
   });
 
-  // â”€â”€ VISUALIZER MODES â”€â”€
+  // -- VISUALIZER MODES --
   document.querySelectorAll('.vis-mode-btn').forEach(function(btn){
     btn.addEventListener('click', function(){
       document.querySelectorAll('.vis-mode-btn').forEach(function(b){ b.classList.remove('active'); });
@@ -2132,7 +2132,7 @@ function prettifyFilename(name) {
     }
   }
 
-  // â”€â”€ ZEN MODE (FULLSCREEN) â”€â”€
+  // -- ZEN MODE (FULLSCREEN) --
   function openZen() {
     zenOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -2147,7 +2147,7 @@ function prettifyFilename(name) {
   albumCoverWrap.addEventListener('click', openZen);
   zenExitBtn.addEventListener('click', closeZen);
 
-  // â”€â”€ SHARE TRACK â”€â”€
+  // -- SHARE TRACK --
   function shareCurrentSong() {
     if (currentIdx < 0) return;
     var t = tracks[currentIdx];
@@ -2159,7 +2159,7 @@ function prettifyFilename(name) {
   shareTrackBtn.addEventListener('click', shareCurrentSong);
   quickShareBtn.addEventListener('click', shareCurrentSong);
 
-  // â”€â”€ KEYBOARD SHORTCUTS â”€â”€
+  // -- KEYBOARD SHORTCUTS --
   document.addEventListener('keydown', function(e){
     if (['input', 'textarea', 'select'].indexOf(e.target.tagName.toLowerCase()) > -1) return;
     if (e.code === 'Space') {
@@ -2178,7 +2178,7 @@ function prettifyFilename(name) {
     }
   });
 
-  // â”€â”€ MOBILE MENU â”€â”€
+  // -- MOBILE MENU --
   var menuBtn = document.getElementById('menuBtn');
   var mobileMenu = document.getElementById('mobileMenu');
   if (menuBtn && mobileMenu) {
@@ -2187,7 +2187,7 @@ function prettifyFilename(name) {
     });
   }
 
-  // â”€â”€ INIT â”€â”€
+  // -- INIT --
   loadTracks();
 
 })();
