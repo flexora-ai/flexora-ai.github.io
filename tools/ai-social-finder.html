@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-56W23QBB');</script>
+<!-- End Google Tag Manager -->
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()"/>
+<title>AI Social Finder - Image / Reverse Face Search Tool | FlexoraAi</title>
+<meta content="Compares the face in your photo with faces on public web pages and lists matches with a similarity band." name="description"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://flexora-ai.github.io/tools/ai-social-finder.html" rel="canonical"/>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg"/>
+<link rel="icon" type="image/png" href="../assets/images/logo.png"/>
+<link rel="alternate icon" href="../favicon.ico"/>
+
+<meta content="AI Social Finder - Image / Reverse Face Search Tool | FlexoraAi" property="og:title"/>
+<meta content="Compares the face in your photo with faces on public web pages and lists matches with a similarity band." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://flexora-ai.github.io/tools/ai-social-finder.html" property="og:url"/>
+<meta content="https://flexora-ai.github.io/assets/images/logo.png" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="AI Social Finder - Image / Reverse Face Search Tool | FlexoraAi" name="twitter:title"/>
+<meta content="Compares the face in your photo with faces on public web pages and lists matches with a similarity band." name="twitter:description"/>
+<meta content="https://flexora-ai.github.io/assets/images/logo.png" name="twitter:image"/>
+
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#07090F; --surface:#0F131D; --surface-2:#161B28; --line:#232838;
+  --teal:#2DE2C8; --blue:#4C7BFF; --ink:#F2F4FA; --ink-soft:#8A90A6; --amber:#f59e0b;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg); color:var(--ink); font-family:'Sora',sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden;}
+.mono{font-family:'IBM Plex Mono',monospace;}
+a{color:inherit; text-decoration:none;}
+.wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+img,svg{display:block; max-width:100%;}
+button{font-family:inherit; cursor:pointer;}
+:focus-visible{outline:2px solid var(--teal); outline-offset:3px;}
+
+header{position:sticky; top:0; z-index:60; background:rgba(7,9,15,0.75); backdrop-filter:blur(12px); border-bottom:1px solid var(--line);}
+nav.wrap{height:76px; display:flex; align-items:center; justify-content:space-between;}
+.logo{display:flex; align-items:center; gap:10px; font-weight:700; font-size:18px;}
+.logo img{width:26px; height:26px; object-fit:contain;}
+.logo span{color:var(--teal);}
+.nav-links{display:flex; gap:26px; font-size:14px; color:var(--ink-soft);}
+.nav-links a{cursor:pointer; transition:color .15s; padding-bottom:4px; border-bottom:2px solid transparent;}
+.nav-links a:hover{color:var(--teal);}
+.nav-links a.active{color:var(--ink);}
+@media(max-width:960px){.nav-links{display:none;}}
+.btn{font-family:'Sora'; font-weight:600; font-size:14px; padding:11px 20px; border-radius:8px; border:none; cursor:pointer; transition:transform .15s, box-shadow .15s;}
+.btn-primary{background:var(--teal); color:#07090F;}
+.btn-primary:hover{transform:translateY(-2px); box-shadow:0 10px 24px -6px rgba(45,226,200,0.5);}
+.btn-ghost{color:var(--ink-soft); border:1px solid var(--line); background:transparent;}
+.btn-ghost:hover{color:var(--ink); border-color:var(--ink-soft);}
+.menu-btn{display:none; background:none; border:1px solid var(--line); border-radius:8px; width:40px; height:40px; color:var(--ink);}
+@media(max-width:960px){.menu-btn{display:block;}}
+.mobile-menu{display:none; flex-direction:column; gap:4px; padding:12px 32px 20px; border-bottom:1px solid var(--line);}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{padding:10px 0; color:var(--ink-soft); font-size:14.5px; border-bottom:1px solid var(--line);}
+
+.breadcrumb{padding:24px 0 12px; font-size:13px; color:var(--ink-soft); font-family:'IBM Plex Mono',monospace; display:flex; align-items:center; gap:8px; flex-wrap:wrap;}
+.breadcrumb a{color:var(--ink-soft); transition:color .15s;}
+.breadcrumb a:hover{color:var(--teal);}
+.breadcrumb span.sep{color:var(--line);}
+
+.tool-hero{background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:36px 40px; margin-bottom:40px; box-shadow:0 20px 40px -20px rgba(0,0,0,0.5);}
+.tool-hero-top{display:flex; gap:24px; align-items:flex-start; margin-bottom:24px; flex-wrap:wrap;}
+.tool-big-icon{width:72px; height:72px; border-radius:16px; background:var(--surface-2); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; flex:none; padding:10px;}
+.tool-hero-title{flex:1; min-width:260px;}
+.tool-hero-title h1{font-size:32px; font-weight:800; letter-spacing:-0.02em; margin-bottom:8px;}
+.tool-badges{display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:12px;}
+.badge{padding:4px 10px; border-radius:6px; font-size:12px; font-weight:600;}
+.badge-price{background:rgba(45,226,200,0.15); color:var(--teal); border:1px solid rgba(45,226,200,0.3);}
+.badge-partner{background:rgba(76,123,255,0.15); color:var(--blue); border:1px solid rgba(76,123,255,0.3);}
+.tool-lede{font-size:15px; color:var(--ink-soft); line-height:1.6;}
+.tool-hero-ctas{display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:20px;}
+.btn-visit{display:inline-flex; align-items:center; gap:8px;}
+
+.detail-grid{display:grid; grid-template-columns:2fr 1fr; gap:32px; margin-bottom:60px;}
+@media(max-width:840px){.detail-grid{grid-template-columns:1fr;}}
+.section-box{background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:28px; margin-bottom:24px;}
+.section-box h2{font-size:18px; font-weight:700; margin-bottom:16px; color:var(--ink); display:flex; align-items:center; gap:8px;}
+.section-box p{font-size:14.5px; color:var(--ink-soft); line-height:1.7; margin-bottom:12px;}
+.section-box p:last-child{margin-bottom:0;}
+.feature-list{list-style:none; padding:0; margin:0;}
+.feature-item{display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; font-size:14px; color:var(--ink-soft); line-height:1.5;}
+.feature-item svg{width:18px; height:18px; color:var(--teal); flex:none; margin-top:2px;}
+.feature-item span{flex:1;}
+
+.side-box{background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:24px; margin-bottom:24px;}
+.side-box h3{font-size:16px; font-weight:700; margin-bottom:16px; color:var(--ink);}
+.meta-row{display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--line); font-size:13.5px;}
+.meta-row:last-child{border-bottom:none;}
+.meta-label{color:var(--ink-soft);}
+.meta-val{font-weight:600; color:var(--ink); text-align:right;}
+.partner-callout{background:rgba(45,226,200,0.06); border:1px solid rgba(45,226,200,0.25); border-radius:14px; padding:20px; text-align:center;}
+.partner-callout h4{color:var(--teal); font-size:15px; margin-bottom:8px;}
+.partner-callout p{font-size:12.5px; color:var(--ink-soft); line-height:1.5; margin-bottom:14px;}
+
+footer{border-top:1px solid var(--line); padding:60px 0 36px; background:#05070B; font-size:13.5px;}
+.foot-top{display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:36px; margin-bottom:48px;}
+@media(max-width:840px){.foot-top{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.foot-top{grid-template-columns:1fr;}}
+.foot-brand p{color:var(--ink-soft); margin-top:12px; font-size:13px; line-height:1.6; max-width:280px;}
+.foot-col h4{font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:16px; color:var(--ink);}
+.foot-col a{display:block; color:var(--ink-soft); margin-bottom:10px; transition:color .15s;}
+.foot-col a:hover{color:var(--teal);}
+.foot-bottom{border-top:1px solid var(--line); padding-top:24px; display:flex; justify-content:space-between; color:var(--ink-soft); font-size:12.5px; flex-wrap:wrap; gap:12px;}
+</style>
+</head>
+<body>
+
+<header>
+<nav class="wrap">
+<a class="logo" href="../index.html"><img alt="FlexoraAi" src="../assets/images/logo.png"/>Flexora<span>Ai</span></a>
+<div class="nav-links">
+<a class="active" href="../tools.html">Tools</a>
+<a href="../compare.html">Compare</a>
+<a href="../finder.html">Finder</a>
+<a href="../workflows.html">Workflows</a>
+<a href="../free-tools.html">Free Tools</a>
+<a href="../music.html">Music</a>
+<a href="../blog.html">Blog</a>
+</div>
+<div style="display:flex; gap:12px; align-items:center;">
+<a class="btn btn-ghost" href="../submit.html">Submit tool</a>
+<button aria-label="Open menu" class="menu-btn" id="menuBtn">&#9776;</button>
+</div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+<a href="../tools.html">Tools</a>
+<a href="../compare.html">Compare</a>
+<a href="../finder.html">Finder</a>
+<a href="../workflows.html">Workflows</a>
+<a href="../free-tools.html">Free Tools</a>
+<a href="../music.html">Music</a>
+<a href="../blog.html">Blog</a>
+</div>
+</header>
+
+<main class="wrap">
+  <div class="breadcrumb">
+    <a href="../index.html">FlexoraAi</a>
+    <span class="sep">/</span>
+    <a href="../tools.html">Tools Directory</a>
+    <span class="sep">/</span>
+    <span style="color:var(--ink);">AI Social Finder</span>
+  </div>
+
+  <div class="tool-hero">
+    <div class="tool-hero-top">
+      <div class="tool-big-icon">
+        <img src="https://aisocialfinder.com/apple-touch-icon.png" alt="AI Social Finder logo" style="width:100%;height:100%;object-fit:contain;border-radius:10px;" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?domain=https://aisocialfinder.com&amp;sz=128';"/>
+      </div>
+      <div class="tool-hero-title">
+        <h1>AI Social Finder</h1>
+        <div class="tool-badges">
+          <span class="badge badge-price">Freemium ($5 per search)</span>
+          <span class="badge badge-partner">Partner Review</span>
+          <span class="badge" style="background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line);">&#11088; 4.8 Rating</span>
+        </div>
+        <p class="tool-lede">Compares the face in your photo with faces on public web pages and lists matches with a similarity band.</p>
+      </div>
+    </div>
+    <div class="tool-hero-ctas">
+      <a class="btn btn-primary btn-visit" href="https://aisocialfinder.com" target="_blank" rel="noopener noreferrer">Visit AI Social Finder Website &rarr;</a>
+      <a class="btn btn-ghost" href="../tools.html">Browse Directory</a>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <div class="main-col">
+      <div class="section-box">
+        <h2>About AI Social Finder</h2>
+        <p>Public-web reverse face search, free preview of top 3 matches, free username lookup on 30+ platforms, results purged within 24 hours</p>
+      </div>
+
+      <div class="section-box">
+        <h2>Key Capabilities</h2>
+        <ul class="feature-list">
+          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Modern web-first interface and intuitive user workflow</span></li>
+          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Specialized algorithms optimized for Image / Reverse Face Search applications</span></li>
+          <li class="feature-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>Flexible pricing options suitable for individual creators and business teams</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <aside class="side-col">
+      <div class="side-box">
+        <h3>Tool Specifications</h3>
+        <div class="meta-row"><span class="meta-label">Category:</span><span class="meta-val">Image / Reverse Face Search</span></div>
+        <div class="meta-row"><span class="meta-label">Pricing Model:</span><span class="meta-val">Freemium ($5 per search)</span></div>
+        <div class="meta-row"><span class="meta-label">Verified Status:</span><span class="meta-val" style="color:var(--teal);">Review Ready</span></div>
+        <div class="meta-row"><span class="meta-label">Official Link:</span><a class="meta-val" href="https://aisocialfinder.com" target="_blank" rel="noopener noreferrer" style="color:var(--teal);">Official Site &nearr;</a></div>
+      </div>
+
+      <div class="partner-callout">
+        <h4>Are you the creator?</h4>
+        <p>Keep your tool profile updated or feature it across FlexoraAi categories.</p>
+        <a class="btn btn-ghost" href="../services.html" style="font-size:12px; padding:8px 14px; width:100%;">Contact Flexora Team</a>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer>
+<div class="wrap">
+  <div class="foot-top">
+    <div class="foot-brand">
+      <a class="logo" href="../index.html"><img alt="FlexoraAi" src="../assets/images/logo.png"/>Flexora<span>Ai</span></a>
+      <p>Helping people find the right AI tool for the job &mdash; without the pay-to-list noise.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Directory</h4>
+      <a href="../tools.html">All Tools</a>
+      <a href="../compare.html">Compare Tools</a>
+      <a href="../free-tools.html">Free AI Tools</a>
+    </div>
+    <div class="foot-col">
+      <h4>Platform</h4>
+      <a href="../finder.html">Tool Finder</a>
+      <a href="../workflows.html">Workflows</a>
+      <a href="../blog.html">AI Guides</a>
+    </div>
+    <div class="foot-col">
+      <h4>Company</h4>
+      <a href="../about.html">About FlexoraAi</a>
+      <a href="../submit.html">Submit a Tool</a>
+      <a href="../services.html">Contact Us</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>&copy; 2026 FlexoraAi &mdash; Independent AI Tools Directory</span>
+    <span>All external links open official provider websites</span>
+  </div>
+</div>
+</footer>
+
+<script>
+var mBtn = document.getElementById('menuBtn');
+var mMenu = document.getElementById('mobileMenu');
+if(mBtn && mMenu){
+  mBtn.addEventListener('click', function(){
+    mMenu.classList.toggle('open');
+  });
+}
+</script>
+</body>
+</html>
