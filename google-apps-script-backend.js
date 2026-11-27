@@ -4,22 +4,15 @@
  * ==============================================================================
  * 
  * 100% FREE — Unlimited Submissions — Automatic Categorization — Instant Emails
+ * Includes Smart "Money Opportunity" Detector with Green Row Highlighting!
  * 
- * SETUP INSTRUCTIONS (Takes 2 minutes):
- * 1. Open Google Sheets (https://sheets.google.com) and create a New Spreadsheet.
- * 2. Name the spreadsheet: "FlexoraAi Submissions"
- * 3. Rename the first sheet tab to: "Tool Submissions"
- *    Create a second sheet tab named: "Contact Inquiries"
- * 4. Click: Extensions -> Apps Script
- * 5. Delete any code in the editor, paste this ENTIRE file, and save (Ctrl + S).
- * 6. Click "Deploy" -> "New deployment"
- *    - Click the gear icon next to "Select type" and choose "Web app"
- *    - Description: "FlexoraAi Forms API"
- *    - Execute as: "Me" (your email)
- *    - Who has access: "Anyone" (IMPORTANT! Allows your website forms to post)
- * 7. Click "Deploy", review permissions, and copy the "Web app URL"
- *    (looks like: https://script.google.com/macros/s/AKfycb.../exec)
- * 8. Paste that Web app URL into FlexoraAi's modals.js / submit.html!
+ * SETUP INSTRUCTIONS:
+ * 1. Open Google Sheets (https://sheets.google.com) and open your "FlexoraAi Submissions" sheet.
+ * 2. Click: Extensions -> Apps Script
+ * 3. Replace the entire code with this updated file and save (Ctrl + S).
+ * 4. Click "Deploy" -> "Manage deployments" -> Click the Edit (pencil) icon
+ *    - Version: "New version"
+ *    - Click "Deploy"
  */
 
 const OWNER_EMAIL = "ownerflexora.ai@gmail.com";
@@ -58,6 +51,27 @@ function doGet(e) {
 }
 
 // -----------------------------------------------------------------------------
+// HELPER: DETECT MONEY OPPORTUNITY
+// -----------------------------------------------------------------------------
+function detectMoneyOpportunity(text, topic) {
+  const combined = ((text || "") + " " + (topic || "")).toLowerCase();
+  const moneyKeywords = [
+    "paid", "sponsor", "sponsorship", "pricing", "price", "cost", "buy", 
+    "hire", "budget", "dollar", "$", "promote", "featured", "ad", "ads", 
+    "advertising", "agency", "seo service", "client", "invest", "quote", 
+    "proposal", "deal", "revenue", "partner package", "commercial", "tier",
+    "50", "affiliate", "campaign", "billing", "invoice"
+  ];
+  
+  for (let i = 0; i < moneyKeywords.length; i++) {
+    if (combined.indexOf(moneyKeywords[i]) > -1) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// -----------------------------------------------------------------------------
 // 1. TOOL / BRAND SUBMISSION HANDLER
 // -----------------------------------------------------------------------------
 function handleToolSubmission(ss, data) {
@@ -66,7 +80,7 @@ function handleToolSubmission(ss, data) {
     sheet = ss.insertSheet("Tool Submissions");
   }
 
-  // Set headers if new
+  // Ensure header row exists
   if (sheet.getLastRow() === 0) {
     sheet.appendRow([
       "Timestamp",
@@ -77,6 +91,7 @@ function handleToolSubmission(ss, data) {
       "Pricing Model",
       "Starting Price",
       "Tier / Plan",
+      "Opportunity Status",
       "Submitter Name",
       "Submitter Email",
       "Backlink / Exchange Notes",
@@ -84,7 +99,7 @@ function handleToolSubmission(ss, data) {
       "Full Description",
       "Status"
     ]);
-    sheet.getRange(1, 1, 1, 14).setFontWeight("bold").setBackground("#0F131D").setFontColor("#2DE2C8");
+    sheet.getRange(1, 1, 1, 15).setFontWeight("bold").setBackground("#0F131D").setFontColor("#2DE2C8");
     sheet.setFrozenRows(1);
   }
 
@@ -103,6 +118,9 @@ function handleToolSubmission(ss, data) {
   const fullDesc = data.full_description || "";
   const status = "Pending Review";
 
+  const isPaidFeatured = tier.indexOf("50") > -1 || tier.indexOf("Featured") > -1;
+  const oppLabel = isPaidFeatured ? "💰 PAID FEATURED ($50)" : "🤝 Partner Exchange (Free)";
+
   sheet.appendRow([
     timestamp,
     toolName,
@@ -112,6 +130,7 @@ function handleToolSubmission(ss, data) {
     pricing,
     startingPrice,
     tier,
+    oppLabel,
     submitterName,
     submitterEmail,
     notes,
@@ -120,17 +139,32 @@ function handleToolSubmission(ss, data) {
     status
   ]);
 
+  const newRow = sheet.getLastRow();
+  // Highlight in GREEN if Paid Featured
+  if (isPaidFeatured) {
+    const oppCell = sheet.getRange(newRow, 9);
+    oppCell.setBackground("#10B981").setFontColor("#FFFFFF").setFontWeight("bold");
+  }
+
   // 1. Alert to Owner
-  const ownerSubject = "🚀 New Tool Submission: " + toolName + " (" + tier + ")";
+  const ownerSubject = isPaidFeatured 
+    ? `💰 [PAID SPONSOR $50] New Tool Submission: ${toolName}` 
+    : `🚀 New Tool Submission: ${toolName} (${tier})`;
+
   const ownerBody = `
     <div style="font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;max-width:600px;margin:0 auto;padding:24px;background:#0F131D;color:#F2F4FA;border-radius:12px;border:1px solid #232838;">
+      ${isPaidFeatured ? `
+        <div style="background:#065f46;border:2px solid #10b981;color:#ffffff;padding:14px;border-radius:8px;font-weight:bold;margin-bottom:16px;font-size:15px;text-align:center;">
+          💰 PAID FEATURED PLAN SELECTED ($50/Year) — High Value Opportunity!
+        </div>
+      ` : ''}
       <h2 style="color:#2DE2C8;margin-top:0;">🚀 New AI Tool Submission</h2>
       <p style="font-size:14px;color:#8A90A6;">A new brand has submitted their AI tool for review on <b>${SITE_NAME}</b>.</p>
       
       <table style="width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;">
         <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;width:140px;">Tool Name:</td><td style="color:#F2F4FA;font-weight:bold;">${toolName}</td></tr>
         <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Website:</td><td><a href="${website}" style="color:#2DE2C8;" target="_blank">${website}</a></td></tr>
-        <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Selected Tier:</td><td style="color:#f59e0b;font-weight:bold;">${tier}</td></tr>
+        <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Selected Tier:</td><td style="color:${isPaidFeatured ? '#10b981' : '#f59e0b'};font-weight:bold;">${tier}</td></tr>
         <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Category:</td><td style="color:#F2F4FA;">${category} (${subcategory})</td></tr>
         <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Pricing:</td><td style="color:#F2F4FA;">${pricing} ${startingPrice ? '- ' + startingPrice : ''}</td></tr>
         <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Submitter:</td><td style="color:#F2F4FA;">${submitterName} (<a href="mailto:${submitterEmail}" style="color:#2DE2C8;">${submitterEmail}</a>)</td></tr>
@@ -140,9 +174,9 @@ function handleToolSubmission(ss, data) {
       <div style="background:#161B28;padding:16px;border-radius:8px;border:1px solid #232838;margin-top:20px;">
         <b style="color:#2DE2C8;">Next Steps for Partner Exchange:</b>
         <p style="margin:6px 0 0;font-size:13px;color:#8A90A6;line-height:1.6;">
-          1. Review their website.<br/>
-          2. Create their dedicated URL: <code style="color:#2DE2C8;">${SITE_URL}/tools/${toolName.toLowerCase().replace(/[^a-z0-9]/g,'-')}.html</code><br/>
-          3. Reply to <a href="mailto:${submitterEmail}" style="color:#2DE2C8;">${submitterEmail}</a> with their live URL so they place your badge!
+          1. Dedicated Preview URL: <code style="color:#2DE2C8;">${SITE_URL}/tools/${toolName.toLowerCase().replace(/[^a-z0-9]/g,'-')}.html</code><br/>
+          2. Send them email: Show them their page and ask them to add your backlink badge.<br/>
+          3. Once verified, add to <code style="color:#2DE2C8;">tools-data.js</code> to feature them in the main directory!
         </p>
       </div>
     </div>
@@ -194,7 +228,7 @@ function handleToolSubmission(ss, data) {
 }
 
 // -----------------------------------------------------------------------------
-// 2. CONTACT / USER INQUIRY HANDLER
+// 2. CONTACT / USER INQUIRY HANDLER WITH SMART OPPORTUNITY DETECTOR
 // -----------------------------------------------------------------------------
 function handleContactInquiry(ss, data) {
   let sheet = ss.getSheetByName("Contact Inquiries");
@@ -202,6 +236,7 @@ function handleContactInquiry(ss, data) {
     sheet = ss.insertSheet("Contact Inquiries");
   }
 
+  // Ensure header row exists
   if (sheet.getLastRow() === 0) {
     sheet.appendRow([
       "Timestamp",
@@ -209,10 +244,11 @@ function handleContactInquiry(ss, data) {
       "Email Address",
       "Company / Tool",
       "Service / Topic",
+      "Opportunity Status",
       "Message Content",
       "Status"
     ]);
-    sheet.getRange(1, 1, 1, 7).setFontWeight("bold").setBackground("#0F131D").setFontColor("#2DE2C8");
+    sheet.getRange(1, 1, 1, 8).setFontWeight("bold").setBackground("#0F131D").setFontColor("#2DE2C8");
     sheet.setFrozenRows(1);
   }
 
@@ -224,12 +260,45 @@ function handleContactInquiry(ss, data) {
   const message = data.message || data.notes || "";
   const status = "New Message";
 
-  sheet.appendRow([timestamp, name, email, company, topic, message, status]);
+  // Analyze if there is a money/business opportunity
+  const isMoneyOpportunity = detectMoneyOpportunity(message, topic);
+  const oppLabel = isMoneyOpportunity ? "💰 MONEY OPPORTUNITY" : "Standard Inquiry";
+
+  sheet.appendRow([
+    timestamp,
+    name,
+    email,
+    company,
+    topic,
+    oppLabel,
+    message,
+    status
+  ]);
+
+  const newRow = sheet.getLastRow();
+  const oppCell = sheet.getRange(newRow, 6);
+
+  // If Money Opportunity: Highlight cell in VIBRANT GREEN with bold white text!
+  if (isMoneyOpportunity) {
+    oppCell.setBackground("#10B981").setFontColor("#FFFFFF").setFontWeight("bold");
+    sheet.getRange(newRow, 1, 1, 8).setBackground("#064E3B"); // Soft dark emerald row tint
+    sheet.getRange(newRow, 1, 1, 8).setFontColor("#F2F4FA");
+    oppCell.setBackground("#10B981").setFontColor("#FFFFFF").setFontWeight("bold");
+  }
 
   // Alert Owner
-  const ownerSubject = `📬 New Contact Inquiry from ${name} (${topic})`;
+  const ownerSubject = isMoneyOpportunity 
+    ? `💰 [MONEY OPPORTUNITY] Contact Inquiry from ${name} (${topic})`
+    : `📬 New Contact Inquiry from ${name} (${topic})`;
+
   const ownerBody = `
     <div style="font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;max-width:600px;margin:0 auto;padding:24px;background:#0F131D;color:#F2F4FA;border-radius:12px;border:1px solid #232838;">
+      ${isMoneyOpportunity ? `
+        <div style="background:#065f46;border:2px solid #10b981;color:#ffffff;padding:14px;border-radius:8px;font-weight:bold;margin-bottom:16px;font-size:15px;text-align:center;">
+          💰 HIGH-PRIORITY: Money / Monetization Opportunity Detected! Review immediately.
+        </div>
+      ` : ''}
+      
       <h2 style="color:#2DE2C8;margin-top:0;">📬 New Contact Inquiry</h2>
       <p style="font-size:14px;color:#8A90A6;">You received a new message through FlexoraAi contact form:</p>
       
@@ -238,6 +307,7 @@ function handleContactInquiry(ss, data) {
         <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Email:</td><td><a href="mailto:${email}" style="color:#2DE2C8;">${email}</a></td></tr>
         <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Topic / Service:</td><td style="color:#F2F4FA;">${topic}</td></tr>
         <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Company:</td><td style="color:#F2F4FA;">${company}</td></tr>
+        <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Opportunity:</td><td style="color:${isMoneyOpportunity ? '#10b981' : '#8A90A6'};font-weight:bold;">${oppLabel}</td></tr>
       </table>
 
       <div style="background:#161B28;padding:16px;border-radius:8px;border:1px solid #232838;margin-top:16px;">
@@ -255,22 +325,26 @@ function handleContactInquiry(ss, data) {
     replyTo: email
   });
 
-  // Auto-Reply to Visitor
+  // Friendly Welcome Auto-Reply to Visitor
   if (email && email.indexOf("@") > -1) {
-    const clientSubject = "Thank you for reaching out to FlexoraAi";
+    const clientSubject = `FlexoraAi — How can we help you, ${name}?`;
     const clientBody = `
       <div style="font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;max-width:600px;margin:0 auto;padding:24px;background:#0F131D;color:#F2F4FA;border-radius:12px;border:1px solid #232838;">
-        <h2 style="color:#2DE2C8;margin-top:0;">Message Received!</h2>
+        <h2 style="color:#2DE2C8;margin-top:0;">Thanks for reaching out!</h2>
         <p style="font-size:14.5px;color:#8A90A6;line-height:1.7;">
           Hi ${name},<br/><br/>
-          Thanks for contacting <b>${SITE_NAME}</b>! We've received your note regarding <b>${topic}</b>.
+          Thank you for contacting <b>${SITE_NAME}</b>! We received your message regarding <b>${topic}</b>.
         </p>
         <p style="font-size:14.5px;color:#8A90A6;line-height:1.7;">
-          Our team reviews every inquiry and will get back to you within 24 to 48 hours.
+          <b>What can we do for you?</b><br/>
+          Whether you are looking to promote an AI tool, explore SEO and content partnerships, advertise on our directory, or discuss a custom collaboration, we are here to help you get the best visibility.
+        </p>
+        <p style="font-size:14.5px;color:#8A90A6;line-height:1.7;">
+          Our founder and team review every inquiry and will reply personally within 24 to 48 hours. If you have extra details, links, or specific questions in the meantime, simply reply directly to this email!
         </p>
         <p style="font-size:13px;color:#8A90A6;margin-top:24px;">
           Best regards,<br/>
-          <strong style="color:#F2F4FA;">The FlexoraAi Team</strong><br/>
+          <strong style="color:#F2F4FA;">Prashant Lalwani &amp; The FlexoraAi Team</strong><br/>
           <a href="${SITE_URL}" style="color:#2DE2C8;text-decoration:none;">${SITE_URL}</a>
         </p>
       </div>
