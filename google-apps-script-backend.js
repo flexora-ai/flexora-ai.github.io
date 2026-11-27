@@ -3,11 +3,12 @@
  * FlexoraAi — Unified Google Sheets & Email Automation Backend (Google Apps Script)
  * ==============================================================================
  * 
- * Version 5 — Enhanced with:
- * 1. Self-Healing Header Alignment (automatically inserts "Opportunity Status" column)
- * 2. Smart Russian & Bot Spam Filter (blocks spam from emailing your inbox)
- * 3. Green Highlighting for Money Opportunities ($ / Paid / Featured / SEO)
- * 4. Friendly "How Can We Help You?" Auto-Responder
+ * Version 6 — Ironclad Anti-Scam & Smart Lead Engine:
+ * 1. Comprehensive Scammer & Bot Detection (blocks Russian bots, hacks, HTML injection, disposable emails)
+ * 2. ZERO Emails to Scammers (never sends auto-replies or owner alerts for scams)
+ * 3. Self-Healing Header Alignment (automatically inserts "Opportunity Status" column)
+ * 4. Green Highlighting for Genuine Money Opportunities ($ / Paid / Featured / SEO)
+ * 5. Warm "How Can We Help You?" Auto-Responder ONLY for Real Humans
  * 
  * UPDATE INSTRUCTIONS:
  * 1. Open Google Sheets -> Extensions -> Apps Script
@@ -52,25 +53,69 @@ function doGet(e) {
 }
 
 // -----------------------------------------------------------------------------
-// HELPER 1: DETECT SPAM (Russian bots, nakrutka, malicious html tags)
+// HELPER 1: COMPREHENSIVE SCAMMER & BOT DETECTION ENGINE
 // -----------------------------------------------------------------------------
-function isSpam(message, email, name) {
-  const combined = ((message || "") + " " + (email || "") + " " + (name || "")).toLowerCase();
-  
-  // Cyrillic alphabet (Russian spam bots)
-  if (/[а-яё]/.test(combined)) return true;
-  
-  // Russian domains and known bot keywords
-  if (/\.ru\b|nakrutka|vkontakte|telegram.*podpis|взлом|<a\s+href/i.test(combined)) return true;
-  
-  // Disposable / bot mail formats
-  if (email && email.indexOf("firstmailmorty") > -1) return true;
+function checkScammer(data) {
+  const name = (data.name || data.sender_name || data.submitter_name || "").trim();
+  const email = (data.email || data.contact_email || "").toLowerCase().trim();
+  const message = (data.message || data.description || data.notes || "").trim();
+  const website = (data.website || data.tool_url || "").toLowerCase().trim();
+  const combined = (name + " " + email + " " + message + " " + website).toLowerCase();
 
-  return false;
+  // 1. Cyrillic Characters (Russian spam bots, e.g. взлом, накрутка)
+  if (/[а-яё]/i.test(combined)) {
+    return { isScam: true, reason: "Cyrillic bot spam" };
+  }
+
+  // 2. HTML Tag or Script Injections (<a href=, <script, [url=)
+  if (/<a\s+href|<script|<iframe|onerror=|javascript:|\[url=|\[link=/i.test(combined)) {
+    return { isScam: true, reason: "HTML/Script injection" };
+  }
+
+  // 3. Known Disposable / Temporary / Spammer Email Domains
+  const disposableDomains = [
+    "firstmailmorty", "mail.ru", "tempmail", "10minutemail", "yopmail", 
+    "guerrillamail", "trashmail", "sharklasers", "dispostable", "getairmail", 
+    "mohmal", "burnermail", "mytemp", "fakemail", "crazymailing", "throwawaymail"
+  ];
+  for (let i = 0; i < disposableDomains.length; i++) {
+    if (email.indexOf(disposableDomains[i]) > -1) {
+      return { isScam: true, reason: "Disposable / Bot email domain" };
+    }
+  }
+
+  // 4. Blacklisted Scam & Exploit Keywords
+  const scamKeywords = [
+    "nakrutka", "vkontakte", "telegram.*podpis", "взлом", "casino", 
+    "1xbet", "viagra", "cialis", "adult cams", "crypto doubler", 
+    "whatsapp hack", "instagram hack", "darkweb", "warez", "crack software"
+  ];
+  for (let i = 0; i < scamKeywords.length; i++) {
+    if (new RegExp(scamKeywords[i], "i").test(combined)) {
+      return { isScam: true, reason: "Blacklisted scam keyword" };
+    }
+  }
+
+  // 5. Gibberish / Keyboard Mashing (e.g. dddddddddddd or bbbbbbbv)
+  if (/(.)\1{6,}/i.test(message) || /(.)\1{6,}/i.test(name)) {
+    return { isScam: true, reason: "Gibberish / Repeated character mashing" };
+  }
+
+  // 6. Suspicious TLD links inside message (.ru, .su, .click spam)
+  if (/\bhttps?:\/\/[^\s]+\.(ru|su|by|top|click|fun)\b/i.test(combined)) {
+    return { isScam: true, reason: "Suspicious spam domain (.ru/.su)" };
+  }
+
+  // 7. Empty or Fake Email validation
+  if (!email || email.indexOf("@") === -1 || email.indexOf(".") === -1 || email.length < 6) {
+    return { isScam: true, reason: "Invalid or fake email format" };
+  }
+
+  return { isScam: false, reason: "" };
 }
 
 // -----------------------------------------------------------------------------
-// HELPER 2: DETECT MONEY OPPORTUNITY
+// HELPER 2: DETECT MONEY OPPORTUNITY (COMMERCIAL INTENT)
 // -----------------------------------------------------------------------------
 function detectMoneyOpportunity(text, topic) {
   const combined = ((text || "") + " " + (topic || "")).toLowerCase();
@@ -158,38 +203,42 @@ function handleToolSubmission(ss, data) {
   const notes = data.features || data.backlink_url || data.notes || "";
   const shortDesc = data.short_description || data.description || "";
   const fullDesc = data.full_description || "";
-  const status = "Pending Review";
 
+  // 1. Check for Scammer / Bot Submission
+  const scamCheck = checkScammer(data);
+  if (scamCheck.isScam) {
+    sheet.appendRow([
+      timestamp, toolName, website, category, subcategory,
+      pricing, startingPrice, tier, "🚫 SCAM: " + scamCheck.reason,
+      submitterName, submitterEmail, notes, shortDesc, fullDesc,
+      "Blocked Scammer"
+    ]);
+    const newRow = sheet.getLastRow();
+    sheet.getRange(newRow, 1, 1, 15).setBackground("#2D1515").setFontColor("#F87171");
+    sheet.getRange(newRow, 9).setFontWeight("bold").setFontColor("#EF4444");
+    Logger.log("Scammer tool submission blocked: " + toolName + " (" + scamCheck.reason + ")");
+    // NEVER SEND EMAILS FOR SCAMMERS
+    return;
+  }
+
+  // 2. Legitimate Tool Submission
   const isPaidFeatured = tier.indexOf("50") > -1 || tier.indexOf("Featured") > -1;
   const oppLabel = isPaidFeatured ? "💰 PAID FEATURED ($50)" : "🤝 Partner Exchange (Free)";
 
   sheet.appendRow([
-    timestamp,
-    toolName,
-    website,
-    category,
-    subcategory,
-    pricing,
-    startingPrice,
-    tier,
-    oppLabel,
-    submitterName,
-    submitterEmail,
-    notes,
-    shortDesc,
-    fullDesc,
-    status
+    timestamp, toolName, website, category, subcategory,
+    pricing, startingPrice, tier, oppLabel,
+    submitterName, submitterEmail, notes, shortDesc, fullDesc,
+    "Pending Review"
   ]);
 
   const newRow = sheet.getLastRow();
-  // Highlight in GREEN if Paid Featured
   if (isPaidFeatured) {
-    sheet.getRange(newRow, 9).setBackground("#10B981").setFontColor("#FFFFFF").setFontWeight("bold");
     sheet.getRange(newRow, 1, 1, 15).setBackground("#064E3B").setFontColor("#F2F4FA");
     sheet.getRange(newRow, 9).setBackground("#10B981").setFontColor("#FFFFFF").setFontWeight("bold");
   }
 
-  // 1. Alert to Owner
+  // Alert Owner
   const ownerSubject = isPaidFeatured 
     ? `💰 [PAID SPONSOR $50] New Tool Submission: ${toolName}` 
     : `🚀 New Tool Submission: ${toolName} (${tier})`;
@@ -202,7 +251,7 @@ function handleToolSubmission(ss, data) {
         </div>
       ` : ''}
       <h2 style="color:#2DE2C8;margin-top:0;">🚀 New AI Tool Submission</h2>
-      <p style="font-size:14px;color:#8A90A6;">A new brand has submitted their AI tool for review on <b>${SITE_NAME}</b>.</p>
+      <p style="font-size:14px;color:#8A90A6;">A verified brand has submitted their AI tool for review on <b>${SITE_NAME}</b>.</p>
       
       <table style="width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;">
         <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;width:140px;">Tool Name:</td><td style="color:#F2F4FA;font-weight:bold;">${toolName}</td></tr>
@@ -232,7 +281,7 @@ function handleToolSubmission(ss, data) {
     replyTo: submitterEmail
   });
 
-  // 2. Confirmation to Submitter (Brand)
+  // Auto-Confirmation to Submitter (Brand)
   if (submitterEmail && submitterEmail.indexOf("@") > -1) {
     const isPartner = tier.indexOf("Partner") > -1 || tier.indexOf("Exchange") > -1;
     const clientSubject = `FlexoraAi — We received ${toolName} for review!`;
@@ -271,7 +320,7 @@ function handleToolSubmission(ss, data) {
 }
 
 // -----------------------------------------------------------------------------
-// 2. CONTACT / USER INQUIRY HANDLER WITH SPAM FILTER & MONEY DETECTOR
+// 2. CONTACT / USER INQUIRY HANDLER WITH SCAM BLOCKER & MONEY DETECTOR
 // -----------------------------------------------------------------------------
 function handleContactInquiry(ss, data) {
   let sheet = ss.getSheetByName("Contact Inquiries");
@@ -287,22 +336,24 @@ function handleContactInquiry(ss, data) {
   const topic = data.service || data.subject || "General Inquiry";
   const message = data.message || data.notes || "";
 
-  // 1. Check for Spam / Bots
-  if (isSpam(message, email, name)) {
+  // 1. Check for Scammer / Bot
+  const scamCheck = checkScammer(data);
+  if (scamCheck.isScam) {
     sheet.appendRow([
       timestamp,
       name,
       email,
       company,
       topic,
-      "🚫 Blocked Spam",
+      "🚫 SCAM: " + scamCheck.reason,
       message,
-      "Spam (Auto-Filtered)"
+      "Blocked Scammer"
     ]);
     const newRow = sheet.getLastRow();
-    sheet.getRange(newRow, 1, 1, 8).setBackground("#1F2937").setFontColor("#9CA3AF");
-    Logger.log("Spam blocked from " + email);
-    // DO NOT SEND EMAIL FOR SPAM BOTS
+    sheet.getRange(newRow, 1, 1, 8).setBackground("#2D1515").setFontColor("#F87171");
+    sheet.getRange(newRow, 6).setFontWeight("bold").setFontColor("#EF4444");
+    Logger.log("Scammer contact inquiry blocked from " + email + " (" + scamCheck.reason + ")");
+    // NEVER SEND EMAIL TO SCAMMERS, NEVER SPAM OWNER
     return;
   }
 
@@ -369,7 +420,7 @@ function handleContactInquiry(ss, data) {
     replyTo: email
   });
 
-  // Friendly Welcome Auto-Reply to Visitor
+  // Friendly Welcome Auto-Reply ONLY to Real Verified Humans
   if (email && email.indexOf("@") > -1) {
     const clientSubject = `FlexoraAi — How can we help you, ${name}?`;
     const clientBody = `
