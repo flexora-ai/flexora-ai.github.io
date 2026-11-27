@@ -56,6 +56,11 @@ function doGet(e) {
 // HELPER 1: COMPREHENSIVE SCAMMER & BOT DETECTION ENGINE
 // -----------------------------------------------------------------------------
 function checkScammer(data) {
+  // 0. Honeypot Trap (Automated bot / web crawler filled hidden field)
+  if ((data.website_hp && data.website_hp.trim().length > 0) || (data.hp_field && data.hp_field.trim().length > 0)) {
+    return { isScam: true, reason: "Honeypot trap triggered (Automated bot)" };
+  }
+
   const name = (data.name || data.sender_name || data.submitter_name || "").trim();
   const email = (data.email || data.contact_email || "").toLowerCase().trim();
   const message = (data.message || data.description || data.notes || "").trim();

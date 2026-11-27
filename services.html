@@ -12,6 +12,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()"/>
 <title>Services &amp; Contact — FlexoraAi</title>
 <meta name="keywords" content="AI tools directory, free AI tools, best AI software, AI tools comparison, AI workflows, generative AI"/>
 <meta name="author" content="FlexoraAi"/>
@@ -753,6 +756,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="section-head"><div><h2>Get in touch</h2><p>Send our team a message. We review every inquiry and reply within 24–48 hours.</p></div></div>
 <form action="https://script.google.com/macros/s/AKfycbyzS--DlkIfG2OFNHZFYBBt47MtIWG9FHJJypyh8UYwBw1E5UukSpmj9MTvi_vwb8id/exec" class="mini-form" id="contactForm" method="POST">
 <input type="hidden" name="form_type" value="contact_inquiry"/>
+<div style="display:none !important; position:absolute; left:-9999px; width:0; height:0; opacity:0; pointer-events:none;" aria-hidden="true">
+  <label for="cf_website_hp">Leave this blank</label>
+  <input type="text" id="cf_website_hp" name="website_hp" tabindex="-1" autocomplete="off" value=""/>
+</div>
 <div class="mf-row">
 <input id="cfName" name="name" placeholder="Your name" required="" type="text"/>
 <input id="cfEmail" name="email" placeholder="Your email" required="" type="email"/>
@@ -822,6 +829,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p class="modal-sub">We usually reply within a day or two.</p>
 <form action="https://script.google.com/macros/s/AKfycbyzS--DlkIfG2OFNHZFYBBt47MtIWG9FHJJypyh8UYwBw1E5UukSpmj9MTvi_vwb8id/exec" class="mini-form" id="popupContactForm" method="POST">
 <input type="hidden" name="form_type" value="contact_inquiry"/>
+<div style="display:none !important; position:absolute; left:-9999px; width:0; height:0; opacity:0; pointer-events:none;" aria-hidden="true">
+  <label for="pcf_website_hp">Leave this blank</label>
+  <input type="text" id="pcf_website_hp" name="website_hp" tabindex="-1" autocomplete="off" value=""/>
+</div>
 <div class="mf-row">
 <input name="name" placeholder="Your name" required="" type="text"/>
 <input name="email" placeholder="Your email" required="" type="email"/>
@@ -847,6 +858,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p class="modal-sub">Free Partner Link Exchange or 1-Year Featured Spotlight.</p>
 <form action="https://script.google.com/macros/s/AKfycbyzS--DlkIfG2OFNHZFYBBt47MtIWG9FHJJypyh8UYwBw1E5UukSpmj9MTvi_vwb8id/exec" class="mini-form" id="popupSubmitForm" method="POST">
 <input type="hidden" name="form_type" value="tool_submission"/>
+<div style="display:none !important; position:absolute; left:-9999px; width:0; height:0; opacity:0; pointer-events:none;" aria-hidden="true">
+  <label for="psf_website_hp">Leave this blank</label>
+  <input type="text" id="psf_website_hp" name="website_hp" tabindex="-1" autocomplete="off" value=""/>
+</div>
 <div class="mf-row">
 <input name="tool_name" placeholder="Tool name" required="" type="text"/>
 <input name="website" placeholder="Website URL (https://...)" required="" type="url"/>
@@ -1451,18 +1466,32 @@ document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
   wireModal('fabSubmit', 'submitModal', 'submitModalClose');
 })();
 
-// ---- real Formspree submission (works for any form with a data-formspree action) ----
+// ---- real Formspree / Google Sheets submission with Anti-Bot Armor ----
+const servicesPageLoaded = Date.now();
 function wireFormspree(formId, successId){
   const form = document.getElementById(formId);
   if(!form) return;
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    const fd = new FormData(form);
+    const hp = (fd.get('website_hp') || '').trim();
+    const elapsed = Date.now() - servicesPageLoaded;
+
+    // Honeypot trap or instant bot submission (< 1.2s)
+    if (hp.length > 0 || elapsed < 1200) {
+      form.style.display = 'none';
+      document.getElementById(successId)?.classList.add('show');
+      form.reset();
+      return;
+    }
+
     const submitBtn = form.querySelector('button[type="submit"]');
     if(submitBtn){ submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
     try{
       const res = await fetch(form.action, {
         method: 'POST',
-        body: new URLSearchParams(new FormData(form)),
+        body: new URLSearchParams(fd),
         headers: {'Accept': 'application/json'}
       });
       if(res.ok){
@@ -1676,93 +1705,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (e.target === submitModal) closeSubmitModal();
   });
 
-  // ============================================
-  // CONTACT FORM HANDLER
-  // ============================================
-  /**
-   * Handles Contact Form Submission
-   * - Prevents default form behavior
-   * - Sends data to Formspree endpoint: https://formspree.io/f/xyegnwpy
-   * - Expected fields: name, email, message
-   * - Shows success message on completion
-   * - Auto-closes modal after 3 seconds
-   */
-  popupContactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const formData = new FormData(popupContactForm);
-    
-    try {
-      const response = await fetch(popupContactForm.action, {
-        method: 'POST',
-        body: new URLSearchParams(formData),
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-
-      // Check if submission was successful
-      if (response.ok || response.status === 200) {
-        // Hide form, show success message
-        popupContactForm.classList.add('hidden');
-        popupContactSuccess.classList.add('show');
-        
-        // Auto-close modal after 3 seconds
-        setTimeout(() => {
-          closeContactModal();
-        }, 3000);
-      } else {
-        showToast('❌ Error sending message. Please try again.');
-      }
-    } catch (error) {
-      console.error('Contact form submission error:', error);
-      showToast('❌ Error sending message. Please check your connection.');
-    }
-  });
-
-  // ============================================
-  // SUBMIT TOOL FORM HANDLER
-  // ============================================
-  /**
-   * Handles Submit Tool Form Submission
-   * - Prevents default form behavior
-   * - Sends data to Formspree endpoint: https://formspree.io/f/xzepjrvz
-   * - Expected fields: tool_name, website, category, pricing, description, contact_email
-   * - Shows success message on completion
-   * - Auto-closes modal after 3 seconds
-   */
-  popupSubmitForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const formData = new FormData(popupSubmitForm);
-    
-    try {
-      const response = await fetch(popupSubmitForm.action, {
-        method: 'POST',
-        body: new URLSearchParams(formData),
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-
-      // Check if submission was successful
-      if (response.ok || response.status === 200) {
-        // Hide form, show success message
-        popupSubmitForm.classList.add('hidden');
-        popupSubmitSuccess.classList.add('show');
-        
-        // Auto-close modal after 3 seconds
-        setTimeout(() => {
-          closeSubmitModal();
-        }, 3000);
-      } else {
-        showToast('❌ Error submitting tool. Please try again.');
-      }
-    } catch (error) {
-      console.error('Submit form submission error:', error);
-      showToast('❌ Error submitting tool. Please check your connection.');
-    }
-  });
 
   // ============================================
   // TOAST NOTIFICATION HELPER

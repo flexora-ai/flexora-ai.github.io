@@ -48,13 +48,34 @@ window.FLEXORA_FORMS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyzS--D
     });
   }
 
-  // Helper to handle Formspree AJAX submission
+  // Load timestamp for timing-based bot protection
+  const pageLoadedAt = Date.now();
+
+  // Helper to handle Google Sheets / Formspree AJAX submission with Anti-Bot Armor
   function wireFormspree(formId, successId) {
     const form = document.getElementById(formId);
     if (!form) return;
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      const formData = new FormData(form);
+
+      // 1. Client-Side Anti-Bot Honeypot Trap
+      const hp = (formData.get('website_hp') || formData.get('hp_field') || '').trim();
+      const timeElapsed = Date.now() - pageLoadedAt;
+
+      // Automated scrapers & headless bots fill hidden fields or submit in < 1 second
+      if (hp.length > 0 || timeElapsed < 1000) {
+        // Silently drop - pretend success so bot does not retry or adapt
+        form.style.display = 'none';
+        const successBox = document.getElementById(successId);
+        if (successBox) successBox.classList.add('show');
+        if (window.showToast) window.showToast('Message sent successfully!');
+        form.reset();
+        return;
+      }
+
       const submitBtn = form.querySelector('button[type="submit"]');
       const originalText = submitBtn ? submitBtn.textContent : 'Submit';
 
@@ -64,8 +85,7 @@ window.FLEXORA_FORMS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyzS--D
       }
 
       try {
-        const formData = new FormData(form);
-        const endpoint = window.FLEXORA_FORMS_ENDPOINT || form.getAttribute('action') || 'https://formspree.io/f/xyegnwpy';
+        const endpoint = window.FLEXORA_FORMS_ENDPOINT || form.getAttribute('action') || 'https://script.google.com/macros/s/AKfycbyzS--DlkIfG2OFNHZFYBBt47MtIWG9FHJJypyh8UYwBw1E5UukSpmj9MTvi_vwb8id/exec';
         const res = await fetch(endpoint, {
           method: 'POST',
           body: new URLSearchParams(formData),

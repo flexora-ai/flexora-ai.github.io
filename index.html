@@ -13,6 +13,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta http-equiv="Pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="0"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()"/>
 <title>FlexoraAi — Find the right AI tool for the job</title>
 <meta content="Search, compare and discover AI tools for what you're actually trying to do — from writing and images to video, coding, marketing and productivity. Find the right AI tool faster." name="description"/>
 <meta content="index, follow" name="robots"/>
@@ -773,6 +776,10 @@ footer{border-top:1px solid var(--line); padding:56px 0 28px;}
 <p class="modal-sub">We usually reply within a day or two.</p>
 <form action="https://script.google.com/macros/s/AKfycbyzS--DlkIfG2OFNHZFYBBt47MtIWG9FHJJypyh8UYwBw1E5UukSpmj9MTvi_vwb8id/exec" class="mini-form" id="popupContactForm" method="POST">
 <input type="hidden" name="form_type" value="contact_inquiry"/>
+<div style="display:none !important; position:absolute; left:-9999px; width:0; height:0; opacity:0; pointer-events:none;" aria-hidden="true">
+  <label for="contact_website_hp">Leave this blank</label>
+  <input type="text" id="contact_website_hp" name="website_hp" tabindex="-1" autocomplete="off" value=""/>
+</div>
 <div class="mf-row">
 <input name="name" placeholder="Your name" required type="text"/>
 <input name="email" placeholder="Your email" required type="email"/>
@@ -799,6 +806,10 @@ footer{border-top:1px solid var(--line); padding:56px 0 28px;}
 <p class="modal-sub">Free Partner Link Exchange or 1-Year Featured Spotlight.</p>
 <form action="https://script.google.com/macros/s/AKfycbyzS--DlkIfG2OFNHZFYBBt47MtIWG9FHJJypyh8UYwBw1E5UukSpmj9MTvi_vwb8id/exec" class="mini-form" id="popupSubmitForm" method="POST">
 <input type="hidden" name="form_type" value="tool_submission"/>
+<div style="display:none !important; position:absolute; left:-9999px; width:0; height:0; opacity:0; pointer-events:none;" aria-hidden="true">
+  <label for="submit_website_hp">Leave this blank</label>
+  <input type="text" id="submit_website_hp" name="website_hp" tabindex="-1" autocomplete="off" value=""/>
+</div>
 <div class="mf-row">
 <input name="tool_name" placeholder="Tool name" required type="text"/>
 <input name="website" placeholder="Website URL (https://...)" required type="url"/>
@@ -1238,11 +1249,25 @@ wireModal('fabSubmit', 'submitModal', 'submitModalClose');
 
 // ===== 23. FORMSPREE & GOOGLE SHEETS UNIFIED SUBMISSION WITH CONFETTI =====
 window.FLEXORA_FORMS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyzS--DlkIfG2OFNHZFYBBt47MtIWG9FHJJypyh8UYwBw1E5UukSpmj9MTvi_vwb8id/exec';
+const pageLoadedTime = Date.now();
 function wireFormspree(formId, successId){
 const form = document.getElementById(formId);
 if(!form) return;
 form.addEventListener('submit', async (e) => {
 e.preventDefault();
+
+const fd = new FormData(form);
+const hp = (fd.get('website_hp') || '').trim();
+const elapsed = Date.now() - pageLoadedTime;
+
+// Honeypot trap or instant bot submission (< 1.2s)
+if (hp.length > 0 || elapsed < 1200) {
+  form.style.display = 'none';
+  document.getElementById(successId)?.classList.add('show');
+  form.reset();
+  return;
+}
+
 const submitBtn = form.querySelector('button[type="submit"]');
 const origText = submitBtn ? submitBtn.innerHTML : 'Send';
 if(submitBtn){ submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
@@ -1250,7 +1275,7 @@ try{
 const endpoint = window.FLEXORA_FORMS_ENDPOINT || form.action;
 const res = await fetch(endpoint, {
 method: 'POST',
-body: new URLSearchParams(new FormData(form)),
+body: new URLSearchParams(fd),
 headers: {'Accept': 'application/json'}
 });
 if(res.ok){
