@@ -136,6 +136,19 @@ function detectMoneyOpportunity(text, topic) {
 }
 
 // -----------------------------------------------------------------------------
+// HELPER 2B: HTML ESCAPING FOR EMAIL SECURITY (PREVENTS HTML INJECTION)
+// -----------------------------------------------------------------------------
+function escapeHtml(str) {
+  if (!str) return "";
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+// -----------------------------------------------------------------------------
 // HELPER 3: SELF-HEALING HEADER ALIGNMENT
 // -----------------------------------------------------------------------------
 function ensureContactHeaders(sheet) {
@@ -254,13 +267,13 @@ function handleToolSubmission(ss, data) {
       <p style="font-size:14px;color:#8A90A6;">A verified brand has submitted their AI tool for review on <b>${SITE_NAME}</b>.</p>
       
       <table style="width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;">
-        <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;width:140px;">Tool Name:</td><td style="color:#F2F4FA;font-weight:bold;">${toolName}</td></tr>
-        <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Website:</td><td><a href="${website}" style="color:#2DE2C8;" target="_blank">${website}</a></td></tr>
-        <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Selected Tier:</td><td style="color:${isPaidFeatured ? '#10b981' : '#f59e0b'};font-weight:bold;">${tier}</td></tr>
-        <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Category:</td><td style="color:#F2F4FA;">${category} (${subcategory})</td></tr>
-        <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Pricing:</td><td style="color:#F2F4FA;">${pricing} ${startingPrice ? '- ' + startingPrice : ''}</td></tr>
-        <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Submitter:</td><td style="color:#F2F4FA;">${submitterName} (<a href="mailto:${submitterEmail}" style="color:#2DE2C8;">${submitterEmail}</a>)</td></tr>
-        <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Description:</td><td style="color:#F2F4FA;">${shortDesc}</td></tr>
+        <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;width:140px;">Tool Name:</td><td style="color:#F2F4FA;font-weight:bold;">${escapeHtml(toolName)}</td></tr>
+        <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Website:</td><td><a href="${escapeHtml(website)}" style="color:#2DE2C8;" target="_blank">${escapeHtml(website)}</a></td></tr>
+        <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Selected Tier:</td><td style="color:${isPaidFeatured ? '#10b981' : '#f59e0b'};font-weight:bold;">${escapeHtml(tier)}</td></tr>
+        <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Category:</td><td style="color:#F2F4FA;">${escapeHtml(category)} (${escapeHtml(subcategory)})</td></tr>
+        <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Pricing:</td><td style="color:#F2F4FA;">${escapeHtml(pricing)} ${startingPrice ? '- ' + escapeHtml(startingPrice) : ''}</td></tr>
+        <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Submitter:</td><td style="color:#F2F4FA;">${escapeHtml(submitterName)} (<a href="mailto:${escapeHtml(submitterEmail)}" style="color:#2DE2C8;">${escapeHtml(submitterEmail)}</a>)</td></tr>
+        <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Description:</td><td style="color:#F2F4FA;">${escapeHtml(shortDesc)}</td></tr>
       </table>
 
       <div style="background:#161B28;padding:16px;border-radius:8px;border:1px solid #232838;margin-top:20px;">
@@ -398,18 +411,18 @@ function handleContactInquiry(ss, data) {
       <p style="font-size:14px;color:#8A90A6;">You received a new message through FlexoraAi contact form:</p>
       
       <table style="width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;">
-        <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;width:120px;">Name:</td><td style="color:#F2F4FA;font-weight:bold;">${name}</td></tr>
-        <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Email:</td><td><a href="mailto:${email}" style="color:#2DE2C8;">${email}</a></td></tr>
-        <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Topic / Service:</td><td style="color:#F2F4FA;">${topic}</td></tr>
-        <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Company:</td><td style="color:#F2F4FA;">${company}</td></tr>
-        <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Opportunity:</td><td style="color:${isMoneyOpportunity ? '#10b981' : '#8A90A6'};font-weight:bold;">${oppLabel}</td></tr>
+        <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;width:120px;">Name:</td><td style="color:#F2F4FA;font-weight:bold;">${escapeHtml(name)}</td></tr>
+        <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Email:</td><td><a href="mailto:${escapeHtml(email)}" style="color:#2DE2C8;">${escapeHtml(email)}</a></td></tr>
+        <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Topic / Service:</td><td style="color:#F2F4FA;">${escapeHtml(topic)}</td></tr>
+        <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Company:</td><td style="color:#F2F4FA;">${escapeHtml(company)}</td></tr>
+        <tr style="border-bottom:1px solid #232838;"><td style="padding:10px 0;color:#8A90A6;">Opportunity:</td><td style="color:${isMoneyOpportunity ? '#10b981' : '#8A90A6'};font-weight:bold;">${escapeHtml(oppLabel)}</td></tr>
       </table>
 
       <div style="background:#161B28;padding:16px;border-radius:8px;border:1px solid #232838;margin-top:16px;">
         <b style="color:#2DE2C8;font-size:13px;">Message:</b>
-        <p style="margin:8px 0 0;font-size:14px;color:#F2F4FA;line-height:1.6;white-space:pre-wrap;">${message}</p>
+        <p style="margin:8px 0 0;font-size:14px;color:#F2F4FA;line-height:1.6;white-space:pre-wrap;">${escapeHtml(message)}</p>
       </div>
-      <p style="font-size:12px;color:#8A90A6;margin-top:16px;">Hit "Reply" in your email client to message ${name} directly.</p>
+      <p style="font-size:12px;color:#8A90A6;margin-top:16px;">Hit "Reply" in your email client to message ${escapeHtml(name)} directly.</p>
     </div>
   `;
 
@@ -422,13 +435,13 @@ function handleContactInquiry(ss, data) {
 
   // Friendly Welcome Auto-Reply ONLY to Real Verified Humans
   if (email && email.indexOf("@") > -1) {
-    const clientSubject = `FlexoraAi — How can we help you, ${name}?`;
+    const clientSubject = `FlexoraAi — How can we help you, ${escapeHtml(name)}?`;
     const clientBody = `
       <div style="font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;max-width:600px;margin:0 auto;padding:24px;background:#0F131D;color:#F2F4FA;border-radius:12px;border:1px solid #232838;">
         <h2 style="color:#2DE2C8;margin-top:0;">Thanks for reaching out!</h2>
         <p style="font-size:14.5px;color:#8A90A6;line-height:1.7;">
-          Hi ${name},<br/><br/>
-          Thank you for contacting <b>${SITE_NAME}</b>! We received your message regarding <b>${topic}</b>.
+          Hi ${escapeHtml(name)},<br/><br/>
+          Thank you for contacting <b>${SITE_NAME}</b>! We received your message regarding <b>${escapeHtml(topic)}</b>.
         </p>
         <p style="font-size:14.5px;color:#8A90A6;line-height:1.7;">
           <b>What can we do for you?</b><br/>
