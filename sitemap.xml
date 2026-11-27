@@ -1867,6 +1867,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://flexora-ai.github.io/tools/chong-zhen.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://flexora-ai.github.io/tools/claude.html</loc>
     <lastmod>2026-11-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -1886,6 +1892,12 @@
   </url>
   <url>
     <loc>https://flexora-ai.github.io/tools/elevenlabs.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://flexora-ai.github.io/tools/ezimageai.html</loc>
     <lastmod>2026-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1933,7 +1945,25 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://flexora-ai.github.io/tools/gpt-image-2.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://flexora-ai.github.io/tools/gpt-plus.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://flexora-ai.github.io/tools/grammarly.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://flexora-ai.github.io/tools/grok-imagine.html</loc>
     <lastmod>2026-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1963,6 +1993,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://flexora-ai.github.io/tools/jigsawable.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://flexora-ai.github.io/tools/kimi.html</loc>
     <lastmod>2026-11-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -1981,7 +2017,19 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://flexora-ai.github.io/tools/makememe.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://flexora-ai.github.io/tools/markany.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://flexora-ai.github.io/tools/meloskill.html</loc>
     <lastmod>2026-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -2119,6 +2167,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://flexora-ai.github.io/tools/retypit.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://flexora-ai.github.io/tools/revenuefromchat.html</loc>
     <lastmod>2026-11-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -2137,6 +2191,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://flexora-ai.github.io/tools/roomflip.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://flexora-ai.github.io/tools/runway.html</loc>
     <lastmod>2026-11-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -2144,6 +2204,12 @@
   </url>
   <url>
     <loc>https://flexora-ai.github.io/tools/salestouch.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://flexora-ai.github.io/tools/seedance-25.html</loc>
     <lastmod>2026-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -2167,7 +2233,19 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://flexora-ai.github.io/tools/talescene.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://flexora-ai.github.io/tools/text2vid.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://flexora-ai.github.io/tools/videm-ai.html</loc>
     <lastmod>2026-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -2192,6 +2270,12 @@
   </url>
   <url>
     <loc>https://flexora-ai.github.io/tools/vivamaker.html</loc>
+    <lastmod>2026-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://flexora-ai.github.io/tools/wan-ai.html</loc>
     <lastmod>2026-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
