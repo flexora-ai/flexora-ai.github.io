@@ -3,16 +3,17 @@
  * FlexoraAi — Unified Google Sheets & Email Automation Backend (Google Apps Script)
  * ==============================================================================
  * 
- * 100% FREE — Unlimited Submissions — Automatic Categorization — Instant Emails
- * Includes Smart "Money Opportunity" Detector with Green Row Highlighting!
+ * Version 5 — Enhanced with:
+ * 1. Self-Healing Header Alignment (automatically inserts "Opportunity Status" column)
+ * 2. Smart Russian & Bot Spam Filter (blocks spam from emailing your inbox)
+ * 3. Green Highlighting for Money Opportunities ($ / Paid / Featured / SEO)
+ * 4. Friendly "How Can We Help You?" Auto-Responder
  * 
- * SETUP INSTRUCTIONS:
- * 1. Open Google Sheets (https://sheets.google.com) and open your "FlexoraAi Submissions" sheet.
- * 2. Click: Extensions -> Apps Script
- * 3. Replace the entire code with this updated file and save (Ctrl + S).
- * 4. Click "Deploy" -> "Manage deployments" -> Click the Edit (pencil) icon
- *    - Version: "New version"
- *    - Click "Deploy"
+ * UPDATE INSTRUCTIONS:
+ * 1. Open Google Sheets -> Extensions -> Apps Script
+ * 2. Replace all code with this file and Save (Ctrl + S).
+ * 3. Click "Deploy" -> "Manage deployments" -> Click Pencil (Edit) icon.
+ * 4. Choose "New version" -> Click "Deploy".
  */
 
 const OWNER_EMAIL = "ownerflexora.ai@gmail.com";
@@ -51,7 +52,25 @@ function doGet(e) {
 }
 
 // -----------------------------------------------------------------------------
-// HELPER: DETECT MONEY OPPORTUNITY
+// HELPER 1: DETECT SPAM (Russian bots, nakrutka, malicious html tags)
+// -----------------------------------------------------------------------------
+function isSpam(message, email, name) {
+  const combined = ((message || "") + " " + (email || "") + " " + (name || "")).toLowerCase();
+  
+  // Cyrillic alphabet (Russian spam bots)
+  if (/[а-яё]/.test(combined)) return true;
+  
+  // Russian domains and known bot keywords
+  if (/\.ru\b|nakrutka|vkontakte|telegram.*podpis|взлом|<a\s+href/i.test(combined)) return true;
+  
+  // Disposable / bot mail formats
+  if (email && email.indexOf("firstmailmorty") > -1) return true;
+
+  return false;
+}
+
+// -----------------------------------------------------------------------------
+// HELPER 2: DETECT MONEY OPPORTUNITY
 // -----------------------------------------------------------------------------
 function detectMoneyOpportunity(text, topic) {
   const combined = ((text || "") + " " + (topic || "")).toLowerCase();
@@ -72,6 +91,51 @@ function detectMoneyOpportunity(text, topic) {
 }
 
 // -----------------------------------------------------------------------------
+// HELPER 3: SELF-HEALING HEADER ALIGNMENT
+// -----------------------------------------------------------------------------
+function ensureContactHeaders(sheet) {
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow([
+      "Timestamp", "Sender Name", "Email Address", "Company / Tool",
+      "Service / Topic", "Opportunity Status", "Message Content", "Status"
+    ]);
+    sheet.getRange(1, 1, 1, 8).setFontWeight("bold").setBackground("#0F131D").setFontColor("#2DE2C8");
+    sheet.setFrozenRows(1);
+    return;
+  }
+  
+  const headers = sheet.getRange(1, 1, 1, Math.max(sheet.getLastColumn(), 1)).getValues()[0];
+  if (headers.indexOf("Opportunity Status") === -1) {
+    const msgIndex = headers.indexOf("Message Content");
+    const insertAt = msgIndex > -1 ? msgIndex + 1 : 6;
+    sheet.insertColumnBefore(insertAt);
+    sheet.getRange(1, insertAt).setValue("Opportunity Status").setFontWeight("bold").setBackground("#0F131D").setFontColor("#2DE2C8");
+  }
+}
+
+function ensureToolHeaders(sheet) {
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow([
+      "Timestamp", "Tool Name", "Website URL", "Category", "Subcategory",
+      "Pricing Model", "Starting Price", "Tier / Plan", "Opportunity Status",
+      "Submitter Name", "Submitter Email", "Backlink / Exchange Notes",
+      "Short Description", "Full Description", "Status"
+    ]);
+    sheet.getRange(1, 1, 1, 15).setFontWeight("bold").setBackground("#0F131D").setFontColor("#2DE2C8");
+    sheet.setFrozenRows(1);
+    return;
+  }
+  
+  const headers = sheet.getRange(1, 1, 1, Math.max(sheet.getLastColumn(), 1)).getValues()[0];
+  if (headers.indexOf("Opportunity Status") === -1) {
+    const submitterIndex = headers.indexOf("Submitter Name");
+    const insertAt = submitterIndex > -1 ? submitterIndex + 1 : 9;
+    sheet.insertColumnBefore(insertAt);
+    sheet.getRange(1, insertAt).setValue("Opportunity Status").setFontWeight("bold").setBackground("#0F131D").setFontColor("#2DE2C8");
+  }
+}
+
+// -----------------------------------------------------------------------------
 // 1. TOOL / BRAND SUBMISSION HANDLER
 // -----------------------------------------------------------------------------
 function handleToolSubmission(ss, data) {
@@ -79,29 +143,7 @@ function handleToolSubmission(ss, data) {
   if (!sheet) {
     sheet = ss.insertSheet("Tool Submissions");
   }
-
-  // Ensure header row exists
-  if (sheet.getLastRow() === 0) {
-    sheet.appendRow([
-      "Timestamp",
-      "Tool Name",
-      "Website URL",
-      "Category",
-      "Subcategory",
-      "Pricing Model",
-      "Starting Price",
-      "Tier / Plan",
-      "Opportunity Status",
-      "Submitter Name",
-      "Submitter Email",
-      "Backlink / Exchange Notes",
-      "Short Description",
-      "Full Description",
-      "Status"
-    ]);
-    sheet.getRange(1, 1, 1, 15).setFontWeight("bold").setBackground("#0F131D").setFontColor("#2DE2C8");
-    sheet.setFrozenRows(1);
-  }
+  ensureToolHeaders(sheet);
 
   const timestamp = new Date();
   const toolName = data.tool_name || data.name || "Untitled Tool";
@@ -142,8 +184,9 @@ function handleToolSubmission(ss, data) {
   const newRow = sheet.getLastRow();
   // Highlight in GREEN if Paid Featured
   if (isPaidFeatured) {
-    const oppCell = sheet.getRange(newRow, 9);
-    oppCell.setBackground("#10B981").setFontColor("#FFFFFF").setFontWeight("bold");
+    sheet.getRange(newRow, 9).setBackground("#10B981").setFontColor("#FFFFFF").setFontWeight("bold");
+    sheet.getRange(newRow, 1, 1, 15).setBackground("#064E3B").setFontColor("#F2F4FA");
+    sheet.getRange(newRow, 9).setBackground("#10B981").setFontColor("#FFFFFF").setFontWeight("bold");
   }
 
   // 1. Alert to Owner
@@ -228,29 +271,14 @@ function handleToolSubmission(ss, data) {
 }
 
 // -----------------------------------------------------------------------------
-// 2. CONTACT / USER INQUIRY HANDLER WITH SMART OPPORTUNITY DETECTOR
+// 2. CONTACT / USER INQUIRY HANDLER WITH SPAM FILTER & MONEY DETECTOR
 // -----------------------------------------------------------------------------
 function handleContactInquiry(ss, data) {
   let sheet = ss.getSheetByName("Contact Inquiries");
   if (!sheet) {
     sheet = ss.insertSheet("Contact Inquiries");
   }
-
-  // Ensure header row exists
-  if (sheet.getLastRow() === 0) {
-    sheet.appendRow([
-      "Timestamp",
-      "Sender Name",
-      "Email Address",
-      "Company / Tool",
-      "Service / Topic",
-      "Opportunity Status",
-      "Message Content",
-      "Status"
-    ]);
-    sheet.getRange(1, 1, 1, 8).setFontWeight("bold").setBackground("#0F131D").setFontColor("#2DE2C8");
-    sheet.setFrozenRows(1);
-  }
+  ensureContactHeaders(sheet);
 
   const timestamp = new Date();
   const name = data.name || data.sender_name || "Visitor";
@@ -258,9 +286,27 @@ function handleContactInquiry(ss, data) {
   const company = data.company || data.tool_name || "N/A";
   const topic = data.service || data.subject || "General Inquiry";
   const message = data.message || data.notes || "";
-  const status = "New Message";
 
-  // Analyze if there is a money/business opportunity
+  // 1. Check for Spam / Bots
+  if (isSpam(message, email, name)) {
+    sheet.appendRow([
+      timestamp,
+      name,
+      email,
+      company,
+      topic,
+      "🚫 Blocked Spam",
+      message,
+      "Spam (Auto-Filtered)"
+    ]);
+    const newRow = sheet.getLastRow();
+    sheet.getRange(newRow, 1, 1, 8).setBackground("#1F2937").setFontColor("#9CA3AF");
+    Logger.log("Spam blocked from " + email);
+    // DO NOT SEND EMAIL FOR SPAM BOTS
+    return;
+  }
+
+  // 2. Analyze if there is a money/business opportunity
   const isMoneyOpportunity = detectMoneyOpportunity(message, topic);
   const oppLabel = isMoneyOpportunity ? "💰 MONEY OPPORTUNITY" : "Standard Inquiry";
 
@@ -272,7 +318,7 @@ function handleContactInquiry(ss, data) {
     topic,
     oppLabel,
     message,
-    status
+    "New Message"
   ]);
 
   const newRow = sheet.getLastRow();
@@ -280,9 +326,7 @@ function handleContactInquiry(ss, data) {
 
   // If Money Opportunity: Highlight cell in VIBRANT GREEN with bold white text!
   if (isMoneyOpportunity) {
-    oppCell.setBackground("#10B981").setFontColor("#FFFFFF").setFontWeight("bold");
-    sheet.getRange(newRow, 1, 1, 8).setBackground("#064E3B"); // Soft dark emerald row tint
-    sheet.getRange(newRow, 1, 1, 8).setFontColor("#F2F4FA");
+    sheet.getRange(newRow, 1, 1, 8).setBackground("#064E3B").setFontColor("#F2F4FA");
     oppCell.setBackground("#10B981").setFontColor("#FFFFFF").setFontWeight("bold");
   }
 
